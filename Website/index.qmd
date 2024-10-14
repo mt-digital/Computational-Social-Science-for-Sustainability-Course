@@ -1,0 +1,27 @@
+---
+title: "Overview and syllabus"
+---
+
+
+# Introduction
+
+Hello, and welcome to the course website for Computational Social Science for
+Sustainability, developed and taught by Dr. Matthew Turner, and offered Winter
+2025 for Stanford Doerr School of Sustainability undergraduates and graduate
+students! Join the course to develop a nuanced understanding of human social
+behavior while learning new computational and presentation skills in the R
+programming language.
+
+
+## Course structure
+
+We meet twice weekly, currently scheduled for Monday and Wednesday
+11:30am-12:50pm, but subject to change, location pending. Each week will have 
+twin themes, one social science phenomenon (e.g., political polarization)
+and one computational technique or skill (e.g., agent-based modeling).
+
+
+# Syllabus
+
+Each week will feature one lecture focused on a select topic 
+from social science for sustainability (S3).
