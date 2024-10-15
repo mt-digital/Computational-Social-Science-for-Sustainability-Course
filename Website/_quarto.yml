@@ -4,6 +4,8 @@ project:
 website:
   title: "Computational Social Science for Sustainability (EBS 182/282)"
   navbar:
+    background: "#8C1515"
+    foreground: "#FFFFFF"
     right:
       - href: index.qmd
         text: Course information and syllabus
@@ -17,6 +19,9 @@ website:
       - href: lectures/index.qmd
         text: Lectures
 
+      - href: labs/index.qmd
+        text: "Lab exercises"
+
 format:
   html:
     theme: cosmo
@@ -24,4 +29,4 @@ format:
     toc: true
 
 
-
+bibliography: /users/mt/workspace/Writing/library.bib
