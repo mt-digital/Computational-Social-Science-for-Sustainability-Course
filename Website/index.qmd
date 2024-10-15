@@ -26,25 +26,11 @@ and one computational technique or skill (e.g., agent-based modeling).
 Each week will feature one lecture focused on a select topic 
 from social science for sustainability (S3). 
 
-| Right | Left | Default | Center |
-|------:|:-----|---------|:------:|
-|   12  |  12  |    12   |    12  |
-|  123  |  123 |   123   |   123  |
-|    1  |    1 |     1   |     1  |
-
-| fruit  | price  |
-|--------|--------|
-| apple  | 2.05   |
-| pear   | 1.37   |
-| orange | 3.09   |
-
-: Fruit prices {.striped .hover}
-
 | Week  | Lecture description  | Lab description | Readings |
-|+-----+|+---------------------|+----------------|----------|
-| 1     | Sustainable behaviors to adapt to a changing world | "Yes, and" storytelling exercise | @Cikara2014, @Jones2021, @Pisor2022, @GalesicEtAl2023, @Waring2024, @Kling2024 |
-| 2   | 1.37                 |
-| 3  | 3.09                 |
-| 4  | 3.09                 |
+|:-----:|:---------------------|:----------------|:---------|
+| 1     | Sustainable behaviors to adapt to a changing world | "Yes, and" storytelling exercise |  @McNamara2020; @Jones2021; @Pisor2022; @GalesicEtAl2023; @Kling2024 |
+| 2   | Social learning, social influence, and uncertainty | Agent-based model of adaptation diffusion and opinion dynamics | @Acerbi2022, [Chapter 1](https://acerbialberto.com/IBM-cultevo/unbiased-transmission.html); @Flache2011; @Turner2018; @Turner2023a 
+| 3   | Group structure and metapopulation theory | Adaptation diffusion in group-structured social networks | @Cikara2014; @Derex2016; @Turner2023
+| 4   | Animal studies; Bayesian modeling and statistical analysis | King Markov; Model fits following @Silk2005 | @Rethinking, [Chapters 9 and 11](https://github.com/Booleans/statistical-rethinking/blob/master/Statistical%20Rethinking%202nd%20Edition.pdf): Ch. 9 introduces Markov Chain Monte Carlo, Ch. 11 uses @Silk2005 data and follows their analysis
 
-: {.striped .hover}
+: {.striped .hover tbl-colwidths="[1,25,25,49]"}
