@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "lectures/index.html",
+    "href": "lectures/index.html",
+    "title": "Lectures",
+    "section": "",
+    "text": "Lectures\nComing soon!"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Overview and syllabus",
@@ -14,24 +21,17 @@
     "text": "We meet twice weekly, currently scheduled for Monday and Wednesday 11:30am-12:50pm, but subject to change, location pending. Each week will have twin themes, one social science phenomenon (e.g., political polarization) and one computational technique or skill (e.g., agent-based modeling)."
   },
   {
-    "objectID": "book/index.html",
-    "href": "book/index.html",
-    "title": "THIS IS A BOOK!!! OHHH YEAH!!!!",
-    "section": "",
-    "text": "THIS IS A BOOK!!! OHHH YEAH!!!!"
-  },
-  {
-    "objectID": "lectures/index.html",
-    "href": "lectures/index.html",
-    "title": "Lectures",
-    "section": "",
-    "text": "Lectures\nComing soon!"
-  },
-  {
     "objectID": "bibliography/index.html",
     "href": "bibliography/index.html",
     "title": "Bibliography",
     "section": "",
     "text": "Bibliography\nComing soon!"
+  },
+  {
+    "objectID": "book/index.html",
+    "href": "book/index.html",
+    "title": "THIS IS A BOOK!!! OHHH YEAH!!!!",
+    "section": "",
+    "text": "THIS IS A BOOK!!! OHHH YEAH!!!!"
   }
 ]
