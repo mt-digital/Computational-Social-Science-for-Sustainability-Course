@@ -8,13 +8,13 @@ website:
       - href: index.qmd
         text: Course information and syllabus
 
-      - href: book.qmd
+      - href: book/index.qmd
         text: Book
 
-      - href: bibliography.qmd
-        text: References
+      - href: bibliography/index.qmd
+        text: Bibliography
 
-      - href: lectures.qmd
+      - href: lectures/index.qmd
         text: Lectures
 
 format:
