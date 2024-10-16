@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "Computational Social Science for Sustainability (EBS 182/282)"
+  title: "Comp. Soc. Sci. for Sustainability (EBS 182/282)"
   navbar:
     background: "#8C1515"
     foreground: "#FFFFFF"
@@ -13,14 +13,14 @@ website:
       - href: book/index.qmd
         text: Book
 
-      - href: bibliography/index.qmd
-        text: Bibliography
-
       - href: lectures/index.qmd
         text: Lectures
 
       - href: labs/index.qmd
         text: "Lab exercises"
+
+      - href: https://mt.digital
+        text: "MA Turner, Ph.D."
 
 format:
   html:
