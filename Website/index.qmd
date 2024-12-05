@@ -29,8 +29,54 @@ from social science for sustainability (S3).
 | Week  | Lecture description  | Lab description | Readings |
 |:-----:|:---------------------|:----------------|:---------|
 | 1     | Sustainable behaviors to adapt to a changing world | "Yes, and" storytelling exercise |  @McNamara2020; @Jones2021; @Pisor2022; @GalesicEtAl2023; @Kling2024 |
-| 2   | Social learning, social influence, and uncertainty | Agent-based model of adaptation diffusion and opinion dynamics | @Acerbi2022, [Chapter 1](https://acerbialberto.com/IBM-cultevo/unbiased-transmission.html); @Flache2011; @Turner2018; @Turner2023a 
+| 2   | Social learning, social influence, and uncertainty | Agent-based model of adaptation diffusion and opinion dynamics | @Otto2013; @Acerbi2022, [Chapter 1](https://acerbialberto.com/IBM-cultevo/unbiased-transmission.html); @Flache2011; @Turner2018; @Turner2023a 
 | 3   | Group structure and metapopulation theory | Adaptation diffusion in group-structured social networks | @Cikara2014; @Derex2016; @Turner2023
 | 4   | Animal studies; Bayesian modeling and statistical analysis | King Markov; Model fits following @Silk2005 | @Rethinking, [Chapters 9 and 11](https://github.com/Booleans/statistical-rethinking/blob/master/Statistical%20Rethinking%202nd%20Edition.pdf): Ch. 9 introduces Markov Chain Monte Carlo, Ch. 11 uses @Silk2005 data and follows their analysis
 
 : {.striped .hover tbl-colwidths="[1,25,25,49]"}
+
+
+The ten-week course will consist of ten full lectures and ten sections focused on 
+computing skills with some lecture, but mostly hands-on practice to make sure 
+students learn the skills they need to complete weekly project assignments. 
+Weekly assignments will combine software development and writing, requiring
+students to write a mini 2-page journal article-style papers every week. Students will
+motivate and explain a model they help program, analyze model outputs and explain 
+the results, and explain the broader importance of the work. These papers 
+will follow the IMAD structure: Introduction, Model (or Methods), Analysis, 
+and Discussion, also known as the IMRaD structure where "Results and" replaces "Analysis".
+
+# Weekly assignments, midterm and final exams, midterm and final projects
+
+**Initial idea, subject to change!**
+
+- *Weekly assignments:* There will be eight weekly assignments total, taking weeks off for midterm and final weeks to focus on projects and exams. Each will be worth 10 points.
+- *Midterm and final exams:* There will be a midterm and final written exam possibly including written mathematics, mathematical derivations, and pseudocode solutions to logic or programming problems. 
+  The midterm exam will be worth 20 points; the final will be 30 points.
+- *Midterm project:* 30 points
+- *Final project:* 40 points
+
+## Weekly assignment
+
+
+10 points per weekly assignment: I, 2pts; M 2pts, Code 3pts; R 3pts; D 1 pt. 
+
+## Midterm exam:
+Written responses, formal calculations, explaining formalisms, writing pseudocode
+20 pts
+
+## Final exam:
+Written responses, formal calculations, explaining formalisms, writing pseudocode
+40 pts
+
+## Midterm project:
+Pick one of the weekly assignments and expand upon it based upon your own interests.
+Same grading as weekly project, but scaled up to 20 points. Minimum 2000 words
+in IMAD/IMRaD format.
+
+## Final project
+I will suggest several potential final projects, and students may invent their own.
+Same grading distribution as weekly project, but scaled up to 40 points. Minimum
+3000 words in IMAD/IMRaD format.
+
+
