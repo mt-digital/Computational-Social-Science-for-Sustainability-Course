@@ -14,27 +14,153 @@ students! Join the course to develop a nuanced understanding of human social
 behavior while learning new computational and presentation skills in the R
 programming language.
 
+## Getting help
+
+One of the most helpful things students can do is speak up early if they are having trouble. Please  [email me](mailto:maturner@stanford.edu) or seek the help of other enrolled students. 
+
+### Office hours
+
+
+
 ## Course structure
 
-Each week will have a Monday lecture on topics in computational social science
-followed by a Wednesday lab-focused session to develop students' scientific
-programming and writing skills. Listed below is a weekly schedule of lecture
-topics and lab exercises. Details about course structure are subject to change.
+Each week will have a Monday lecture on topics in computational social science for sustainability. Wednesday meetings will focus on developing programming, analysis, and writing skills in an interactive lab-section setting. In these Wednesday sections students will be introduced to problem sets and midterm and final projects, and have time to ask questions of and work together with the instructor and peers.
 
-There will be eight weekly assignments that we will begin during Wednesday lab
-sessions. There will be a midterm and final project, with the final project
-ideally building on results from the midterm project. There will be a midterm
-and final exam to test students' conceptual understanding of computational
-social science topics covered in the course and readings.
+### Coursework and Grading
 
-## Lecture and lab outline
+Students will be evaluated based on their completion of six total assignments: four problem sets, a midterm project, and a final project. 
+
+-   **Problem sets:** There will be four problem sets introduced on Wednesdays during the computing lab section. Students will also have the opportunity to work together and ask the instructor questions during other lab sections before each assignment is due. Each problem set will be worth 10 points.
+-   **Midterm project:** Students will write a report on how they will use a model from the course to address a sustainability problem of interest. The midterm project will be used as a foundation for the final project. (20 points)
+-   **Final project:** Students will expand on their midterm project, performing a detailed model analysis and discussing the implications of their results for designing sustainability interventions. (40 points)
+
+
+## Course expectations
+
+Setting expectations early, I hope, helps everyone get the most out of our shared experience in the course. There are things you can expect from me and things I expect of enrolled students. 
+
+### What you can expect from me
+
+I will do my best to promote an encouraging and safe learning environment to
+promote student success. I will strive to understand and support student career
+goals. I welcome a diversity of backgrounds and experiences. You can expect me
+to challenge and cheer on students to refine their own ideas through clear
+writing. While I enjoy and have developed my talent for mathematics and computer programming, I understand that these subjects can cause some anxiety. If you feel this anxiety and have ideas on how I can help that I am not doing, you can expect me to welcome feedback and work with you to find accommodations for life events that interfere with completion of any of the six assignments.
+
+Please see me during office hours or by making an appointment at another time over email.
+
+
+### What is expected from all students
+
+Students must attend all scheduled course meetings unless there are extenuating circumstances. Students are expected to seek help if they are struggling with course material, assignments, or have any other issues.
+
+### What is expected from graduate students
+
+Graduate students will be required to complete an extra exercise on each problem set that will be extra credit for undergraduates. Graduate student writing and programming will in general be held to a higher standard in terms of clarity, structure, and technical detail.
+
+## Lecture and lab calendar and topics outline
+
+### Schedule and location
+
+Monday lectures and Wednesday lab sections 11:30 AM - 12:50 PM in [320-109](https://campus-map.stanford.edu/?srch=320-109#), [Winter quarter 2025](https://studentservices.stanford.edu/calendar/academic-dates/stanford-academic-calendar-2024-2025#winter25).
+
+
+### Office hours
+
+- Monday and Tuesday 1 - 3 PM (Y2E2 352)
+- Thursday 3 - 4 PM (Zoom; link to be shared on Canvas)
+- By appointment
+
+### Calendar
+
+<table class="table table-sm">
+  <caption>
+  <thead>
+    <tr>
+      <th text-align: center scope="col" width="100">Week</th>
+      <th scope="col">Topic</th>
+      <th scope="col">Coursework</th>
+      <th scope="col">Readings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1, M 1/6 and W 1/8</td>
+      <td>What is social science, why _computation_, and how these can promote sustainability.</td>
+      <td><ul><li>**PS 1, diffusion via social learning:** How many individuals need to be know about beneficial sustainable innovations so that they spread throughout a population? **Due 1/22 at 11:30 AM**</li></ul></td>
+      <td>
+        <ul>
+          <li>@PisorLansingMagargal2023</li>
+          <li>@Ostrom2014</li>
+          <li>@Cox2010</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>2, M 1/13 and W 1/15</td>
+      <td>The effect of social networks on sustainable innovation development and diffusion.</td>
+      <td></td>
+      <td><ul><li>@Pisor2024</li><li>@Centola2022</li><li>@Derex2016</li></ul></td>
+    </tr>
+    <tr>
+      <td>3, M 1/20 and W 1/22</td>
+      <td>How asymmetric preferences for within-group interaction can create sustainability-promoting social networks, and how to measure this in the real world.</td>
+      <td><ul><li>**PS 1 due 1/22 at 11:30 AM**</li><li>**PS 2, how information and opinions spread in different social networks:** How careful timing of informational interventions can help limit polarization. **Due 2/5 at 11:30 AM**</li></ul></td>
+      <td>@Turner2023</td>
+    </tr>
+    <tr>
+      <td>4, W 1/29 (no class M 1/27)</td>
+      <td>Social influence represented as forces causing opinion dynamics.</td>
+      <td></td>
+      <td>@Turner2018; Smaldino (2023; Ch. 6)</td>
+  </tr>
+  <tr>
+    <td>5, M 2/3 and W 2/5</td>
+    <td>Opinion dynamics in the context of sustainability. Experimental design and measurement in opinion dynamics experiments.</td>
+    <td><ul><li>**PS 2 due W 2/5 at 11:30 AM**</li><li>**Midterm project announced W 2/5, due 2/24 at 11:59 PM**</li></ul></td>
+    <td><ul><li>@Liddell2018</li><li>@GalesicEtAl2023</li></ul></td>
+  </tr>
+  <tr>
+    <td>6, M 2/10 and W 2/12</td>
+    <td>Common-pool resource management dilemmas: when and why do people cooperate? (Part I)</td>
+    <td><ul><li>**PS 3, modeling and measuring socio-ecological dilemmas:** applications include groundwater management,  **Due W 2/26 at 11:30 AM**</li></ul></td>
+    <td><ul><li>@Nowak2006</li><li>@Andrews2018</li></ul></td>
+  </tr>
+  <tr>
+    <td>7, W 2/19 (no class M 2/17)</td>
+    <td>Common-pool resource management dilemmas: when and why do people cooperate? (Part II)</td>
+    <td><ul><li>**Final project announced, due M 3/17 at 11:59 PM**</li></ul></td>
+    <td><ul><li>@Tavoni2011</li><li>@Jackson2008, Ch. 9, especially 9.2 and 9.3</li></ul></td>
+  </tr>
+  <tr>
+    <td>8, M 2/24 and W 2/26</td>
+    <td>How to perform and report computational social model analyses.</td>
+    <td><ul><li>**PS 3 due W 2/26 at 11:30 AM**</li><li>**PS 4, the evolution of institutions for sustainable property rights:** with example of promoting carbon-capture farming. **Due W 3/12 at 11:30 AM**</li></ul></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>9, M 3/3 and W 3/5</td>
+    <td>Common-pool resource management dilemmas: when and why do people cooperate? (Part II)</td>
+    <td></td>
+    <td><ul><li>@Waring2015</li><li>@Waring2017</li><li>@Andrews2024</li></ul></td>
+  </tr>
+  <tr>
+    <td>10, M 3/10 and W 3/12</td>
+    <td>Review: A look back at how computational social science can promote sustainability, through the lens of the Price equation.</td>
+    <td><ul><li>**PS 4 Due W 3/12**</li><li>**Final project due W 3/5 at 11:30 AM**</li></ul></td>
+    <td><ul><li>@Deffner2024</li><li>@Bak-Coleman2021</li></ul></td>
+  </tr>
+
+  </tbody>
+</table>
+
+### Course outline with more course content details
 
 1.  Computational social science can help design sustainability interventions.
     Social science theory provides models of repeated human interaction over
     time that can be used, for example, to represent [Ostrom's eight "design
     principles" for sustainable socio-ecological
-    systems](https://earthbound.report/2018/01/15/elinor-ostroms-8-rules-for-managing-the-commons/)
-    in a mathematically rigorous way.
+    systems](https://earthbound.report/2018/01/15/elinor-ostroms-8-rules-for-managing-the-commons/).
 
     -   Lab: Introducing the *80% success rate* exercise, "How much advertising
         is necessary for an 80% success rate in spreading a sustainable
@@ -44,10 +170,8 @@ social science topics covered in the course and readings.
 2.  How human psychology, groups, and social networks can promote or inhibit the
     diffusion of sustainable innovations, Part I: single-group social networks.
 
-    -   Lab I: 80% success rate exercise, but now with different types of social
-        networks.
-    -   Lab II: Could innovation-supporting social networks also promote
-        inequality [@Moser2023]?
+    -   Lab: Could innovation-supporting social networks also promote inequality
+        [@Moser2023]?
 
 3.  How human psychology, groups, and social networks can promote or inhibit the
     diffusion of sustainable innovations, Part II: two-group (or more) social
@@ -60,90 +184,34 @@ social science topics covered in the course and readings.
     -   Lab II: Use stochastic block model to infer networks from data
         [@DeBacco2023; @Ross2024].
 
-<!-- -->
-
 4.  Social influence: understanding the effect of rhetoric as a force that acts
     on opinions and beliefs. How to measure opinion dynamics and
-    -   Lab I: Identifying optimal order of interactions to reduce polarization
-        through agent-based social influence modeling [@Turner2018].
-    -   Lab II: Accurate inference of continuous opinion dynamics using
+
+    -   Lab I: When is polarization path-dependent and therefore possible to
+        avoid [@Turner2018]?
+    -   Lab II: Opinion dynamics measurement depends on accurate inference using
         categorical (Likert-style) observational data [@Liddell2018].
+
 5.  The emergence of cooperation via reciprocity: application to groundwater
     sustainability. How to predict and restrict potential free-riding based on
     marginal utility in managing common pool resources using game theory (see
     @Jackson).
+
     -   Lab I: "Groundwater sharing dilemma" (as we'll call it, though it's just
         a re-telling of the famous [prisoners'
         dilemma](https://en.wikipedia.org/wiki/Prisoner%27s_dilemma))
     -   Lab II: Agent-based model of behavioral study of "avoidance of
         disastrous climate change in a public goods game" by @Tavoni2011
+
 6.  Ideal institutions support human cooperation by balancing variation and
     maintenance of beneficial behaviors within and between stakeholder groups
     [@Richerson2016d; @Waring2015]. Example: sustainable agricultural practices
     like crop switching [@Waring2023; @Kling2024].
-    -    Lab I: The evolution of property rights supports sustainability
+
+    -   Lab I: The evolution of property rights supports sustainability
         [@Waring2017]. What sorts of social networks evolve? Could alternatives
         better promote or inhibit the development and diffusion of innovations?
 
-<!-- | Week  | Lecture description  | Lab description | Readings | -->
 
-<!-- |:-----:|:---------------------|:----------------|:---------| -->
 
-<!-- | 1     | Sustainable behaviors to adapt to a changing world | "Yes, and" storytelling exercise |  @McNamara2020; @Jones2021; @Pisor2022; @GalesicEtAl2023; @Kling2024 | -->
 
-<!-- | 2   | Social learning, social influence, and uncertainty | Agent-based model of adaptation diffusion and opinion dynamics | @Otto2013; @Acerbi2022, [Chapter 1](https://acerbialberto.com/IBM-cultevo/unbiased-transmission.html); @Flache2011; @Turner2018; @Turner2023a  -->
-
-<!-- | 3   | Group structure and metapopulation theory | Adaptation diffusion in group-structured social networks | @Cikara2014; @Derex2016; @Turner2023 -->
-
-<!-- | 4   | Animal studies; Bayesian modeling and statistical analysis | King Markov; Model fits following @Silk2005 | @Rethinking, [Chapters 9 and 11](https://github.com/Booleans/statistical-rethinking/blob/master/Statistical%20Rethinking%202nd%20Edition.pdf): Ch. 9 introduces Markov Chain Monte Carlo, Ch. 11 uses @Silk2005 data and follows their analysis -->
-
-<!-- : {.striped .hover tbl-colwidths="[1,25,25,49]"} -->
-
-The ten-week course will consist of ten full lectures and ten sections focused
-on computing skills with some lecture, but mostly hands-on practice to make sure
-students learn the skills they need to complete weekly project assignments.
-Weekly assignments will combine software development and writing, requiring
-students to write a mini 2-page journal article-style papers every week.
-Students will motivate and explain a model they help program, analyze model
-outputs and explain the results, and explain the broader importance of the work.
-These papers will follow the IMAD structure: Introduction, Model (or Methods),
-Analysis, and Discussion, also known as the IMRaD structure where "Results and"
-replaces "Analysis".
-
-### Grading
-
--   *Weekly assignments:* There will be eight weekly assignments total, taking
-    weeks off for midterm and final weeks to focus on projects and exams. Each
-    will be worth 10 points.
--   *Midterm and final exams:* There will be a midterm and final written exam
-    possibly including written mathematics, mathematical derivations, and
-    pseudocode solutions to logic or programming problems. The midterm exam will
-    be worth 20 points; the final will be 30 points.
--   *Midterm project:* 30 points
--   *Final project:* 40 points
-
-## Weekly assignment
-
-10 points per weekly assignment: I, 2pts; M 2pts, Code 3pts; R 3pts; D 1 pt.
-
-## Midterm exam:
-
-Written responses, formal calculations, explaining formalisms, writing
-pseudocode 20 pts
-
-## Final exam:
-
-Written responses, formal calculations, explaining formalisms, writing
-pseudocode 40 pts
-
-## Midterm project:
-
-Pick one of the weekly assignments and expand upon it based upon your own
-interests. Same grading as weekly project, but scaled up to 20 points. Minimum
-2000 words in IMAD/IMRaD format.
-
-## Final project
-
-I will suggest several potential final projects, and students may invent their
-own. Same grading distribution as weekly project, but scaled up to 40 points.
-Minimum 3000 words in IMAD/IMRaD format.

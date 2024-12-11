@@ -1,0 +1,3 @@
+# Introduction
+
+In this exercise, students will modify the script [`simple_transmission.R`](https://github.com/SDSS-EBS-181-281/Assignments-Winter-2025/1/simple_transmission.R) available from this course's [GitHub repository for assignments](https://github.com/SDSS-EBS-181-281/Assignments-Winter-2025).

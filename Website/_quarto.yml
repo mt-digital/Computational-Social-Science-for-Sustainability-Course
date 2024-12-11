@@ -2,7 +2,8 @@ project:
   type: website
 
 website:
-  title: "Comp. Soc. Sci. for Sustainability (EBS 182/282)"
+  title: "Comp. Soc. Sci. for Sustainability (EBS 181/281)"
+  favicon: Logo.png
   navbar:
     background: "#8C1515"
     foreground: "#FFFFFF"
@@ -27,6 +28,5 @@ format:
     theme: cosmo
     css: styles.css
     toc: true
-
 
 bibliography: /users/mt/workspace/Writing/library.bib
