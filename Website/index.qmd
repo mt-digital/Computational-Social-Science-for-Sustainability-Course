@@ -43,9 +43,9 @@ form of social learning, social influence, or strategic economic cooperation.
 
 Take this course to learn how to develop computational "experiments" of repeated
 social interaction that can be used to design more effective sustainability
-interventions and analyze behavioral data. Students will learn transferrable technical
+interventions and to analyze behavioral data. Students will learn transferrable technical
 skills in programming and mathematics. Students will deepen their interdisciplinary
-understanding of from the social and behavioral sciences. With these skills and understanding, students will be empowered to create research products that analyze and evaluate potential sustainability interventions using computation.
+understanding of the social and behavioral sciences. With these skills and understanding, students will be empowered to create research products that analyze and evaluate potential sustainability interventions using computation.
 
 ### Learning goals
 
@@ -58,7 +58,7 @@ activities, students will
 -   learn to write effective research papers using the Introduction, Model,
     Analysis, Discussion structure
 -   improve their R programming skills, including the popular
-    [`tidyverse`](https://www.tidyverse.org/), for simulation modeling and data science (see the R for Data Science book)[https://r4ds.hadley.nz/] for more details.
+    [`tidyverse`](https://www.tidyverse.org/), for simulation modeling and data science [see the R for Data Science book](https://r4ds.hadley.nz/) for more details.
 
 
 ### Expectations
@@ -96,7 +96,7 @@ Each week will have a Monday lecture on topics in computational social science
 for sustainability. Wednesday meetings will focus on developing programming,
 analysis, and writing skills in an interactive lab-section setting. In these
 Wednesday sections students will be introduced to problem sets and midterm and
-final projects, and have time to ask questions of and work together with the
+final projects, and have time to work together with the
 instructor and peers.
 
 ### Coursework and Grading
