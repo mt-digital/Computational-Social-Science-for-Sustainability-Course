@@ -1,1 +1,127 @@
-# THIS IS A BOOK!!! OHHH YEAH!!!!
+---
+title: "Computational Social Science for Sustainability"
+editor: 
+  markdown: 
+    wrap: 80
+output:
+    html_document:
+        number_sections: true
+        
+---
+
+## Course notes {.unlisted}
+
+# Foreword
+
+This document is being regularly compiled, developed, and edited. Consider these course
+notes for _Computational Social Science for Sustainability_. 
+Please send any feedback by [email](mailto:maturner@stanford.edu).
+
+Last updated Introduction bullet points on 2024-12-17.
+
+# 1. Introduction
+
+- A major challenge in promoting sustainability is to convince enough people to
+  engage in some sustainable behavior, so that some sustainable goal
+  (carbon-free electricity, for example) can be achieved. There exist
+  psychological strategies
+  for convincing people that some behavior is beneficial for an individual or an
+  organization, such as the benefits of no-till and crop rotations in
+  agriculture, which seem to outweigh the possible costs. _Nudging_ and other
+  popular ideas about promoting beneficial behaviors focus on the individual.
+  The goal of commercial advertising is to convince people that certain products
+  and services are valuable to buy and use.
+  However, even if people learn perfectly what's good and bad from others, computer models of social
+  behavior suggest that a beneficial behavior will spread throughout a simulated
+  population only a fraction of the time. That fraction, though, can be
+  increased or decreased by manipulating the social networks that structure
+  interpersonal interaction. Similarly, social network structure and the
+  randomness of social interaction leads us to conclude that polarization 
+  is not inevitable in a group, given some initial set of group opinions. 
+
+- To learn these lessons and to improve rigor in social and behavioral science, one must 
+  create _models_ of interpersonal interaction. In _computational models_ that
+  we will study, social phenomena really emerge from simulated interpersonal
+  interactions. A _model_ is a simplified description of real-world
+  phenomena. A _computational_ model just uses a computer 
+  to solve equations, simulate, or statistically analyze some 
+  _phenomenon of interest.
+  Social science models are most useful with a minimal number of
+  empirically-motivated assumptions that still generate _emergent social
+  phenomena_.  The emergent social phenomena here are innovation diffusion,
+  opinion and norm change, and widespread economic cooperation. These phenomena
+are _emergent_ because they _emerge_ from a series interactions between people,
+  sometimes repeatedly between the same people, over time.
+
+- One of the learning goals of this course is to develop a theoretical 
+  understanding of how social phenomena emerge from social interactions over
+  time. Social science theory is important because it identifies basic
+  cognitive and social processes and behaviors and how they produce emergent
+  social phenomena of interest [@Kauffman1970; @Craver2006].
+  Interpersonal interaction can take several forms, but we focus on three
+  categories: (1) social learning, (2) social influence, and (3) cooperation.
+  Social networks constrain who interacts with whom in the real world, and so
+  too in our computational models. 
+<!-- - This course will provide students the tools to design their own models to
+understand how to promote sustainable behavior through computational modeling.
+_Computational_ just means using a computer -->
+
+# 2. Computational models in R for sustainability social science
+
+- Review and expand on what is a model and why it's useful.
+- A paragraph on computational modeling as a special form of mathematical
+  modeling
+- Computation enables the rapid generation of simulated data given some
+  interaction processes and social network structure.
+- Assumptions about social behavior and cognition become _mechanisms_ in the
+  model. _Mechanistic modeling_ helps us avoid both misinterpretation of 
+  verbal models [@Turner2022] and overgeneralization in statistical models that
+  do not sufficiently account for sources of variance in behavioral experiments,
+  for example [@Yarkoni2022]. Specifically, this approach identifies the 
+  components of a system and their capacities [@Cartwright1989], e.g. for memory or
+  abilities. Given these capacities and 
+
+
+## Programming in R
+
+
+### Object-oriented programming...in R!?
+
+
+
+## Social networks
+
+Social networks are fundamental to modeling how behavior spreads in
+populations. As we will see ourselves in the next section, even if people learn
+perfectly well from one another with no social friction, they are not guaranteed
+to spread to every person in a simulated population.
+
+# 3. Predicting the diffusion of sustainable innovations through social learning
+
+
+
+
+# 4. Discourse as a force that drives opinion change and polarization
+
+The evolutionary approach provides several ready-made tools for analyzing the
+diffusion and development of sustainable innovations thanks to decades of theoretical
+biology that easily maps onto cultural transmission and evolution. However,
+collective adaptation involves social influence that is relatively
+independent of cultural evolutionary processes [@GalesicEtAl2023], having instead evolved
+biologically with the first humans. We hold _social influence_ separate from
+social learning in that we abandon the concepts of fitness and learning, 
+and replace them with an innate drive to balance one's opinions given input from
+those with whom we agree or disagree.
+
+
+## Next steps: understanding discourse itself
+
+In opinion dynamics models we covered here, the strength of discourse depends only on the
+opinions of the simulated speaker and listener. 
+
+# 5. Promoting cooperation and institutions to achieve sustainability goals
+
+
+# 6. A review and way forward
+
+- 

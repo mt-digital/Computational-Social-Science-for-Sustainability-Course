@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Computational Social Science for Sustainability (EBS 182/282)</title>
+<title>Computational Social Science for Sustainability – Comp. Soc. Sci. for Sustainability (EBS 181/281)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,15 +50,16 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../Logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-eb83b09dbd08fe6a8296ac6453ea0b21.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,34 +100,38 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Computational Social Science for Sustainability (EBS 182/282)</span>
+    <span class="navbar-title">Comp. Soc. Sci. for Sustainability (EBS 181/281)</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Course information and syllabus</span></a>
+<span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../book/index.html" aria-current="page"> 
-<span class="menu-text">Book</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../bibliography/index.html"> 
-<span class="menu-text">Bibliography</span></a>
+<span class="menu-text">Course Notes</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../lectures/index.html"> 
 <span class="menu-text">Lectures</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../psets/index.html"> 
+<span class="menu-text">Problem sets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://mt.digital"> 
+<span class="menu-text">MA Turner, Ph.D.</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -120,23 +145,115 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#this-is-a-book-ohhh-yeah" id="toc-this-is-a-book-ohhh-yeah" class="nav-link active" data-scroll-target="#this-is-a-book-ohhh-yeah">THIS IS A BOOK!!! OHHH YEAH!!!!</a></li>
+  <li><a href="#foreword" id="toc-foreword" class="nav-link active" data-scroll-target="#foreword">Foreword</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. Introduction</a></li>
+  <li><a href="#computational-models-in-r-for-sustainability-social-science" id="toc-computational-models-in-r-for-sustainability-social-science" class="nav-link" data-scroll-target="#computational-models-in-r-for-sustainability-social-science">2. Computational models in R for sustainability social science</a>
+  <ul class="collapse">
+  <li><a href="#programming-in-r" id="toc-programming-in-r" class="nav-link" data-scroll-target="#programming-in-r">Programming in R</a>
+  <ul class="collapse">
+  <li><a href="#object-oriented-programmingin-r" id="toc-object-oriented-programmingin-r" class="nav-link" data-scroll-target="#object-oriented-programmingin-r">Object-oriented programming…in R!?</a></li>
+  </ul></li>
+  <li><a href="#social-networks" id="toc-social-networks" class="nav-link" data-scroll-target="#social-networks">Social networks</a></li>
+  </ul></li>
+  <li><a href="#predicting-the-diffusion-of-sustainable-innovations-through-social-learning" id="toc-predicting-the-diffusion-of-sustainable-innovations-through-social-learning" class="nav-link" data-scroll-target="#predicting-the-diffusion-of-sustainable-innovations-through-social-learning">3. Predicting the diffusion of sustainable innovations through social learning</a></li>
+  <li><a href="#discourse-as-a-force-that-drives-opinion-change-and-polarization" id="toc-discourse-as-a-force-that-drives-opinion-change-and-polarization" class="nav-link" data-scroll-target="#discourse-as-a-force-that-drives-opinion-change-and-polarization">4. Discourse as a force that drives opinion change and polarization</a></li>
+  <li><a href="#promoting-cooperation-and-institutions-to-achieve-sustainability-goals" id="toc-promoting-cooperation-and-institutions-to-achieve-sustainability-goals" class="nav-link" data-scroll-target="#promoting-cooperation-and-institutions-to-achieve-sustainability-goals">5. Promoting cooperation and institutions to achieve sustainability goals</a></li>
+  <li><a href="#a-review-and-way-forward" id="toc-a-review-and-way-forward" class="nav-link" data-scroll-target="#a-review-and-way-forward">6. A review and way forward</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Computational Social Science for Sustainability</h1>
+</div>
 
 
 
-<section id="this-is-a-book-ohhh-yeah" class="level1">
-<h1>THIS IS A BOOK!!! OHHH YEAH!!!!</h1>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="foreword" class="level1">
+<h1>Foreword</h1>
+<p>This document is being regularly compiled, developed, and edited. Consider these course notes for <em>Computational Social Science for Sustainability</em>. Please send any feedback by <a href="mailto:maturner@stanford.edu">email</a>.</p>
+<p>Last updated Introduction bullet points on 2024-12-17.</p>
+</section>
+<section id="introduction" class="level1">
+<h1>1. Introduction</h1>
+<ul>
+<li><p>A major challenge in promoting sustainability is to convince enough people to engage in some sustainable behavior, so that some sustainable goal (carbon-free electricity, for example) can be achieved. There exist psychological strategies for convincing people that some behavior is beneficial for an individual or an organization, such as the benefits of no-till and crop rotations in agriculture, which seem to outweigh the possible costs. <em>Nudging</em> and other popular ideas about promoting beneficial behaviors focus on the individual. The goal of commercial advertising is to convince people that certain products and services are valuable to buy and use. However, even if people learn perfectly what’s good and bad from others, computer models of social behavior suggest that a beneficial behavior will spread throughout a simulated population only a fraction of the time. That fraction, though, can be increased or decreased by manipulating the social networks that structure interpersonal interaction. Similarly, social network structure and the randomness of social interaction leads us to conclude that polarization is not inevitable in a group, given some initial set of group opinions.</p></li>
+<li><p>To learn these lessons and to improve rigor in social and behavioral science, one must create <em>models</em> of interpersonal interaction. In <em>computational models</em> that we will study, social phenomena really emerge from simulated interpersonal interactions. A <em>model</em> is a simplified description of real-world phenomena. A <em>computational</em> model just uses a computer to solve equations, simulate, or statistically analyze some _phenomenon of interest. Social science models are most useful with a minimal number of empirically-motivated assumptions that still generate <em>emergent social phenomena</em>. The emergent social phenomena here are innovation diffusion, opinion and norm change, and widespread economic cooperation. These phenomena are <em>emergent</em> because they <em>emerge</em> from a series interactions between people, sometimes repeatedly between the same people, over time.</p></li>
+<li><p>One of the learning goals of this course is to develop a theoretical understanding of how social phenomena emerge from social interactions over time. Social science theory is important because it identifies basic cognitive and social processes and behaviors and how they produce emergent social phenomena of interest <span class="citation" data-cites="Kauffman1970 Craver2006">(<a href="#ref-Kauffman1970" role="doc-biblioref">Kauffman 1970</a>; <a href="#ref-Craver2006" role="doc-biblioref">Craver 2006</a>)</span>. Interpersonal interaction can take several forms, but we focus on three categories: (1) social learning, (2) social influence, and (3) cooperation. Social networks constrain who interacts with whom in the real world, and so too in our computational models. <!-- - This course will provide students the tools to design their own models to
+understand how to promote sustainable behavior through computational modeling.
+_Computational_ just means using a computer --></p></li>
+</ul>
+</section>
+<section id="computational-models-in-r-for-sustainability-social-science" class="level1">
+<h1>2. Computational models in R for sustainability social science</h1>
+<ul>
+<li>Review and expand on what is a model and why it’s useful.</li>
+<li>A paragraph on computational modeling as a special form of mathematical modeling</li>
+<li>Computation enables the rapid generation of simulated data given some interaction processes and social network structure.</li>
+<li>Assumptions about social behavior and cognition become <em>mechanisms</em> in the model. <em>Mechanistic modeling</em> helps us avoid both misinterpretation of verbal models <span class="citation" data-cites="Turner2022">(<a href="#ref-Turner2022" role="doc-biblioref">Turner and Smaldino 2022</a>)</span> and overgeneralization in statistical models that do not sufficiently account for sources of variance in behavioral experiments, for example <span class="citation" data-cites="Yarkoni2022">(<a href="#ref-Yarkoni2022" role="doc-biblioref">Yarkoni 2022</a>)</span>. Specifically, this approach identifies the components of a system and their capacities <span class="citation" data-cites="Cartwright1989">(<a href="#ref-Cartwright1989" role="doc-biblioref">Cartwright 1989</a>)</span>, e.g.&nbsp;for memory or abilities. Given these capacities and</li>
+</ul>
+<section id="programming-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="programming-in-r">Programming in R</h2>
+<section id="object-oriented-programmingin-r" class="level3">
+<h3 class="anchored" data-anchor-id="object-oriented-programmingin-r">Object-oriented programming…in R!?</h3>
+</section>
+</section>
+<section id="social-networks" class="level2">
+<h2 class="anchored" data-anchor-id="social-networks">Social networks</h2>
+<p>Social networks are fundamental to modeling how behavior spreads in populations. As we will see ourselves in the next section, even if people learn perfectly well from one another with no social friction, they are not guaranteed to spread to every person in a simulated population.</p>
+</section>
+</section>
+<section id="predicting-the-diffusion-of-sustainable-innovations-through-social-learning" class="level1">
+<h1>3. Predicting the diffusion of sustainable innovations through social learning</h1>
+</section>
+<section id="discourse-as-a-force-that-drives-opinion-change-and-polarization" class="level1">
+<h1>4. Discourse as a force that drives opinion change and polarization</h1>
+</section>
+<section id="promoting-cooperation-and-institutions-to-achieve-sustainability-goals" class="level1">
+<h1>5. Promoting cooperation and institutions to achieve sustainability goals</h1>
+</section>
+<section id="a-review-and-way-forward" class="level1">
+<h1>6. A review and way forward</h1>
+<ul>
+<li></li>
+</ul>
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Cartwright1989" class="csl-entry" role="listitem">
+Cartwright, Nancy. 1989. <em><span class="nocase">Nature’s Capacities and their Measurment</span></em>. Oxford: Oxford University Press.
+</div>
+<div id="ref-Craver2006" class="csl-entry" role="listitem">
+Craver, Carl F. 2006. <span>“<span class="nocase">When mechanistic models explain</span>.”</span> <em>Synthese</em> 153 (3): 355–76. <a href="https://doi.org/10.1007/s11229-006-9097-x">https://doi.org/10.1007/s11229-006-9097-x</a>.
+</div>
+<div id="ref-Kauffman1970" class="csl-entry" role="listitem">
+Kauffman, Stuart A. 1970. <span>“<span class="nocase">Articulation of Parts Explanation in Biology and the Rational Search for Them</span>.”</span> In <em>PSA: Proceedings of the Biennial Meeting of the Philosophy of Science Association</em>, 257–72.
+</div>
+<div id="ref-Turner2022" class="csl-entry" role="listitem">
+Turner, Matthew A., and Paul E. Smaldino. 2022. <span>“<span class="nocase">Mechanistic Modeling for the Masses - commentary on Yarkoni, "The generalizability crisis"</span>.”</span> <em>Behavioral and Brain Sciences</em> 45 (E33). <a href="https://doi.org/10.1017/S0140525X2100039X">https://doi.org/10.1017/S0140525X2100039X</a>.
+</div>
+<div id="ref-Yarkoni2022" class="csl-entry" role="listitem">
+Yarkoni, Tal. 2022. <span>“<span class="nocase">The generalizability crisis</span>.”</span> <em>Behavioral and Brain Sciences</em> 45 (e1): 1–78. <a href="https://doi.org/10.1017/S0140525X20001685">https://doi.org/10.1017/S0140525X20001685</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -172,18 +289,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -215,7 +321,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -223,7 +349,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -320,7 +446,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

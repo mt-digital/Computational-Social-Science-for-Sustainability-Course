@@ -9,16 +9,16 @@ website:
     foreground: "#FFFFFF"
     right:
       - href: index.qmd
-        text: Course information and syllabus
-
+        text: Syllabus
+ 
       - href: book/index.qmd
-        text: Book
+        text: Course Notes
 
       - href: lectures/index.qmd
         text: Lectures
 
-      - href: labs/index.qmd
-        text: "Lab exercises"
+      - href: psets/index.qmd
+        text: "Problem sets"
 
       - href: https://mt.digital
         text: "MA Turner, Ph.D."
