@@ -225,7 +225,7 @@ In the calendar below, PS stands for _problem set_. Subject to change.
   </tr>
   <tr>
     <td>9, M 3/3 and W 3/5</td>
-    <td>Common-pool resource management dilemmas: when and why do people cooperate? (Part II)</td>
+    <td>Institutions support cooperation by balancing variation and homogeneity within and between stakeholder groups.</td>
     <td></td>
     <td><ul><li>@Waring2015</li><li>@Waring2017</li><li>@Andrews2024</li></ul></td>
   </tr>
