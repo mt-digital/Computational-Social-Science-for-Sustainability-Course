@@ -13,11 +13,12 @@ output:
 
 # Foreword
 
-This document is being regularly compiled, developed, and edited. Consider these course
-notes for _Computational Social Science for Sustainability_. 
+These are course
+notes for _Computational Social Science for Sustainability_.
+This document is being regularly compiled, developed, and edited. 
 Please send any feedback by [email](mailto:maturner@stanford.edu).
 
-Last updated Introduction bullet points on 2024-12-17.
+Last updated 2025-01-02.
 
 # 1. Introduction
 

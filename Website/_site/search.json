@@ -4,7 +4,7 @@
     "href": "lectures/index.html",
     "title": "Lectures",
     "section": "",
-    "text": "Lectures\nComing soon!"
+    "text": "Lectures\n\nSocial interactions, social outcomes, and social learning"
   },
   {
     "objectID": "index.html",
@@ -222,5 +222,26 @@
     "title": "Computational Social Science for Sustainability",
     "section": "Next steps: understanding discourse itself",
     "text": "Next steps: understanding discourse itself\nIn opinion dynamics models we covered here, the strength of discourse depends only on the opinions of the simulated speaker and listener."
+  },
+  {
+    "objectID": "lectures/slides/lecture-1.html",
+    "href": "lectures/slides/lecture-1.html",
+    "title": "Lecture 1: Social interactions, social outcomes, and social learning",
+    "section": "",
+    "text": "Figure 1 further explores the impact of temperature on ozone level.\n\n\nCode\nlibrary(ggplot2)\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n\n\n\n\n\n\n\n\nFigure 1: Temperature and ozone level."
+  },
+  {
+    "objectID": "lectures/slides/lecture-1.html#air-quality",
+    "href": "lectures/slides/lecture-1.html#air-quality",
+    "title": "Lecture 1: Social interactions, social outcomes, and social learning",
+    "section": "Air Quality",
+    "text": "Air Quality\nFigure 1 further explores the impact of temperature on ozone level.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Temperature and ozone level."
+  },
+  {
+    "objectID": "lectures/slides/1.html#air-quality",
+    "href": "lectures/slides/1.html#air-quality",
+    "title": "Lecture 1: Social interactions, social outcomes, and social learning",
+    "section": "Air Quality",
+    "text": "Air Quality\nFigure 1 further explores the impact of temperature on ozone level.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Temperature and ozone level."
   }
 ]
