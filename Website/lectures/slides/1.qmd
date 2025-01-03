@@ -1,40 +1,100 @@
 ---
-title: "Lecture 1: Social interactions, social outcomes, and social learning"
+title: "Lecture 1: Social interactions, social outcomes, and social learning in social networks"
+subtitle: "Getting started with computational social science modeling in R"
 author: "Matthew A. Turner"
+institution: "Department of Human Behavioral Sciences, Stanford Doerr School of Sustainability"
 date: "1/6/2025"
 format: revealjs
+smaller: true
+code-fold: true
+fig-cap-location: bottom
     #html:
     #  fig-width: 8
     #  fig-height: 4
     #  code-fold: true
 ---
 
-## Air Quality
 
-@fig-airquality further explores the impact of temperature on ozone level.
+# Computational social science to promote sustainable behaviors
 
-::: {.columns}
+## Promoting sustainability needs computational social science
 
-::: {.column width="40%"}
 
+## Sustainable socio-ecological systems
+
+
+## Computational social _science_
+
+- We use the scientific method, starting from the high school version:
+    1. Hypothesize what causes some phenomenon 
+    1. Gather evidence to support your explanation
+    1. Evaluate the hypothesis (true, false, in-between)
+    1. Repeat
+- In computational social science we develop computer and mathematical models to analyze data and deduce the consequences of repeated social interactions subject to certain assumptions.
+
+## The (computational social scientific) method
+
+- We develop hypotheses 
+
+
+# Diffusion of innovations
+
+## How likely is the diffusion of an innovation?
+
+
+:::: {.columns}
+
+::: {.column width="65%"}
 ```{r}
-library(igraph)
-g <- make_graph(~ 1--2, 1--3, 2--3, 2--4, 4--5)
-plot(g)
-```
-:::
-
-::: {.column width="60%"}
-
-```{r}
+library(ggplot2)
+library(tibble)
 #| label: fig-airquality
 #| fig-cap: "Temperature and ozone level."
 #| warning: false
 
-library(ggplot2)
 ggplot(airquality, aes(Temp, Ozone)) + 
   geom_point() + 
   geom_smooth(method = "loess")
 ```
 :::
+
+::: {.column width="35%"}
+
+- How many early-adopter _influencers_ must know a behavior in order to spread it?
+- How does the perceived benefit of a behavior affect the spread of behavior?
+:::
+
+:::: 
+
+
+
+# Social networks structure social interactions
+
+## Social network construction
+
+:::: {.columns}
+
+```{r}
+library(igraph)
+igraph_options(vertex.color = "SkyBlue2", vertex.frame.color = "SkyBlue2", 
+               vertex.label.cex = 4, vertex.size = 30, rescale = FALSE)
+par(mar=c(0,0,0,0)+.1)
+```
+::: {.column width="65%"}
+```{r}
+#| fig-asp: 0.8
+g <- make_graph(~ 1--2, 1--3, 2--3, 2--4, 4--5)
+plot(g)
+```
+:::
+
+::: {.column width=35%}
+- A _vertice_ represents a person with a unique id
+- An _edge_ represents a relationship between two people
+- Two simulated people interact if and only if an edge connects them
+- How many potential teachers does each person have?
+:::
+
 ::::
+
+## Social network properties
