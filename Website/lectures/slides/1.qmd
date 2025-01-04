@@ -17,10 +17,19 @@ fig-cap-location: bottom
 
 # Computational social science to promote sustainable behaviors
 
-## Promoting sustainability needs computational social science
-
 
 ## Sustainable socio-ecological systems
+
+![UN Sustainable Development Goals: [https://sdgs.un.org/goals](https://sdgs.un.org/goals)](1-resources/UN_SustDevGoals.png)
+
+## Sustainable socio-ecological systems
+
+
+![UN Sustainable Development Goals: [https://sdgs.un.org/goals](https://sdgs.un.org/goals)](1-resources/UN_SustDevGoals.png)
+
+
+## Promoting sustainability needs computational social science
+
 
 
 ## Computational social _science_
