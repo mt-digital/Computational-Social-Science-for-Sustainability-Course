@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Comp. Soc. Sci. for Sustainability (EBS 181/281) - Computational Social Science for Sustainability</title>
+<title>Computational Social Science for Sustainability – Comp. Soc. Sci. for Sustainability (EBS 181/281)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -56,10 +56,10 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-eb83b09dbd08fe6a8296ac6453ea0b21.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -104,7 +104,7 @@ div.csl-indent {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -122,7 +122,7 @@ div.csl-indent {
 <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../psets/index.qmd"> 
+    <a class="nav-link" href="../psets/index.html"> 
 <span class="menu-text">Problem sets</span></a>
   </li>  
   <li class="nav-item">
@@ -131,7 +131,7 @@ div.csl-indent {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -149,10 +149,6 @@ div.csl-indent {
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. Introduction</a></li>
   <li><a href="#computational-models-in-r-for-sustainability-social-science" id="toc-computational-models-in-r-for-sustainability-social-science" class="nav-link" data-scroll-target="#computational-models-in-r-for-sustainability-social-science">2. Computational models in R for sustainability social science</a>
   <ul class="collapse">
-  <li><a href="#programming-in-r" id="toc-programming-in-r" class="nav-link" data-scroll-target="#programming-in-r">Programming in R</a>
-  <ul class="collapse">
-  <li><a href="#object-oriented-programmingin-r" id="toc-object-oriented-programmingin-r" class="nav-link" data-scroll-target="#object-oriented-programmingin-r">Object-oriented programming…in R!?</a></li>
-  </ul></li>
   <li><a href="#social-networks" id="toc-social-networks" class="nav-link" data-scroll-target="#social-networks">Social networks</a></li>
   </ul></li>
   <li><a href="#predicting-the-diffusion-of-sustainable-innovations-through-social-learning" id="toc-predicting-the-diffusion-of-sustainable-innovations-through-social-learning" class="nav-link" data-scroll-target="#predicting-the-diffusion-of-sustainable-innovations-through-social-learning">3. Predicting the diffusion of sustainable innovations through social learning</a></li>
@@ -197,6 +193,7 @@ div.csl-indent {
 </section>
 <section id="introduction" class="level1">
 <h1>1. Introduction</h1>
+<p>Improving sustainability</p>
 <ul>
 <li><p>A major challenge in promoting sustainability is to convince enough people to engage in some sustainable behavior, so that some sustainable goal (carbon-free electricity, for example) can be achieved. There exist psychological strategies for convincing people that some behavior is beneficial for an individual or an organization, such as the benefits of no-till and crop rotations in agriculture, which seem to outweigh the possible costs. <em>Nudging</em> and other popular ideas about promoting beneficial behaviors focus on the individual. The goal of commercial advertising is to convince people that certain products and services are valuable to buy and use. However, even if people learn perfectly what’s good and bad from others, computer models of social behavior suggest that a beneficial behavior will spread throughout a simulated population only a fraction of the time. That fraction, though, can be increased or decreased by manipulating the social networks that structure interpersonal interaction. Similarly, social network structure and the randomness of social interaction leads us to conclude that polarization is not inevitable in a group, given some initial set of group opinions.</p></li>
 <li><p>To learn these lessons and to improve rigor in social and behavioral science, one must create <em>models</em> of interpersonal interaction. In <em>computational models</em> that we will study, social phenomena really emerge from simulated interpersonal interactions. A <em>model</em> is a simplified description of real-world phenomena. A <em>computational</em> model just uses a computer to solve equations, simulate, or statistically analyze some _phenomenon of interest. Social science models are most useful with a minimal number of empirically-motivated assumptions that still generate <em>emergent social phenomena</em>. The emergent social phenomena here are innovation diffusion, opinion and norm change, and widespread economic cooperation. These phenomena are <em>emergent</em> because they <em>emerge</em> from a series interactions between people, sometimes repeatedly between the same people, over time.</p></li>
@@ -211,14 +208,8 @@ _Computational_ just means using a computer --></p></li>
 <li>Review and expand on what is a model and why it’s useful.</li>
 <li>A paragraph on computational modeling as a special form of mathematical modeling</li>
 <li>Computation enables the rapid generation of simulated data given some interaction processes and social network structure.</li>
-<li>Assumptions about social behavior and cognition become <em>mechanisms</em> in the model. <em>Mechanistic modeling</em> helps us avoid both misinterpretation of verbal models <span class="citation" data-cites="Turner2022">(<a href="#ref-Turner2022" role="doc-biblioref">Turner and Smaldino 2022</a>)</span> and overgeneralization in statistical models that do not sufficiently account for sources of variance in behavioral experiments, for example <span class="citation" data-cites="Yarkoni2022">(<a href="#ref-Yarkoni2022" role="doc-biblioref">Yarkoni 2022</a>)</span>. Specifically, this approach identifies the components of a system and their capacities <span class="citation" data-cites="Cartwright1989">(<a href="#ref-Cartwright1989" role="doc-biblioref">Cartwright 1989</a>)</span>, e.g.&nbsp;for memory or abilities. Given these capacities and</li>
+<li>Assumptions about social behavior and cognition become <em>mechanisms</em> in the model. <em>Mechanistic modeling</em> helps us avoid both misinterpretation of verbal models <span class="citation" data-cites="Turner2022">(<a href="#ref-Turner2022" role="doc-biblioref">Turner and Smaldino 2022</a>)</span> and overgeneralization in statistical models that do not sufficiently account for sources of variance in behavioral experiments, for example <span class="citation" data-cites="Yarkoni2022">(<a href="#ref-Yarkoni2022" role="doc-biblioref">Yarkoni 2022</a>)</span>. Specifically, this approach identifies the components of a system and their capacities <span class="citation" data-cites="Cartwright1989">(<a href="#ref-Cartwright1989" role="doc-biblioref">Cartwright 1989</a>)</span>, e.g.&nbsp;for memory or abilities.</li>
 </ul>
-<section id="programming-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="programming-in-r">Programming in R</h2>
-<section id="object-oriented-programmingin-r" class="level3">
-<h3 class="anchored" data-anchor-id="object-oriented-programmingin-r">Object-oriented programming…in R!?</h3>
-</section>
-</section>
 <section id="social-networks" class="level2">
 <h2 class="anchored" data-anchor-id="social-networks">Social networks</h2>
 <p>Social networks are fundamental to modeling how behavior spreads in populations. As we will see ourselves in the next section, even if people learn perfectly well from one another with no social friction, they are not guaranteed to spread to every person in a simulated population.</p>
@@ -303,18 +294,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -346,7 +326,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -354,7 +354,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -451,7 +451,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

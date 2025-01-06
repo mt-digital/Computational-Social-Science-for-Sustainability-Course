@@ -172,10 +172,11 @@ In the calendar below, PS stands for _problem set_. Subject to change.
     <tr>
       <td>1, M 1/6 and W 1/8</td>
       <td>What is social science, why _computation_, and how these can promote sustainability in socio-ecological systems.</td>
-      <td><ul><li>**PS 1, diffusion via social learning:** How many individuals need to be know about beneficial sustainable innovations so that they spread throughout a population? **Due 1/22 at 11:30 AM**</li></ul></td>
+      <td><ul><li>**PS 1, diffusion via social learning:** How many individuals
+      need to be know about sustainable adaptations so that they spread throughout a population? **Due 1/29 at 11:30 AM**</li></ul></td>
       <td>
         <ul>
-          <li>@PisorLansingMagargal2023</li>
+          <li>@SmaldinoBook2023, Chs. 1 and 4</li>
           <li>@Ostrom2014</li>
           <li>@Cox2010</li>
         </ul>
@@ -188,15 +189,15 @@ In the calendar below, PS stands for _problem set_. Subject to change.
       <td><ul><li>@Pisor2024</li><li>@Centola2022</li><li>@Derex2016</li></ul></td>
     </tr>
     <tr>
-      <td>3, M 1/20 and W 1/22</td>
+      <td>3, W 1/22 (no class M 1/20)</td>
       <td>How asymmetric preferences for within-group interaction can create sustainability-promoting social networks, and how to measure this in the real world.</td>
-      <td><ul><li>**PS 1 due 1/22 at 11:30 AM**</li><li>**PS 2, how information and opinions spread in different social networks:** How careful timing of informational interventions can help limit polarization. **Due 2/5 at 11:30 AM**</li></ul></td>
+      <td><ul><li>**PS 2, how information and opinions spread in different social networks:** How careful timing of informational interventions can help limit polarization. **Due 2/5 at 11:30 AM**</li></ul></td>
       <td><ul><li>@Turner2023</li></ul></td>
     </tr>
     <tr>
-      <td>4, W 1/29 (no class M 1/27)</td>
+      <td>4, M 1/27 and W 1/29</td>
       <td>Social influence represented as forces causing opinion dynamics.</td>
-      <td></td>
+      <td><li>**PS 1 due 1/22 at 11:30 AM**</li></td>
       <td><ul><li>@Turner2018</li><li>@SmaldinoBook2023 [Ch. 6]</li></ul></td>
   </tr>
   <tr>

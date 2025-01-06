@@ -22,6 +22,8 @@ Last updated 2025-01-02.
 
 # 1. Introduction
 
+Improving sustainability 
+
 - A major challenge in promoting sustainability is to convince enough people to
   engage in some sustainable behavior, so that some sustainable goal
   (carbon-free electricity, for example) can be achieved. There exist
@@ -80,13 +82,7 @@ _Computational_ just means using a computer -->
   do not sufficiently account for sources of variance in behavioral experiments,
   for example [@Yarkoni2022]. Specifically, this approach identifies the 
   components of a system and their capacities [@Cartwright1989], e.g. for memory or
-  abilities. Given these capacities and 
-
-
-## Programming in R
-
-
-### Object-oriented programming...in R!?
+  abilities. 
 
 
 

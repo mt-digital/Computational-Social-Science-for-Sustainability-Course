@@ -1,7 +1,6 @@
 # Lectures
 
-1. [Social interactions, social outcomes, and the diffusion of innovations via social
-   learning in social networks.](/lectures/slides/1.html) (1/6/2025)
+1. [Introduction](/lectures/slides/1.html) (1/6/2025)
 2. Computing lab lecture and problem set #1 introduction (1/8/2025)
 3. Diffusion of innovations in different varieties of social networks (1/13/2025)
 4. Computing lab lecture (1/15/2025)

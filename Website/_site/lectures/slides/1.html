@@ -10,9 +10,9 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.39">
 
-  <meta name="author" content="Matthew A. Turner">
+  <meta name="author" content="Dr.&nbsp;Matthew A. Turner, PhD">
   <meta name="dcterms.date" content="2025-01-06">
-  <title>Comp. Soc. Sci. for Sustainability (EBS 181/281) – Lecture 1: Social interactions, social outcomes, and social learning in social networks</title>
+  <title>Comp. Soc. Sci. for Sustainability (EBS 181/281) – Introduction to EBS 181/281: Computational Social Science for Sustainability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,7 +30,27 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -129,13 +149,13 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Lecture 1: Social interactions, social outcomes, and social learning in social networks</h1>
-  <p class="subtitle">Getting started with computational social science modeling in R</p>
+  <h1 class="title">Introduction to EBS 181/281: Computational Social Science for Sustainability</h1>
+  <p class="subtitle">Social interactions, social outcomes, and social learning in social networks</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Matthew A. Turner 
+Dr.&nbsp;Matthew A. Turner, PhD 
 </div>
 </div>
 </div>
@@ -143,20 +163,90 @@ Matthew A. Turner
   <p class="date">2025-01-06</p>
 </section>
 <section>
-<section id="computational-social-science-to-promote-sustainable-behaviors" class="title-slide slide level1 center">
-<h1>Computational social science to promote sustainable behaviors</h1>
+<section id="preliminaries-course-information-and-introductions" class="title-slide slide level1 center">
+<h1>Preliminaries: course information and introductions</h1>
 
 </section>
-<section id="sustainable-socio-ecological-systems" class="slide level2">
-<h2>Sustainable socio-ecological systems</h2>
+<section id="course-information" class="slide level2">
+<h2>Course information</h2>
+<p>Please see the Syllabus and course homepage at <a href="https://mt.digital/teaching/CSS4S/">https://mt.digital/teaching/CSS4S/</a>.</p>
+</section>
+<section id="introductions" class="slide level2">
+<h2>Introductions</h2>
+<ul>
+<li>Please introduce yourself, including your major and degree program</li>
+<li>One to a few words about why you are interested in sustainability</li>
+<li>One to a few words about why you are interested in (computational) social science</li>
+</ul>
+</section>
+<section id="sustainability" class="slide level2">
+<h2><em>Sustainability</em></h2>
+<p><br> <br></p>
+<p>Final question for the group:</p>
+<ul>
+<li>How do you define sustainability?</li>
+</ul>
+</section>
+<section id="sustainability-1" class="slide level2">
+<h2><em>Sustainability</em></h2>
+
+<img data-src="1-resources/Sustainability_Definition.png" class="r-stretch quarto-figure-center"><p class="caption">New Oxford American Dictionary definition</p></section>
+<section id="sustainability-2" class="slide level2">
+<h2><em>Sustainability</em></h2>
 
 <img data-src="1-resources/UN_SustDevGoals.png" class="r-stretch quarto-figure-center"><p class="caption">UN Sustainable Development Goals: <a href="https://sdgs.un.org/goals">https://sdgs.un.org/goals</a></p></section>
-<section id="sustainable-socio-ecological-systems-1" class="slide level2">
-<h2>Sustainable socio-ecological systems</h2>
+<section id="sustainability-3" class="slide level2">
+<h2><em>Sustainability</em></h2>
 
-<img data-src="1-resources/UN_SustDevGoals.png" class="r-stretch quarto-figure-center"><p class="caption">UN Sustainable Development Goals: <a href="https://sdgs.un.org/goals">https://sdgs.un.org/goals</a></p></section>
-<section id="promoting-sustainability-needs-computational-social-science" class="slide level2">
-<h2>Promoting sustainability needs computational social science</h2>
+<img data-src="1-resources/AWS_DataCenterAI.png" class="r-stretch quarto-figure-center"><p class="caption">A sustainability project at Amazon [<a href="https://press.aboutamazon.com/2024/12/aws-announces-new-data-center-components-to-support-ai-innovation-and-further-improve-energy-efficiency">link</a>]</p></section>
+<section id="sustainability-4" class="slide level2">
+<h2><em>Sustainability</em></h2>
+
+<img data-src="1-resources/AWS_WaterReplenishment_CentralValley.png" class="r-stretch quarto-figure-center"><p class="caption">Another sustainability project at Amazon [<a href="https://www.aboutamazon.com/news/sustainability/amazon-water-replenishment-projects-brazil-chile-china-us">link</a>]</p></section>
+<section id="social-science-for-sustainability" class="slide level2">
+<h2><em>Social Science for Sustainability</em></h2>
+<ul>
+<li>Elinor Ostrom led development of <em>social-ecological systems</em> theory, which identified <em>design principles</em> to help sustain <em>common-pool resources</em>.
+<ul>
+<li>First woman to win a Nobel prize in economics (2009)</li>
+</ul></li>
+<li>A <em>common-pool resource</em> is something like clean water or healthy forests; all the common-pool resources together are called the commons.</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><img src="1-resources/OstromNobel.png" width="250" display="block"></p>
+</div><div class="column" style="width:55%;">
+<p>Select <em>design principles</em> (8 total; see <span class="citation" data-cites="Cox2010">Cox, Arnold, and Tomás (<a href="#/social-network-properties" role="doc-biblioref" onclick="">2010</a>)</span> reading for an overview):</p>
+<ul>
+<li>Rules should fit local circumstances</li>
+<li>Participation of <em>all</em> stakeholders is vital
+<ul>
+<li>Management of the commons must be organized across social and institutional scales</li>
+<li>All levels of social hierarchy must be recognized and free to organize</li>
+</ul></li>
+<li>Conflict resolution should be easily accessible</li>
+</ul>
+</div></div>
+</section>
+<section id="social-science-for-sustainability-1" class="slide level2">
+<h2><em>Social Science for Sustainability</em></h2>
+<p>Ostrom’s work elevated traditional, Indigenous adaptations for a changing climate (always been changing) and other sustainability challenges.</p>
+<div class="columns">
+<div class="column">
+
+</div><div class="column">
+
+</div></div>
+</section>
+<section id="social-science-for-sustainability-2" class="slide level2">
+<h2><em>Social Science for Sustainability</em></h2>
+<p>Two observations:</p>
+<ol type="1">
+<li>Not all sustainable, adaptive behaviors</li>
+</ol>
+</section>
+<section id="computational-social-science-for-sustainable-behaviors" class="slide level2">
+<h2>Computational social science for sustainable behaviors</h2>
 </section>
 <section id="computational-social-science" class="slide level2">
 <h2>Computational social <em>science</em></h2>
@@ -229,10 +319,15 @@ Matthew A. Turner
 </ul>
 </div></div>
 </section>
-<section id="social-network-properties" class="slide level2">
+<section id="social-network-properties" class="slide level2 smaller scrollable">
 <h2>Social network properties</h2>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Cox2010" class="csl-entry" role="listitem">
+Cox, Michael, Gwen Arnold, and Sergio Villamayor Tomás. 2010. <span>“<span class="nocase">A review of design principles for community-based natural resource management</span>.”</span> <em>Ecology and Society</em> 15 (4). <a href="https://doi.org/10.5751/ES-03704-150438">https://doi.org/10.5751/ES-03704-150438</a>.
+</div>
+</div>
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">

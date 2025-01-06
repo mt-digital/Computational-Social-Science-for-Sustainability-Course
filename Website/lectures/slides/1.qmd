@@ -1,7 +1,8 @@
 ---
-title: "Lecture 1: Social interactions, social outcomes, and social learning in social networks"
-subtitle: "Getting started with computational social science modeling in R"
-author: "Matthew A. Turner"
+title: "Introduction to EBS 181/281: Computational Social Science for
+Sustainability"
+subtitle: "Social interactions, social outcomes, and social learning in social networks"
+author: "Dr. Matthew A. Turner, PhD"
 institution: "Department of Human Behavioral Sciences, Stanford Doerr School of Sustainability"
 date: "1/6/2025"
 format: revealjs
@@ -14,21 +15,108 @@ fig-cap-location: bottom
     #  code-fold: true
 ---
 
+# Preliminaries: course information and introductions
 
-# Computational social science to promote sustainable behaviors
+## Course information
+
+Please see the Syllabus and course homepage at
+[https://mt.digital/teaching/CSS4S/](https://mt.digital/teaching/CSS4S/).
+
+## Introductions
+
+- Please introduce yourself, including your major and degree program
+- One to a few words about why you are interested in sustainability
+- One to a few words about why you are interested in (computational) social science
 
 
-## Sustainable socio-ecological systems
+## _Sustainability_
+
+<br>
+<br>
+
+Final question for the group: 
+
+- How do you define sustainability?
+
+## _Sustainability_
+
+![New Oxford American Dictionary
+definition](1-resources/Sustainability_Definition.png)
+
+## _Sustainability_
 
 ![UN Sustainable Development Goals: [https://sdgs.un.org/goals](https://sdgs.un.org/goals)](1-resources/UN_SustDevGoals.png)
 
-## Sustainable socio-ecological systems
+## _Sustainability_
+
+![A sustainability project at Amazon
+[[link](https://press.aboutamazon.com/2024/12/aws-announces-new-data-center-components-to-support-ai-innovation-and-further-improve-energy-efficiency)]](1-resources/AWS_DataCenterAI.png)
+
+## _Sustainability_
+
+![Another sustainability project at
+Amazon
+[[link](https://www.aboutamazon.com/news/sustainability/amazon-water-replenishment-projects-brazil-chile-china-us)]](1-resources/AWS_WaterReplenishment_CentralValley.png)
 
 
-![UN Sustainable Development Goals: [https://sdgs.un.org/goals](https://sdgs.un.org/goals)](1-resources/UN_SustDevGoals.png)
+## *Social Science for Sustainability*
+
+- Elinor Ostrom led development of _social-ecological systems_ theory, which
+identified _design principles_ to help sustain _common-pool resources_.
+    - First woman to win a Nobel prize in economics (2009)
+
+- A _common-pool resource_ is something like clean water or healthy forests;
+  all the common-pool resources together are called the commons.
+
+:::: {.columns}
+
+::: {.column width="45%"}
 
 
-## Promoting sustainability needs computational social science
+<img src="1-resources/OstromNobel.png" width="250" display="block">
+
+:::
+
+::: {.column width="55%"}
+
+Select *design principles* (8 total; see @Cox2010 reading for an overview):
+
+- Rules should fit local circumstances
+- Participation of _all_ stakeholders is vital
+    - Management of the commons must be organized across social and
+      institutional scales
+    - All levels of social hierarchy must be recognized and free to organize
+- Conflict resolution should be easily accessible
+
+:::
+
+::::
+
+
+## *Social Science for Sustainability*
+
+Ostrom's work elevated traditional, Indigenous adaptations for a changing
+climate (always been changing) and other sustainability challenges.
+
+:::: {.columns}
+
+::: {.column}
+:::
+
+::: {.column}
+:::
+
+::::
+
+
+
+## *Social Science for Sustainability*
+
+Two observations:
+
+1. Not all sustainable, adaptive behaviors 
+
+## Computational social science for sustainable behaviors
 
 
 
