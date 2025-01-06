@@ -268,14 +268,14 @@
   {
     "objectID": "lectures/slides/1.html#how-likely-is-the-diffusion-of-an-innovation",
     "href": "lectures/slides/1.html#how-likely-is-the-diffusion-of-an-innovation",
-    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "title": "Introduction to EBS 181/281 and computational social science for sustainability",
     "section": "How likely is the diffusion of an innovation?",
     "text": "How likely is the diffusion of an innovation?\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow many early-adopter influencers must know a behavior in order to spread it?\nHow does the perceived benefit of a behavior affect the spread of behavior?"
   },
   {
     "objectID": "lectures/slides/1.html#social-network-construction",
     "href": "lectures/slides/1.html#social-network-construction",
-    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "title": "Introduction to EBS 181/281 and computational social science for sustainability",
     "section": "Social network construction",
     "text": "Social network construction\n\n\n\n\n\n\n\n\n\n\n\n\n\nA vertice represents a person with a unique id\nAn edge represents a relationship between two people\nTwo simulated people interact if and only if an edge connects them\nHow many potential teachers does each person have?"
   },
@@ -289,23 +289,23 @@
   {
     "objectID": "lectures/slides/1.html#promoting-sustainability-needs-computational-social-science",
     "href": "lectures/slides/1.html#promoting-sustainability-needs-computational-social-science",
-    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "title": "Introduction to EBS 181/281 and computational social science for sustainability",
     "section": "Promoting sustainability needs computational social science",
     "text": "Promoting sustainability needs computational social science"
   },
   {
     "objectID": "lectures/slides/1.html#sustainable-socio-ecological-systems",
     "href": "lectures/slides/1.html#sustainable-socio-ecological-systems",
-    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "title": "Introduction to EBS 181/281 and computational social science for sustainability",
     "section": "Sustainable socio-ecological systems",
-    "text": "Sustainable socio-ecological systems"
+    "text": "Sustainable socio-ecological systems\n\nUN Sustainable Development Goals: https://sdgs.un.org/goals"
   },
   {
     "objectID": "lectures/slides/1.html#computational-social-science",
     "href": "lectures/slides/1.html#computational-social-science",
     "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
     "section": "Computational social science",
-    "text": "Computational social science\n\nWe use the scientific method, starting from the high school version:\n\nHypothesize what causes some phenomenon\nGather evidence to support your explanation\nEvaluate the hypothesis (true, false, in-between)\nRepeat\n\nIn computational social science we develop computer and mathematical models to analyze data and deduce the consequences of repeated social interactions subject to certain assumptions."
+    "text": "Computational social science\n\nWe use the scientific method, starting from the high school version:\n\nHypothesize what will happen in some context based on previous observations\nGather evidence to support your explanation\nEvaluate the hypothesis (true, false, in-between)\nRepeat\n\nIn computational social science we develop computer and mathematical models to test hypotheses before gathering data.\nWe can test some hypotheses deductively this way, or we can support hypotheses that motivate empirical studies."
   },
   {
     "objectID": "lectures/slides/1.html#computational-social-science-first-pass",
@@ -317,14 +317,14 @@
   {
     "objectID": "lectures/slides/1.html#the-computational-social-scientific-method",
     "href": "lectures/slides/1.html#the-computational-social-scientific-method",
-    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "title": "Introduction to EBS 181/281 and computational social science for sustainability",
     "section": "The (computational social scientific) method",
     "text": "The (computational social scientific) method\n\nWe develop hypotheses"
   },
   {
     "objectID": "lectures/slides/1.html#sustainable-socio-ecological-systems-1",
     "href": "lectures/slides/1.html#sustainable-socio-ecological-systems-1",
-    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "title": "Introduction to EBS 181/281 and computational social science for sustainability",
     "section": "Sustainable socio-ecological systems",
     "text": "Sustainable socio-ecological systems\n\nUN Sustainable Development Goals: https://sdgs.un.org/goals"
   },
@@ -466,6 +466,62 @@
     "href": "lectures/slides/1.html#the-influencer-1",
     "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
     "section": "The Influencer",
-    "text": "The Influencer\nLet’s model how long it will take for everyone who is influenced by this influencer to adopt the behavior of commuting on bike!\n\n\n\nYours truly spreading love of biking\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA vertice represents a person with a unique id\nAn edge represents a relationship between two people\nTwo simulated people interact if and only if an edge connects them\nHow many potential teachers does each person have?"
+    "text": "The Influencer\nLet’s model how long it will take for everyone who is influenced by this influencer to adopt the behavior of commuting on bike!\n\nYours truly spreading the love of biking."
+  },
+  {
+    "objectID": "lectures/slides/1.html#the-influencer-2",
+    "href": "lectures/slides/1.html#the-influencer-2",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "The influencer",
+    "text": "The influencer\n\n\nInitialization: time step \\(t=0\\); B: biker, N: not biker\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA vertice (dots) represents a person with a unique id\nAn edge (arrows) represents a relationship between two people\nEdge arrows indicate the direction of information flow\nTwo simulated people interact if and only if an edge connects them"
+  },
+  {
+    "objectID": "lectures/slides/1.html#the-influencer-3",
+    "href": "lectures/slides/1.html#the-influencer-3",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "The influencer",
+    "text": "The influencer\n\n\nTime step \\(t &gt; 0\\)\n\n\n\n\n\n\n\n\n\n\n\nThe influenced begin to adopt biking over time\nWe specify the probability, \\(\\tau\\), that an influenced person adopts biking when exposed to it by the influencer"
+  },
+  {
+    "objectID": "lectures/slides/1.html#the-influencer-4",
+    "href": "lectures/slides/1.html#the-influencer-4",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "The influencer",
+    "text": "The influencer\n\n\nTime step \\(t = T\\)\n\n\n\n\n\n\n\n\n\n\n\nIn this model, everyone eventually bikes because there is no “forgetting” or “reverting” to previous behaviors.\nThe state where all become bikers is called fixation.\nThe time step \\(T\\) when fixation occurs is the fixation time.\nWith this model we can calculate \\(T\\) as a function of the number of influenced agents, \\(N\\), and the transmissibility of biking, \\(\\tau\\)."
+  },
+  {
+    "objectID": "lectures/slides/1.html#review",
+    "href": "lectures/slides/1.html#review",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "Review",
+    "text": "Review\n\nWe explained how computational social science complements socio-ecological systems approaches to promote sustainability.\nExample Influencer model to understand, e.g., how long an advertising campaign must run in order to"
+  },
+  {
+    "objectID": "lectures/slides/1.html#review-and-next-steps-1",
+    "href": "lectures/slides/1.html#review-and-next-steps-1",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "Review and next steps",
+    "text": "Review and next steps\nReview\n\nComputational social science complements socio-ecological systems approaches to promote sustainability\nExample Influencer model to understand, e.g., how long an advertising campaign must run in order to affect all targeted individuals\n\nNext steps:\n\nJanuary:\n\nThe effect of other social network configurations beyond influencer network, including group structure\nOther assumptions about how learning works (add forgetting, “success-bias”, and more)\n\nBeyond:\n\nConsider cooperative sustainable behaviors whose benefit depends on how many people adopt a behavior (e.g., prescriptive burns)\nUnderstand and predict opinion polarization and its effect on sustainability"
+  },
+  {
+    "objectID": "lectures/slides/1.html#references",
+    "href": "lectures/slides/1.html#references",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "References",
+    "text": "References\n\n\n\n\nCox, Michael, Gwen Arnold, and Sergio Villamayor Tomás. 2010. “A review of design principles for community-based natural resource management.” Ecology and Society 15 (4). https://doi.org/10.5751/ES-03704-150438."
+  },
+  {
+    "objectID": "lectures/slides/1.html#introduce-problem-set-1-at-lab-session-wednesday",
+    "href": "lectures/slides/1.html#introduce-problem-set-1-at-lab-session-wednesday",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "Introduce Problem Set 1 at lab session Wednesday",
+    "text": "Introduce Problem Set 1 at lab session Wednesday"
+  },
+  {
+    "objectID": "lectures/slides/1.html#introduce-problem-set-1-at-lab-session-wednesday-18",
+    "href": "lectures/slides/1.html#introduce-problem-set-1-at-lab-session-wednesday-18",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "Introduce Problem Set 1 at lab session Wednesday 1/8",
+    "text": "Introduce Problem Set 1 at lab session Wednesday 1/8\n\nLearn to analyze anonymized class demographic data\nLearn to program the Influencer model\nProblem Set #1 will be due January 29 at 11:30 AM before the start of class\n\nAt future lectures and lab sections we will learn to program other models that will be included in Problem Set #1."
   }
 ]

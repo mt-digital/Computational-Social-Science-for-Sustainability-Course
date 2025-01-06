@@ -7,6 +7,7 @@ institution: "Department of Human Behavioral Sciences, Stanford Doerr School of 
 date: "1/6/2025"
 format: revealjs
 smaller: true
+incremental: true
 code-fold: true
 fig-cap-location: bottom
     #html:
@@ -137,15 +138,19 @@ Two opportunities to complement Ostrom's socio-ecological systems program:
 ## Computational social _science_
 
 - We use the scientific method, starting from the high school version:
-    1. Hypothesize what causes some phenomenon 
+    1. Hypothesize what will happen in some context based on previous observations 
     1. Gather evidence to support your explanation
     1. Evaluate the hypothesis (true, false, in-between)
     1. Repeat
 
-- In computational social science we develop computer and mathematical models to analyze data and deduce the consequences of repeated social interactions subject to certain assumptions.
+- In computational social science we develop computer and mathematical models to 
+  test hypotheses before gathering data.
+
+- We can test some hypotheses deductively this way, or we can support hypotheses
+  that motivate empirical studies.
 
 
-# A simple example to introduce Computational Social Science for Sustainability: the Influencer dynamic.
+# The Influencer: computational social science by a simple example
 
 ## The Influencer
 
@@ -161,8 +166,9 @@ Let's model how long it will take for everyone who is influenced by this influen
 to adopt the behavior of commuting on bike!
 
 
-![Yours truly spreading love of biking](1-resources/MeBike.jpg){width="600px"}
+![Yours truly spreading the love of biking.](1-resources/MeBike.jpg){width="600px"}
 
+## The influencer
 
 :::: {.columns}
 
@@ -173,20 +179,127 @@ igraph_options(vertex.color = "SkyBlue2", vertex.frame.color = "SkyBlue2",
 par(mar=c(0,0,0,0)+.1)
 ```
 ::: {.column width="65%"}
+
+Initialization: time step $t=0$; B: biker, N: not biker
+
 ```{r}
 #| fig-asp: 0.8
-g <- make_graph(~ 1--2, 1--3, 1--4, 1--5, 1--6)
-plot(g, )
+g <- make_graph(~ 1-+2, 1-+3, 1-+4, 1--+5, 1--+6)
+g_vertex_layout = matrix(c(0, 0, 0.4, -0.7, 0.2, -0.9, 0, -1, -0.4, -0.7, -0.2, -0.9), byrow=TRUE, ncol=2)
+plot(g, vertex.label=c("B", "N", "N", "N", "N", "N"), 
+     layout = g_vertex_layout)
 ```
 :::
 
 ::: {.column width=35%}
-- A _vertice_ represents a person with a unique id
-- An _edge_ represents a relationship between two people
+![](1-resources/MeBike.jpg){width="30%" fig-align="center"}
+
+- A _vertice_ (dots) represents a person with a unique id
+- An _edge_ (arrows) represents a relationship between two people
+- Edge arrows indicate the direction of information flow
 - Two simulated people interact if and only if an edge connects them
-- How many potential teachers does each person have?
 :::
 
 ::::
 
-## Social network properties
+
+## The influencer
+
+:::: {.columns}
+
+```{r}
+library(igraph)
+igraph_options(vertex.color = "SkyBlue2", vertex.frame.color = "SkyBlue2", 
+               vertex.label.cex = 4, vertex.size = 30, rescale = FALSE)
+par(mar=c(0,0,0,0)+.1)
+```
+::: {.column width="65%"}
+
+Time step $t > 0$
+
+```{r}
+#| fig-asp: 0.8
+g <- make_graph(~ 1-+2, 1-+3, 1-+4, 1--+5, 1--+6)
+g_vertex_layout = matrix(c(0, 0, 0.4, -0.7, 0.2, -0.9, 0, -1, -0.4, -0.7, -0.2, -0.9), byrow=TRUE, ncol=2)
+plot(g, vertex.label=c("B", "B", "N", "B", "N", "N"), 
+     layout = g_vertex_layout)
+```
+:::
+
+::: {.column width=35%}
+
+- The influenced begin to adopt biking over time
+- We specify the probability, $\tau$, that an influenced person adopts biking
+  when exposed to it by the influencer
+:::
+
+::::
+
+## The influencer
+
+:::: {.columns}
+
+```{r}
+library(igraph)
+igraph_options(vertex.color = "SkyBlue2", vertex.frame.color = "SkyBlue2", 
+               vertex.label.cex = 4, vertex.size = 30, rescale = FALSE)
+par(mar=c(0,0,0,0)+.1)
+```
+::: {.column width="65%"}
+
+Time step $t = T$
+
+```{r}
+#| fig-asp: 0.8
+g <- make_graph(~ 1-+2, 1-+3, 1-+4, 1--+5, 1--+6)
+g_vertex_layout = matrix(c(0, 0, 0.4, -0.7, 0.2, -0.9, 0, -1, -0.4, -0.7, -0.2, -0.9), byrow=TRUE, ncol=2)
+plot(g, vertex.label=c("B", "B", "B", "B", "B", "B"), 
+     layout = g_vertex_layout)
+```
+:::
+
+::: {.column width=35%}
+
+- In this model, everyone eventually bikes because there is no "forgetting" or
+  "reverting" to previous behaviors.
+- The state where all become bikers is called _fixation_.
+- The time step $T$ when fixation occurs is the _fixation time_.
+- With this model we can calculate $T$ as a function of the number of influenced
+  agents, $N$, and the _transmissibility_ of biking, $\tau$.
+:::
+
+::::
+
+# Review and next steps
+
+## Review and next steps
+
+Review
+
+- Computational social science complements socio-ecological
+  systems approaches to promote sustainability 
+- Example _Influencer_ model to understand, e.g., how long an advertising
+  campaign must run in order to affect all targeted individuals
+
+Next steps:
+
+- January: 
+    - The effect of other social network configurations beyond influencer network, including group structure
+    - Other assumptions about how learning works (add forgetting,
+      "success-bias", and more)
+- Beyond: 
+    - Consider cooperative sustainable behaviors whose benefit depends on how
+      many people adopt a behavior (e.g., prescriptive burns)
+    - Understand and predict opinion polarization and its effect on
+      sustainability
+
+## Introduce Problem Set 1 at lab session Wednesday 1/8
+
+- Learn to analyze anonymized class demographic data
+- Learn to program the Influencer model
+- Problem Set #1 will be due January 29 at 11:30 AM before the start of class
+
+At future lectures and lab sections we will learn to program other models
+that will be included in Problem Set #1.
+
+## References
