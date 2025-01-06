@@ -10,9 +10,9 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.39">
 
-  <meta name="author" content="Dr.&nbsp;Matthew A. Turner, PhD">
+  <meta name="author" content="Dr.&nbsp;Matthew A. Turner">
   <meta name="dcterms.date" content="2025-01-06">
-  <title>Comp. Soc. Sci. for Sustainability (EBS 181/281) – Introduction to EBS 181/281: Computational Social Science for Sustainability</title>
+  <title>Comp. Soc. Sci. for Sustainability (EBS 181/281) – Introduction to EBS 181/281 and computational social science for sustainability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,27 +30,7 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for citations */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-      margin-bottom: 0em;
-    }
-    .hanging-indent div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }  </style>
+  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -149,267 +129,115 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Introduction to EBS 181/281: Computational Social Science for Sustainability</h1>
+  <h1 class="title">Introduction to EBS 181/281 and computational social science for sustainability</h1>
   <p class="subtitle">Social interactions, social outcomes, and social learning in social networks</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Dr.&nbsp;Matthew A. Turner, PhD 
+Dr.&nbsp;Matthew A. Turner 
 </div>
 </div>
 </div>
 
   <p class="date">2025-01-06</p>
 </section>
+<section id="course-information" class="title-slide slide level1 center">
+<h1>Course information</h1>
+
+</section>
+
 <section>
-<section id="preliminaries-course-information-and-introductions" class="title-slide slide level1 center">
-<h1>Preliminaries: course information and introductions</h1>
+<section id="computational-social-science-to-promote-sustainable-behaviors" class="title-slide slide level1 center">
+<h1>Computational social science to promote sustainable behaviors</h1>
 
 </section>
-<section id="course-information" class="slide level2">
-<h2>Course information</h2>
-<p>Please see the Syllabus and course homepage at <a href="https://mt.digital/teaching/CSS4S/">https://mt.digital/teaching/CSS4S/</a>.</p>
-</section>
-<section id="introductions" class="slide level2">
-<h2>Introductions</h2>
-<ul>
-<li class="fragment">Please introduce yourself, including your major and degree program</li>
-<li class="fragment">One to a few words about why you are interested in sustainability</li>
-<li class="fragment">One to a few words about why you are interested in (computational) social science</li>
-</ul>
-</section>
-<section id="sustainability" class="slide level2">
-<h2><em>Sustainability</em></h2>
-<p><br> <br></p>
-<p>Final question for the group:</p>
-<ul>
-<li class="fragment">How do you define sustainability?</li>
-</ul>
-</section>
-<section id="sustainability-1" class="slide level2">
-<h2><em>Sustainability</em></h2>
-
-<img data-src="1-resources/Sustainability_Definition.png" class="r-stretch quarto-figure-center"><p class="caption">New Oxford American Dictionary definition</p></section>
-<section id="sustainability-2" class="slide level2">
-<h2><em>Sustainability</em></h2>
+<section id="sustainable-socio-ecological-systems" class="slide level2">
+<h2>Sustainable socio-ecological systems</h2>
 
 <img data-src="1-resources/UN_SustDevGoals.png" class="r-stretch quarto-figure-center"><p class="caption">UN Sustainable Development Goals: <a href="https://sdgs.un.org/goals">https://sdgs.un.org/goals</a></p></section>
-<section id="sustainability-3" class="slide level2">
-<h2><em>Sustainability</em></h2>
+<section id="sustainable-socio-ecological-systems-1" class="slide level2">
+<h2>Sustainable socio-ecological systems</h2>
 
-<img data-src="1-resources/AWS_DataCenterAI.png" class="r-stretch quarto-figure-center"><p class="caption">A sustainability project at Amazon [<a href="https://press.aboutamazon.com/2024/12/aws-announces-new-data-center-components-to-support-ai-innovation-and-further-improve-energy-efficiency">link</a>]</p></section>
-<section id="sustainability-4" class="slide level2">
-<h2><em>Sustainability</em></h2>
-
-<img data-src="1-resources/AWS_WaterReplenishment_CentralValley.png" class="r-stretch quarto-figure-center"><p class="caption">Another sustainability project at Amazon [<a href="https://www.aboutamazon.com/news/sustainability/amazon-water-replenishment-projects-brazil-chile-china-us">link</a>]</p></section>
-<section id="social-science-for-sustainability" class="slide level2">
-<h2><em>Social Science for Sustainability</em></h2>
-<ul>
-<li class="fragment">Elinor Ostrom led development of <em>social-ecological systems</em> theory, which identified <em>design principles</em> to help sustain <em>common-pool resources</em>.
-<ul>
-<li class="fragment">First woman to win a Nobel prize in economics (2009)</li>
-</ul></li>
-<li class="fragment">A <em>common-pool resource</em> is something like clean water or healthy forests; all the common-pool resources together are called the commons.</li>
-</ul>
-<div class="columns">
-<div class="column" style="width:45%;">
-<p><img src="1-resources/OstromNobel.png" width="250" display="block"></p>
-</div><div class="column" style="width:55%;">
-<p>Select <em>design principles</em> (8 total; see <span class="citation" data-cites="Cox2010">Cox, Arnold, and Tomás (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span> reading for an overview):</p>
-<ul>
-<li class="fragment">Rules should fit local circumstances</li>
-<li class="fragment">Participation of <em>all</em> stakeholders is vital
-<ul>
-<li class="fragment">Management of the commons must be organized across social and institutional scales</li>
-<li class="fragment">All levels of social hierarchy must be recognized and free to organize</li>
-</ul></li>
-<li class="fragment">Conflict resolution should be easily accessible</li>
-</ul>
-</div></div>
-</section>
-<section id="social-science-for-sustainability-1" class="slide level2">
-<h2><em>Social Science for Sustainability</em></h2>
-<p>Ostrom’s work elevated traditional, Indigenous adaptations for a changing climate (always been changing) and other sustainability challenges.</p>
-<div class="columns">
-<div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="1-resources/WomenScientistsPacificIslands.jpg" height="500"></p>
-<figcaption>From The Nature Conservancy, “Woman Scientist Saves Mangroves and Battles Climate Change” [<a href="https://www.nature.org/en-us/magazine/magazine-articles/indigenous-controlled-burns-california/">link</a>]</figcaption>
-</figure>
-</div>
-</div><div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="1-resources/Yurok_Ceremonial_First_Light.jpg" height="500"></p>
-<figcaption>From The Nature Conservancy, “Quiet Fire: Indigenous tribes in California and other parts of the U.S. have been rekindling the ancient art of controlled burning.” [<a href="https://www.nature.org/en-us/magazine/magazine-articles/indigenous-controlled-burns-california/">link</a>]</figcaption>
-</figure>
-</div>
-</div></div>
-</section>
-<section id="social-science-for-sustainability-2" class="slide level2">
-<h2><em>Social Science for Sustainability</em></h2>
-<p>Two opportunities to complement Ostrom’s socio-ecological systems program:</p>
-<ol type="1">
-<li class="fragment">Complementary <em>deductive</em> methods could predict the outcomes of candidate <em>interventions</em> to promote sustainability.
-<ul>
-<li class="fragment">Ostrom and colleagues developed the design principles <em>inductively</em>, based on decades of rigorous empirical research.</li>
-</ul></li>
-<li class="fragment">Cooperation is not always necessary in order to gain individual-level benefits and affect sustainability.
-<ul>
-<li class="fragment">Walking, biking, or EVs instead of internal combustion engine commuting</li>
-<li class="fragment">Heat pumps and solar panels to reduce carbon-intensive energy generation</li>
-</ul></li>
-</ol>
+<img data-src="1-resources/UN_SustDevGoals.png" class="r-stretch quarto-figure-center"><p class="caption">UN Sustainable Development Goals: <a href="https://sdgs.un.org/goals">https://sdgs.un.org/goals</a></p></section>
+<section id="promoting-sustainability-needs-computational-social-science" class="slide level2">
+<h2>Promoting sustainability needs computational social science</h2>
 </section>
 <section id="computational-social-science" class="slide level2">
 <h2>Computational social <em>science</em></h2>
 <ul>
-<li class="fragment"><p>We use the scientific method, starting from the high school version:</p>
+<li>We use the scientific method, starting from the high school version:
 <ol type="1">
-<li class="fragment">Hypothesize what will happen in some context based on previous observations</li>
-<li class="fragment">Gather evidence to support your explanation</li>
-<li class="fragment">Evaluate the hypothesis (true, false, in-between)</li>
-<li class="fragment">Repeat</li>
+<li>Hypothesize what causes some phenomenon</li>
+<li>Gather evidence to support your explanation</li>
+<li>Evaluate the hypothesis (true, false, in-between)</li>
+<li>Repeat</li>
 </ol></li>
-<li class="fragment"><p>In computational social science we develop computer and mathematical models to test hypotheses before gathering data.</p></li>
-<li class="fragment"><p>We can test some hypotheses deductively this way, or we can support hypotheses that motivate empirical studies.</p></li>
+<li>In computational social science we develop computer and mathematical models to analyze data and deduce the consequences of repeated social interactions subject to certain assumptions.</li>
+</ul>
+</section>
+<section id="the-computational-social-scientific-method" class="slide level2">
+<h2>The (computational social scientific) method</h2>
+<ul>
+<li>We develop hypotheses</li>
 </ul>
 </section></section>
 <section>
-<section id="the-influencer-computational-social-science-by-a-simple-example" class="title-slide slide level1 center">
-<h1>The Influencer: computational social science by a simple example</h1>
+<section id="diffusion-of-innovations" class="title-slide slide level1 center">
+<h1>Diffusion of innovations</h1>
 
 </section>
-<section id="the-influencer" class="slide level2">
-<h2>The Influencer</h2>
-<ul>
-<li class="fragment">Oftentimes people will eventually adopt a behavior if they observe an “influencer”.</li>
-<li class="fragment">If we are designing a sustainability <em>intervention</em>, we may want to know how long it will take for everyone who is influenced by an influencer to adopt some behavior…</li>
-</ul>
-</section>
-<section id="the-influencer-1" class="slide level2">
-<h2>The Influencer</h2>
-<p>Let’s model how long it will take for everyone who is influenced by this influencer to adopt the behavior of commuting on bike!</p>
-
-<img data-src="1-resources/MeBike.jpg" width="600" class="r-stretch quarto-figure-center"><p class="caption">Yours truly spreading the love of biking.</p></section>
-<section id="the-influencer-2" class="slide level2">
-<h2>The influencer</h2>
+<section id="how-likely-is-the-diffusion-of-an-innovation" class="slide level2">
+<h2>How likely is the diffusion of an innovation?</h2>
 <div class="columns">
 <div class="column" style="width:65%;">
-<p>Initialization: time step <span class="math inline">\(t=0\)</span>; B: biker, N: not biker</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="1_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:35%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="1-resources/MeBike.jpg" class="quarto-figure quarto-figure-center" style="width:30.0%"></p>
-</figure>
-</div>
-<ul>
-<li class="fragment">A <em>vertice</em> (dots) represents a person with a unique id</li>
-<li class="fragment">An <em>edge</em> (arrows) represents a relationship between two people</li>
-<li class="fragment">Edge arrows indicate the direction of information flow</li>
-<li class="fragment">Two simulated people interact if and only if an edge connects them</li>
-</ul>
-</div></div>
-</section>
-<section id="the-influencer-3" class="slide level2">
-<h2>The influencer</h2>
-<div class="columns">
-<div class="column" style="width:65%;">
-<p>Time step <span class="math inline">\(t &gt; 0\)</span></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="1_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<p><img data-src="1_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:35%;">
 <ul>
-<li class="fragment">The influenced begin to adopt biking over time</li>
-<li class="fragment">We specify the probability, <span class="math inline">\(\tau\)</span>, that an influenced person adopts biking when exposed to it by the influencer</li>
-</ul>
-</div></div>
-</section>
-<section id="the-influencer-4" class="slide level2">
-<h2>The influencer</h2>
-<div class="columns">
-<div class="column" style="width:65%;">
-<p>Time step <span class="math inline">\(t = T\)</span></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="1_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:35%;">
-<ul>
-<li class="fragment">In this model, everyone eventually bikes because there is no “forgetting” or “reverting” to previous behaviors.</li>
-<li class="fragment">The state where all become bikers is called <em>fixation</em>.</li>
-<li class="fragment">The time step <span class="math inline">\(T\)</span> when fixation occurs is the <em>fixation time</em>.</li>
-<li class="fragment">With this model we can calculate <span class="math inline">\(T\)</span> as a function of the number of influenced agents, <span class="math inline">\(N\)</span>, and the <em>transmissibility</em> of biking, <span class="math inline">\(\tau\)</span>.</li>
+<li>How many early-adopter <em>influencers</em> must know a behavior in order to spread it?</li>
+<li>How does the perceived benefit of a behavior affect the spread of behavior?</li>
 </ul>
 </div></div>
 </section></section>
 <section>
-<section id="review-and-next-steps" class="title-slide slide level1 center">
-<h1>Review and next steps</h1>
+<section id="social-networks-structure-social-interactions" class="title-slide slide level1 center">
+<h1>Social networks structure social interactions</h1>
 
 </section>
-<section id="review-and-next-steps-1" class="slide level2">
-<h2>Review and next steps</h2>
-<p>Review</p>
-<ul>
-<li class="fragment">Computational social science complements socio-ecological systems approaches to promote sustainability</li>
-<li class="fragment">Example <em>Influencer</em> model to understand, e.g., how long an advertising campaign must run in order to affect all targeted individuals</li>
-</ul>
-<p>Next steps:</p>
-<ul>
-<li class="fragment">January:
-<ul>
-<li class="fragment">The effect of other social network configurations beyond influencer network, including group structure</li>
-<li class="fragment">Other assumptions about how learning works (add forgetting, “success-bias”, and more)</li>
-</ul></li>
-<li class="fragment">Beyond:
-<ul>
-<li class="fragment">Consider cooperative sustainable behaviors whose benefit depends on how many people adopt a behavior (e.g., prescriptive burns)</li>
-<li class="fragment">Understand and predict opinion polarization and its effect on sustainability</li>
-</ul></li>
-</ul>
-</section>
-<section id="introduce-problem-set-1-at-lab-session-wednesday-18" class="slide level2">
-<h2>Introduce Problem Set 1 at lab session Wednesday 1/8</h2>
-<ul>
-<li class="fragment">Learn to analyze anonymized class demographic data</li>
-<li class="fragment">Learn to program the Influencer model</li>
-<li class="fragment">Problem Set #1 will be due January 29 at 11:30 AM before the start of class</li>
-</ul>
-<p>At future lectures and lab sections we will learn to program other models that will be included in Problem Set #1.</p>
-</section>
-<section id="references" class="slide level2 smaller scrollable">
-<h2>References</h2>
-
-
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-Cox2010" class="csl-entry" role="listitem">
-Cox, Michael, Gwen Arnold, and Sergio Villamayor Tomás. 2010. <span>“<span class="nocase">A review of design principles for community-based natural resource management</span>.”</span> <em>Ecology and Society</em> 15 (4). <a href="https://doi.org/10.5751/ES-03704-150438">https://doi.org/10.5751/ES-03704-150438</a>.
+<section id="social-network-construction" class="slide level2">
+<h2>Social network construction</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="1_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
 </div>
 </div>
+</div>
+</div><div class="column" style="width:35%;">
+<ul>
+<li>A <em>vertice</em> represents a person with a unique id</li>
+<li>An <em>edge</em> represents a relationship between two people</li>
+<li>Two simulated people interact if and only if an edge connects them</li>
+<li>How many potential teachers does each person have?</li>
+</ul>
+</div></div>
+</section>
+<section id="social-network-properties" class="slide level2">
+<h2>Social network properties</h2>
+
+
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
