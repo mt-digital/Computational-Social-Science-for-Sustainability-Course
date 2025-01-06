@@ -438,14 +438,14 @@
     "href": "lectures/slides/1.html#social-science-for-sustainability-1",
     "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
     "section": "Social Science for Sustainability",
-    "text": "Social Science for Sustainability\nOstrom’s work elevated traditional, Indigenous adaptations for a changing climate (always been changing) and other sustainability challenges."
+    "text": "Social Science for Sustainability\nOstrom’s work elevated traditional, Indigenous adaptations for a changing climate (always been changing) and other sustainability challenges.\n\n\n\n\n\nFrom The Nature Conservancy, “Woman Scientist Saves Mangroves and Battles Climate Change” [link]\n\n\n\n\n\n\nFrom The Nature Conservancy, “Quiet Fire: Indigenous tribes in California and other parts of the U.S. have been rekindling the ancient art of controlled burning.” [link]"
   },
   {
     "objectID": "lectures/slides/1.html#social-science-for-sustainability-2",
     "href": "lectures/slides/1.html#social-science-for-sustainability-2",
     "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
     "section": "Social Science for Sustainability",
-    "text": "Social Science for Sustainability\nTwo observations:\n\nNot all sustainable, adaptive behaviors"
+    "text": "Social Science for Sustainability\nTwo opportunities to complement Ostrom’s socio-ecological systems program:\n\nComplementary deductive methods could predict the outcomes of candidate interventions to promote sustainability.\n\nOstrom and colleagues developed the design principles inductively, based on decades of rigorous empirical research.\n\nCooperation is not always necessary in order to gain individual-level benefits and affect sustainability.\n\nWalking, biking, or EVs instead of internal combustion engine commuting\nHeat pumps and solar panels to reduce carbon-intensive energy generation"
   },
   {
     "objectID": "lectures/slides/1.html#computational-social-science-for-sustainable-behaviors",
@@ -453,5 +453,19 @@
     "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
     "section": "Computational social science for sustainable behaviors",
     "text": "Computational social science for sustainable behaviors"
+  },
+  {
+    "objectID": "lectures/slides/1.html#the-influencer",
+    "href": "lectures/slides/1.html#the-influencer",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "The Influencer",
+    "text": "The Influencer\n\nOftentimes people will eventually adopt a behavior if they observe an “influencer”.\nIf we are designing a sustainability intervention, we may want to know how long it will take for everyone who is influenced by an influencer to adopt some behavior…"
+  },
+  {
+    "objectID": "lectures/slides/1.html#the-influencer-1",
+    "href": "lectures/slides/1.html#the-influencer-1",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "The Influencer",
+    "text": "The Influencer\nLet’s model how long it will take for everyone who is influenced by this influencer to adopt the behavior of commuting on bike!\n\n\n\nYours truly spreading love of biking\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA vertice represents a person with a unique id\nAn edge represents a relationship between two people\nTwo simulated people interact if and only if an edge connects them\nHow many potential teachers does each person have?"
   }
 ]
