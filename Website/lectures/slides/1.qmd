@@ -71,23 +71,23 @@ identified _design principles_ to help sustain _common-pool resources_.
 
 :::: {.columns}
 
-::: {.column width="45%"}
+::: {.column width="30%"}
 
 
 <img src="1-resources/OstromNobel.png" width="250" display="block">
 
 :::
 
-::: {.column width="55%"}
+::: {.column width="70%"}
 
-Select *design principles* (8 total; see @Cox2010 reading for an overview):
+- Select *design principles* (8 total; see @Cox2010 reading for an overview):
 
-- Rules should fit local circumstances
-- Participation of _all_ stakeholders is vital
-    - Management of the commons must be organized across social and
-      institutional scales
-    - All levels of social hierarchy must be recognized and free to organize
-- Conflict resolution should be easily accessible
+    - Rules should fit local circumstances
+    - Participation of _all_ stakeholders is vital
+        - Management of the commons must be organized across social and
+          institutional scales
+        - All levels of social hierarchy must be recognized and free to organize
+    - Conflict resolution should be easily accessible
 
 :::
 
@@ -106,7 +106,7 @@ climate (always been changing) and other sustainability challenges.
 ![From The Nature Conservancy, "Woman Scientist Saves Mangroves and Battles
 Climate Change" 
 [[link](https://www.nature.org/en-us/magazine/magazine-articles/indigenous-controlled-burns-california/)]](1-resources/WomenScientistsPacificIslands.jpg){fig-align="center"
-height="500px"}
+height="400px"}
 :::
 
 ::: {.column}
@@ -115,7 +115,7 @@ height="500px"}
 other parts of the U.S. have been rekindling the ancient art of controlled
 burning."
 [[link](https://www.nature.org/en-us/magazine/magazine-articles/indigenous-controlled-burns-california/)]](1-resources/Yurok_Ceremonial_First_Light.jpg){fig-align="center"
-height="500px"}
+height="400px"}
 
 :::
 
@@ -292,13 +292,13 @@ Next steps:
     - Understand and predict opinion polarization and its effect on
       sustainability
 
-## Introduce Problem Set 1 at lab session Wednesday 1/8
+##  Wednesday 1/8: Introduce Problem Set 1
 
 - Learn to analyze anonymized class demographic data
 - Learn to program the Influencer model
 - Problem Set #1 will be due January 29 at 11:30 AM before the start of class
-
-At future lectures and lab sections we will learn to program other models
+<br><br>
+- At future lectures and lab sections we will learn to program other models
 that will be included in Problem Set #1.
 
 ## References

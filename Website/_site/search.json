@@ -431,7 +431,7 @@
     "href": "lectures/slides/1.html#social-science-for-sustainability",
     "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
     "section": "Social Science for Sustainability",
-    "text": "Social Science for Sustainability\n\nElinor Ostrom led development of social-ecological systems theory, which identified design principles to help sustain common-pool resources.\n\nFirst woman to win a Nobel prize in economics (2009)\n\nA common-pool resource is something like clean water or healthy forests; all the common-pool resources together are called the commons.\n\n\n\n\n\nSelect design principles (8 total; see Cox, Arnold, and Tomás (2010) reading for an overview):\n\nRules should fit local circumstances\nParticipation of all stakeholders is vital\n\nManagement of the commons must be organized across social and institutional scales\nAll levels of social hierarchy must be recognized and free to organize\n\nConflict resolution should be easily accessible"
+    "text": "Social Science for Sustainability\n\nElinor Ostrom led development of social-ecological systems theory, which identified design principles to help sustain common-pool resources.\n\nFirst woman to win a Nobel prize in economics (2009)\n\nA common-pool resource is something like clean water or healthy forests; all the common-pool resources together are called the commons.\n\n\n\n\n\n\nSelect design principles (8 total; see Cox, Arnold, and Tomás (2010) reading for an overview):\n\nRules should fit local circumstances\nParticipation of all stakeholders is vital\n\nManagement of the commons must be organized across social and institutional scales\nAll levels of social hierarchy must be recognized and free to organize\n\nConflict resolution should be easily accessible"
   },
   {
     "objectID": "lectures/slides/1.html#social-science-for-sustainability-1",
@@ -501,7 +501,7 @@
     "href": "lectures/slides/1.html#introduce-problem-set-1-at-lab-session-wednesday-18",
     "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
     "section": "Introduce Problem Set 1 at lab session Wednesday 1/8",
-    "text": "Introduce Problem Set 1 at lab session Wednesday 1/8\n\nLearn to analyze anonymized class demographic data\nLearn to program the Influencer model\nProblem Set #1 will be due January 29 at 11:30 AM before the start of class\n\nAt future lectures and lab sections we will learn to program other models that will be included in Problem Set #1."
+    "text": "Introduce Problem Set 1 at lab session Wednesday 1/8\n\nLearn to analyze anonymized class demographic data\nLearn to program the Influencer model\nProblem Set #1 will be due January 29 at 11:30 AM before the start of class \nAt future lectures and lab sections we will learn to program other models that will be included in Problem Set #1."
   },
   {
     "objectID": "lectures/slides/1.html#references",
@@ -509,5 +509,12 @@
     "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
     "section": "References",
     "text": "References\n\n\n\n\nCox, Michael, Gwen Arnold, and Sergio Villamayor Tomás. 2010. “A review of design principles for community-based natural resource management.” Ecology and Society 15 (4). https://doi.org/10.5751/ES-03704-150438."
+  },
+  {
+    "objectID": "lectures/slides/1.html#wednesday-18-introduce-problem-set-1",
+    "href": "lectures/slides/1.html#wednesday-18-introduce-problem-set-1",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "Wednesday 1/8: Introduce Problem Set 1",
+    "text": "Wednesday 1/8: Introduce Problem Set 1\n\nLearn to analyze anonymized class demographic data\nLearn to program the Influencer model\nProblem Set #1 will be due January 29 at 11:30 AM before the start of class \nAt future lectures and lab sections we will learn to program other models that will be included in Problem Set #1."
   }
 ]
