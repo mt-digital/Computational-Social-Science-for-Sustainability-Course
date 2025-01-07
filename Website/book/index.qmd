@@ -1,12 +1,9 @@
 ---
 title: "Computational Social Science for Sustainability"
-editor: 
-  markdown: 
-    wrap: 80
-output:
-    html_document:
-        number_sections: true
-        
+format:
+    html:
+        toc: true
+        echo: false
 ---
 
 ## Course notes {.unlisted}
@@ -18,107 +15,92 @@ notes for _Computational Social Science for Sustainability_.
 This document is being regularly compiled, developed, and edited. 
 Please send any feedback by [email](mailto:maturner@stanford.edu).
 
-Last updated 2025-01-02.
+Last updated January 6, 2025.
 
-# 1. Introduction
+# 1. Introduction (1/6/25 and 1/8/25)
 
-Improving sustainability 
+If we are so sure that nudges, framing, and other psychological factors can
+convince people to do one thing instead of another, why is it so difficult
+sometimes to promote sustainable behavior? For many people, walking, biking, or using public transportation could save money and provide some exercise, yet public appetite for these modes of transportation is low and many cities in the USA seem permanently car-centric. In many cases electric vehicles would be an overall money-saver for individuals due to reduced energy and maintenance costs. Solar panels with batteries can power homes, and heat pumps can and regulate temperature in homes, more reliably than more expensive alternatives. So why don't more people choose these more sustainable and personally beneficial things?
 
-- A major challenge in promoting sustainability is to convince enough people to
-  engage in some sustainable behavior, so that some sustainable goal
-  (carbon-free electricity, for example) can be achieved. There exist
-  psychological strategies
-  for convincing people that some behavior is beneficial for an individual or an
-  organization, such as the benefits of no-till and crop rotations in
-  agriculture, which seem to outweigh the possible costs. _Nudging_ and other
-  popular ideas about promoting beneficial behaviors focus on the individual.
-  The goal of commercial advertising is to convince people that certain products
-  and services are valuable to buy and use.
-  However, even if people learn perfectly what's good and bad from others, computer models of social
-  behavior suggest that a beneficial behavior will spread throughout a simulated
-  population only a fraction of the time. That fraction, though, can be
-  increased or decreased by manipulating the social networks that structure
-  interpersonal interaction. Similarly, social network structure and the
-  randomness of social interaction leads us to conclude that polarization 
-  is not inevitable in a group, given some initial set of group opinions. 
+It turns out that even a sustainable, highly-beneficial behavior can fail to
+catch on simply because the social networks of who learns from whom have a
+structure that inhibits the spread of _adaptive_ behaviors, i.e., those
+behaviors that benefit an individual in a particular context. We can deduce
+this fact using theory and models introduced in this course. But we can do more
+to support decision making using the tools presented in this course. For
+example, we can calculate the probability that an adaptation will be practiced
+by every member of the model population, or if it will be abandoned by the
+population and practiced by none. This serves as a proxy for measuring the
+probability of _adaptive success_ for a population (all practice the adaptation
+and not some alternative). Other computational tools introduced in this course
+can predict how well different profit sharing strategies promote coperation for
+sustainable use of common-pool resources. We can use these tools to explain why
+healthy institutions can benefit both individuals and groups, and also how
+polarization can paralyze institutions. These models begin from
+empirically-motivated assumptions that fill in a general framework of social
+and psychological mechanisms that generate emergent social phenomena including
+the diffusion of adaptations, large-scale cooperation, and political
+polarization.  <!--These models are implemented using a new R modeling
+framework called [`socmod`]().-->
 
-- To learn these lessons and to improve rigor in social and behavioral science, one must 
-  create _models_ of interpersonal interaction. In _computational models_ that
-  we will study, social phenomena really emerge from simulated interpersonal
-  interactions. A _model_ is a simplified description of real-world
-  phenomena. A _computational_ model just uses a computer 
-  to solve equations, simulate, or statistically analyze some 
-  _phenomenon of interest.
-  Social science models are most useful with a minimal number of
-  empirically-motivated assumptions that still generate _emergent social
-  phenomena_.  The emergent social phenomena here are innovation diffusion,
-  opinion and norm change, and widespread economic cooperation. These phenomena
-are _emergent_ because they _emerge_ from a series interactions between people,
-  sometimes repeatedly between the same people, over time.
+The initial use of social science for sustainability can be attributed to
+Elinor Ostrom and her and colleagues' _socio-ecological systems_
+framework [@Ostrom2009], for which she was awarded the Nobel prize in
+economics. Socio-ecological systems was responding to the "zero contribution
+thesis" that postulated "'unless there is coercion...rational, self-interested
+individuals will not act to achieve their common or group interests'". But of
+course humans do cooperate, to the point of regularly risking their own lives
+to save the lives of others, and more quotidien cooperation for roads, public
+safety, national security, just to name a few. (HOW DID THEY RESPOND? WHAT'S THE ANSWER?)
 
-- One of the learning goals of this course is to develop a theoretical 
-  understanding of how social phenomena emerge from social interactions over
-  time. Social science theory is important because it identifies basic
-  cognitive and social processes and behaviors and how they produce emergent
-  social phenomena of interest [@Kauffman1970; @Craver2006].
-  Interpersonal interaction can take several forms, but we focus on three
-  categories: (1) social learning, (2) social influence, and (3) cooperation.
-  Social networks constrain who interacts with whom in the real world, and so
-  too in our computational models. 
-<!-- - This course will provide students the tools to design their own models to
-understand how to promote sustainable behavior through computational modeling.
-_Computational_ just means using a computer -->
+Ostrom's eight design principles for sustainable natural resource management have especially elevated Indigenous adaptations that had been ignored since colonization. 
+(EXAMPLES)
+This is especially notable for our purposes because it forces us to abandon the word "innovation" when it comes to sustainable behaviors. 
 
-# 2. Computational models in R for sustainability social science
+We want to build on Ostrom's progress by developing a scientific modeling framework
+to represent key mechanisms that constrain and drive social transmission. This framework is designed to generalize three types of social interaction: (1) common-pool resource dilemmas and solutions treated by Ostrom; (2) non-cooperative personal behavior decisions like mode of commute or home efficiency improvements; and (3) social influence of opinions that can result in consensus, extremism, or polarization depending on context including and especially the social network that structures interactions. 
 
-- Review and expand on what is a model and why it's useful.
-- A paragraph on computational modeling as a special form of mathematical
-  modeling
-- Computation enables the rapid generation of simulated data given some
-  interaction processes and social network structure.
-- Assumptions about social behavior and cognition become _mechanisms_ in the
-  model. _Mechanistic modeling_ helps us avoid both misinterpretation of 
-  verbal models [@Turner2022] and overgeneralization in statistical models that
-  do not sufficiently account for sources of variance in behavioral experiments,
-  for example [@Yarkoni2022]. Specifically, this approach identifies the 
-  components of a system and their capacities [@Cartwright1989], e.g. for memory or
-  abilities. 
+## Social networks structure social interaction
 
+Social interactions here are always structured by social networks, starting with
+our tutorial example, "The Influencer Dynamic", below. Social networks are a mechanical representation of a relationship between two people. In networks, people are represented as _nodes_ or _vertices_, which are typically represented by a circle or another
+shape. Relationships between people are represented as lines connecting nodes
+called _edges_. In our social modeling framework, networks are real-world instances 
+of graphs, the mathematical collection of nodes with edges represented numerically by an
+_adjacency matrix_. (Continue introducing social networks...)
 
+```{r}
+#| output: false
+#| echo: false
+library(ggforce)
+library(tibble)
+```
 
-## Social networks
-
-Social networks are fundamental to modeling how behavior spreads in
-populations. As we will see ourselves in the next section, even if people learn
-perfectly well from one another with no social friction, they are not guaranteed
-to spread to every person in a simulated population.
-
-# 3. Predicting the diffusion of sustainable innovations through social learning
+```{r}
+#| fig-width: 5.5
+#| fig-asp: 0.33333
+circles <- tibble(x0 = c(0, 2), y0 = c(0, 0), r = c(.5, .5))
+ggplot() + 
+    geom_circle(aes(x0 = x0, y0 = y0, r = r), data = circles, fill = "SkyBlue2") + 
+    geom_segment(aes(x = 0.5, y = 0, xend = 1.5, yend = 0), arrow = arrow()) +
+    annotate("text", x=0, y=0, label="Teacher", size=8) +
+    annotate("text", x=2, y=0, label="Learner", size=8) +
+    annotate("text", x=0.95, y=0.15, label="Information flow", size=5) +
+    theme_void()
+```
 
 
+(TODO: add bi-directional arrows and mention equivalent to a line with no arrows)
 
 
-# 4. Discourse as a force that drives opinion change and polarization
 
-The evolutionary approach provides several ready-made tools for analyzing the
-diffusion and development of sustainable innovations thanks to decades of theoretical
-biology that easily maps onto cultural transmission and evolution. However,
-collective adaptation involves social influence that is relatively
-independent of cultural evolutionary processes [@GalesicEtAl2023], having instead evolved
-biologically with the first humans. We hold _social influence_ separate from
-social learning in that we abandon the concepts of fitness and learning, 
-and replace them with an innate drive to balance one's opinions given input from
-those with whom we agree or disagree.
+# Diffusion of adaptations via social learning
+
+To begin, consider the simple case of people learning from an influencer, ignoring social learning from others.
+
+## The Influencer Dynamic (1/8 and reviewed 1/13)
 
 
-## Next steps: understanding discourse itself
 
-In opinion dynamics models we covered here, the strength of discourse depends only on the
-opinions of the simulated speaker and listener. 
-
-# 5. Promoting cooperation and institutions to achieve sustainability goals
-
-
-# 6. A review and way forward
-
-- 
+## Innovative adaptations

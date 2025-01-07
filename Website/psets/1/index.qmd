@@ -1,0 +1,6 @@
+---
+title: "Problem set #1: R skills and basic social transmission models"
+author: "Matthew A. Turner"
+---
+
+
