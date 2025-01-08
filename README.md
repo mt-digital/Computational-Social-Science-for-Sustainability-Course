@@ -5,4 +5,4 @@ There are many adaptative behaviors to mitigate climate change. But we understan
 
 ## Structure of this repository
 
-This repository contains [Keynote lecture slides](https://github.com/mt-digital/Computational-Social-Science-for-Sustainability-Course/tree/main/Lectures), the source for the [course website](https://mt.digital/EBS-X82), and the source for the [course book](https://mt.digital/EBS-X82/book). I use the [Quarto system](https://quarto.org/), with source docs in Quarto Markdown (.qmd), for the website and book.
+This repository contains [Keynote lecture slides](https://github.com/mt-digital/Computational-Social-Science-for-Sustainability-Course/tree/main/Lectures), the source for the [course website](https://mt.digital/EBS-X82), and the source for the [course lab notes](https://mt.digital/EBS-X82/book). I use the [Quarto system](https://quarto.org/), with source docs in Quarto Markdown (.qmd), for the website and book.
