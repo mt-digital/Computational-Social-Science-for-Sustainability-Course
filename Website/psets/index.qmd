@@ -1,6 +1,9 @@
 ---
 title: "Problem sets index for EBS 181/281"
-author: "Matthew A. Turner"
 ---
 
-Problem Sets coming soon!
+- [Problem Set 1:](1) R skills and basic social transmission models
+- Problem Set 2: Social innovation and transmission models in different social networks.
+- Problem Set 3: The evolution of institutions for sustainable property rights.
+- Problem Set 4: Predicting polarization outcomes and measuring opinion change. 
+

@@ -77,9 +77,12 @@ library(ggforce)
 library(tibble)
 ```
 
+
 ```{r}
 #| fig-width: 5.5
 #| fig-asp: 0.33333
+#| label: fig-teacher-learner-infoflow
+#| fig-cap: "Social networks represent relationships between people, with arrows pointing in the direction of information flow, representing who learns from whom."
 circles <- tibble(x0 = c(0, 2), y0 = c(0, 0), r = c(.5, .5))
 ggplot() + 
     geom_circle(aes(x0 = x0, y0 = y0, r = r), data = circles, fill = "SkyBlue2") + 

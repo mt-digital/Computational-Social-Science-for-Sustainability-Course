@@ -1,6 +1,140 @@
 ---
-title: "Problem set #1: R skills and basic social transmission models"
+title: "Problem Set 1: R skills and basic social transmission models"
 author: "Matthew A. Turner"
+bibliography: "../../../../../library.bib"
+format:
+  html:
+    toc: true
+    number-sections: true
+    code-fold: true
+    echo: true
 ---
 
+### introduction {.unnumbered}
 
+computational social science models can help us choose between candidate 
+sustainability interventions by developing simulation experiments that would be impractical, impossible, or unethical in the real world. 
+Developing any computational social science model, even a simple model like the 
+Influencer Dynamic, requires foundational computer and quantitative skills,
+including knowledge of a programming language. Model-based analyses must be published with documented, publically-available code and raw output data to ensure that 
+other scientists or practitioners can independently confirm model predictions.
+
+#### Learning goals {.unnumbered}
+
+In this problem set, students will learn basic programming skills in the R
+programming language and methods for sharing code and documentation using
+GitHub. Students will get creative making and visualizing custom social
+networks. To close the problem set, students will use the Influencer model
+to estimate how long an advertising campaign must last before all simulated individuals targeted by the campaign. Students will use and compare both 
+a stochastic, agent-based Influencer model and a deterministic, recursion-based
+version. 
+
+
+## RStudio online (or personal setup if you already have RStudio) {.unnumbered}
+
+We have a custom RStudio instance for our course avialable via 
+FarmShare OnDemand. 
+To use RStudio  navigate to Stanford's
+FarmShare OnDemand [Interactive Apps](https://ondemand-01.farmshare.stanford.edu/pun/sys/dashboard/batch_connect/sessions#) with up to sixteen cores and 64 GB of RAM.
+
+
+
+## GitHub: A home for your (EBS 281) code (2 points)
+
+GitHub hosts code _repositories_ or _repos_. A _repo_ is a set of code whose history is tracked by a computer program called Git. Some time ago there were other programs to track the history of code projects, which are generally called _version control_
+software. Git is the best version control software available, and is now the
+default for software development.
+
+Git allows us to take snapshots of our code so that we can revert to an old version. When we share our code on GitHub, others can use or inspect our code at different versions. We use this to take a snapshot of the code that was used in an analysis for a paper, but that underwent further development after. Updates to the code may make simulations or data fitting operate differently over time, so it is important to be able to use code as it was in the past.
+
+The best way to understand Git and GitHub are to practice using them. The next two
+tasks help you do that and access the source code you will use and edit to
+complete the assignment. 
+
+
+### Get a GitHub account if you don't already have one (1 point)
+
+
+### Fork and clone your personal CSS4S/Winter2025 GitHub repository (1 point)
+
+
+
+## Hello, world! (2 points)
+
+
+### Hello, world! in R (1 point)
+
+Below is the function `hello_world_plot` that we will use and you will edit. 
+
+```{r}
+#| echo: true
+#| 
+library(ggplot2)
+library(tibble)
+
+hello_world_plot <- function(n_steps = 10, start_t = 0, dt = 1) {
+
+    # Local function that is only available in hello_world_plot.
+    y <- function(t, a = 2) {
+        a * t 
+    }
+
+    # Create time step sequence given parameters passed to this function.
+    t <- seq(from=start_t, by=dt, length.out=n_steps)
+
+    # Create fake data table (i.e., a "tibble" from the tibble library).
+    fake_data <- tibble(y = y(t), t = t)
+
+    # Plot the fake data.
+    ggplot(fake_data, aes(x=t, y=y)) + 
+        geom_line() + 
+        xlab("relabel me 1") + 
+        ylab("relabel me 2") + 
+        theme_classic()
+}
+```
+
+H
+```{r}
+hello_world_plot()
+```
+
+### Basic loading and analyzing data in R (1 point)
+
+The following code reads a dataset containing academic information for the students in this class. We are going to count and plot some information from the dataset to understand the composition of our class. I will show how to plot the data one way. You will then change the code to plot the data a different way to continue practicing using
+`ggplot2` library. 
+
+## Fun with networks (2 points)
+
+### Directional information in simple networks (1 point)
+
+Give example with two agents, then prompt student to add a third and fourth,
+making a square loop. 
+
+### Other kinds of networks (1 point)
+
+In this problem set we focus on understanding information flow in
+the relatively simple Influencer network. In future lectures and problem sets we will encounter more complex networks that represent social networks where associates
+can learn from one another instead of just from an "influencer". This problem previews different tools for creating different classes of more complex social networks.
+
+One of these network properties is the _small-world_ property devised by @Watts1998. 
+It is available using the [`smallworld` function in `igraph`](https://r.igraph.org/reference/sample_smallworld.html). In [the code for this problem](https://github.com/CSS4S/Winter-2025/PS1/smallworld.R) I provide a function to create and plot a small-world network. In the following three code blocks, select different, increasing of 
+rewiring probability 
+
+## Agent-based Influencer model (2 points)
+
+The influencer model represents the hypothetical situation where $N$ individuals, performing a non-adaptive behavior, $\neg a$, observe one other agent, the influencer,
+performing adaptive behavior $a$. The model assumes that the observers adopt $a$ with probability $\alpha$. 
+
+
+### How does the number of influenced agents, $N$, change $T$?
+
+### Run the agent-based model for different values of $\alpha$
+
+## Recursive Influencer model (2 points)
+
+### Stopping condition for the recursive model (1 point)
+
+### 
+
+## References {.unnumbered}

@@ -186,7 +186,7 @@
     "href": "psets/index.html",
     "title": "Problem sets index for EBS 181/281",
     "section": "",
-    "text": "Problem Sets coming soon!"
+    "text": "Problem Set 1: R skills and basic social transmission models\nProblem Set 2: Social innovation and transmission models in different social networks.\nProblem Set 3: The evolution of institutions for sustainable property rights.\nProblem Set 4: Predicting polarization outcomes and measuring opinion change."
   },
   {
     "objectID": "psets/Lab1_SimpleTransmission.html",
@@ -536,6 +536,125 @@
     "href": "book/index.html#social-networks-structure-social-interaction",
     "title": "Computational Social Science for Sustainability",
     "section": "Social networks structure social interaction",
-    "text": "Social networks structure social interaction\nSocial interactions here are always structured by social networks, starting with our tutorial example, “The Influencer Dynamic”, below. Social networks are a mechanical representation of a relationship between two people. In networks, people are represented as nodes or vertices, which are typically represented by a circle or another shape. Relationships between people are represented as lines connecting nodes called edges. In our social modeling framework, networks are real-world instances of graphs, the mathematical collection of nodes with edges represented numerically by an adjacency matrix. (Continue introducing social networks…)\n\n\n\n\n\n\n\n\n\n(TODO: add bi-directional arrows and mention equivalent to a line with no arrows)"
+    "text": "Social networks structure social interaction\nSocial interactions here are always structured by social networks, starting with our tutorial example, “The Influencer Dynamic”, below. Social networks are a mechanical representation of a relationship between two people. In networks, people are represented as nodes or vertices, which are typically represented by a circle or another shape. Relationships between people are represented as lines connecting nodes called edges. In our social modeling framework, networks are real-world instances of graphs, the mathematical collection of nodes with edges represented numerically by an adjacency matrix. (Continue introducing social networks…)\n\n\n\n\n\n\n\n\nFigure 1: Social networks represent relationships between people, with arrows pointing in the direction of information flow, representing who learns from whom.\n\n\n\n\n\n(TODO: add bi-directional arrows and mention equivalent to a line with no arrows)"
+  },
+  {
+    "objectID": "psets/1/index.html",
+    "href": "psets/1/index.html",
+    "title": "Problem Set 1: R skills and basic social transmission models",
+    "section": "",
+    "text": "computational social science models can help us choose between candidate sustainability interventions by developing simulation experiments that would be impractical, impossible, or unethical in the real world. Developing any computational social science model, even a simple model like the Influencer Dynamic, requires foundational computer and quantitative skills, including knowledge of a programming language. Model-based analyses must be published with documented, publically-available code and raw output data to ensure that other scientists or practitioners can independently confirm model predictions.\n\n\nIn this problem set, students will learn basic programming skills in the R programming language and methods for sharing code and documentation using GitHub. Students will get creative making and visualizing custom social networks. To close the problem set, students will use the Influencer model to estimate how long an advertising campaign must last before all simulated individuals targeted by the campaign. Students will use and compare both a stochastic, agent-based Influencer model and a deterministic, recursion-based version."
+  },
+  {
+    "objectID": "psets/1/index.html#introduction",
+    "href": "psets/1/index.html#introduction",
+    "title": "Problem set #1: R skills and basic social transmission models",
+    "section": "",
+    "text": "Computational social science models can help us choose between candidate sustainability interventions by developing simulation experiments that would be impractical, impossible, or unethical in the real world. Developing any computational social science model, even a simple model like the Influencer Dynamic, requires foundational computer and quantitative skills, including knowledge of a programming language. Model-based analyses must be published with documented, publically-available code and raw output data to ensure that other scientists or practitioners can independently confirm model predictions. In this problem set, students will learn basic programming skills in R and methods for sharing code and documentation using GitHub. Students will learn how to create model social networks and get creative making and visualizing custom social networks. Students will combine their knowledge of"
+  },
+  {
+    "objectID": "psets/1/index.html#a-home-for-your-ebs-281-code",
+    "href": "psets/1/index.html#a-home-for-your-ebs-281-code",
+    "title": "Problem set #1: R skills and basic social transmission models",
+    "section": "1 A home for your EBS 281 code",
+    "text": "1 A home for your EBS 281 code"
+  },
+  {
+    "objectID": "psets/1/index.html#hello-world",
+    "href": "psets/1/index.html#hello-world",
+    "title": "Problem Set 1: R skills and basic social transmission models",
+    "section": "3 Hello, world!",
+    "text": "3 Hello, world!\n\n3.1 Hello, world! in R (1 point)\n\n\n3.2 Basic loading and analyzing data in R (1 point)"
+  },
+  {
+    "objectID": "psets/1/index.html#fun-with-networks",
+    "href": "psets/1/index.html#fun-with-networks",
+    "title": "Problem set #1: R skills and basic social transmission models",
+    "section": "4 Fun with networks",
+    "text": "4 Fun with networks"
+  },
+  {
+    "objectID": "psets/1/index.html#agent-based-influencer-model",
+    "href": "psets/1/index.html#agent-based-influencer-model",
+    "title": "Problem Set 1: R skills and basic social transmission models",
+    "section": "5 Agent-based Influencer model",
+    "text": "5 Agent-based Influencer model"
+  },
+  {
+    "objectID": "psets/1/index.html#section",
+    "href": "psets/1/index.html#section",
+    "title": "Problem set #1: R skills and basic social transmission models",
+    "section": "5 ",
+    "text": "5"
+  },
+  {
+    "objectID": "psets/1/index.html#recursion-based-influencer-model",
+    "href": "psets/1/index.html#recursion-based-influencer-model",
+    "title": "Problem Set 1: R skills and basic social transmission models",
+    "section": "6 Recursion-based Influencer model",
+    "text": "6 Recursion-based Influencer model"
+  },
+  {
+    "objectID": "psets/1/index.html#github-a-home-for-your-ebs-281-code",
+    "href": "psets/1/index.html#github-a-home-for-your-ebs-281-code",
+    "title": "Problem Set 1: R skills and basic social transmission models",
+    "section": "2 GitHub: A home for your (EBS 281) code",
+    "text": "2 GitHub: A home for your (EBS 281) code\nGitHub hosts code repositories or repos. A repo is a set of code whose history is tracked by a computer program called Git. Some time ago there were other programs to track the history of code projects, which are generally called version control software. Git is the best version control software available, and is now the default for software development.\nGit allows us to take snapshots of our code so that we can revert to an old version. When we share our code on GitHub, others can use or inspect our code at different versions. We use this to take a snapshot of the code that was used in an analysis for a paper, but that underwent further development after. Updates to the code may make simulations or data fitting operate differently over time, so it is important to be able to use code as it was in the past.\nThe best way to understand Git and GitHub are to practice using them. The next two tasks help you do that and access the source code you will use and edit to complete the assignment.\n\n2.1 Get a GitHub account if you don’t already have one (1 point)\n\n\n2.2 Fork and clone the CSS4S/Assignments-Winter2025 GitHub repository (1 point)"
+  },
+  {
+    "objectID": "psets/1/index.html#rstudio-installation-or-use-online",
+    "href": "psets/1/index.html#rstudio-installation-or-use-online",
+    "title": "Problem Set 1: R skills and basic social transmission models",
+    "section": "1 RStudio installation or use online",
+    "text": "1 RStudio installation or use online\nTo use RStudio immediately with no installation, navigate to Stanford’s FarmShare OnDemand Interactive Apps with up to sixteen cores and 64 GB of RAM."
+  },
+  {
+    "objectID": "psets/1/index.html#fun-with-networks-2-points",
+    "href": "psets/1/index.html#fun-with-networks-2-points",
+    "title": "Problem Set 1: R skills and basic social transmission models",
+    "section": "3 Fun with networks (2 points)",
+    "text": "3 Fun with networks (2 points)\n\n3.1 Directional information in simple networks (1 point)\nGive example with two agents, then prompt student to add a third and fourth, making a square loop.\n\n\n3.2 Other kinds of networks (1 point)\nIn this problem set we focus on understanding information flow in the relatively simple Influencer network. In future lectures and problem sets we will encounter more complex networks that represent social networks where associates can learn from one another instead of just from an “influencer”. This problem previews different tools for creating different classes of more complex social networks.\nOne of these network properties is the small-world property devised by Watts and Strogatz (1998). It is available using the smallworld function in igraph. In the code for this problem I provide a function to create and plot a small-world network. In the following three code blocks, select different, increasing of rewiring probability"
+  },
+  {
+    "objectID": "psets/1/index.html#rstudio-online-or-personal-setup-if-you-already-have-rstudio",
+    "href": "psets/1/index.html#rstudio-online-or-personal-setup-if-you-already-have-rstudio",
+    "title": "Problem Set 1: R skills and basic social transmission models",
+    "section": "RStudio online (or personal setup if you already have RStudio)",
+    "text": "RStudio online (or personal setup if you already have RStudio)\nWe have a custom RStudio instance for our course avialable via FarmShare OnDemand. To use RStudio navigate to Stanford’s FarmShare OnDemand Interactive Apps with up to sixteen cores and 64 GB of RAM."
+  },
+  {
+    "objectID": "psets/1/index.html#github-a-home-for-your-ebs-281-code-2-points",
+    "href": "psets/1/index.html#github-a-home-for-your-ebs-281-code-2-points",
+    "title": "Problem Set 1: R skills and basic social transmission models",
+    "section": "1 GitHub: A home for your (EBS 281) code (2 points)",
+    "text": "1 GitHub: A home for your (EBS 281) code (2 points)\nGitHub hosts code repositories or repos. A repo is a set of code whose history is tracked by a computer program called Git. Some time ago there were other programs to track the history of code projects, which are generally called version control software. Git is the best version control software available, and is now the default for software development.\nGit allows us to take snapshots of our code so that we can revert to an old version. When we share our code on GitHub, others can use or inspect our code at different versions. We use this to take a snapshot of the code that was used in an analysis for a paper, but that underwent further development after. Updates to the code may make simulations or data fitting operate differently over time, so it is important to be able to use code as it was in the past.\nThe best way to understand Git and GitHub are to practice using them. The next two tasks help you do that and access the source code you will use and edit to complete the assignment.\n\n1.1 Get a GitHub account if you don’t already have one (1 point)\n\n\n1.2 Fork and clone your personal CSS4S/Winter2025 GitHub repository (1 point)"
+  },
+  {
+    "objectID": "psets/1/index.html#hello-world-2-points",
+    "href": "psets/1/index.html#hello-world-2-points",
+    "title": "Problem Set 1: R skills and basic social transmission models",
+    "section": "2 Hello, world! (2 points)",
+    "text": "2 Hello, world! (2 points)\n\n2.1 Hello, world! in R (1 point)\nBelow is the function hello_world_plot that we will use and you will edit.\n\n\nCode\nlibrary(ggplot2)\nlibrary(tibble)\n\nhello_world_plot &lt;- function(n_steps = 10, start_t = 0, dt = 1) {\n\n    # Local function that is only available in hello_world_plot.\n    y &lt;- function(t, a = 2) {\n        a * t \n    }\n\n    # Create time step sequence given parameters passed to this function.\n    t &lt;- seq(from=start_t, by=dt, length.out=n_steps)\n\n    # Create fake data table (i.e., a \"tibble\" from the tibble library).\n    fake_data &lt;- tibble(y = y(t), t = t)\n\n    # Plot the fake data.\n    ggplot(fake_data, aes(x=t, y=y)) + \n        geom_line() + \n        xlab(\"relabel me 1\") + \n        ylab(\"relabel me 2\") + \n        theme_classic()\n}\n\n\nH\n\n\nCode\nhello_world_plot()\n\n\n\n\n\n\n\n\n\n\n\n2.2 Basic loading and analyzing data in R (1 point)\nThe following code reads a dataset containing academic information for the students in this class. We are going to count and plot some information from the dataset to understand the composition of our class. I will show how to plot the data one way. You will then change the code to plot the data a different way to continue practicing using ggplot2 library."
+  },
+  {
+    "objectID": "psets/1/index.html#agent-based-influencer-model-2-points",
+    "href": "psets/1/index.html#agent-based-influencer-model-2-points",
+    "title": "Problem Set 1: R skills and basic social transmission models",
+    "section": "4 Agent-based Influencer model (2 points)",
+    "text": "4 Agent-based Influencer model (2 points)\nThe influencer model represents the hypothetical situation where \\(N\\) individuals, performing a non-adaptive behavior, \\(\\neg a\\), observe one other agent, the influencer, performing adaptive behavior \\(a\\). The model assumes that the observers adopt \\(a\\) with probability \\(\\alpha\\).\n\n4.1 How does the number of influenced agents, \\(N\\), change \\(T\\)?\n\n\n4.2 Run the agent-based model for different values of \\(\\alpha\\)"
+  },
+  {
+    "objectID": "psets/1/index.html#recursion-based-influencer-model-2-points",
+    "href": "psets/1/index.html#recursion-based-influencer-model-2-points",
+    "title": "Problem Set 1: R skills and basic social transmission models",
+    "section": "5 Recursion-based Influencer model (2 points)",
+    "text": "5 Recursion-based Influencer model (2 points)"
+  },
+  {
+    "objectID": "psets/1/index.html#recursive-influencer-model-2-points",
+    "href": "psets/1/index.html#recursive-influencer-model-2-points",
+    "title": "Problem Set 1: R skills and basic social transmission models",
+    "section": "5 Recursive Influencer model (2 points)",
+    "text": "5 Recursive Influencer model (2 points)\n\n5.1 Stopping condition for the recursive model (1 point)\n\n\n5.2"
   }
 ]

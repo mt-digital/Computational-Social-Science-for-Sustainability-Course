@@ -17,11 +17,11 @@ website:
       - href: lectures/index.qmd
         text: Lectures
 
-      - href: psets/index.qmd
-        text: "Problem sets"
+#      - href: psets/index.qmd
+#        text: "Problem sets"
 
-      - href: https://mt.digital
-        text: "MA Turner, Ph.D."
+#      - href: https://mt.digital
+#        text: "MA Turner, Ph.D."
 
 format:
   html:
