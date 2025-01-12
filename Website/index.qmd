@@ -47,17 +47,17 @@ accommodations. The OAE is located at 563 Salvatierra Walk (phone:
 
 ## Course overview
 
-The development and diffusion of sustainable innovations, cooperation for
-sustainable resource management, and political polarization that can undermine
-these, share a common explanation: these phenomena all emerge from repeated
-social interactions between individuals over time. These interactions take the
-form of social learning, social influence, or strategic economic cooperation.
-
-Take this course to learn how to develop computational "experiments" of repeated
-social interaction that can be used to design more effective sustainability
-interventions and to analyze behavioral data. Students will learn transferrable technical
-skills in programming and mathematics. Students will deepen their interdisciplinary
-understanding of the social and behavioral sciences. With these skills and understanding, students will be empowered to create research products that analyze and evaluate potential sustainability interventions using computation.
+Many sustainability challenges—such as spreading new ideas and habits, fostering
+cooperation for shared resources, and addressing political divides—arise from
+repeated social interactions over time. Through labs and lectures, students will
+learn computational methods to model and analyze the behavioral outcomes of
+longer-term social learning, strategic economic cooperation, and social
+influence. Students will have the chance to apply these methods to real-world
+sustainability behaviors of interest in a final project. By the end of the
+course, students will have gained practical technical skills in R programming
+and data science, a deeper understanding of how to apply computational tools to
+social science, and the ability to design research that addresses pressing
+sustainability challenges.
 
 ### Learning goals
 
