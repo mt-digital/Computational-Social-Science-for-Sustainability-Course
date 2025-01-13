@@ -86,13 +86,49 @@ library(tibble)
 circles <- tibble(x0 = c(0, 2), y0 = c(0, 0), r = c(.5, .5))
 ggplot() + 
     geom_circle(aes(x0 = x0, y0 = y0, r = r), data = circles, fill = "SkyBlue2") + 
-    geom_segment(aes(x = 0.5, y = 0, xend = 1.5, yend = 0), arrow = arrow()) +
+    geom_segment(aes(x = 0.5, y = 0, xend = 1.5, yend = 0), arrow =
+                 arrow(type="closed", length=unit(0.2, "inches"))) +
     annotate("text", x=0, y=0, label="Teacher", size=8) +
     annotate("text", x=2, y=0, label="Learner", size=8) +
     annotate("text", x=0.95, y=0.15, label="Information flow", size=5) +
     theme_void()
 ```
 
+
+```{r}
+#| fig-width: 5.5
+#| fig-asp: 0.33333
+#| fig-align: center
+
+circles <- tibble(x0 = c(0, 2), y0 = c(0, 0), r = c(.5, .5))
+ggplot() + 
+    geom_circle(aes(x0 = x0, y0 = y0, r = r), data = circles, fill = "SkyBlue2") + 
+    geom_curve(aes(x = 0.5, y = -0.1, xend = 1.5, yend = -0.1), 
+               arrow=arrow(type="closed", length=unit(0.2, "inches")),
+               curvature=0.2) +
+    geom_curve(aes(xend = 0.5, yend = 0.1, x = 1.5, y = 0.1), 
+               arrow=arrow(type="closed", length=unit(0.2, "inches")),
+               curvature=0.2) +
+    annotate("text", x=0, y=0, label="Teacher/\nLearner", size=6) +
+    annotate("text", x=2, y=0, label="Learner/\nTeacher", size=6) +
+    theme_void()
+```
+
+<div style="text-align:center; font-weight:bold; font-size:20px">$\uparrow\quad$ is equivalent to $\quad\downarrow$</div>
+
+```{r}
+#| fig-width: 5.5
+#| fig-asp: 0.33333
+#| label: fig-teacher-learner-bidirectional
+#| fig-cap: "Social networks represent relationships between people, with arrows pointing in the direction of information flow, representing who learns from whom."
+
+ggplot() + 
+    geom_circle(aes(x0 = x0, y0 = y0, r = r), data = circles, fill = "SkyBlue2") + 
+    geom_segment(aes(x = 0.5, y = 0, xend = 1.5, yend = 0)) +
+    annotate("text", x=0, y=0, label="Teacher/\nLearner", size=6) +
+    annotate("text", x=2, y=0, label="Learner/\nTeacher", size=6) +
+    theme_void()
+```
 
 (TODO: add bi-directional arrows and mention equivalent to a line with no arrows)
 

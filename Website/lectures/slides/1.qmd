@@ -1,6 +1,5 @@
 ---
-title: "Introduction to EBS 181/281: Computational Social Science for
-Sustainability"
+title: "Introduction to EBS 181/281: Computational Social Science for Sustainability"
 subtitle: "Social interactions, social outcomes, and social learning in social networks"
 author: "Dr. Matthew A. Turner, PhD"
 institution: "Department of Human Behavioral Sciences, Stanford Doerr School of Sustainability"

@@ -536,7 +536,7 @@
     "href": "book/index.html#social-networks-structure-social-interaction",
     "title": "Computational Social Science for Sustainability",
     "section": "Social networks structure social interaction",
-    "text": "Social networks structure social interaction\nSocial interactions here are always structured by social networks, starting with our tutorial example, “The Influencer Dynamic”, below. Social networks are a mechanical representation of a relationship between two people. In networks, people are represented as nodes or vertices, which are typically represented by a circle or another shape. Relationships between people are represented as lines connecting nodes called edges. In our social modeling framework, networks are real-world instances of graphs, the mathematical collection of nodes with edges represented numerically by an adjacency matrix. (Continue introducing social networks…)\n\n\n\n\n\n\n\n\nFigure 1: Social networks represent relationships between people, with arrows pointing in the direction of information flow, representing who learns from whom.\n\n\n\n\n\n(TODO: add bi-directional arrows and mention equivalent to a line with no arrows)"
+    "text": "Social networks structure social interaction\nSocial interactions here are always structured by social networks, starting with our tutorial example, “The Influencer Dynamic”, below. Social networks are a mechanical representation of a relationship between two people. In networks, people are represented as nodes or vertices, which are typically represented by a circle or another shape. Relationships between people are represented as lines connecting nodes called edges. In our social modeling framework, networks are real-world instances of graphs, the mathematical collection of nodes with edges represented numerically by an adjacency matrix. (Continue introducing social networks…)\n\n\n\n\n\n\n\n\nFigure 1: Social networks represent relationships between people, with arrows pointing in the direction of information flow, representing who learns from whom.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\uparrow\\quad\\) is equivalent to \\(\\quad\\downarrow\\)\n\n\n\n\n\n\n\n\n\nFigure 2: Social networks represent relationships between people, with arrows pointing in the direction of information flow, representing who learns from whom.\n\n\n\n\n\n(TODO: add bi-directional arrows and mention equivalent to a line with no arrows)"
   },
   {
     "objectID": "psets/1/index.html",
@@ -656,5 +656,145 @@
     "title": "Problem Set 1: R skills and basic social transmission models",
     "section": "5 Recursive Influencer model (2 points)",
     "text": "5 Recursive Influencer model (2 points)\n\n5.1 Stopping condition for the recursive model (1 point)\n\n\n5.2"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#the-influencer",
+    "href": "lectures/slides/2/index.html#the-influencer",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "The Influencer",
+    "text": "The Influencer\nLet’s model how long it will take for everyone who is influenced by this influencer to adopt the behavior of commuting on bike!\n\nYours truly spreading the love of biking."
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#review-motivated-by-ostroms-design-principles-program",
+    "href": "lectures/slides/2/index.html#review-motivated-by-ostroms-design-principles-program",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Review: motivated by Ostrom’s design principles program",
+    "text": "Review: motivated by Ostrom’s design principles program\nOstrom’s work elevated traditional, Indigenous adaptations for a changing climate (always been changing) and other sustainability challenges.\n\n\n\n\n\nFrom The Nature Conservancy, “Woman Scientist Saves Mangroves and Battles Climate Change” [link]\n\n\n\n\n\n\nFrom The Nature Conservancy, “Quiet Fire: Indigenous tribes in California and other parts of the U.S. have been rekindling the ancient art of controlled burning.” [link]"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#review-motivated-by-ostroms-design-principles-for-sustainable-socio-economic-systems",
+    "href": "lectures/slides/2/index.html#review-motivated-by-ostroms-design-principles-for-sustainable-socio-economic-systems",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Review: motivated by Ostrom’s design principles for sustainable socio-economic systems",
+    "text": "Review: motivated by Ostrom’s design principles for sustainable socio-economic systems\nOstrom’s work elevated traditional, Indigenous adaptations for a changing climate (always been changing) and other sustainability challenges.\n\n\n\n\n\nFrom The Nature Conservancy, “Woman Scientist Saves Mangroves and Battles Climate Change” [link]\n\n\n\n\n\n\nFrom The Nature Conservancy, “Quiet Fire: Indigenous tribes in California and other parts of the U.S. have been rekindling the ancient art of controlled burning.” [link]"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#ostroms-work-elevated-indigenous-adaptation",
+    "href": "lectures/slides/2/index.html#ostroms-work-elevated-indigenous-adaptation",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Ostrom’s work elevated Indigenous adaptation",
+    "text": "Ostrom’s work elevated Indigenous adaptation\nTraditional, Indigenous adaptations for a changing climate are often outperform alternative technological innovations (Piggott-McKellar et al. 2020; McNamara et al. 2020).\n\n\n\n\n\nFrom The Nature Conservancy, “Woman Scientist Saves Mangroves and Battles Climate Change” [link]\n\n\n\n\n\n\nFrom The Nature Conservancy, “Quiet Fire: Indigenous tribes in California and other parts of the U.S. have been rekindling the ancient art of controlled burning.” [link]"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#ostroms-design-principles-for-sustainable-socio-ecological-systems",
+    "href": "lectures/slides/2/index.html#ostroms-design-principles-for-sustainable-socio-ecological-systems",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Ostrom’s design principles for sustainable socio-ecological systems",
+    "text": "Ostrom’s design principles for sustainable socio-ecological systems\n\nElinor Ostrom led development of social-ecological systems theory, which identified design principles to sustainably manage common-pool resources like clean water or healthy forests; all the common-pool resources together are called the commons.\n\nFirst woman to win a Nobel prize in economics (2009)\n\n\n\n\n\n\n\nSelect design principles (8 total; see Cox, Arnold, and Tomás (2010) reading for an overview):\n\nRules should fit local circumstances\nParticipation of all stakeholders is vital\n\nManagement of the commons must be organized across social and institutional scales\nAll levels of social hierarchy must be recognized and free to organize\n\nConflict resolution should be easily accessible"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#computational-social-science-for-sustainability",
+    "href": "lectures/slides/2/index.html#computational-social-science-for-sustainability",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Computational social science for sustainability",
+    "text": "Computational social science for sustainability\n\nThe design principles were inferred from decades of studies by various authors\nComputation based on mechanistic models can provide deductive predictions of how social phenomena emerge from social interactions\n\nSocial phenomena such as…"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#plan-for-today",
+    "href": "lectures/slides/2/index.html#plan-for-today",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Plan for today",
+    "text": "Plan for today\nHow useful practices propagate through populations\n\nA general social model framework\nSocial learning strategies and models of cultural transmission\nSocial networks structure social learning: who learns from whom\nThe Legacy-Adaptive (LA) and Legacy-Adaptive-Legacy (LAL) models of diffusion via “contagion”\n\n\nStochastic, deterministic, discrete, and continuous models"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#beyond-today",
+    "href": "lectures/slides/2/index.html#beyond-today",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Beyond today",
+    "text": "Beyond today\n\nMore network constructions: small-world and scale-free networks\nSuccess-biased social learning\nHow certain social networks may boost both innovation and inequality\nAnalysis of group structure and its effect on the diffusion of adaptations\nCooperation and coordination\nSocial influence and opinion dynamics: beliefs as particles"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#a-general-framework-to-be-filled-in",
+    "href": "lectures/slides/2/index.html#a-general-framework-to-be-filled-in",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "A general framework to be filled in",
+    "text": "A general framework to be filled in\n\n\n\n\n\nflowchart TD"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#references",
+    "href": "lectures/slides/2/index.html#references",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "References",
+    "text": "References\n\n\n\n\n\n\n\n\nCox, Michael, Gwen Arnold, and Sergio Villamayor Tomás. 2010. “A review of design principles for community-based natural resource management.” Ecology and Society 15 (4). https://doi.org/10.5751/ES-03704-150438.\n\n\nMcNamara, Karen E., Rachel Clissold, Ross Westoby, Annah E. Piggott-McKellar, Roselyn Kumar, Tahlia Clarke, Frances Namoumou, et al. 2020. “An assessment of community-based adaptation initiatives in the Pacific Islands.” Nature Climate Change 10 (7): 628–39. https://doi.org/10.1038/s41558-020-0813-1.\n\n\nPiggott-McKellar, Annah E, Patrick D Nunn, Karen E McNamara, and Seci T Sekinini. 2020. “Dam(n) Seawalls: A Case of Climate Change Maladaptation in Fiji.” In Managing Climate Change Adaptation in the Pacific Region, edited by W. Leal Filho, 69–84. Springer. https://doi.org/10.1007/978-3-030-40552-6."
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#the-influencer-1",
+    "href": "lectures/slides/2/index.html#the-influencer-1",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "The influencer",
+    "text": "The influencer\n\n\nInitialization: time step \\(t=0\\); B: biker, N: not biker\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA node or vertex (circles) represents a person\nAn edge (arrows) represents a relationship between two people\nEdge arrows indicate the direction of information flow\nPeople do not interact unless connected in the social network"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#the-influencer-2",
+    "href": "lectures/slides/2/index.html#the-influencer-2",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "The influencer",
+    "text": "The influencer\n\n\nTime step \\(t &gt; 0\\)\n\n\n\n\n\n\n\n\n\n\n\nThe influenced begin to adopt biking over time\nWe specify the probability, \\(a\\), that an influenced person starts biking when exposed to it by the influencer"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#the-influencer-3",
+    "href": "lectures/slides/2/index.html#the-influencer-3",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "The influencer",
+    "text": "The influencer\n\n\nTime step \\(t = T\\)\n\n\n\n\n\n\n\n\n\n\n\nIn this model, everyone eventually bikes because there is no “forgetting” or “reverting” to previous behaviors.\nThe state where all become bikers is called fixation.\nThe time step \\(T\\) when fixation occurs is the fixation time.\nWith this model we can calculate \\(T\\) as a function of the number of influenced agents, \\(N\\), and the transmissibility of biking, \\(\\tau\\)."
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#the-influencer-4",
+    "href": "lectures/slides/2/index.html#the-influencer-4",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "The influencer",
+    "text": "The influencer\n\n\nTime step \\(t = T\\)\n\n\n\n\n\n\n\n\n\n\n\nIn this model, everyone eventually bikes because there is no “forgetting” or “reverting” to previous behaviors.\nThe state where all become bikers is called fixation.\nThe time step \\(T\\) when fixation occurs is the fixation time.\nWith this model we can calculate \\(T\\) as a function of the number of influenced agents, \\(N\\), and the transmissibility of biking, \\(\\tau\\)."
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#the-influencer-5",
+    "href": "lectures/slides/2/index.html#the-influencer-5",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "The influencer",
+    "text": "The influencer\n\n\nTime step \\(t = T\\)\n\n\n\n\n\n\n\n\n\n\n\nIn this model, everyone eventually bikes because there is no “forgetting” or “reverting” to previous behaviors.\nThe state where all become bikers is called fixation.\nThe time step \\(T\\) when fixation occurs is the fixation time.\nWith this model we can calculate \\(T\\) as a function of the number of influenced agents, \\(N\\), and the transmissibility of biking, \\(\\tau\\)."
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#legacy-adaptive-la-model",
+    "href": "lectures/slides/2/index.html#legacy-adaptive-la-model",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Legacy-adaptive (LA) model",
+    "text": "Legacy-adaptive (LA) model\n\nAdapted from the susceptible-infected model of disease transmission, i.e., contagion"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#why-legacy-adaptive",
+    "href": "lectures/slides/2/index.html#why-legacy-adaptive",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Why “legacy-adaptive”?",
+    "text": "Why “legacy-adaptive”?\n\n\n\n\n\n“The legacy media want to destroy your right to freedom of speech” says Elon Musk\nMusk repurposed the phrase “legacy software”, which indicates old, outdated software that will one day be abandoned\nIt may be helpful to harness this phrase to the same effect as Musk does, but for non-adaptive behaviors with respect to climate change and sustainability\nIt can be important to contest certain concepts like “legacy” to restrain others from defining how useful terms can be used"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#the-adaptation-influencer-case",
+    "href": "lectures/slides/2/index.html#the-adaptation-influencer-case",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "The adaptation influencer case",
+    "text": "The adaptation influencer case\n\nOftentimes people will eventually adopt a behavior if they observe an “influencer”.\nIf we are designing a sustainability intervention, we may want to know how long it will take for everyone who is influenced by an influencer to adopt some behavior"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#the-legacy-adaptive-la-model",
+    "href": "lectures/slides/2/index.html#the-legacy-adaptive-la-model",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "The Legacy-Adaptive (LA) model",
+    "text": "The Legacy-Adaptive (LA) model\n\n\n\n\n\n\n\n\n\nG\n\n\n\nLegacy, L\n\nLegacy, L\n\n\n\nAdaptive, A\n\nAdaptive, A\n\n\n\nLegacy, L:ne-&gt;Adaptive, A:nw\n\n\na\n\n\n\n\n\n\n\n\n\n\n\n\nAdapted from the susceptible-infected model from epidemiology:\n\n\\(L\\) represents one of possibly several legacy behaviors\n\\(A\\) represents the adaptive behavior (biking in the influencer example)\nThese are analogous to an individual being susceptible to disease or infected\n\nAdaptive behavior represented as a “contagion” that spreads from person to person with adoption probability, \\(a\\)"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#testing",
+    "href": "lectures/slides/2/index.html#testing",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Testing",
+    "text": "Testing\n\n\n\n\n\n\n\n\n\n\n\n\n\nG\n\n\n\nLegacy\n\nLegacy\n\n\n\nAdaptive\n\nAdaptive\n\n\n\nLegacy:ne-&gt;Adaptive:nw\n\n\n_a_"
   }
 ]
