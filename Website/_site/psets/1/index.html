@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthew A. Turner">
 
-<title>Comp. Soc. Sci. for Sustainability (EBS 181/281) - Problem Set 1: R skills and basic social transmission models</title>
+<title>Problem set #1: R skills and basic social transmission models – Comp. Soc. Sci. for Sustainability (EBS 181/281)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,61 +21,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -91,10 +37,10 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-eb83b09dbd08fe6a8296ac6453ea0b21.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -123,35 +69,6 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -168,7 +85,7 @@ window.Quarto = {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -185,9 +102,17 @@ window.Quarto = {
     <a class="nav-link" href="../../lectures/index.html"> 
 <span class="menu-text">Lectures</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../psets/index.html"> 
+<span class="menu-text">Problem sets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://mt.digital"> 
+<span class="menu-text">MA Turner, Ph.D.</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -196,48 +121,15 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">introduction</a></li>
-  <li><a href="#rstudio-online-or-personal-setup-if-you-already-have-rstudio" id="toc-rstudio-online-or-personal-setup-if-you-already-have-rstudio" class="nav-link" data-scroll-target="#rstudio-online-or-personal-setup-if-you-already-have-rstudio">RStudio online (or personal setup if you already have RStudio)</a></li>
-  <li><a href="#github-a-home-for-your-ebs-281-code-2-points" id="toc-github-a-home-for-your-ebs-281-code-2-points" class="nav-link" data-scroll-target="#github-a-home-for-your-ebs-281-code-2-points"><span class="header-section-number">1</span> GitHub: A home for your (EBS 281) code (2 points)</a>
-  <ul class="collapse">
-  <li><a href="#get-a-github-account-if-you-dont-already-have-one-1-point" id="toc-get-a-github-account-if-you-dont-already-have-one-1-point" class="nav-link" data-scroll-target="#get-a-github-account-if-you-dont-already-have-one-1-point"><span class="header-section-number">1.1</span> Get a GitHub account if you don’t already have one (1 point)</a></li>
-  <li><a href="#fork-and-clone-your-personal-css4swinter2025-github-repository-1-point" id="toc-fork-and-clone-your-personal-css4swinter2025-github-repository-1-point" class="nav-link" data-scroll-target="#fork-and-clone-your-personal-css4swinter2025-github-repository-1-point"><span class="header-section-number">1.2</span> Fork and clone your personal CSS4S/Winter2025 GitHub repository (1 point)</a></li>
-  </ul></li>
-  <li><a href="#hello-world-2-points" id="toc-hello-world-2-points" class="nav-link" data-scroll-target="#hello-world-2-points"><span class="header-section-number">2</span> Hello, world! (2 points)</a>
-  <ul class="collapse">
-  <li><a href="#hello-world-in-r-1-point" id="toc-hello-world-in-r-1-point" class="nav-link" data-scroll-target="#hello-world-in-r-1-point"><span class="header-section-number">2.1</span> Hello, world! in R (1 point)</a></li>
-  <li><a href="#basic-loading-and-analyzing-data-in-r-1-point" id="toc-basic-loading-and-analyzing-data-in-r-1-point" class="nav-link" data-scroll-target="#basic-loading-and-analyzing-data-in-r-1-point"><span class="header-section-number">2.2</span> Basic loading and analyzing data in R (1 point)</a></li>
-  </ul></li>
-  <li><a href="#fun-with-networks-2-points" id="toc-fun-with-networks-2-points" class="nav-link" data-scroll-target="#fun-with-networks-2-points"><span class="header-section-number">3</span> Fun with networks (2 points)</a>
-  <ul class="collapse">
-  <li><a href="#directional-information-in-simple-networks-1-point" id="toc-directional-information-in-simple-networks-1-point" class="nav-link" data-scroll-target="#directional-information-in-simple-networks-1-point"><span class="header-section-number">3.1</span> Directional information in simple networks (1 point)</a></li>
-  <li><a href="#other-kinds-of-networks-1-point" id="toc-other-kinds-of-networks-1-point" class="nav-link" data-scroll-target="#other-kinds-of-networks-1-point"><span class="header-section-number">3.2</span> Other kinds of networks (1 point)</a></li>
-  </ul></li>
-  <li><a href="#agent-based-influencer-model-2-points" id="toc-agent-based-influencer-model-2-points" class="nav-link" data-scroll-target="#agent-based-influencer-model-2-points"><span class="header-section-number">4</span> Agent-based Influencer model (2 points)</a>
-  <ul class="collapse">
-  <li><a href="#how-does-the-number-of-influenced-agents-n-change-t" id="toc-how-does-the-number-of-influenced-agents-n-change-t" class="nav-link" data-scroll-target="#how-does-the-number-of-influenced-agents-n-change-t"><span class="header-section-number">4.1</span> How does the number of influenced agents, <span class="math inline">\(N\)</span>, change <span class="math inline">\(T\)</span>?</a></li>
-  <li><a href="#run-the-agent-based-model-for-different-values-of-alpha" id="toc-run-the-agent-based-model-for-different-values-of-alpha" class="nav-link" data-scroll-target="#run-the-agent-based-model-for-different-values-of-alpha"><span class="header-section-number">4.2</span> Run the agent-based model for different values of <span class="math inline">\(\alpha\)</span></a></li>
-  </ul></li>
-  <li><a href="#recursive-influencer-model-2-points" id="toc-recursive-influencer-model-2-points" class="nav-link" data-scroll-target="#recursive-influencer-model-2-points"><span class="header-section-number">5</span> Recursive Influencer model (2 points)</a>
-  <ul class="collapse">
-  <li><a href="#stopping-condition-for-the-recursive-model-1-point" id="toc-stopping-condition-for-the-recursive-model-1-point" class="nav-link" data-scroll-target="#stopping-condition-for-the-recursive-model-1-point"><span class="header-section-number">5.1</span> Stopping condition for the recursive model (1 point)</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">5.2</span> </a></li>
-  </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Problem Set 1: R skills and basic social transmission models</h1>
+<h1 class="title">Problem set #1: R skills and basic social transmission models</h1>
 </div>
 
 
@@ -260,126 +152,10 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="introduction">introduction</h3>
-<p>computational social science models can help us choose between candidate sustainability interventions by developing simulation experiments that would be impractical, impossible, or unethical in the real world. Developing any computational social science model, even a simple model like the Influencer Dynamic, requires foundational computer and quantitative skills, including knowledge of a programming language. Model-based analyses must be published with documented, publically-available code and raw output data to ensure that other scientists or practitioners can independently confirm model predictions.</p>
-<section id="learning-goals" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="learning-goals">Learning goals</h4>
-<p>In this problem set, students will learn basic programming skills in the R programming language and methods for sharing code and documentation using GitHub. Students will get creative making and visualizing custom social networks. To close the problem set, students will use the Influencer model to estimate how long an advertising campaign must last before all simulated individuals targeted by the campaign. Students will use and compare both a stochastic, agent-based Influencer model and a deterministic, recursion-based version.</p>
-</section>
-</section>
-<section id="rstudio-online-or-personal-setup-if-you-already-have-rstudio" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="rstudio-online-or-personal-setup-if-you-already-have-rstudio">RStudio online (or personal setup if you already have RStudio)</h2>
-<p>We have a custom RStudio instance for our course avialable via FarmShare OnDemand. To use RStudio navigate to Stanford’s FarmShare OnDemand <a href="https://ondemand-01.farmshare.stanford.edu/pun/sys/dashboard/batch_connect/sessions#">Interactive Apps</a> with up to sixteen cores and 64 GB of RAM.</p>
-</section>
-<section id="github-a-home-for-your-ebs-281-code-2-points" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="github-a-home-for-your-ebs-281-code-2-points"><span class="header-section-number">1</span> GitHub: A home for your (EBS 281) code (2 points)</h2>
-<p>GitHub hosts code <em>repositories</em> or <em>repos</em>. A <em>repo</em> is a set of code whose history is tracked by a computer program called Git. Some time ago there were other programs to track the history of code projects, which are generally called <em>version control</em> software. Git is the best version control software available, and is now the default for software development.</p>
-<p>Git allows us to take snapshots of our code so that we can revert to an old version. When we share our code on GitHub, others can use or inspect our code at different versions. We use this to take a snapshot of the code that was used in an analysis for a paper, but that underwent further development after. Updates to the code may make simulations or data fitting operate differently over time, so it is important to be able to use code as it was in the past.</p>
-<p>The best way to understand Git and GitHub are to practice using them. The next two tasks help you do that and access the source code you will use and edit to complete the assignment.</p>
-<section id="get-a-github-account-if-you-dont-already-have-one-1-point" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="get-a-github-account-if-you-dont-already-have-one-1-point"><span class="header-section-number">1.1</span> Get a GitHub account if you don’t already have one (1 point)</h3>
-</section>
-<section id="fork-and-clone-your-personal-css4swinter2025-github-repository-1-point" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="fork-and-clone-your-personal-css4swinter2025-github-repository-1-point"><span class="header-section-number">1.2</span> Fork and clone your personal CSS4S/Winter2025 GitHub repository (1 point)</h3>
-</section>
-</section>
-<section id="hello-world-2-points" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="hello-world-2-points"><span class="header-section-number">2</span> Hello, world! (2 points)</h2>
-<section id="hello-world-in-r-1-point" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="hello-world-in-r-1-point"><span class="header-section-number">2.1</span> Hello, world! in R (1 point)</h3>
-<p>Below is the function <code>hello_world_plot</code> that we will use and you will edit.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>hello_world_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n_steps =</span> <span class="dv">10</span>, <span class="at">start_t =</span> <span class="dv">0</span>, <span class="at">dt =</span> <span class="dv">1</span>) {</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Local function that is only available in hello_world_plot.</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> <span class="cf">function</span>(t, <span class="at">a =</span> <span class="dv">2</span>) {</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        a <span class="sc">*</span> t </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create time step sequence given parameters passed to this function.</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    t <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span>start_t, <span class="at">by=</span>dt, <span class="at">length.out=</span>n_steps)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create fake data table (i.e., a "tibble" from the tibble library).</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    fake_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">y =</span> <span class="fu">y</span>(t), <span class="at">t =</span> t)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the fake data.</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(fake_data, <span class="fu">aes</span>(<span class="at">x=</span>t, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">xlab</span>(<span class="st">"relabel me 1"</span>) <span class="sc">+</span> </span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ylab</span>(<span class="st">"relabel me 2"</span>) <span class="sc">+</span> </span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_classic</span>()</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>H</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello_world_plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="basic-loading-and-analyzing-data-in-r-1-point" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="basic-loading-and-analyzing-data-in-r-1-point"><span class="header-section-number">2.2</span> Basic loading and analyzing data in R (1 point)</h3>
-<p>The following code reads a dataset containing academic information for the students in this class. We are going to count and plot some information from the dataset to understand the composition of our class. I will show how to plot the data one way. You will then change the code to plot the data a different way to continue practicing using <code>ggplot2</code> library.</p>
-</section>
-</section>
-<section id="fun-with-networks-2-points" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="fun-with-networks-2-points"><span class="header-section-number">3</span> Fun with networks (2 points)</h2>
-<section id="directional-information-in-simple-networks-1-point" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="directional-information-in-simple-networks-1-point"><span class="header-section-number">3.1</span> Directional information in simple networks (1 point)</h3>
-<p>Give example with two agents, then prompt student to add a third and fourth, making a square loop.</p>
-</section>
-<section id="other-kinds-of-networks-1-point" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="other-kinds-of-networks-1-point"><span class="header-section-number">3.2</span> Other kinds of networks (1 point)</h3>
-<p>In this problem set we focus on understanding information flow in the relatively simple Influencer network. In future lectures and problem sets we will encounter more complex networks that represent social networks where associates can learn from one another instead of just from an “influencer”. This problem previews different tools for creating different classes of more complex social networks.</p>
-<p>One of these network properties is the <em>small-world</em> property devised by <span class="citation" data-cites="Watts1998">Watts and Strogatz (<a href="#ref-Watts1998" role="doc-biblioref">1998</a>)</span>. It is available using the <a href="https://r.igraph.org/reference/sample_smallworld.html"><code>smallworld</code> function in <code>igraph</code></a>. In <a href="https://github.com/CSS4S/Winter-2025/PS1/smallworld.R">the code for this problem</a> I provide a function to create and plot a small-world network. In the following three code blocks, select different, increasing of rewiring probability</p>
-</section>
-</section>
-<section id="agent-based-influencer-model-2-points" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="agent-based-influencer-model-2-points"><span class="header-section-number">4</span> Agent-based Influencer model (2 points)</h2>
-<p>The influencer model represents the hypothetical situation where <span class="math inline">\(N\)</span> individuals, performing a non-adaptive behavior, <span class="math inline">\(\neg a\)</span>, observe one other agent, the influencer, performing adaptive behavior <span class="math inline">\(a\)</span>. The model assumes that the observers adopt <span class="math inline">\(a\)</span> with probability <span class="math inline">\(\alpha\)</span>.</p>
-<section id="how-does-the-number-of-influenced-agents-n-change-t" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="how-does-the-number-of-influenced-agents-n-change-t"><span class="header-section-number">4.1</span> How does the number of influenced agents, <span class="math inline">\(N\)</span>, change <span class="math inline">\(T\)</span>?</h3>
-</section>
-<section id="run-the-agent-based-model-for-different-values-of-alpha" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="run-the-agent-based-model-for-different-values-of-alpha"><span class="header-section-number">4.2</span> Run the agent-based model for different values of <span class="math inline">\(\alpha\)</span></h3>
-</section>
-</section>
-<section id="recursive-influencer-model-2-points" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="recursive-influencer-model-2-points"><span class="header-section-number">5</span> Recursive Influencer model (2 points)</h2>
-<section id="stopping-condition-for-the-recursive-model-1-point" class="level3" data-number="5.1">
-<h3 data-number="5.1" class="anchored" data-anchor-id="stopping-condition-for-the-recursive-model-1-point"><span class="header-section-number">5.1</span> Stopping condition for the recursive model (1 point)</h3>
-</section>
-<section id="section" class="level3" data-number="5.2">
-<h3 data-number="5.2" class="anchored" data-anchor-id="section"><span class="header-section-number">5.2</span> </h3>
-</section>
-</section>
-<section id="references" class="level2 unnumbered">
 
 
 
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-Watts1998" class="csl-entry" role="listitem">
-Watts, D J J, and S H H Strogatz. 1998. <span>“<span class="nocase">Collective dynamics of ’small-world’ networks.</span>”</span> <em>Nature</em> 393 (6684): 440–42. <a href="https://doi.org/10.1038/30918">https://doi.org/10.1038/30918</a>.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -415,18 +191,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -458,7 +223,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -466,7 +251,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -563,7 +348,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

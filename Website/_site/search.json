@@ -508,7 +508,7 @@
     "href": "lectures/slides/1.html#references",
     "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
     "section": "References",
-    "text": "References\n\n\n\n\n\n\n\n\nCox, Michael, Gwen Arnold, and Sergio Villamayor Tomás. 2010. “A review of design principles for community-based natural resource management.” Ecology and Society 15 (4). https://doi.org/10.5751/ES-03704-150438."
+    "text": "References\n\n\n\n\nCox, Michael, Gwen Arnold, and Sergio Villamayor Tomás. 2010. “A review of design principles for community-based natural resource management.” Ecology and Society 15 (4). https://doi.org/10.5751/ES-03704-150438."
   },
   {
     "objectID": "lectures/slides/1.html#wednesday-18-introduce-problem-set-1",
@@ -661,8 +661,8 @@
     "objectID": "lectures/slides/2/index.html#the-influencer",
     "href": "lectures/slides/2/index.html#the-influencer",
     "title": "Diffusion of adaptations via social learning",
-    "section": "The Influencer",
-    "text": "The Influencer\nLet’s model how long it will take for everyone who is influenced by this influencer to adopt the behavior of commuting on bike!\n\nYours truly spreading the love of biking."
+    "section": "The influencer",
+    "text": "The influencer\nLet’s use one of my favorite sustainable behaviors, biking, to illustrate this first model!\n\nYours truly spreading the love of biking."
   },
   {
     "objectID": "lectures/slides/2/index.html#review-motivated-by-ostroms-design-principles-program",
@@ -697,21 +697,21 @@
     "href": "lectures/slides/2/index.html#computational-social-science-for-sustainability",
     "title": "Diffusion of adaptations via social learning",
     "section": "Computational social science for sustainability",
-    "text": "Computational social science for sustainability\n\nThe design principles were inferred from decades of studies by various authors\nComputation based on mechanistic models can provide deductive predictions of how social phenomena emerge from social interactions\n\nSocial phenomena such as…"
+    "text": "Computational social science for sustainability\n\nThe design principles were inferred from decades of studies by various authors\nComputation based on mechanistic models can provide deductive predictions of how social phenomena emerge from social interactions\nSocial phenomena include\n\nThe diffusion and innovation of adaptations\nCooperation and coordination to sustainably manage common-pool resources\nRising political extremism and polarization\nThe meaning of words (not enough time in this quarter’s EBS 181/281)"
   },
   {
     "objectID": "lectures/slides/2/index.html#plan-for-today",
     "href": "lectures/slides/2/index.html#plan-for-today",
     "title": "Diffusion of adaptations via social learning",
     "section": "Plan for today",
-    "text": "Plan for today\nHow useful practices propagate through populations\n\nA general social model framework\nSocial learning strategies and models of cultural transmission\nSocial networks structure social learning: who learns from whom\nThe Legacy-Adaptive (LA) and Legacy-Adaptive-Legacy (LAL) models of diffusion via “contagion”\n\n\nStochastic, deterministic, discrete, and continuous models"
+    "text": "Plan for today\nHow useful practices propagate through populations\n\nSocial learning and\nThe Legacy-Adaptive (LA) and Legacy-Adaptive-Legacy (LAL) models of diffusion via “contagion”\n\nBegin with deriving them with deterministic equations\nThen with stochastic, generative models\n\nSocial networks structure social learning: who learns from whom"
   },
   {
     "objectID": "lectures/slides/2/index.html#beyond-today",
     "href": "lectures/slides/2/index.html#beyond-today",
     "title": "Diffusion of adaptations via social learning",
     "section": "Beyond today",
-    "text": "Beyond today\n\nMore network constructions: small-world and scale-free networks\nSuccess-biased social learning\nHow certain social networks may boost both innovation and inequality\nAnalysis of group structure and its effect on the diffusion of adaptations\nCooperation and coordination\nSocial influence and opinion dynamics: beliefs as particles"
+    "text": "Beyond today\n\nMore network constructions: small-world and scale-free networks\nSuccess-biased social learning and other social learning strategies\nHow certain social networks may boost both innovation and inequality\nAnalysis of group structure and its effect on the diffusion of adaptations\nCooperation and coordination\nSocial influence and opinion dynamics: beliefs as particles"
   },
   {
     "objectID": "lectures/slides/2/index.html#a-general-framework-to-be-filled-in",
@@ -725,28 +725,28 @@
     "href": "lectures/slides/2/index.html#references",
     "title": "Diffusion of adaptations via social learning",
     "section": "References",
-    "text": "References\n\n\n\n\n\n\n\n\nCox, Michael, Gwen Arnold, and Sergio Villamayor Tomás. 2010. “A review of design principles for community-based natural resource management.” Ecology and Society 15 (4). https://doi.org/10.5751/ES-03704-150438.\n\n\nMcNamara, Karen E., Rachel Clissold, Ross Westoby, Annah E. Piggott-McKellar, Roselyn Kumar, Tahlia Clarke, Frances Namoumou, et al. 2020. “An assessment of community-based adaptation initiatives in the Pacific Islands.” Nature Climate Change 10 (7): 628–39. https://doi.org/10.1038/s41558-020-0813-1.\n\n\nPiggott-McKellar, Annah E, Patrick D Nunn, Karen E McNamara, and Seci T Sekinini. 2020. “Dam(n) Seawalls: A Case of Climate Change Maladaptation in Fiji.” In Managing Climate Change Adaptation in the Pacific Region, edited by W. Leal Filho, 69–84. Springer. https://doi.org/10.1007/978-3-030-40552-6."
+    "text": "References\n\n\n\n\nCox, Michael, Gwen Arnold, and Sergio Villamayor Tomás. 2010. “A review of design principles for community-based natural resource management.” Ecology and Society 15 (4). https://doi.org/10.5751/ES-03704-150438.\n\n\nMcNamara, Karen E., Rachel Clissold, Ross Westoby, Annah E. Piggott-McKellar, Roselyn Kumar, Tahlia Clarke, Frances Namoumou, et al. 2020. “An assessment of community-based adaptation initiatives in the Pacific Islands.” Nature Climate Change 10 (7): 628–39. https://doi.org/10.1038/s41558-020-0813-1.\n\n\nPiggott-McKellar, Annah E, Patrick D Nunn, Karen E McNamara, and Seci T Sekinini. 2020. “Dam(n) Seawalls: A Case of Climate Change Maladaptation in Fiji.” In Managing Climate Change Adaptation in the Pacific Region, edited by W. Leal Filho, 69–84. Springer. https://doi.org/10.1007/978-3-030-40552-6."
   },
   {
     "objectID": "lectures/slides/2/index.html#the-influencer-1",
     "href": "lectures/slides/2/index.html#the-influencer-1",
     "title": "Diffusion of adaptations via social learning",
     "section": "The influencer",
-    "text": "The influencer\n\n\nInitialization: time step \\(t=0\\); B: biker, N: not biker\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA node or vertex (circles) represents a person\nAn edge (arrows) represents a relationship between two people\nEdge arrows indicate the direction of information flow\nPeople do not interact unless connected in the social network"
+    "text": "The influencer\n\n\nInitialization: time step \\(t=0\\); B: biker, N: not biker\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA node or vertex (circles) represents a person\nAn edge (arrows) represents a relationship between two people\nEdge arrows indicate the direction of information flow\nOnly connected people interact"
   },
   {
     "objectID": "lectures/slides/2/index.html#the-influencer-2",
     "href": "lectures/slides/2/index.html#the-influencer-2",
     "title": "Diffusion of adaptations via social learning",
     "section": "The influencer",
-    "text": "The influencer\n\n\nTime step \\(t &gt; 0\\)\n\n\n\n\n\n\n\n\n\n\n\nThe influenced begin to adopt biking over time\nWe specify the probability, \\(a\\), that an influenced person starts biking when exposed to it by the influencer"
+    "text": "The influencer\n\n\nAs time progresses (\\(t &gt; 0\\)) more family members start biking."
   },
   {
     "objectID": "lectures/slides/2/index.html#the-influencer-3",
     "href": "lectures/slides/2/index.html#the-influencer-3",
     "title": "Diffusion of adaptations via social learning",
     "section": "The influencer",
-    "text": "The influencer\n\n\nTime step \\(t = T\\)\n\n\n\n\n\n\n\n\n\n\n\nIn this model, everyone eventually bikes because there is no “forgetting” or “reverting” to previous behaviors.\nThe state where all become bikers is called fixation.\nThe time step \\(T\\) when fixation occurs is the fixation time.\nWith this model we can calculate \\(T\\) as a function of the number of influenced agents, \\(N\\), and the transmissibility of biking, \\(\\tau\\)."
+    "text": "The influencer\n\n\nTime step \\(t = T\\), the fixation time when all individuals share the same behavior."
   },
   {
     "objectID": "lectures/slides/2/index.html#the-influencer-4",
@@ -767,14 +767,14 @@
     "href": "lectures/slides/2/index.html#legacy-adaptive-la-model",
     "title": "Diffusion of adaptations via social learning",
     "section": "Legacy-adaptive (LA) model",
-    "text": "Legacy-adaptive (LA) model\n\nAdapted from the susceptible-infected model of disease transmission, i.e., contagion"
+    "text": "Legacy-adaptive (LA) model\n\nAdapted from the susceptible-infected (SI) model of disease transmission, i.e., a model of contagion where something spreads through contact with others.\n\nAssume that when an observer doing \\(L\\) (legacy behavior) interacts with someone doing \\(A\\) (adaptive behavior), there is a probability \\(\\alpha\\) that the observer starts doing \\(A\\).\n\\(\\alpha\\) is the adoption probability"
   },
   {
     "objectID": "lectures/slides/2/index.html#why-legacy-adaptive",
     "href": "lectures/slides/2/index.html#why-legacy-adaptive",
     "title": "Diffusion of adaptations via social learning",
     "section": "Why “legacy-adaptive”?",
-    "text": "Why “legacy-adaptive”?\n\n\n\n\n\n“The legacy media want to destroy your right to freedom of speech” says Elon Musk\nMusk repurposed the phrase “legacy software”, which indicates old, outdated software that will one day be abandoned\nIt may be helpful to harness this phrase to the same effect as Musk does, but for non-adaptive behaviors with respect to climate change and sustainability\nIt can be important to contest certain concepts like “legacy” to restrain others from defining how useful terms can be used"
+    "text": "Why “legacy-adaptive”?\n\n\n\n\n\n“The legacy media want to destroy your right to freedom of speech” says Elon Musk\nMusk effectively repurposed the phrase “legacy software”, which indicates old, outdated software that will one day be abandoned\nIt may be helpful to harness this phrase to the same effect as Musk does, but as a label for unsustainable behaviors\nIt can be important to contest certain concepts like “legacy” to restrain others from defining how useful terms can be used"
   },
   {
     "objectID": "lectures/slides/2/index.html#the-adaptation-influencer-case",
@@ -796,5 +796,110 @@
     "title": "Diffusion of adaptations via social learning",
     "section": "Testing",
     "text": "Testing\n\n\n\n\n\n\n\n\n\n\n\n\n\nG\n\n\n\nLegacy\n\nLegacy\n\n\n\nAdaptive\n\nAdaptive\n\n\n\nLegacy:ne-&gt;Adaptive:nw\n\n\n_a_"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#legacy-adaptive-legacy-lal-model",
+    "href": "lectures/slides/2/index.html#legacy-adaptive-legacy-lal-model",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Legacy-adaptive-legacy (LAL) model",
+    "text": "Legacy-adaptive-legacy (LAL) model\n\nAdapted from the susceptible-infected-susceptible epidemiology model\nIdentical to LA model, except that there is a drop probability \\(\\delta\\) that someone performing \\(A\\) regresses to again perform \\(L\\)"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#why-this-legacy-adaptive-dichotomy",
+    "href": "lectures/slides/2/index.html#why-this-legacy-adaptive-dichotomy",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Why this “legacy-adaptive” dichotomy?",
+    "text": "Why this “legacy-adaptive” dichotomy?\n\n\n\n\n\n“The legacy media want to destroy your right to freedom of speech” says Elon Musk\nMusk effectively repurposed the phrase “legacy software”, which indicates old, outdated software that will one day be abandoned\nIt may be helpful to harness this phrase to the same effect as Musk does, but as a label for unsustainable behaviors\nIt can be important to contest certain concepts like “legacy” to restrain others from defining how useful terms can be used"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#la-model-in-a-well-mixed-population",
+    "href": "lectures/slides/2/index.html#la-model-in-a-well-mixed-population",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "LA model in a “well-mixed” population",
+    "text": "LA model in a “well-mixed” population\n\n\n\n\n\n\n\n\n\n\n\n\n\n“Well-mixed” means that all individuals can learn from every other individual\nWe also assume that \\(N\\to\\infty\\) so that it makes more sense (maybe?) to have model output in terms of “fractional people”\nIf we were to draw the social network, every agent would have a line to every other agent indicating ubiquitous bi-directional influence"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#formal-influencer-model",
+    "href": "lectures/slides/2/index.html#formal-influencer-model",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Formal influencer model",
+    "text": "Formal influencer model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAt each time step, \\(t\\), a fraction \\(\\alpha\\) of the population of \\(N-A_t\\) targeted individuals changes their behavior from \\(L\\) to \\(A\\).\nTherefore, \\[\nA_{t+1} = A_t + \\alpha (N - A_t)\n\\]"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#formal-influencer-model-as-la-model",
+    "href": "lectures/slides/2/index.html#formal-influencer-model-as-la-model",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Formal influencer model as LA model",
+    "text": "Formal influencer model as LA model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAt each time step, \\(t\\), a fraction \\(\\alpha\\) of the population of \\(N-A_t\\) targeted individuals changes their behavior from \\(L\\) to \\(A\\).\nTherefore, \\[\nA_{t+1} = A_t + \\alpha (N - A_t)\n\\]"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#formal-influencer-model-as-la-model-1",
+    "href": "lectures/slides/2/index.html#formal-influencer-model-as-la-model-1",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Formal influencer model as LA model",
+    "text": "Formal influencer model as LA model"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#deterministic-influencer-model-as-la-model",
+    "href": "lectures/slides/2/index.html#deterministic-influencer-model-as-la-model",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Deterministic influencer model as LA model",
+    "text": "Deterministic influencer model as LA model\n\\[\nA_{t+1} = A_t + \\alpha (N - A_t),\\quad N=100,~\\alpha=0.05,~A_0=5\n\\]"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#legacy-adaptive-legacy-lal-model-1",
+    "href": "lectures/slides/2/index.html#legacy-adaptive-legacy-lal-model-1",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Legacy-adaptive-legacy (LAL) model",
+    "text": "Legacy-adaptive-legacy (LAL) model\n\nAdapted from the susceptible-infected-susceptible epidemiology model\nIdentical to LA model, except that there is a drop probability \\(\\delta\\) that someone performing \\(A\\) regresses to again perform \\(L\\)"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#la-model-in-a-well-mixed-population-1",
+    "href": "lectures/slides/2/index.html#la-model-in-a-well-mixed-population-1",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "LA model in a “well-mixed” population",
+    "text": "LA model in a “well-mixed” population\n\nUnlike the influencer model, individuals are only exposed to \\(A\\) if a neighbor knows the behavior\nThis also means that the rate of diffusion of \\(A\\) is not constant"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#legacy-adaptive-legacy-lal-model-2",
+    "href": "lectures/slides/2/index.html#legacy-adaptive-legacy-lal-model-2",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Legacy-adaptive-legacy (LAL) model",
+    "text": "Legacy-adaptive-legacy (LAL) model\n\\[\nA_{t+1} = A_t + \\alpha A_t (1 - \\frac{A_t}{N}) \\text{ ...? }\n\\]"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#la-model-in-a-well-mixed-population-2",
+    "href": "lectures/slides/2/index.html#la-model-in-a-well-mixed-population-2",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "LA model in a “well-mixed” population",
+    "text": "LA model in a “well-mixed” population\n\n\nUnlike the influencer model, individuals are only exposed to \\(A\\) if a neighbor knows the behavior\nThis also means that the rate of diffusion of \\(A\\) is not constant\n\n\n\\[\nA_{t+1} = A_t + \\alpha A_t (1 - \\frac{A_t}{N})\n\\]"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#la-model-in-a-well-mixed-population-build-false",
+    "href": "lectures/slides/2/index.html#la-model-in-a-well-mixed-population-build-false",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "LA model in a “well-mixed” population {build: false}",
+    "text": "LA model in a “well-mixed” population {build: false}\n\n\nUnlike the influencer model, individuals are only exposed to \\(A\\) if a neighbor knows the behavior\nThis also means that the rate of diffusion of \\(A\\) is not constant\n\n\n\\[\nA_{t+1} = A_t + \\alpha A_t (1 - \\frac{A_t}{N})\n\\]"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#legacy-adaptive-legacy-lal-model-3",
+    "href": "lectures/slides/2/index.html#legacy-adaptive-legacy-lal-model-3",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Legacy-adaptive-legacy (LAL) model",
+    "text": "Legacy-adaptive-legacy (LAL) model\nNeed to subtract the fraction of those doing \\(A\\) who regress to do \\(L\\)\n\\[\nA_{t+1} = A_t + \\alpha A_t (1 - \\frac{A_t}{N}) - \\delta A_t\n\\]"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#will-an-adaptation-spread-or-go-extinct",
+    "href": "lectures/slides/2/index.html#will-an-adaptation-spread-or-go-extinct",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Will an adaptation spread or go extinct?",
+    "text": "Will an adaptation spread or go extinct?\nCheck \\(R_0\\), the rate of change of \\(A_t\\) when \\(A_t &lt;&lt; N\\)"
+  },
+  {
+    "objectID": "lectures/slides/2/index.html#what-will-be-the-equilibrium-value-of-a_t",
+    "href": "lectures/slides/2/index.html#what-will-be-the-equilibrium-value-of-a_t",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "What will be the equilibrium value of \\(A_t\\)?",
+    "text": "What will be the equilibrium value of \\(A_t\\)?\nSet \\(A_\\infty = A_{t+1} = A_t\\)"
   }
 ]

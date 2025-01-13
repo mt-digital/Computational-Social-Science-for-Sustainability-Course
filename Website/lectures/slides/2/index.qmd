@@ -9,284 +9,370 @@ smaller: true
 incremental: true
 code-fold: true
 fig-cap-location: bottom
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 # Review: motivated by Ostrom's design principles for sustainable socio-economic systems
 
 ## Ostrom's design principles for sustainable socio-ecological systems
 
-- Elinor Ostrom led development of _social-ecological systems_ theory, which
-identified _design principles_ to sustainably manage _common-pool resources_ like clean water or healthy forests;
-  all the common-pool resources together are called the commons.
-  - First woman to win a Nobel prize in economics (2009)
+-   Elinor Ostrom led development of *social-ecological systems* theory,
+    which identified *design principles* to sustainably manage
+    *common-pool resources* like clean water or healthy forests; all the
+    common-pool resources together are called the commons.
+    -   First woman to win a Nobel prize in economics (2009)
 
-
-:::: {.columns}
-
+::::: columns
 ::: {.column width="30%"}
-
-
-<img src="../1-resources/OstromNobel.png" width="250" display="block">
-
+<img src="../1-resources/OstromNobel.png" width="250" display="block"/>
 :::
 
 ::: {.column width="70%"}
+-   Select *design principles* (8 total; see @Cox2010 reading for an
+    overview):
 
-- Select *design principles* (8 total; see @Cox2010 reading for an overview):
-
-    - Rules should fit local circumstances
-    - Participation of _all_ stakeholders is vital
-        - Management of the commons must be organized across social and
-          institutional scales
-        - All levels of social hierarchy must be recognized and free to organize
-    - Conflict resolution should be easily accessible
-
+    -   Rules should fit local circumstances
+    -   Participation of *all* stakeholders is vital
+        -   Management of the commons must be organized across social
+            and institutional scales
+        -   All levels of social hierarchy must be recognized and free
+            to organize
+    -   Conflict resolution should be easily accessible
 :::
-
-::::
+:::::
 
 ## Ostrom's work elevated Indigenous adaptation
 
-Traditional, Indigenous adaptations for a changing
-climate are often outperform alternative technological innovations [@Piggott-McKellar2020;@McNamara2020].
+Traditional, Indigenous adaptations for a changing climate are often
+outperform alternative technological innovations [@Piggott-McKellar2020;
+@McNamara2020].
 
-:::: {.columns}
-
-::: {.column}
-
-![From The Nature Conservancy, "Woman Scientist Saves Mangroves and Battles
-Climate Change" 
-[[link](https://www.nature.org/en-us/magazine/magazine-articles/indigenous-controlled-burns-california/)]](../1-resources/WomenScientistsPacificIslands.jpg){fig-align="center"
+::::: columns
+::: column
+![From The Nature Conservancy, "Woman Scientist Saves Mangroves and
+Battles Climate Change"
+\[[link](https://www.nature.org/en-us/magazine/magazine-articles/indigenous-controlled-burns-california/)\]](../1-resources/WomenScientistsPacificIslands.jpg){fig-align="center"
 height="400px"}
 :::
 
-::: {.column}
-
-![From The Nature Conservancy, "Quiet Fire: Indigenous tribes in California and
-other parts of the U.S. have been rekindling the ancient art of controlled
-burning."
-[[link](https://www.nature.org/en-us/magazine/magazine-articles/indigenous-controlled-burns-california/)]](../1-resources/Yurok_Ceremonial_First_Light.jpg){fig-align="center"
+::: column
+![From The Nature Conservancy, "Quiet Fire: Indigenous tribes in
+California and other parts of the U.S. have been rekindling the ancient
+art of controlled burning."
+\[[link](https://www.nature.org/en-us/magazine/magazine-articles/indigenous-controlled-burns-california/)\]](../1-resources/Yurok_Ceremonial_First_Light.jpg){fig-align="center"
 height="400px"}
-
 :::
+:::::
 
-::::
+## Computational social science for sustainability
 
-## Computational social science for sustainability    
-
-- The design principles were _inferred_ from decades of studies by various authors
-- Computation based on mechanistic models can provide _deductive_ predictions of  how _social phenomena_ emerge from social interactions
-  - _Social phenomena_ such as...
-
+-   The design principles were *inferred* from decades of studies by
+    various authors
+-   Computation based on mechanistic models can provide *deductive*
+    predictions of how *social phenomena* emerge from social
+    interactions
+-   *Social phenomena* include
+    -   The diffusion and innovation of adaptations
+    -   Cooperation and coordination to sustainably manage common-pool
+        resources
+    -   Rising political extremism and polarization
+    -   The meaning of words (not enough time in this quarter's EBS
+        181/281)
 
 ## Plan for today
 
 How useful practices propagate through populations
 
-1. A general social model framework
-1. Social learning strategies and models of cultural transmission
-2. Social networks structure social learning: who learns from whom
-3. The Legacy-Adaptive (LA) and Legacy-Adaptive-Legacy (LAL) models of diffusion via "contagion" 
-  - Stochastic, deterministic, discrete, and continuous models
-  
+1.  Social learning and
+2.  The Legacy-Adaptive (LA) and Legacy-Adaptive-Legacy (LAL) models of
+    diffusion via "contagion"
+    -   Begin with deriving them with deterministic equations
+    -   Then with stochastic, generative models
+3.  Social networks structure social learning: who learns from whom
+
 ## Beyond today
 
-1. More network constructions: small-world and scale-free networks
-1. Success-biased social learning
-1. How certain social networks may boost both innovation and inequality
-1. Analysis of group structure and its effect on the diffusion of adaptations
-1. Cooperation and coordination
-1. Social influence and opinion dynamics: beliefs as particles
+1.  More network constructions: small-world and scale-free networks
+2.  Success-biased social learning and other social learning strategies
+3.  How certain social networks may boost both innovation and inequality
+4.  Analysis of group structure and its effect on the diffusion of
+    adaptations
+5.  Cooperation and coordination
+6.  Social influence and opinion dynamics: beliefs as particles
 
+# Legacy-Adaptive (LA) and Legacy-Adaptive-Legacy (LAL) models
 
-# The legacy-adaptive model
+## Legacy-adaptive (LA) model
 
-## Legacy-adaptive (LA) model 
+-   *Adapted* from the susceptible-infected (SI) model of disease
+    transmission, i.e., a model of *contagion* where something spreads
+    through contact with others.
+    -   Assume that when an observer doing $L$ (legacy behavior)
+        interacts with someone doing $A$ (adaptive behavior), there is a
+        probability $\alpha$ that the observer starts doing $A$.
+    -   $\alpha$ is the *adoption probability*
 
-- _Adapted_ from the susceptible-infected model of disease transmission, i.e., _contagion_
-- 
+![](images/clipboard-2995297096.png){fig-align="center" width="400"}
 
-## Why "legacy-adaptive"?
+## Why this "legacy-adaptive" dichotomy?
 
-::: {.columns}
-
-:::: {.column width=50%}
+::::: columns
+::: {.column width="50%"}
 ![](resources/MuskJump.png)
-:::: 
-
-:::: {.column width=50%}
-- "The legacy media want to destroy your right to freedom of speech" [says Elon Musk](https://x.com/elonmusk/status/1854925239693832576)
-- Musk repurposed the phrase "legacy software", which indicates old, outdated software that will one day be abandoned
-- It may be helpful to harness this phrase to the same effect as Musk does, but for non-adaptive behaviors with respect to climate change and sustainability
-- It can be important to contest certain concepts like "legacy" to restrain others from defining how useful terms can be used
-::::
-
 :::
+
+::: {.column width="50%"}
+-   "The legacy media want to destroy your right to freedom of speech"
+    [says Elon Musk](https://x.com/elonmusk/status/1854925239693832576)
+-   Musk effectively repurposed the phrase "legacy software", which
+    indicates old, outdated software that will one day be abandoned
+-   It may be helpful to harness this phrase to the same effect as Musk
+    does, but as a label for unsustainable behaviors
+-   It can be important to contest certain concepts like "legacy" to
+    restrain others from defining how useful terms can be used
+:::
+:::::
 
 ## The adaptation influencer case
 
-
-- Oftentimes people will eventually adopt a behavior if they observe an
-"influencer". 
-- If we are designing a sustainability _intervention_, we may 
-want to know how long it will take for everyone who is influenced by an influencer
-to adopt some behavior
-
-
-
-## The Influencer
-
-Let's model how long it will take for everyone who is influenced by this influencer to adopt the behavior of commuting on bike!
-
-
-![Yours truly spreading the love of biking.](../1-resources/MeBike.jpg){width="600px"}
+-   Oftentimes people will eventually adopt a behavior if they observe
+    an "influencer".
+-   If we are designing a sustainability *intervention*, we may want to
+    know how long it will take for everyone who is influenced by an
+    influencer to adopt some behavior
 
 ## The influencer
 
-:::: {.columns}
+Let's use one of my favorite sustainable behaviors, biking, to
+illustrate this first model!
 
+![Yours truly spreading the love of
+biking.](../1-resources/MeBike.jpg){width="600px"}
+
+## The influencer
+
+::::: columns
 ```{r}
 library(igraph)
 igraph_options(vertex.color = "SkyBlue2", vertex.frame.color = "SkyBlue2", 
                vertex.label.cex = 4, vertex.size = 30, rescale = FALSE)
 par(mar=c(0,0,0,0)+.1)
 ```
-::: {.column width="65%"}
 
+::: {.column width="55%"}
 Initialization: time step $t=0$; B: biker, N: not biker
 
 ```{r}
 #| fig-asp: 0.8
 g <- make_graph(~ 1-+2, 1-+3, 1-+4, 1--+5, 1--+6)
-g_vertex_layout = matrix(c(0, 0, 0.4, -0.7, 0.2, -0.9, 0, -1, -0.4, -0.7, -0.2, -0.9), 
+g_vertex_layout = matrix(c(0, 0, 1, -0.25, 1, -0.75, 1, 0.25, 1, 0.75), 
                          byrow=TRUE, ncol=2)
-plot(g, vertex.label=c("B", "N", "N", "N", "N", "N"), 
-     layout = g_vertex_layout)
+plot(g, vertex.label=c("B", "N", "N", "N", "N"), layout = g_vertex_layout)
 ```
 :::
 
-::: {.column width=35%}
-![](../1-resources/MeBike.jpg){width="30%" fig-align="center"}
+::: {.column width="45%"}
+![](resources/FamilyBiking.JPG){fig-align="center"}
 
-- A _node_ or _vertex_ (circles) represents a person
-- An _edge_ (arrows) represents a relationship between two people
-- Edge arrows indicate the direction of information flow
-- People do not interact unless connected in the social network
+-   A *node* or *vertex* (circles) represents a person
+-   An *edge* (arrows) represents a relationship between two people
+-   Edge arrows indicate the direction of information flow
+-   Only connected people interact
 :::
-
-::::
-
+:::::
 
 ## The influencer
 
-:::: {.columns}
-
+::::: columns
 ```{r}
 library(igraph)
 igraph_options(vertex.color = "SkyBlue2", vertex.frame.color = "SkyBlue2", 
                vertex.label.cex = 4, vertex.size = 30, rescale = FALSE)
 par(mar=c(0,0,0,0)+.1)
 ```
-::: {.column width="65%"}
 
-Time step $t > 0$
+::: {.column width="55%"}
+As time progresses ($t > 0$) more family members start biking.
 
 ```{r}
 #| fig-asp: 0.8
 g <- make_graph(~ 1-+2, 1-+3, 1-+4, 1--+5, 1--+6)
-g_vertex_layout = matrix(c(0, 0, 0.4, -0.7, 0.2, -0.9, 0, -1, -0.4, -0.7, -0.2, -0.9), byrow=TRUE, ncol=2)
-plot(g, vertex.label=c("B", "B", "N", "B", "N", "N"), 
-     layout = g_vertex_layout)
+g_vertex_layout = matrix(c(0, 0, 1, -0.25, 1, -0.75, 1, 0.25, 1, 0.75), 
+                         byrow=TRUE, ncol=2)
+plot(g, vertex.label=c("B", "B", "B", "N", "N"), layout = g_vertex_layout)
 ```
 :::
 
-::: {.column width=35%}
-
-- The influenced begin to adopt biking over time
-- We specify the probability, $a$, that an influenced person starts biking
-  when exposed to it by the influencer
+::: {.column width="45%"}
+![](resources/FamilyBiking.JPG){fig-align="center"}
 :::
-
-::::
+:::::
 
 ## The influencer
 
-:::: {.columns}
-
+::::: columns
 ```{r}
 library(igraph)
 igraph_options(vertex.color = "SkyBlue2", vertex.frame.color = "SkyBlue2", 
                vertex.label.cex = 4, vertex.size = 30, rescale = FALSE)
 par(mar=c(0,0,0,0)+.1)
 ```
-::: {.column width="65%"}
 
-Time step $t = T$
+::: {.column width="55%"}
+Time step $t = T$, the *fixation time* when all individuals share the
+same behavior.
 
 ```{r}
 #| fig-asp: 0.8
 g <- make_graph(~ 1-+2, 1-+3, 1-+4, 1--+5, 1--+6)
-g_vertex_layout = matrix(c(0, 0, 0.4, -0.7, 0.2, -0.9, 0, -1, -0.4, -0.7, -0.2, -0.9), byrow=TRUE, ncol=2)
-plot(g, vertex.label=c("B", "B", "B", "B", "B", "B"), 
-     layout = g_vertex_layout)
+g_vertex_layout = matrix(c(0, 0, 1, -0.25, 1, -0.75, 1, 0.25, 1, 0.75), 
+                         byrow=TRUE, ncol=2)
+plot(g, vertex.label=c("B", "B", "B", "B", "B"), layout = g_vertex_layout)
 ```
 :::
 
-::: {.column width=35%}
+::: {.column width="45%"}
+![](resources/FamilyBiking.JPG){fig-align="center"}
+:::
+:::::
 
-- In this model, everyone eventually bikes because there is no "forgetting" or
-  "reverting" to previous behaviors.
-- The state where all become bikers is called _fixation_.
-- The time step $T$ when fixation occurs is the _fixation time_.
-- With this model we can calculate $T$ as a function of the number of influenced
-  agents, $N$, and the _transmissibility_ of biking, $\tau$.
+## Formal influencer model as LA model
+
+::::: columns
+::: {.column width="55%"}
+```{r}
+#| fig-asp: 0.75
+g <- make_graph(~ 1-+2, 1-+3, 1-+4, 1--+5, 1--+6)
+g_vertex_layout = matrix(c(0, 0, 1, -0.25, 1, -0.75, 1, 0.25, 1, 0.75), 
+                         byrow=TRUE, ncol=2)
+plot(g, vertex.label=c("A", "A", "L", "L", "A"), layout = g_vertex_layout)
+```
+
+![](resources/FamilyBiking.JPG){fig-align="center" width="200"}
 :::
 
-::::
+::: {.column width="45%"}
+At each time step, $t$, a fraction $\alpha$ of the population of $N-A_t$
+targeted individuals changes their behavior from $L$ to $A$.
 
-## Testing
+Therefore, $$
+A_{t+1} = A_t + \alpha (N - A_t)
+$$
+:::
+:::::
 
-<!-- ```{dot} -->
-<!-- graph G { -->
-<!--   layout=circo -->
-<!--   Legacy -- Adaptive; -->
-<!-- } -->
-<!-- ``` -->
+## Deterministic influencer model as LA model
 
-```{dot}
-digraph G {
-  layout=circo
-  splines=curved
-  Legacy:ne -> Adaptive:nw [label=_a_];
+$$
+A_{t+1} = A_t + \alpha (N - A_t),\quad N=100,~\alpha=0.05,~A_0=5
+$$
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+library(tibble)
+library(ggplot2)
+library(latex2exp)
+run_influencer_model2 <- function(N=5, adopt_rate = 0.2, time_steps = 1000, A_0 = 5) {
+  At = A_0
+  At_vec <- numeric(time_steps)
+  At_vec[1] <- A_0
+  for (ii in 1:time_steps) {
+    At = At + (adopt_rate * (N - At))
+    At_vec[ii + 1] <- At
+  }
+  
+  return (At_vec)
 }
+
+N = 100
+adopt_rate = 0.05
+time_steps = 100
+A_0 = 1
+# print(run_influencer_model2(N, adopt_rate, time_steps))
+tbl <- tibble(t=0:time_steps, A_t=run_influencer_model2(N, adopt_rate, time_steps, A_0))
+# print(tbl)
+
+
+
+ggplot(tbl, aes(x=t, y=A_t)) + geom_line() + geom_hline(yintercept=N, linetype="dashed", color="grey") + ylab(TeX("$A_t$")) + theme_classic(base_size=15)
 ```
 
-## The Legacy-Adaptive (LA) model
+## LA model in a "well-mixed" population
 
-:::: {.columns}
-
-::: {.column width=50%}
-
-```{dot}
-//| fig-width: 5
-digraph G {
-  layout=circo
-  splines=curved
-  "Legacy, L":ne -> "Adaptive, A":nw [label=a];
-}
+::::: columns
+::: {.column width="60%"}
+```{r}
+#| fig-asp: 0.8
+g <- make_full_graph(10)
+plot(g, layout=layout_in_circle(g))
 ```
-\
 :::
-::: {.column}
-- Adapted from the susceptible-infected model from epidemiology: 
-  - $L$ represents one of possibly several _legacy_ behaviors
-  - $A$ represents the _adaptive_ behavior (biking in the influencer example)
-  - These are analogous to an individual being _susceptible_ to disease or _infected_
-- Adaptive behavior represented as a "contagion" that spreads from person to person with adoption probability, $a$
 
-
-
+::: {.column width="40%"}
+-   "Well-mixed" means that all individuals can learn from every other
+    individual
+-   We also assume that $N\to\infty$ so that it makes more sense
+    (maybe?) to have model output in terms of "fractional people"
+-   If we were to draw the social network, every agent would have a line
+    to every other agent indicating ubiquitous bi-directional influence
 :::
-::::
+:::::
+
+## LA model in a "well-mixed" population
+
+1.  Unlike the influencer model, individuals are only exposed to $A$ if
+    a neighbor knows the behavior
+2.  This also means that the rate of diffusion of $A$ is not constant
+
+## LA model in a "well-mixed" population
+
+::: nonincremental
+1.  Unlike the influencer model, individuals are only exposed to $A$ if
+    a neighbor knows the behavior
+2.  This also means that the rate of diffusion of $A$ is not constant
+:::
+
+$$
+A_{t+1} = A_t + \alpha A_t (1 - \frac{A_t}{N})
+$$
+
+# Legacy-adaptive-legacy (LAL) model
+
+## Legacy-adaptive-legacy (LAL) model
+
+-   Adapted from the susceptible-infected-susceptible epidemiology model
+-   Identical to LA model, except that there is a *drop probability*
+    $\delta$ that someone performing $A$ regresses to again perform $L$
+
+![](images/clipboard-1074547822.png){fig-align="center" width="368"}
+
+## Legacy-adaptive-legacy (LAL) model
+
+$$
+A_{t+1} = A_t + \alpha A_t (1 - \frac{A_t}{N}) \text{ ...? }
+$$
+
+![](images/clipboard-1074547822.png){fig-align="center" width="200"}
+
+## Legacy-adaptive-legacy (LAL) model 
+
+*Need to subtract the fraction of those doing* $A$ who regress to do $L$
+
+$$
+A_{t+1} = A_t + \alpha A_t (1 - \frac{A_t}{N}) - \delta A_t
+$$
+
+![](images/clipboard-1074547822.png){fig-align="center" width="200"}
+
+## Will an adaptation spread or go extinct?
+
+Check $R_0$, the rate of change of $A_t$ when $A_t << N$
+
+## What will be the equilibrium value of $A_t$?
+\vspace{5em}
+Set $A_\infty = A_{t+1} = A_t$
 
 ## References
