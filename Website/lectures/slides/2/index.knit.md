@@ -14,6 +14,7 @@ editor:
     wrap: 72
 ---
 
+
 # Review: motivated by Ostrom's design principles for sustainable socio-economic systems
 
 ## Ostrom's design principles for sustainable socio-ecological systems
@@ -154,23 +155,22 @@ biking.](../1-resources/MeBike.jpg){width="600px"}
 ## The influencer
 
 ::::: columns
-```{r}
-library(igraph)
-igraph_options(vertex.color = "SkyBlue2", vertex.frame.color = "SkyBlue2", 
-               vertex.label.cex = 4, vertex.size = 30, rescale = FALSE)
-par(mar=c(0,0,0,0)+.1)
-```
+
+::: {.cell}
+
+:::
+
 
 ::: {.column width="55%"}
 Initialization: time step $t=0$; B: biker, N: not biker
 
-```{r}
-#| fig-asp: 0.8
-g <- make_graph(~ 1-+2, 1-+3, 1-+4, 1--+5, 1--+6)
-g_vertex_layout = matrix(c(0, 0, 1, -0.25, 1, -0.75, 1, 0.25, 1, 0.75), 
-                         byrow=TRUE, ncol=2)
-plot(g, vertex.label=c("B", "N", "N", "N", "N"), layout = g_vertex_layout)
-```
+
+::: {.cell}
+::: {.cell-output-display}
+![](index_files/figure-revealjs/unnamed-chunk-2-1.png){width=960}
+:::
+:::
+
 :::
 
 ::: {.column width="45%"}
@@ -186,23 +186,22 @@ plot(g, vertex.label=c("B", "N", "N", "N", "N"), layout = g_vertex_layout)
 ## The influencer
 
 ::::: columns
-```{r}
-library(igraph)
-igraph_options(vertex.color = "SkyBlue2", vertex.frame.color = "SkyBlue2", 
-               vertex.label.cex = 4, vertex.size = 30, rescale = FALSE)
-par(mar=c(0,0,0,0)+.1)
-```
+
+::: {.cell}
+
+:::
+
 
 ::: {.column width="55%"}
 As time progresses ($t > 0$) more family members start biking.
 
-```{r}
-#| fig-asp: 0.8
-g <- make_graph(~ 1-+2, 1-+3, 1-+4, 1--+5, 1--+6)
-g_vertex_layout = matrix(c(0, 0, 1, -0.25, 1, -0.75, 1, 0.25, 1, 0.75), 
-                         byrow=TRUE, ncol=2)
-plot(g, vertex.label=c("B", "B", "B", "N", "N"), layout = g_vertex_layout)
-```
+
+::: {.cell}
+::: {.cell-output-display}
+![](index_files/figure-revealjs/unnamed-chunk-4-1.png){width=960}
+:::
+:::
+
 :::
 
 ::: {.column width="45%"}
@@ -213,24 +212,23 @@ plot(g, vertex.label=c("B", "B", "B", "N", "N"), layout = g_vertex_layout)
 ## The influencer
 
 ::::: columns
-```{r}
-library(igraph)
-igraph_options(vertex.color = "SkyBlue2", vertex.frame.color = "SkyBlue2", 
-               vertex.label.cex = 4, vertex.size = 30, rescale = FALSE)
-par(mar=c(0,0,0,0)+.1)
-```
+
+::: {.cell}
+
+:::
+
 
 ::: {.column width="55%"}
 Time step $t = T$, the *fixation time* when all individuals share the
 same behavior.
 
-```{r}
-#| fig-asp: 0.8
-g <- make_graph(~ 1-+2, 1-+3, 1-+4, 1--+5, 1--+6)
-g_vertex_layout = matrix(c(0, 0, 1, -0.25, 1, -0.75, 1, 0.25, 1, 0.75), 
-                         byrow=TRUE, ncol=2)
-plot(g, vertex.label=c("B", "B", "B", "B", "B"), layout = g_vertex_layout)
-```
+
+::: {.cell}
+::: {.cell-output-display}
+![](index_files/figure-revealjs/unnamed-chunk-6-1.png){width=960}
+:::
+:::
+
 :::
 
 ::: {.column width="45%"}
@@ -242,13 +240,13 @@ plot(g, vertex.label=c("B", "B", "B", "B", "B"), layout = g_vertex_layout)
 
 ::::: columns
 ::: {.column width="55%"}
-```{r}
-#| fig-asp: 0.75
-g <- make_graph(~ 1-+2, 1-+3, 1-+4, 1--+5, 1--+6)
-g_vertex_layout = matrix(c(0, 0, 1, -0.25, 1, -0.75, 1, 0.25, 1, 0.75), 
-                         byrow=TRUE, ncol=2)
-plot(g, vertex.label=c("A", "A", "L", "L", "A"), layout = g_vertex_layout)
-```
+
+::: {.cell}
+::: {.cell-output-display}
+![](index_files/figure-revealjs/unnamed-chunk-7-1.png){width=960}
+:::
+:::
+
 
 ![](resources/FamilyBiking.JPG){fig-align="center" width="200"}
 :::
@@ -269,46 +267,25 @@ $$
 A_{t+1} = A_t + \alpha (N - A_t),\quad N=100,~\alpha=0.05,~A_0=5
 $$
 
-```{r}
-#| code-fold: true
-#| fig-align: center
-library(tibble)
-library(ggplot2)
-library(latex2exp)
-run_influencer_model2 <- function(N=5, adopt_rate = 0.2, time_steps = 1000, A_0 = 5) {
-  At = A_0
-  At_vec <- numeric(time_steps)
-  At_vec[1] <- A_0
-  for (ii in 1:time_steps) {
-    At = At + (adopt_rate * (N - At))
-    At_vec[ii + 1] <- At
-  }
-  
-  return (At_vec)
-}
 
-N = 100
-adopt_rate = 0.05
-time_steps = 100
-A_0 = 1
-# print(run_influencer_model2(N, adopt_rate, time_steps))
-tbl <- tibble(t=0:time_steps, A_t=run_influencer_model2(N, adopt_rate, time_steps, A_0))
-# print(tbl)
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![](index_files/figure-revealjs/unnamed-chunk-8-1.png){fig-align='center' width=960}
+:::
+:::
 
-
-
-ggplot(tbl, aes(x=t, y=A_t)) + geom_line() + geom_hline(yintercept=N, linetype="dashed", color="grey") + ylab(TeX("$A_t$")) + theme_classic(base_size=15)
-```
 
 ## LA model in a "well-mixed" population
 
 ::::: columns
 ::: {.column width="60%"}
-```{r}
-#| fig-asp: 0.8
-g <- make_full_graph(10)
-plot(g, layout=layout_in_circle(g))
-```
+
+::: {.cell}
+::: {.cell-output-display}
+![](index_files/figure-revealjs/unnamed-chunk-9-1.png){width=960}
+:::
+:::
+
 :::
 
 ::: {.column width="40%"}
@@ -376,3 +353,4 @@ Check $R_0$, the rate of change of $A_t$ when $A_t << N$
 Set $A_\infty = A_{t+1} = A_t$
 
 ## References
+
