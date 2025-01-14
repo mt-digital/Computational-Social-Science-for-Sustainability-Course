@@ -1,0 +1,17 @@
+format: revealjs
+max-scale: 0.7
+center: false
+width: 1500
+height: 1000
+include-in-header: 
+      text: |
+        <style>
+        .center-xy {
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -ms-transform: translateY(-50%), translateX(-50%);
+          transform: translateY(-50%), translateX(-50%);
+        }
+        </style>

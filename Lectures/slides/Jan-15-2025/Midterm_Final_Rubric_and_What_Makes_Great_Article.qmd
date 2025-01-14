@@ -1,0 +1,82 @@
+---
+title: "How to Write a Great Research Article for TopTier Journals"
+format: revealjs
+max-scale: 0.7
+center: false
+width: 1500
+height: 1000
+---
+
+
+## Overview: How to Write a Great Research Article 
+
+- Writing a great research article is key to successful publication.
+- Key stages: Structure, clarity, originality, addressing gaps in existing literature.
+- This presentation will focus on the four key sections: Introduction, Methods, Results, and Discussion.
+
+
+## Key components for a great Introduction
+
+- Background context: Set the stage for the research.
+- Problem statement: Identify the gap or question your research addresses.
+- Literature review: Concisely summarize previous work and its limitations.
+- Research aims/objectives: Clearly state the purpose and hypothesis.
+- Significance: Why your study matters.
+
+## Introduction rubric
+
+1. **Context & Background** (1 point): Provides adequate background and sets context.
+2. **Problem Statement** (1 point): Clear identification of the research gap.
+3. **Literature Review** (1 point): Demonstrates awareness of existing research and its limitations.
+4. **Research Objective(s)** (1 point): Clear and focused research question or hypothesis.
+5. **Significance & Impact** (1 point): Clearly explains the importance of the research.
+
+
+## "Methods" (or "Model") section
+
+**Key Components:**
+- Study design: Clearly describe the research design and rationale.
+- Sampling: Detail the selection of participants or data sources.
+- Data collection: Explain how data were gathered.
+- Analysis methods: Describe the statistical or analytical methods used.
+
+## 5-Point Rubric for the Methods Section
+
+1. **Study Design** (1 point): Clearly describes the research design and rationale.
+2. **Sampling & Participants** (1 point): Adequate description of sample size, population, and selection criteria.
+3. **Data Collection** (1 point): Detailed account of data gathering techniques.
+4. **Analysis Methods** (1 point): Clear explanation of data analysis techniques.
+5. **Replicability** (1 point): Methods are described in a way that allows replication.
+
+
+## "Results" (or "Analysis") section components
+
+
+- Clear presentation: Present data clearly and logically.
+- Use of visuals: Include graphs, tables, and figures where appropriate.
+- Summary: Concisely summarize the key findings without interpretation.
+
+## 5-Point Rubric for the Results Section
+
+1. **Data Presentation** (1 point): Clear and accurate presentation of data.
+2. **Visual Aids** (1 point): Appropriate use of figures, tables, and graphs.
+3. **Data Summary** (1 point): Concise summary of key findings without interpretation.
+4. **Statistical Reporting** (1 point): Includes appropriate statistical analysis and results.
+5. **Clarity** (1 point): Results are presented clearly and logically.
+
+
+## Discussion section components
+
+- Interpretation of findings: Discuss the significance and implications of the results.
+- Compare with previous work: Relate findings to existing research.
+- Limitations: Acknowledge study limitations and areas for future research.
+- Conclusion: Provide a strong, concise conclusion.
+
+## 5-Point Rubric for the Discussion Section
+
+1. **Interpretation of Results** (1 point): Clear explanation of the significance of the findings.
+2. **Comparison with Previous Work** (1 point): Relates findings to existing literature.
+3. **Acknowledgment of Limitations** (1 point): Identifies study limitations and future research directions.
+4. **Conclusion** (1 point): Strong and concise conclusion that ties the study together.
+5. **Broader Implications** (1 point): Discusses the broader implications of the findings.
+
