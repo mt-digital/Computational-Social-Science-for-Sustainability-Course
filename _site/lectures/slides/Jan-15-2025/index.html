@@ -442,7 +442,7 @@ A_{t+1} = A_t + \alpha A_t (1 - \frac{A}{N})
 <span id="cb1-7"><a></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
 <span id="cb1-8"><a></a>    <span class="co"># Anext is code for A_{t+1}</span></span>
 <span id="cb1-9"><a></a>    Anext <span class="ot">&lt;-</span> At <span class="sc">+</span> (alpha <span class="sc">*</span> At <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> (At<span class="sc">/</span>N)))</span>
-<span id="cb1-10"><a></a>    A_return[t <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> Anext</span>
+<span id="cb1-10"><a></a>    A_return[t] <span class="ot">&lt;-</span> Anext</span>
 <span id="cb1-11"><a></a>    At <span class="ot">&lt;-</span> Anext</span>
 <span id="cb1-12"><a></a>  }</span>
 <span id="cb1-13"><a></a>  <span class="fu">return</span> (A_return)</span>

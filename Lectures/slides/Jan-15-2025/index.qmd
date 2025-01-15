@@ -56,7 +56,7 @@ la_recursion <- function(N, A0, alpha, tmax) {
   for (t in 1:N) {
     # Anext is code for A_{t+1}
     Anext <- At + (alpha * At * (1 - (At/N)))
-    A_return[t + 1] <- Anext
+    A_return[t] <- Anext
     At <- Anext
   }
   return (A_return)

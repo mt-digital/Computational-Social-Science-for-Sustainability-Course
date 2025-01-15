@@ -21,7 +21,164 @@ library(magrittr)
 
 Sustainability will only be achieved if people and institutions behave sustainably. This course teaches techniques for predicting the spread of sustainable behaviors, in human social networks. There has been scant real progress towards limiting biodiversity loss, inequality, global warming, and other sustainability targets such as the [UN Sustainable Development Goals](https://sdgs.un.org/goals). This suggests people, institutions, or organizations continue to behave unsustainably, and begs the question: what will it take to get sustainable behaviors to become widely practiced in different societies? Behaviors are transmitted from person to person through social learning, be it through instruction or observation. Who learns from or observes whom is structured based on who we know, who we live near, who we work with, or whose messages we read on the internet.
 
-## Social networks
+In this course we want to build on successes of Elinor Ostrom's socio-ecological systems framework that identified the following _design principles_ (as re-formulated by @Cox2010 in the decades following the original formulation by Ostrom in her 1990 book summarizing her work, _Governing the Commons_):
+
+1. Well-defined boundaries
+2. Congruence between appropriation and provision rules and local conditions
+3. Fair, flexible collective-choice arrangements
+4. Monitoring and monitors must be reliable and inclusive of local communities
+5. Graduated sanctions: penalties for non-compliance with sustainable practices should start small and increase with further non-compliance
+6. Access to responsive, low-cost conflict-resolution mechanisms
+7. Minimum recognition of rights of all stakeholders to recognize local ownership of local common-pool resources
+8. Successful common-pool resource management requires nested institutions so those lower in the hierarchy can achieve power parity with those higher by having greater numbers of decision-makers in those foundational decision making groups
+
+To complement these design principles, and other lessons from sustainability practitioners, we want to develop simplified mechanistic models of human sustainability behavior change to identify rigorous principles of information transmission, cooperation, and political organization. 
+
+
+## A structure for developing models of social behavior for sustainability
+
+The models we'll study here share a general structure:
+
+1.  Create a population represented as $N$ nodes in a social network.
+2.  At each time step, imagine that each individual in a population "selects" or is otherwise paired with another individual, their *interaction partner*. Each individual may also take independent action. For example, the Legacy-Adaptive model of the diffusion of adaptations in the next section specifies that when one person doing a Legacy behavior observes another doing the Adaptive behavior, the one doing Legacy will switch to Adaptive with probability $\alpha$. Over the duration of the course, we will consider interactions that consist of learning/adopting behaviors, deciding whether to cooperate with others for collective adaptation, and influencing opinions.
+3.  This process is repeated over many time steps where each individual does something or interacts with another individual.
+4.  The conditions for stopping the model, the *stopping conditions*, must be specified. The simplest stopping condition is to run a simulation for a certain number of time steps. Other options include stopping when the population reaches some form of equilibrium, for example, the number of people doing an adaptive behavior stays relatively constant over several time steps.
+5.  We observe how certain *outcome variables* of interest, such as how many people adopt some behavior over time or how long it takes for some fraction of people to adopt an adaptive behavior.
+6.  In full analyses of these models, we analyze these outcome variables across different hypothetical contexts, such as changing how "viral" (i.e. how likely to be adopted) adaptive behaviors are.
+
+Developing new models of social behavior amounts to specifying new ways of how people interact with one another, what social networks look like, what environmental factors affect people's well-being, and analyzing how these and other factors affect social outcomes over time. The first class of formal and computational social models we introduce study how adaptations diffuse through populations using different assumptions about how people learn and what their social networks look like. We will start with formal models that can give us "exact" results by making strong assumptions about population size and social network structure, then show why *stochastic* computational models are essential to capture the randomness of social interactions and understand how social outcomes may vary depending on the course of chance events.
+
+
+## A primer on social networks
+
+Social networks are at once intuitive, perhaps partly due to their prominence in pop culture, and also technically complex and theoretically deep. Social networks have _nodes_ (aka _vertices_) that represent people, usually drawn visually as circles but other shapes are fine. Relationships between people are represented by _edges_, drawn visually as lines. If the lines have arrowheads here, the arrow will usually point in the direction of information flow, for example from a teacher to her student. If there is no arrow, or two arrows pointing different directions, this indicates a symmetric relationship where, e.g., information could flow in two directions.
+
+
+
+# Diffusion of adaptations
+
+Adaptations *diffuse* through communication or observation from person to person when two things happen. First, a person not doing some adaptive behavior (driving an electric vehicle, using heat pumps in their home for heating and cooling, switching to no-till farming methods, etc.) encounters someone who knows or does an adaptive behavior. Second, the person not doing the adaptive behavior must successfully acquire the knowledge and desire necessary to start doing the behavior themselves. In this section we introduce four models of this process.
+
+The first two assume that an adaptive behavior is randomly adopted by someone performing a legacy behavior with probability $\alpha$, the adoption rate. One of these assumes that anyone doing the adaptive behavior will continue doing it forever, the *Legacy-Adaptive* model (Figure @fig-LA-state). The next adds one more assumption, that people can stop doing a behavior, i.e., they can randomly \_drop_the behavior, which happens for anyone doing $A$ with probability $\delta$ (Figure @fig-LAL-state).
+
+The second two assume that learning is partly probabilistic and partly *adaptive*, where individuals can do some computation about who or what behavior may be best to learn. These are *social learning* models of transmission. The first of these is a *conformist-biased learning* model, where individuals are assumed to be more likely to learn a behavior if more people are doing it. The second is a *success-biased learning* model, where individuals are more likely to learn from individuals if an individual is doing relatively well compared to other neighbors. Success-biased learning is the only one of these where the benefit of doing a behavior matters, since there must be a way to acquire "payoffs", which is a modeling term of art representing amount of benefit, usually in unspecified units.
+
+## LA and LAL compartmental "contagion" models
+
+Contagion models like the LA and LAL models assume that when individuals encounter one another there is some probability that some individual-level attribute, in this case whether the individual $i$ does $A$. These models require relatively few parameters and variables, but ignore adaptive strategies people use for acquiring new information (@tbl-LA-LAL-parameters).
+
+Namely, these model contain two dynamic *outcome variables* $L_t$ and $A_t$ if time is discrete ($L(T)$ and $A(t)$ if time is continuous; see Note @note-continuous-time-LA-LAL) the number of individuals performing $L$ and the number performing $A$. These outcomes are dynamic, so $t$ represents time, which is discrete in our main treatment of these models, meaning that points in time can be indexed by integers, i.e., time steps are indexed by $t_i$ where $i \in \{1, 2, 3,\ldots\}$, e.g., $t \in \{0, 3, 6, 9, 12, 15, \ldots\}$ could be discrete time steps for a model with $t$ in months meant to represent some process for which we have data every three months. If time is continuous (@note-continuous-time-LA-LAL) then $t\in[0,\infty)$. Although time can continue on to infinity, we usually specify that models will stop at some time step or when some condition is met. One of the most important conditions is whether the population has *fixated*, meaning all agents do the same behavior. Finally, there are two parameters that determine the probability that individuals change their behavioral state (from doing $L$ to doing $A$ or vice-versa). In both the LA and LAL models, the probability $A$ is adopted when an $L$ meets an $A$ is the adoption rate, $\alpha$. In the LAL model, at every time step, every agent doing $A$ might drop the behavior, i.e., stop doing the behavior, reverting to do $L$ for the next time step. The probability one doing $A$ reverts to $L$ is $\delta$, the *drop rate*. So, the LA and LAL models are in fact the same model where we can set $\delta = 0$ to recover the LA model from the LAL model.
+
+| Symbol       | Description                                                                                                                                                                                                                                                                                                                | Values                                           |
+|------------------|------------------------------------|------------------|
+| $L,L_t,L(t)$ | Number of individuals doing **L**egacy behavior at time $t$; like $A$ serves as a noun for the behavior itself.                                                                                                                                                                                                            | $L_t \in \{0,\ldots,N\}$; $L(t) \in [0, \infty)$ |
+| $A,A_t,A(t)$ | Number of individuals doing **A**daptive behavior at time $t$, but used interchangeably for the behavior itself, e.g., "an individual doing $A$".                                                                                                                                                                          | $A_t \in \{0,\ldots,N\}$, $A(t) \in [0, \infty)$ |
+| $t$          | Time, which could be discrete or continuous. We write $A$ and $L$ as a function of time, i.e., $A_t$ if $t$ is discrete or $A(t)$ if continuous                                                                                                                                                                            | $\{0,1,\ldots\}$ or $[0,\infty)$                 |
+| $\alpha$     | Adoption rate, i.e., the probability that an individual doing $L$ adopts $A$ if their interaction partner is doing $A$.                                                                                                                                                                                                    | $[0, 1]$                                         |
+| $\delta$     | Drop rate, i.e., the probability that an individual doing $A$ stops doing $A$ at time $t$                                                                                                                                                                                                                                  | $[0, 1]$                                         |
+| $T$          | *Fixation* or *stopping* time. If the modeler specifies the model should stop when all individuals perform the same behavior, it is the fixation time. If the modeler specifies a certain number of steps for the model or there is some condition that causes the model to stop before fixation, it is the stopping time. | $\{0,1,\ldots\}$ or $[0,\infty)$                 |
+
+: LA and LAL model parameter and variable symbols and definitions. {#tbl-LA-LAL-parameters}
+
+### Legacy-Adaptive (LA) model
+
+
+![The Legacy-Adaptive model only allows for a change of individual-level state from performing the legacy behavior to performing the adaptive behavior.](images/LA.png){#fig-LA-state fig-align="center" width="441"}
+
+
+```{r}
+#| echo: true
+
+la_recursion <- function(N, A0, alpha, tmax) {
+  A_return <- numeric(N+1)  # Create output time series vector.
+  # Set current A_t to be A_0
+  At <- A0
+  A_return[1] <- At
+  # Iterate 
+  for (t in 1:tmax) {
+    # Anext is code for A_{t+1}
+    Anext <- At + (alpha * At * (1 - (At/N)))
+    A_return[t+1] <- Anext
+    At <- Anext
+  }
+  return (A_return)
+}
+```
+
+```{r}
+#| echo: true
+
+N <- 100
+A0 <- 5
+alpha_low <- 0.05
+tmax <- 200
+tvec <- 0:tmax
+Avec_low_alpha <- la_recursion(N, A0, alpha_low, tmax)
+
+alpha_high <- 0.8
+Avec_high_alpha <- la_recursion(N, A0, alpha_high, tmax)
+
+adopt_tbl <- tibble(timestep = rep(tvec, 2), 
+                    alpha = 
+                      as_factor(c(rep(alpha_low, length(tvec)), 
+                                  rep(alpha_high, length(tvec)))),
+                    A = c(Avec_low_alpha, Avec_high_alpha))
+
+ggplot(adopt_tbl, aes(x=timestep, y=A, color=alpha)) +
+  geom_line() + theme_classic()
+```
+
+### Legacy-Adaptive-Legacy (LAL) model
+
+![The Legacy-Adaptive-Legacy model also allows for transitions from the state $A$ to state $L$, which occurs with probability $\delta$.](images/LAL.png){#fig-LAL-state fig-align="center" width="441"}
+
+When considering the total change in $A,$ written $\Delta A,$ following a discrete time step, $\Delta t$, from time "now" to time "next", i.e., from $t$ to $t+1$, we can drop the indices since all indices are $t$, i.e.,
+
+$$
+\Delta A = \alpha A (1 - \frac{A}{N}) - \delta A.
+$$
+
+In this model, two new things are possible that were not possible before. First, the adaptation may completely fail to spread. If more people end up dropping the behavior than adopting it early on, there will be no one doing $A$ that someone doing $L$ could copy.
+Second, in general, everyone will _not_ eventually adopt $A$, at least not all at once, unlike in the LA model. In the LAL model there is an equilibrium value that the system reaches for a large enough $t$ defined as $A_{t \to \infty}$ where 
+
+::: {.callout-note collapse="false" title="Solving LA system of coupled differential equations" label="note-continuous-time-LA-LAL"}
+We can additionally represent the LA and LAL models as coupled ordinary differential equations (ODEs). The ODEs appear somewhat like the difference equations, but ODEs can be solved formally or numerically using the tools of calculus.
+
+### LA ODEs
+
+$$
+\frac{dL}{dt} = -\alpha L A
+$$
+
+$$
+\frac{dA}{dt} = \alpha L A
+$$
+
+where:
+
+-   $A(t) = \frac{N}{1 + K e^{-\alpha N t}}$
+-   $L(t) = N - A(t)$
+
+{{< include _LA_derivation.qmd >}}
+
+### LAL ODE
+
+See Chapter 3 in Britton's (2003) *Essential Mathematical Biology* for the solution of the LAL ODE system,
+
+$$
+\frac{dL}{dt} = -\alpha L A + \delta 
+$$
+:::
+
+## Adaptive social learning
+
+There are many ways people (or other critters with culture) use social or environmental cues to decide who to learn from, known as *social learning strategies* @Kendal2018. We will consider the effects of two such social learning strategies in this course, *conformity-biased learning* and *success-biased learning*. As before we focus on the discrete-time case, but we will also point towards more advanced resources for using continuous-time to formally calculate helpful heuristic values for understanding asymptotic dynamics.
+
+### Conformity-biased learning in social networks
+
+### Success-biased learning in social networks
+
+## More notes on social networks
 
 We need to know some basic things about social networks because all models make assumptions about them. First, a social network is a theoretical tool, a "cognitive gadget" , that represents relationships between people. Social networks are instances of graphs, an abstract mathematical structure for representing any type of entities and relationships between them. Graph *nodes* (aka *vertices*) represent the entities and *edges* represent the relationships between nodes. Edges are drawn as lines with or without arrows to indicate the flow of information, with information flowing to a *learner*, or *observer* more generally, from a *teacher* or *demonstrator* (Figure @fig-teacher-learner-infoflow). Lines with arrows are called *directed* edges. For a given pair of individuals, each may sometimes be teacher or learner. This case may be represented by two directed edges pointing opposite directions or a single *undirected* edge, i.e., a line with no arrowheads (Figure @fig-teacher-learner-bidirectional).
 
@@ -137,92 +294,7 @@ barplot(names=0:6, height=as.vector(degdist), ylab="Frequency", xlab="Degree, k"
 
 ### 
 
-## Developing models of social behavior for sustainability
 
-These models share a general structure:
-
-1.  Create a population represented as $N$ nodes in a social network.
-2.  At each time step, imagine that each individual in a population "selects" or is otherwise paired with another individual, their *interaction partner*. Each individual may also take independent action. For example, the Legacy-Adaptive model of the diffusion of adaptations in the next section specifies that when one person doing a Legacy behavior observes another doing the Adaptive behavior, the one doing Legacy will switch to Adaptive with probability $\alpha$. Over the duration of the course, we will consider interactions that consist of learning/adopting behaviors, deciding whether to cooperate with others for collective adaptation, and influencing opinions.
-3.  This process is repeated over many time steps where each individual does something or interacts with another individual.
-4.  The conditions for stopping the model, the *stopping conditions*, must be specified. The simplest stopping condition is to run a simulation for a certain number of time steps. Other options include stopping when the population reaches some form of equilibrium, for example, the number of people doing an adaptive behavior stays relatively constant over several time steps.
-5.  We observe how certain *outcome variables* of interest, such as how many people adopt some behavior over time or how long it takes for some fraction of people to adopt an adaptive behavior.
-6.  In full analyses of these models, we analyze these outcome variables across different hypothetical contexts, such as changing how "viral" (i.e. how likely to be adopted) adaptive behaviors are.
-
-Developing new models of social behavior amounts to specifying new ways of how people interact with one another, what social networks look like, what environmental factors affect people's well-being, and analyzing how these and other factors affect social outcomes over time. The first class of formal and computational social models we introduce study how adaptations diffuse through populations using different assumptions about how people learn and what their social networks look like. We will start with formal models that can give us "exact" results by making strong assumptions about population size and social network structure, then show why *stochastic* computational models are essential to capture the randomness of social interactions and understand how social outcomes may vary depending on the course of chance events.
-
-# Diffusion of adaptations
-
-Adaptations *diffuse* through communication or observation from person to person when two things happen. First, a person not doing some adaptive behavior (driving an electric vehicle, using heat pumps in their home for heating and cooling, switching to no-till farming methods, etc.) encounters someone who knows or does an adaptive behavior. Second, the person not doing the adaptive behavior must successfully acquire the knowledge and desire necessary to start doing the behavior themselves. In this section we introduce four models of this process.
-
-The first two assume that an adaptive behavior is randomly adopted by someone performing a legacy behavior with probability $\alpha$, the adoption rate. One of these assumes that anyone doing the adaptive behavior will continue doing it forever, the *Legacy-Adaptive* model (Figure @fig-LA-state). The next adds one more assumption, that people can stop doing a behavior, i.e., they can randomly \_drop_the behavior, which happens for anyone doing $A$ with probability $\delta$ (Figure @fig-LAL-state).
-
-The second two assume that learning is partly probabilistic and partly *adaptive*, where individuals can do some computation about who or what behavior may be best to learn. These are *social learning* models of transmission. The first of these is a *conformist-biased learning* model, where individuals are assumed to be more likely to learn a behavior if more people are doing it. The second is a *success-biased learning* model, where individuals are more likely to learn from individuals if an individual is doing relatively well compared to other neighbors. Success-biased learning is the only one of these where the benefit of doing a behavior matters, since there must be a way to acquire "payoffs", which is a modeling term of art representing amount of benefit, usually in unspecified units.
-
-## LA and LAL compartmental "contagion" models
-
-Contagion models like the LA and LAL models assume that when individuals encounter one another there is some probability that some individual-level attribute, in this case whether the individual $i$ does $A$. These models require relatively few parameters and variables, but ignore adaptive strategies people use for acquiring new information (@tbl-LA-LAL-parameters).
-
-Namely, these model contain two dynamic *outcome variables* $L_t$ and $A_t$ if time is discrete ($L(T)$ and $A(t)$ if time is continuous; see Note @note-continuous-time-LA-LAL) the number of individuals performing $L$ and the number performing $A$. These outcomes are dynamic, so $t$ represents time, which is discrete in our main treatment of these models, meaning that points in time can be indexed by integers, i.e., time steps are indexed by $t_i$ where $i \in \{1, 2, 3,\ldots\}$, e.g., $t \in \{0, 3, 6, 9, 12, 15, \ldots\}$ could be discrete time steps for a model with $t$ in months meant to represent some process for which we have data every three months. If time is continuous (@note-continuous-time-LA-LAL) then $t\in[0,\infty)$. Although time can continue on to infinity, we usually specify that models will stop at some time step or when some condition is met. One of the most important conditions is whether the population has *fixated*, meaning all agents do the same behavior. Finally, there are two parameters that determine the probability that individuals change their behavioral state (from doing $L$ to doing $A$ or vice-versa). In both the LA and LAL models, the probability $A$ is adopted when an $L$ meets an $A$ is the adoption rate, $\alpha$. In the LAL model, at every time step, every agent doing $A$ might drop the behavior, i.e., stop doing the behavior, reverting to do $L$ for the next time step. The probability one doing $A$ reverts to $L$ is $\delta$, the _drop rate_. So, the LA and LAL models are in fact the same model where we can set $\delta = 0$ to recover the LA model from the LAL model.
-
-| Symbol       | Description                                                                                                                                                                                                                                                                                                                | Values                                           |
-|------------------|-------------------------------------|------------------|
-| $L,L_t,L(t)$ | Number of individuals doing **L**egacy behavior at time $t$; like $A$ serves as a noun for the behavior itself.                                                                                                                                                                                                            | $L_t \in \{0,\ldots,N\}$; $L(t) \in [0, \infty)$ |
-| $A,A_t,A(t)$ | Number of individuals doing **A**daptive behavior at time $t$, but used interchangeably for the behavior itself, e.g., "an individual doing $A$".                                                                                                                                                                          | $A_t \in \{0,\ldots,N\}$, $A(t) \in [0, \infty)$ |
-| $t$          | Time, which could be discrete or continuous. We write $A$ and $L$ as a function of time, i.e., $A_t$ if $t$ is discrete or $A(t)$ if continuous                                                                                                                                                                            | $\{0,1,\ldots\}$ or $[0,\infty)$                 |
-| $\alpha$     | Adoption rate, i.e., the probability that an individual doing $L$ adopts $A$ if their interaction partner is doing $A$.                                                                                                                                                                                                    | $[0, 1]$                                         |
-| $\delta$     | Drop rate, i.e., the probability that an individual doing $A$ stops doing $A$ at time $t$                                                                                                                                                                                                                                  | $[0, 1]$                                         |
-| $T$          | *Fixation* or *stopping* time. If the modeler specifies the model should stop when all individuals perform the same behavior, it is the fixation time. If the modeler specifies a certain number of steps for the model or there is some condition that causes the model to stop before fixation, it is the stopping time. | $\{0,1,\ldots\}$ or $[0,\infty)$                 |
-
-: LA and LAL model parameter and variable symbols and definitions. {#tbl-LA-LAL-parameters}
-
-### Legacy-Adaptive (LA) model
-
-![The Legacy-Adaptive model only allows for a change of individual-level state from performing the legacy behavior to performing the adaptive behavior.](images/LA.png){#fig-LA-state fig-align="center" width="441"}
-
-### Legacy-Adaptive-Legacy (LAL) model
-
-![The Legacy-Adaptive-Legacy model also allows for transitions from the state $A$ to state $L$, which occurs with probability $\delta$.](images/LAL.png){#fig-LAL-state fig-align="center" width="441"}
-
-When considering the total change in $A,$ written $\Delta A,$ following a discrete time step, $\Delta t$, from time "now" to time "next" (\$t \to t+1\$), we can drop the indices since all indices are $t$, i.e.,
-
-$$
-\Delta A = \alpha A (1 - \frac{A}{N}) - \delta A.
-$$
-
-We can 
-
-::: {.callout-note collapse="false" title="Solving LA system of coupled differential equations" label="note-continuous-time-LA-LAL"}
-We can additionally represent the LA and LAL models as coupled ordinary differential equations (ODEs). The ODEs appear somewhat like the difference equations, but ODEs can be solved formally or numerically using the tools of calculus.
-
-### LA ODEs
-
-$$
-\frac{dL}{dt} = -\alpha L A
-$$
-
-$$
-\frac{dA}{dt} = \alpha L A
-$$
-
-where:
-
--   $A(t) = \frac{N}{1 + K e^{-\alpha N t}}$
--   $L(t) = N - A(t)$
-
-{{< include _LA_derivation.qmd >}}
-
-### LAL ODE
-
-See Chapter 3 in Britton's (2003) *Essential Mathematical Biology* for the solution of the LAL ODE system,
-
-$$
-\frac{dL}{dt} = -\alpha L A + \delta 
-$$
-:::
-
-## Adaptive social learning
-
-There are many ways people (or other critters with culture) use social or environmental cues to decide who to learn from, known as *social learning strategies* @Kendal2018. We will consider the effects of two such social learning strategies in this course, *conformity-biased learning* and *success-biased learning*. As before we focus on the discrete-time case, but we will also point towards more advanced resources for using continuous-time to formally calculate helpful heuristic values for understanding asymptotic dynamics.
 
 ### Conformity-biased learning
 
