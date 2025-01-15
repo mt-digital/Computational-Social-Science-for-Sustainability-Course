@@ -200,7 +200,7 @@
     "href": "book/index.html",
     "title": "Computational Social Science for Sustainability",
     "section": "",
-    "text": "This document is being regularly compiled, developed, and edited. Consider these course notes for Computational Social Science for Sustainability. Please send any feedback by email.\nLast updated Introduction bullet points on 2024-12-17."
+    "text": "Sustainability will only be achieved if people and institutions behave sustainably. This course teaches techniques for predicting the spread of sustainable behaviors, in human social networks. There has been scant real progress towards limiting biodiversity loss, inequality, global warming, and other sustainability targets such as the UN Sustainable Development Goals. This suggests people, institutions, or organizations continue to behave unsustainably, and begs the question: what will it take to get sustainable behaviors to become widely practiced in different societies? Behaviors are transmitted from person to person through social learning, be it through instruction or observation. Who learns from or observes whom is structured based on who we know, who we live near, who we work with, or whose messages we read on the internet.\n\n\nWe need to know some basic things about social networks because all models make assumptions about them. First, a social network is a theoretical tool, a “cognitive gadget” , that represents relationships between people. Social networks are instances of graphs, an abstract mathematical structure for representing any type of entities and relationships between them. Graph nodes (aka vertices) represent the entities and edges represent the relationships between nodes. Edges are drawn as lines with or without arrows to indicate the flow of information, with information flowing to a learner, or observer more generally, from a teacher or demonstrator (Figure Figure 1). Lines with arrows are called directed edges. For a given pair of individuals, each may sometimes be teacher or learner. This case may be represented by two directed edges pointing opposite directions or a single undirected edge, i.e., a line with no arrowheads (Figure Figure 2).\n\n\n\n\n\n\n\n\nFigure 1: Social networks represent relationships between people, with the arrow pointing away from the teacher and at the learner, i.e., in the direction of information flow.\n\n\n\n\n\nIn social networks, the entities are people and the relationships could be friendships, business partnerships, or, in the case of our first social network example, marriages between powerful families in Florence during the 1400s that elevated the the Medici clan developing into what was essentially one of the world’s first political parties. This follows Jackson’s introductory example in his textbook starting on p. 4 (Jackson 2008). Studying the Medici’s social network gives us our first look at the structure of social influence. During that period, the Medici family rose in wealth and political power over the lifetime of the family patriarch, Cosimo. Starting from a relatively weak position overall in the Florentine oligarchy of the time, Cosimo arranged marriages with other powerful families to subtly amplify the Medici control of politics and markets in Florence (Figure Figure 3; source: https://cran.r-project.org/web/packages/netrankr/vignettes/use_case.html). Eventually we will explain Cosimo’s strategy, which is not just simply to have the greatest diversity of intermarriages in the group of oligarchs (though the Medicis did). For now, we will introduce important network concepts and measures using the Medici network for a real-world case study.\n\n\n\n\n\n\n\n\n\n\n\\(\\uparrow\\quad\\) is equivalent to \\(\\quad\\downarrow\\)\n\n\n\n\n\n\n\n\n\nFigure 2: If there are two arrows, one pointing at each individual, or a line with no arrowheads, then each member of the dyad may be either teacher or learner.\n\n\n\n\n\nIn the Florentine network, the edges are undirected, which makes sense since marriage takes two families and is therefore not directed. Note then we have no knowledge from which family came husband and wife. Note too that there could be multiple marriages between two families, but this information is not contained in this graph.\nIn an undirected graph, the neighborhood of an individual \\(i\\) (or family, organization, institution, or other social entity) can be written \\(n_i\\) and is a set of all the individuals who share an edge with \\(i\\). The set of the Medici’s network neighbors then is written mathematically as\n\\[\nn_{\\text{Medici}} = \\{\\text{Salviati},~\\text{Acciaiuol},~\\text{Barbadori},~\\text{Ridolfi},~\\text{Tornabuon},~\\text{Albizzi}\\}\n\\] The degree of node \\(i\\) is the number of neighbors it has, written \\(k_i\\), so \\(k_\\text{Medici} = 6\\).\n\ndata(\"florentine_m\")\n# Delete Pucci family (isolated)\nflorentine_m &lt;- delete_vertices(florentine_m, which(degree(florentine_m) == 0))\n\n# plot the graph\nset.seed(111)\nplot(florentine_m,\n  vertex.label.cex = .9,\n  vertex.size = 20,\n  vertex.label.color = \"black\",\n  vertex.color = \"white\",\n  vertex.frame.color = \"gray\"\n)\n\n\n\n\n\n\n\nFigure 3: Florentine marriage network where edges represent marriages between families (node labels).\n\n\n\n\n\nWe can make a bar plot of the degrees for each family:\n\n\n\n\n\n\n\n\n\nThe degree distribution is the fraction of nodes having degree \\(k\\), written \\(P(k)\\). Since the Medici family is the only one with a degree of six, and there are fifteen families, \\(P(6)=\\frac{1}{15}\\approx 0.066\\), which we can check like so:\n\ndegdist &lt;- degree_distribution(florentine_m)\nmedici_k &lt;- 6\n# Degree distribution starts at 0 and goes to maximum k; index 1, then\n# correlates to k=0 and need to add 1 to the Medici index.\ndegdist[[medici_k + 1]]\n\n[1] 0.06666667\n\n\nWe can plot a simple histogram representation of \\(P(k)\\) using base R like so\n\nbarplot(names=0:6, height=as.vector(degdist), ylab=\"Frequency\", xlab=\"Degree, k\", col=\"#69b3a2\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThese models share a general structure:\n\nCreate a population represented as \\(N\\) nodes in a social network.\nAt each time step, imagine that each individual in a population “selects” or is otherwise paired with another individual, their interaction partner. Each individual may also take independent action. For example, the Legacy-Adaptive model of the diffusion of adaptations in the next section specifies that when one person doing a Legacy behavior observes another doing the Adaptive behavior, the one doing Legacy will switch to Adaptive with probability \\(\\alpha\\). Over the duration of the course, we will consider interactions that consist of learning/adopting behaviors, deciding whether to cooperate with others for collective adaptation, and influencing opinions.\nThis process is repeated over many time steps where each individual does something or interacts with another individual.\nThe conditions for stopping the model, the stopping conditions, must be specified. The simplest stopping condition is to run a simulation for a certain number of time steps. Other options include stopping when the population reaches some form of equilibrium, for example, the number of people doing an adaptive behavior stays relatively constant over several time steps.\nWe observe how certain outcome variables of interest, such as how many people adopt some behavior over time or how long it takes for some fraction of people to adopt an adaptive behavior.\nIn full analyses of these models, we analyze these outcome variables across different hypothetical contexts, such as changing how “viral” (i.e. how likely to be adopted) adaptive behaviors are.\n\nDeveloping new models of social behavior amounts to specifying new ways of how people interact with one another, what social networks look like, what environmental factors affect people’s well-being, and analyzing how these and other factors affect social outcomes over time. The first class of formal and computational social models we introduce study how adaptations diffuse through populations using different assumptions about how people learn and what their social networks look like. We will start with formal models that can give us “exact” results by making strong assumptions about population size and social network structure, then show why stochastic computational models are essential to capture the randomness of social interactions and understand how social outcomes may vary depending on the course of chance events."
   },
   {
     "objectID": "book/index.html#programming-in-r",
@@ -213,8 +213,8 @@
     "objectID": "book/index.html#social-networks",
     "href": "book/index.html#social-networks",
     "title": "Computational Social Science for Sustainability",
-    "section": "Social networks",
-    "text": "Social networks\nSocial networks are fundamental to modeling how behavior spreads in populations. As we will see ourselves in the next section, even if people learn perfectly well from one another with no social friction, they are not guaranteed to spread to every person in a simulated population."
+    "section": "",
+    "text": "We need to know some basic things about social networks because all models make assumptions about them. First, a social network is a theoretical tool, a “cognitive gadget” , that represents relationships between people. Social networks are instances of graphs, an abstract mathematical structure for representing any type of entities and relationships between them. Graph nodes (aka vertices) represent the entities and edges represent the relationships between nodes. Edges are drawn as lines with or without arrows to indicate the flow of information, with information flowing to a learner, or observer more generally, from a teacher or demonstrator (Figure Figure 1). Lines with arrows are called directed edges. For a given pair of individuals, each may sometimes be teacher or learner. This case may be represented by two directed edges pointing opposite directions or a single undirected edge, i.e., a line with no arrowheads (Figure Figure 2).\n\n\n\n\n\n\n\n\nFigure 1: Social networks represent relationships between people, with the arrow pointing away from the teacher and at the learner, i.e., in the direction of information flow.\n\n\n\n\n\nIn social networks, the entities are people and the relationships could be friendships, business partnerships, or, in the case of our first social network example, marriages between powerful families in Florence during the 1400s that elevated the the Medici clan developing into what was essentially one of the world’s first political parties. This follows Jackson’s introductory example in his textbook starting on p. 4 (Jackson 2008). Studying the Medici’s social network gives us our first look at the structure of social influence. During that period, the Medici family rose in wealth and political power over the lifetime of the family patriarch, Cosimo. Starting from a relatively weak position overall in the Florentine oligarchy of the time, Cosimo arranged marriages with other powerful families to subtly amplify the Medici control of politics and markets in Florence (Figure Figure 3; source: https://cran.r-project.org/web/packages/netrankr/vignettes/use_case.html). Eventually we will explain Cosimo’s strategy, which is not just simply to have the greatest diversity of intermarriages in the group of oligarchs (though the Medicis did). For now, we will introduce important network concepts and measures using the Medici network for a real-world case study.\n\n\n\n\n\n\n\n\n\n\n\\(\\uparrow\\quad\\) is equivalent to \\(\\quad\\downarrow\\)\n\n\n\n\n\n\n\n\n\nFigure 2: If there are two arrows, one pointing at each individual, or a line with no arrowheads, then each member of the dyad may be either teacher or learner.\n\n\n\n\n\nIn the Florentine network, the edges are undirected, which makes sense since marriage takes two families and is therefore not directed. Note then we have no knowledge from which family came husband and wife. Note too that there could be multiple marriages between two families, but this information is not contained in this graph.\nIn an undirected graph, the neighborhood of an individual \\(i\\) (or family, organization, institution, or other social entity) can be written \\(n_i\\) and is a set of all the individuals who share an edge with \\(i\\). The set of the Medici’s network neighbors then is written mathematically as\n\\[\nn_{\\text{Medici}} = \\{\\text{Salviati},~\\text{Acciaiuol},~\\text{Barbadori},~\\text{Ridolfi},~\\text{Tornabuon},~\\text{Albizzi}\\}\n\\] The degree of node \\(i\\) is the number of neighbors it has, written \\(k_i\\), so \\(k_\\text{Medici} = 6\\).\n\ndata(\"florentine_m\")\n# Delete Pucci family (isolated)\nflorentine_m &lt;- delete_vertices(florentine_m, which(degree(florentine_m) == 0))\n\n# plot the graph\nset.seed(111)\nplot(florentine_m,\n  vertex.label.cex = .9,\n  vertex.size = 20,\n  vertex.label.color = \"black\",\n  vertex.color = \"white\",\n  vertex.frame.color = \"gray\"\n)\n\n\n\n\n\n\n\nFigure 3: Florentine marriage network where edges represent marriages between families (node labels).\n\n\n\n\n\nWe can make a bar plot of the degrees for each family:\n\n\n\n\n\n\n\n\n\nThe degree distribution is the fraction of nodes having degree \\(k\\), written \\(P(k)\\). Since the Medici family is the only one with a degree of six, and there are fifteen families, \\(P(6)=\\frac{1}{15}\\approx 0.066\\), which we can check like so:\n\ndegdist &lt;- degree_distribution(florentine_m)\nmedici_k &lt;- 6\n# Degree distribution starts at 0 and goes to maximum k; index 1, then\n# correlates to k=0 and need to add 1 to the Medici index.\ndegdist[[medici_k + 1]]\n\n[1] 0.06666667\n\n\nWe can plot a simple histogram representation of \\(P(k)\\) using base R like so\n\nbarplot(names=0:6, height=as.vector(degdist), ylab=\"Frequency\", xlab=\"Degree, k\", col=\"#69b3a2\")"
   },
   {
     "objectID": "book/index.html#next-steps-understanding-discourse-itself",
@@ -1006,5 +1006,383 @@
     "title": "How to Write a Great Research Article for TopTier Journals",
     "section": "",
     "text": "Writing a great research article is key to successful publication.\nKey stages: Structure, clarity, originality, addressing gaps in existing literature.\nThis presentation will focus on the four key sections: Introduction, Methods, Results, and Discussion."
+  },
+  {
+    "objectID": "book/index.html#la-and-lal-compartmental-contagion-models",
+    "href": "book/index.html#la-and-lal-compartmental-contagion-models",
+    "title": "Computational Social Science for Sustainability",
+    "section": "LA and LAL compartmental “contagion” models",
+    "text": "LA and LAL compartmental “contagion” models\nContagion models like the LA and LAL models assume that when individuals encounter one another there is some probability that some individual-level attribute, in this case whether the individual \\(i\\) does \\(A\\). These models require relatively few parameters and variables, but ignore adaptive strategies people use for acquiring new information (Table 1).\nNamely, these model contain two dynamic outcome variables \\(L_t\\) and \\(A_t\\) if time is discrete (\\(L(T)\\) and \\(A(t)\\) if time is continuous; see Note (note-continuous-time-LA-LAL?)) the number of individuals performing \\(L\\) and the number performing \\(A\\). These outcomes are dynamic, so \\(t\\) represents time, which is discrete in our main treatment of these models, meaning that points in time can be indexed by integers, i.e., time steps are indexed by \\(t_i\\) where \\(i \\in \\{1, 2, 3,\\ldots\\}\\), e.g., \\(t \\in \\{0, 3, 6, 9, 12, 15, \\ldots\\}\\) could be discrete time steps for a model with \\(t\\) in months meant to represent some process for which we have data every three months. If time is continuous ((note-continuous-time-LA-LAL?)) then \\(t\\in[0,\\infty)\\). Although time can continue on to infinity, we usually specify that models will stop at some time step or when some condition is met. One of the most important conditions is whether the population has fixated, meaning all agents do the same behavior. Finally, there are two parameters that determine the probability that individuals change their behavioral state (from doing \\(L\\) to doing \\(A\\) or vice-versa). In both the LA and LAL models, the probability \\(A\\) is adopted when an \\(L\\) meets an \\(A\\) is the adoption rate, \\(\\alpha\\). In the LAL model, at every time step, every agent doing \\(A\\) might drop the behavior, i.e., stop doing the behavior, reverting to do \\(L\\) for the next time step. The probability one doing \\(A\\) reverts to \\(L\\) is \\(\\delta\\), the drop rate. So, the LA and LAL models are in fact the same model where we can set \\(\\delta = 0\\) to recover the LA model from the LAL model.\n\n\n\nTable 1: LA and LAL model parameter and variable symbols and definitions.\n\n\n\n\n\n\n\n\n\n\nSymbol\nDescription\nValues\n\n\n\n\n\\(L,L_t,L(t)\\)\nNumber of individuals doing Legacy behavior at time \\(t\\); like \\(A\\) serves as a noun for the behavior itself.\n\\(L_t \\in \\{0,\\ldots,N\\}\\); \\(L(t) \\in [0, \\infty)\\)\n\n\n\\(A,A_t,A(t)\\)\nNumber of individuals doing Adaptive behavior at time \\(t\\), but used interchangeably for the behavior itself, e.g., “an individual doing \\(A\\)”.\n\\(A_t \\in \\{0,\\ldots,N\\}\\), \\(A(t) \\in [0, \\infty)\\)\n\n\n\\(t\\)\nTime, which could be discrete or continuous. We write \\(A\\) and \\(L\\) as a function of time, i.e., \\(A_t\\) if \\(t\\) is discrete or \\(A(t)\\) if continuous\n\\(\\{0,1,\\ldots\\}\\) or \\([0,\\infty)\\)\n\n\n\\(\\alpha\\)\nAdoption rate, i.e., the probability that an individual doing \\(L\\) adopts \\(A\\) if their interaction partner is doing \\(A\\).\n\\([0, 1]\\)\n\n\n\\(\\delta\\)\nDrop rate, i.e., the probability that an individual doing \\(A\\) stops doing \\(A\\) at time \\(t\\)\n\\([0, 1]\\)\n\n\n\\(T\\)\nFixation or stopping time. If the modeler specifies the model should stop when all individuals perform the same behavior, it is the fixation time. If the modeler specifies a certain number of steps for the model or there is some condition that causes the model to stop before fixation, it is the stopping time.\n\\(\\{0,1,\\ldots\\}\\) or \\([0,\\infty)\\)\n\n\n\n\n\n\n\nLegacy-Adaptive (LA) model\n\n\n\n\n\n\nFigure 4: The Legacy-Adaptive model only allows for a change of individual-level state from performing the legacy behavior to performing the adaptive behavior.\n\n\n\n\n\nLegacy-Adaptive-Legacy (LAL) model\n\n\n\n\n\n\nFigure 5: The Legacy-Adaptive-Legacy model also allows for transitions from the state \\(A\\) to state \\(L\\), which occurs with probability \\(\\delta\\).\n\n\n\nWhen considering the total change in \\(A,\\) written \\(\\Delta A,\\) following a discrete time step, \\(\\Delta t\\), from time “now” to time “next” ($t t+1$), we can drop the indices since all indices are \\(t\\), i.e.,\n\\[\n\\Delta A = \\alpha A (1 - \\frac{A}{N}) - \\delta A.\n\\]\nWe can\n\n\n\n\n\n\nSolving LA system of coupled differential equations\n\n\n\n\n\nWe can additionally represent the LA and LAL models as coupled ordinary differential equations (ODEs). The ODEs appear somewhat like the difference equations, but ODEs can be solved formally or numerically using the tools of calculus.\n\nLA ODEs\n\\[\n\\frac{dL}{dt} = -\\alpha L A\n\\]\n\\[\n\\frac{dA}{dt} = \\alpha L A\n\\]\nwhere:\n\n\\(A(t) = \\frac{N}{1 + K e^{-\\alpha N t}}\\)\n\\(L(t) = N - A(t)\\)\n\n\n\nSI Model with Substitutions\nThe equations for the SI model become:\n\\[\n\\frac{dL}{dt} = -\\alpha L A\n\\]\n\\[\n\\frac{dA}{dt} = \\alpha L A\n\\]\nwhere:\n\\(xy\\)\n-\\(L\\): the number of susceptible individuals -\\(A\\): the number of infected individuals, -\\(\\alpha\\): the transmission rate, -\\(N = L + A\\): the total population size (assumed constant).\n\n\nStep-by-Step Process to Eliminate\\(L\\)\n\nExpress \\(L\\) in terms of \\(N\\) and \\(A\\): Since \\(N = L + A\\), we can write: \\[\nL = N - A.\n  \\]\nSubstitute \\(L = N - A\\) into the equation for \\(\\frac{dA}{dt}\\): Replace \\(L\\) in \\(\\frac{dA}{dt} = \\alpha L A\\): \\[\n\\frac{dA}{dt} = \\alpha (N - A) A.\n  \\]\nSimplify the resulting equation: Expand the terms: \\[\n\\frac{dA}{dt} = \\alpha N A - \\alpha A^2.\n  \\]\nThis is now a single nonlinear differential equation for \\(A\\), where \\(L\\) has been eliminated.\n\n\n\nSolving the Equation\nThe resulting equation: \\[\n\\frac{dA}{dt} = \\alpha N A - \\alpha A^2\n\\] is separable. Rearrange terms to separate \\(A\\) and \\(t\\): \\[\n\\frac{1}{A (N - A)} \\, dA = \\alpha \\, dt.\n\\]\nPerform partial fraction decomposition on \\(\\frac{1}{A (N - A)}\\): \\[\n\\frac{1}{A (N - A)} = \\frac{1}{N} \\left( \\frac{1}{A} + \\frac{1}{N - A} \\right).\n\\]\nIntegrate both sides: \\[\n\\int \\frac{1}{N} \\left( \\frac{1}{A} + \\frac{1}{N - A} \\right) dA = \\int \\alpha \\, dt.\n\\]\nThis yields: \\[\n\\frac{1}{N} \\left( \\ln|A| - \\ln|N - A| \\right) = \\alpha t + C,\n\\] where\\(C\\)is the integration constant.\nSimplify: \\[\n\\ln\\left(\\frac{A}{N - A}\\right) = \\alpha N t + C',\n\\] where \\(C' =  N C\\).\nExponentiate to solve for\\(A\\): \\[\n\\frac{A}{N - A} = e^{\\alpha N t + C'}.\n\\]\nRearranging gives: \\[\nA = \\frac{N}{1 + e^{-C' - \\alpha N t}}.\n\\]\nFinally, rewrite \\(e^{-C'}\\) as a constant \\(K\\): \\[\nA = \\frac{N}{1 + K e^{-\\alpha N t}},\n\\tag{1}\\]\nwhere \\(K\\) depends on the initial conditions.\nThis is the solution for \\(A(t)\\), and \\(L(t)\\) can be recovered using \\(L(t) = N - A(t)\\).\nTo find \\(K\\) for some initial condition, set \\(t=0\\), call \\(A_0 = A(t=0)\\), and solve for \\(K\\). Note that when \\(t=0\\), the denominator in Equation Equation 1 becomes \\(1 + K\\) since \\(e^0 = 1\\). Then we have\n\\[\nA(0) = \\frac{N}{1 + K}\n\\]\nwhich we can multiply by \\(1 + K\\) on both sides and rearrange to get\n\\[\nK = \\frac{N}{A_0}.\n\\]\n$$\n$$\n\n\nLAL ODE\nSee Chapter 3 in Britton’s (2003) Essential Mathematical Biology for the solution of the LAL ODE system,\n\\[\n\\frac{dL}{dt} = -\\alpha L A + \\delta\n\\]"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html",
+    "href": "Lectures/slides/2/index.html",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "",
+    "text": "Elinor Ostrom led development of social-ecological systems theory, which identified design principles to sustainably manage common-pool resources like clean water or healthy forests; all the common-pool resources together are called the commons.\n\nFirst woman to win a Nobel prize in economics (2009)\n\n\n\n\n\n\n\nSelect design principles (8 total; see Cox, Arnold, and Tomás (2010) reading for an overview):\n\nRules should fit local circumstances\nParticipation of all stakeholders is vital\n\nManagement of the commons must be organized across social and institutional scales\nAll levels of social hierarchy must be recognized and free to organize\n\nConflict resolution should be easily accessible\n\n\n\n\n\n\n\nTraditional, Indigenous adaptations for a changing climate are often outperform alternative technological innovations (Piggott-McKellar et al. 2020; McNamara et al. 2020).\n\n\n\n\n\nFrom The Nature Conservancy, “Woman Scientist Saves Mangroves and Battles Climate Change” [link]\n\n\n\n\n\n\nFrom The Nature Conservancy, “Quiet Fire: Indigenous tribes in California and other parts of the U.S. have been rekindling the ancient art of controlled burning.” [link]\n\n\n\n\n\n\n\n\nThe design principles were inferred from decades of studies by various authors\nComputation based on mechanistic models can provide deductive predictions of how social phenomena emerge from social interactions\nSocial phenomena include\n\nThe diffusion and innovation of adaptations\nCooperation and coordination to sustainably manage common-pool resources\nRising political extremism and polarization\nThe meaning of words (not enough time in this quarter’s EBS 181/281)\n\n\n\n\n\nHow useful practices propagate through populations\n\nSocial learning, breifly\nThe Legacy-Adaptive (LA) and Legacy-Adaptive-Legacy (LAL) models of diffusion via “contagion”\n\nBegin with deriving them with deterministic equations\nThen with stochastic, generative models\n\nSocial networks structure social learning: who learns from whom\n\n\n\n\n\nMore network constructions: small-world and scale-free networks\nSuccess-biased social learning and other social learning strategies\nHow certain social networks may boost both innovation and inequality\nAnalysis of group structure and its effect on the diffusion of adaptations\nCooperation and coordination\nSocial influence and opinion dynamics: beliefs as particles"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#ostroms-design-principles-for-sustainable-socio-ecological-systems",
+    "href": "Lectures/slides/2/index.html#ostroms-design-principles-for-sustainable-socio-ecological-systems",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "",
+    "text": "Elinor Ostrom led development of social-ecological systems theory, which identified design principles to sustainably manage common-pool resources like clean water or healthy forests; all the common-pool resources together are called the commons.\n\nFirst woman to win a Nobel prize in economics (2009)\n\n\n\n\n\n\n\nSelect design principles (8 total; see Cox, Arnold, and Tomás (2010) reading for an overview):\n\nRules should fit local circumstances\nParticipation of all stakeholders is vital\n\nManagement of the commons must be organized across social and institutional scales\nAll levels of social hierarchy must be recognized and free to organize\n\nConflict resolution should be easily accessible"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#ostroms-work-elevated-indigenous-adaptation",
+    "href": "Lectures/slides/2/index.html#ostroms-work-elevated-indigenous-adaptation",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "",
+    "text": "Traditional, Indigenous adaptations for a changing climate are often outperform alternative technological innovations (Piggott-McKellar et al. 2020; McNamara et al. 2020).\n\n\n\n\n\nFrom The Nature Conservancy, “Woman Scientist Saves Mangroves and Battles Climate Change” [link]\n\n\n\n\n\n\nFrom The Nature Conservancy, “Quiet Fire: Indigenous tribes in California and other parts of the U.S. have been rekindling the ancient art of controlled burning.” [link]"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#computational-social-science-for-sustainability",
+    "href": "Lectures/slides/2/index.html#computational-social-science-for-sustainability",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "",
+    "text": "The design principles were inferred from decades of studies by various authors\nComputation based on mechanistic models can provide deductive predictions of how social phenomena emerge from social interactions\nSocial phenomena include\n\nThe diffusion and innovation of adaptations\nCooperation and coordination to sustainably manage common-pool resources\nRising political extremism and polarization\nThe meaning of words (not enough time in this quarter’s EBS 181/281)"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#plan-for-today",
+    "href": "Lectures/slides/2/index.html#plan-for-today",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "",
+    "text": "How useful practices propagate through populations\n\nSocial learning, breifly\nThe Legacy-Adaptive (LA) and Legacy-Adaptive-Legacy (LAL) models of diffusion via “contagion”\n\nBegin with deriving them with deterministic equations\nThen with stochastic, generative models\n\nSocial networks structure social learning: who learns from whom"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#beyond-today",
+    "href": "Lectures/slides/2/index.html#beyond-today",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "",
+    "text": "More network constructions: small-world and scale-free networks\nSuccess-biased social learning and other social learning strategies\nHow certain social networks may boost both innovation and inequality\nAnalysis of group structure and its effect on the diffusion of adaptations\nCooperation and coordination\nSocial influence and opinion dynamics: beliefs as particles"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#legacy-adaptive-la-model",
+    "href": "Lectures/slides/2/index.html#legacy-adaptive-la-model",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Legacy-adaptive (LA) model",
+    "text": "Legacy-adaptive (LA) model\n\nAdapted from the susceptible-infected (SI) model of disease transmission, i.e., a model of contagion where something spreads through contact with others.\n\nAssume that when an observer doing \\(L\\) (legacy behavior) interacts with someone doing \\(A\\) (adaptive behavior), there is a probability \\(\\alpha\\) that the observer starts doing \\(A\\).\n\\(\\alpha\\) is the adoption probability"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#why-this-legacy-adaptive-dichotomy",
+    "href": "Lectures/slides/2/index.html#why-this-legacy-adaptive-dichotomy",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Why this “legacy-adaptive” dichotomy?",
+    "text": "Why this “legacy-adaptive” dichotomy?\n\n\n\n\n\n“The legacy media want to destroy your right to freedom of speech” says Elon Musk\nMusk effectively repurposed the phrase “legacy software”, which indicates old, outdated software that will one day be abandoned\nIt may be helpful to harness this phrase to the same effect as Musk does, but as a label for unsustainable behaviors\nIt can be important to contest certain concepts like “legacy” to restrain others from defining how useful terms can be used"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#the-adaptation-influencer-case",
+    "href": "Lectures/slides/2/index.html#the-adaptation-influencer-case",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "The adaptation influencer case",
+    "text": "The adaptation influencer case\n\nOftentimes people will eventually adopt a behavior if they observe an “influencer”.\nIf we are designing a sustainability intervention, we may want to know how long it will take for everyone who is influenced by an influencer to adopt some behavior"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#the-influencer",
+    "href": "Lectures/slides/2/index.html#the-influencer",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "The influencer",
+    "text": "The influencer\nLet’s use one of my favorite sustainable behaviors, biking, to illustrate this first model!\n\n\n\nYours truly spreading the love of biking."
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#the-influencer-1",
+    "href": "Lectures/slides/2/index.html#the-influencer-1",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "The influencer",
+    "text": "The influencer\n\n\nInitialization: time step \\(t=0\\); B: biker, N: not biker\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA node or vertex (circles) represents a person\nAn edge (arrows) represents a relationship between two people\nEdge arrows indicate the direction of information flow\nOnly connected people interact"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#the-influencer-2",
+    "href": "Lectures/slides/2/index.html#the-influencer-2",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "The influencer",
+    "text": "The influencer\n\n\nAs time progresses (\\(t &gt; 0\\)) more family members start biking."
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#the-influencer-3",
+    "href": "Lectures/slides/2/index.html#the-influencer-3",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "The influencer",
+    "text": "The influencer\n\n\nTime step \\(t = T\\), the fixation time when all individuals share the same behavior."
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#formal-influencer-model-as-la-model",
+    "href": "Lectures/slides/2/index.html#formal-influencer-model-as-la-model",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Formal influencer model as LA model",
+    "text": "Formal influencer model as LA model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAt each time step, \\(t\\), a fraction \\(\\alpha\\) of the population of \\(N-A_t\\) targeted individuals changes their behavior from \\(L\\) to \\(A\\).\nTherefore, \\[\nA_{t+1} = A_t + \\alpha (N - A_t)\n\\]"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#deterministic-influencer-model-as-la-model",
+    "href": "Lectures/slides/2/index.html#deterministic-influencer-model-as-la-model",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Deterministic influencer model as LA model",
+    "text": "Deterministic influencer model as LA model\n\\[\nA_{t+1} = A_t + \\alpha (N - A_t),\\quad N=100,~\\alpha=0.05,~A_0=5\n\\]"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#la-model-in-a-well-mixed-population",
+    "href": "Lectures/slides/2/index.html#la-model-in-a-well-mixed-population",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "LA model in a “well-mixed” population",
+    "text": "LA model in a “well-mixed” population\n\n\n\n\n\n\n\n\n\n\n\n\n\n“Well-mixed” means that all individuals can learn from every other individual\nWe also assume that \\(N\\to\\infty\\) so that it makes more sense (maybe?) to have model output in terms of “fractional people”\nIf we were to draw the social network, every agent would have a line to every other agent indicating ubiquitous bi-directional influence"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#la-model-in-a-well-mixed-population-1",
+    "href": "Lectures/slides/2/index.html#la-model-in-a-well-mixed-population-1",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "LA model in a “well-mixed” population",
+    "text": "LA model in a “well-mixed” population\n\nUnlike the influencer model, individuals are only exposed to \\(A\\) if a neighbor knows the behavior\nThis also means that the rate of diffusion of \\(A\\) is not constant"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#la-model-in-a-well-mixed-population-2",
+    "href": "Lectures/slides/2/index.html#la-model-in-a-well-mixed-population-2",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "LA model in a “well-mixed” population",
+    "text": "LA model in a “well-mixed” population\n\n\nUnlike the influencer model, individuals are only exposed to \\(A\\) if a neighbor knows the behavior\nThis also means that the rate of diffusion of \\(A\\) is not constant\n\n\n\\[\nA_{t+1} = A_t + \\alpha A_t (1 - \\frac{A_t}{N})\n\\]"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#legacy-adaptive-legacy-lal-model-1",
+    "href": "Lectures/slides/2/index.html#legacy-adaptive-legacy-lal-model-1",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Legacy-adaptive-legacy (LAL) model",
+    "text": "Legacy-adaptive-legacy (LAL) model\n\nAdapted from the susceptible-infected-susceptible epidemiology model\nIdentical to LA model, except that there is a drop probability \\(\\delta\\) that someone performing \\(A\\) regresses to again perform \\(L\\)"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#legacy-adaptive-legacy-lal-model-2",
+    "href": "Lectures/slides/2/index.html#legacy-adaptive-legacy-lal-model-2",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Legacy-adaptive-legacy (LAL) model",
+    "text": "Legacy-adaptive-legacy (LAL) model\n\\[\nA_{t+1} = A_t + \\alpha A_t (1 - \\frac{A_t}{N}) \\text{ ...? }\n\\]"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#legacy-adaptive-legacy-lal-model-3",
+    "href": "Lectures/slides/2/index.html#legacy-adaptive-legacy-lal-model-3",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Legacy-adaptive-legacy (LAL) model",
+    "text": "Legacy-adaptive-legacy (LAL) model\nNeed to subtract the fraction of those doing \\(A\\) who regress to do \\(L\\)\n\\[\nA_{t+1} = A_t + \\alpha A_t (1 - \\frac{A_t}{N}) - \\delta A_t\n\\]"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#will-an-adaptation-spread-or-go-extinct",
+    "href": "Lectures/slides/2/index.html#will-an-adaptation-spread-or-go-extinct",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Will an adaptation spread or go extinct?",
+    "text": "Will an adaptation spread or go extinct?\nCheck \\(R_0\\), the rate of change of \\(A_t\\) when \\(A_t &lt;&lt; N\\)"
+  },
+  {
+    "objectID": "Lectures/slides/2/index.html#what-will-be-the-equilibrium-value-of-a_t",
+    "href": "Lectures/slides/2/index.html#what-will-be-the-equilibrium-value-of-a_t",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "What will be the equilibrium value of \\(A_t\\)?",
+    "text": "What will be the equilibrium value of \\(A_t\\)?\nSet \\(A_\\infty = A_{t+1} = A_t\\)"
+  },
+  {
+    "objectID": "Lectures/index.html",
+    "href": "Lectures/index.html",
+    "title": "Lectures",
+    "section": "",
+    "text": "Lectures\n\nIntroduction (1/6/2025)\nComputing lab lecture and problem set #1 introduction (1/8/2025)\nDiffusion of innovations in different varieties of social networks (1/13/2025)\nComputing lab lecture (1/15/2025)\nInvention and diffusion of innovations in group-structured social networks and introduction of PS #2 ( 1/22/2025)"
+  },
+  {
+    "objectID": "Lectures/slides/1.html",
+    "href": "Lectures/slides/1.html",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "",
+    "text": "Please see the Syllabus and course homepage at https://mt.digital/teaching/CSS4S/.\n\n\n\n\nPlease introduce yourself, including your major and degree program\nOne to a few words about why you are interested in sustainability\nOne to a few words about why you are interested in (computational) social science\n\n\n\n\n \nFinal question for the group:\n\nHow do you define sustainability?\n\n\n\n\n\n\n\nNew Oxford American Dictionary definition\n\n\n\n\n\n\n\n\nUN Sustainable Development Goals: https://sdgs.un.org/goals\n\n\n\n\n\n\n\n\nA sustainability project at Amazon [link]\n\n\n\n\n\n\n\n\nAnother sustainability project at Amazon [link]\n\n\n\n\n\n\nElinor Ostrom led development of social-ecological systems theory, which identified design principles to help sustain common-pool resources.\n\nFirst woman to win a Nobel prize in economics (2009)\n\nA common-pool resource is something like clean water or healthy forests; all the common-pool resources together are called the commons.\n\n\n\n\n\n\nSelect design principles (8 total; see Cox, Arnold, and Tomás (2010) reading for an overview):\n\nRules should fit local circumstances\nParticipation of all stakeholders is vital\n\nManagement of the commons must be organized across social and institutional scales\nAll levels of social hierarchy must be recognized and free to organize\n\nConflict resolution should be easily accessible\n\n\n\n\n\n\n\nOstrom’s work elevated traditional, Indigenous adaptations for a changing climate (always been changing) and other sustainability challenges.\n\n\n\n\n\nFrom The Nature Conservancy, “Woman Scientist Saves Mangroves and Battles Climate Change” [link]\n\n\n\n\n\n\nFrom The Nature Conservancy, “Quiet Fire: Indigenous tribes in California and other parts of the U.S. have been rekindling the ancient art of controlled burning.” [link]\n\n\n\n\n\n\n\nTwo opportunities to complement Ostrom’s socio-ecological systems program:\n\nComplementary deductive methods could predict the outcomes of candidate interventions to promote sustainability.\n\nOstrom and colleagues developed the design principles inductively, based on decades of rigorous empirical research.\n\nCooperation is not always necessary in order to gain individual-level benefits and affect sustainability.\n\nWalking, biking, or EVs instead of internal combustion engine commuting\nHeat pumps and solar panels to reduce carbon-intensive energy generation\n\n\n\n\n\n\nWe use the scientific method, starting from the high school version:\n\nHypothesize what causes some phenomenon\nGather evidence to support your explanation\nEvaluate the hypothesis (true, false, in-between)\nRepeat\n\nIn computational social science we develop computer and mathematical models to test hypotheses before gathering data.\nWe can test some hypotheses deductively this way, or we can support hypotheses that motivate empirical studies."
+  },
+  {
+    "objectID": "Lectures/slides/1.html#course-information",
+    "href": "Lectures/slides/1.html#course-information",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "",
+    "text": "Please see the Syllabus and course homepage at https://mt.digital/teaching/CSS4S/."
+  },
+  {
+    "objectID": "Lectures/slides/1.html#introductions",
+    "href": "Lectures/slides/1.html#introductions",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "",
+    "text": "Please introduce yourself, including your major and degree program\nOne to a few words about why you are interested in sustainability\nOne to a few words about why you are interested in (computational) social science"
+  },
+  {
+    "objectID": "Lectures/slides/1.html#sustainability",
+    "href": "Lectures/slides/1.html#sustainability",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "",
+    "text": "Final question for the group:\n\nHow do you define sustainability?"
+  },
+  {
+    "objectID": "Lectures/slides/1.html#sustainability-1",
+    "href": "Lectures/slides/1.html#sustainability-1",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "",
+    "text": "New Oxford American Dictionary definition"
+  },
+  {
+    "objectID": "Lectures/slides/1.html#sustainability-2",
+    "href": "Lectures/slides/1.html#sustainability-2",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "",
+    "text": "UN Sustainable Development Goals: https://sdgs.un.org/goals"
+  },
+  {
+    "objectID": "Lectures/slides/1.html#sustainability-3",
+    "href": "Lectures/slides/1.html#sustainability-3",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "",
+    "text": "A sustainability project at Amazon [link]"
+  },
+  {
+    "objectID": "Lectures/slides/1.html#sustainability-4",
+    "href": "Lectures/slides/1.html#sustainability-4",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "",
+    "text": "Another sustainability project at Amazon [link]"
+  },
+  {
+    "objectID": "Lectures/slides/1.html#social-science-for-sustainability",
+    "href": "Lectures/slides/1.html#social-science-for-sustainability",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "",
+    "text": "Elinor Ostrom led development of social-ecological systems theory, which identified design principles to help sustain common-pool resources.\n\nFirst woman to win a Nobel prize in economics (2009)\n\nA common-pool resource is something like clean water or healthy forests; all the common-pool resources together are called the commons.\n\n\n\n\n\n\nSelect design principles (8 total; see Cox, Arnold, and Tomás (2010) reading for an overview):\n\nRules should fit local circumstances\nParticipation of all stakeholders is vital\n\nManagement of the commons must be organized across social and institutional scales\nAll levels of social hierarchy must be recognized and free to organize\n\nConflict resolution should be easily accessible"
+  },
+  {
+    "objectID": "Lectures/slides/1.html#social-science-for-sustainability-1",
+    "href": "Lectures/slides/1.html#social-science-for-sustainability-1",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "",
+    "text": "Ostrom’s work elevated traditional, Indigenous adaptations for a changing climate (always been changing) and other sustainability challenges.\n\n\n\n\n\nFrom The Nature Conservancy, “Woman Scientist Saves Mangroves and Battles Climate Change” [link]\n\n\n\n\n\n\nFrom The Nature Conservancy, “Quiet Fire: Indigenous tribes in California and other parts of the U.S. have been rekindling the ancient art of controlled burning.” [link]"
+  },
+  {
+    "objectID": "Lectures/slides/1.html#social-science-for-sustainability-2",
+    "href": "Lectures/slides/1.html#social-science-for-sustainability-2",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "",
+    "text": "Two opportunities to complement Ostrom’s socio-ecological systems program:\n\nComplementary deductive methods could predict the outcomes of candidate interventions to promote sustainability.\n\nOstrom and colleagues developed the design principles inductively, based on decades of rigorous empirical research.\n\nCooperation is not always necessary in order to gain individual-level benefits and affect sustainability.\n\nWalking, biking, or EVs instead of internal combustion engine commuting\nHeat pumps and solar panels to reduce carbon-intensive energy generation"
+  },
+  {
+    "objectID": "Lectures/slides/1.html#computational-social-science",
+    "href": "Lectures/slides/1.html#computational-social-science",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "",
+    "text": "We use the scientific method, starting from the high school version:\n\nHypothesize what causes some phenomenon\nGather evidence to support your explanation\nEvaluate the hypothesis (true, false, in-between)\nRepeat\n\nIn computational social science we develop computer and mathematical models to test hypotheses before gathering data.\nWe can test some hypotheses deductively this way, or we can support hypotheses that motivate empirical studies."
+  },
+  {
+    "objectID": "Lectures/slides/1.html#the-influencer",
+    "href": "Lectures/slides/1.html#the-influencer",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "The Influencer",
+    "text": "The Influencer\n\nOftentimes people will eventually adopt a behavior if they observe an “influencer”.\nIf we are designing a sustainability intervention, we may want to know how long it will take for everyone who is influenced by an influencer to adopt some behavior…"
+  },
+  {
+    "objectID": "Lectures/slides/1.html#the-influencer-1",
+    "href": "Lectures/slides/1.html#the-influencer-1",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "The Influencer",
+    "text": "The Influencer\nLet’s model how long it will take for everyone who is influenced by this influencer to adopt the behavior of commuting on bike!\n\n\n\nYours truly spreading the love of biking."
+  },
+  {
+    "objectID": "Lectures/slides/1.html#the-influencer-2",
+    "href": "Lectures/slides/1.html#the-influencer-2",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "The influencer",
+    "text": "The influencer\n\n\n\nCode\nlibrary(igraph)\n\n\n\nAttaching package: 'igraph'\n\n\nThe following objects are masked from 'package:stats':\n\n    decompose, spectrum\n\n\nThe following object is masked from 'package:base':\n\n    union\n\n\nCode\nigraph_options(vertex.color = \"SkyBlue2\", vertex.frame.color = \"SkyBlue2\", \n               vertex.label.cex = 4, vertex.size = 30, rescale = FALSE)\npar(mar=c(0,0,0,0)+.1)\n\n\nInitialization: time step \\(t=0\\); B: biker, N: not biker\n\n\nCode\ng &lt;- make_graph(~ 1-+2, 1-+3, 1-+4, 1--+5, 1--+6)\ng_vertex_layout = matrix(c(0, 0, 0.4, -0.7, 0.2, -0.9, 0, -1, -0.4, -0.7, -0.2, -0.9), \n                         byrow=TRUE, ncol=2)\nplot(g, vertex.label=c(\"B\", \"N\", \"N\", \"N\", \"N\", \"N\"), \n     layout = g_vertex_layout)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA vertice (dots) represents a person with a unique id\nAn edge (arrows) represents a relationship between two people\nEdge arrows indicate the direction of information flow\nTwo simulated people interact if and only if an edge connects them"
+  },
+  {
+    "objectID": "Lectures/slides/1.html#the-influencer-3",
+    "href": "Lectures/slides/1.html#the-influencer-3",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "The influencer",
+    "text": "The influencer\n\n\n\nCode\nlibrary(igraph)\nigraph_options(vertex.color = \"SkyBlue2\", vertex.frame.color = \"SkyBlue2\", \n               vertex.label.cex = 4, vertex.size = 30, rescale = FALSE)\npar(mar=c(0,0,0,0)+.1)\n\n\nTime step \\(t &gt; 0\\)\n\n\nCode\ng &lt;- make_graph(~ 1-+2, 1-+3, 1-+4, 1--+5, 1--+6)\ng_vertex_layout = matrix(c(0, 0, 0.4, -0.7, 0.2, -0.9, 0, -1, -0.4, -0.7, -0.2, -0.9), byrow=TRUE, ncol=2)\nplot(g, vertex.label=c(\"B\", \"B\", \"N\", \"B\", \"N\", \"N\"), \n     layout = g_vertex_layout)\n\n\n\n\n\n\n\n\n\n\n\nThe influenced begin to adopt biking over time\nWe specify the probability, \\(\\tau\\), that an influenced person adopts biking when exposed to it by the influencer"
+  },
+  {
+    "objectID": "Lectures/slides/1.html#the-influencer-4",
+    "href": "Lectures/slides/1.html#the-influencer-4",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "The influencer",
+    "text": "The influencer\n\n\n\nCode\nlibrary(igraph)\nigraph_options(vertex.color = \"SkyBlue2\", vertex.frame.color = \"SkyBlue2\", \n               vertex.label.cex = 4, vertex.size = 30, rescale = FALSE)\npar(mar=c(0,0,0,0)+.1)\n\n\nTime step \\(t = T\\)\n\n\nCode\ng &lt;- make_graph(~ 1-+2, 1-+3, 1-+4, 1--+5, 1--+6)\ng_vertex_layout = matrix(c(0, 0, 0.4, -0.7, 0.2, -0.9, 0, -1, -0.4, -0.7, -0.2, -0.9), byrow=TRUE, ncol=2)\nplot(g, vertex.label=c(\"B\", \"B\", \"B\", \"B\", \"B\", \"B\"), \n     layout = g_vertex_layout)\n\n\n\n\n\n\n\n\n\n\n\nIn this model, everyone eventually bikes because there is no “forgetting” or “reverting” to previous behaviors.\nThe state where all become bikers is called fixation.\nThe time step \\(T\\) when fixation occurs is the fixation time.\nWith this model we can calculate \\(T\\) as a function of the number of influenced agents, \\(N\\), and the transmissibility of biking, \\(\\tau\\)."
+  },
+  {
+    "objectID": "Lectures/slides/1.html#review-and-next-steps-1",
+    "href": "Lectures/slides/1.html#review-and-next-steps-1",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "Review and next steps",
+    "text": "Review and next steps\nReview\n\nComputational social science complements socio-ecological systems approaches to promote sustainability\nExample Influencer model to understand, e.g., how long an advertising campaign must run in order to affect all targeted individuals\n\nNext steps:\n\nJanuary:\n\nThe effect of other social network configurations beyond influencer network, including group structure\nOther assumptions about how learning works (add forgetting, “success-bias”, and more)\n\nBeyond:\n\nConsider cooperative sustainable behaviors whose benefit depends on how many people adopt a behavior (e.g., prescriptive burns)\nUnderstand and predict opinion polarization and its effect on sustainability"
+  },
+  {
+    "objectID": "Lectures/slides/1.html#wednesday-18-introduce-problem-set-1",
+    "href": "Lectures/slides/1.html#wednesday-18-introduce-problem-set-1",
+    "title": "Introduction to EBS 181/281: Computational Social Science for Sustainability",
+    "section": "Wednesday 1/8: Introduce Problem Set 1",
+    "text": "Wednesday 1/8: Introduce Problem Set 1\n\nLearn to analyze anonymized class demographic data\nLearn to program the Influencer model\nProblem Set #1 will be due January 29 at 11:30 AM before the start of class \nAt future lectures and lab sections we will learn to program other models that will be included in Problem Set #1."
+  },
+  {
+    "objectID": "book/index.html#developing-models-of-social-behavior-for-sustainability",
+    "href": "book/index.html#developing-models-of-social-behavior-for-sustainability",
+    "title": "Computational Social Science for Sustainability",
+    "section": "",
+    "text": "These models share a general structure:\n\nCreate a population represented as \\(N\\) nodes in a social network.\nAt each time step, imagine that each individual in a population “selects” or is otherwise paired with another individual, their interaction partner. Each individual may also take independent action. For example, the Legacy-Adaptive model of the diffusion of adaptations in the next section specifies that when one person doing a Legacy behavior observes another doing the Adaptive behavior, the one doing Legacy will switch to Adaptive with probability \\(\\alpha\\). Over the duration of the course, we will consider interactions that consist of learning/adopting behaviors, deciding whether to cooperate with others for collective adaptation, and influencing opinions.\nThis process is repeated over many time steps where each individual does something or interacts with another individual.\nThe conditions for stopping the model, the stopping conditions, must be specified. The simplest stopping condition is to run a simulation for a certain number of time steps. Other options include stopping when the population reaches some form of equilibrium, for example, the number of people doing an adaptive behavior stays relatively constant over several time steps.\nWe observe how certain outcome variables of interest, such as how many people adopt some behavior over time or how long it takes for some fraction of people to adopt an adaptive behavior.\nIn full analyses of these models, we analyze these outcome variables across different hypothetical contexts, such as changing how “viral” (i.e. how likely to be adopted) adaptive behaviors are.\n\nDeveloping new models of social behavior amounts to specifying new ways of how people interact with one another, what social networks look like, what environmental factors affect people’s well-being, and analyzing how these and other factors affect social outcomes over time. The first class of formal and computational social models we introduce study how adaptations diffuse through populations using different assumptions about how people learn and what their social networks look like. We will start with formal models that can give us “exact” results by making strong assumptions about population size and social network structure, then show why stochastic computational models are essential to capture the randomness of social interactions and understand how social outcomes may vary depending on the course of chance events."
+  },
+  {
+    "objectID": "book/index.html#adaptive-social-learning",
+    "href": "book/index.html#adaptive-social-learning",
+    "title": "Computational Social Science for Sustainability",
+    "section": "Adaptive social learning",
+    "text": "Adaptive social learning\nThere are many ways people (or other critters with culture) use social or environmental cues to decide who to learn from, known as social learning strategies Kendal et al. (2018). We will consider the effects of two such social learning strategies in this course, conformity-biased learning and success-biased learning. As before we focus on the discrete-time case, but we will also point towards more advanced resources for using continuous-time to formally calculate helpful heuristic values for understanding asymptotic dynamics.\n\nConformity-biased learning\n\n\nSuccess-biased learning"
+  },
+  {
+    "objectID": "Lectures/slides/Jan-15-2025/index.html#legacy-adaptive-la-model",
+    "href": "Lectures/slides/Jan-15-2025/index.html#legacy-adaptive-la-model",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Legacy-adaptive (LA) model",
+    "text": "Legacy-adaptive (LA) model\nRecall the discrete recursion formula for the legacy-adaptive model is\n\\[\nA_{t+1} = A_t + \\alpha A_t (1 - \\frac{A}{N})\n\\]"
+  },
+  {
+    "objectID": "Lectures/slides/Jan-15-2025/index.html#legacy-adaptive-legacy-lal-model",
+    "href": "Lectures/slides/Jan-15-2025/index.html#legacy-adaptive-legacy-lal-model",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Legacy-adaptive-legacy (LAL) model",
+    "text": "Legacy-adaptive-legacy (LAL) model\nNeed to subtract the fraction of those doing \\(A\\) who regress to do \\(L\\) with probability \\(\\delta\\).\n\\[\nA_{t+1} = A_t + \\alpha A_t (1 - \\frac{A_t}{N}) - \\delta A_t\n\\]"
+  },
+  {
+    "objectID": "Lectures/slides/Jan-15-2025/index.html#coding-the-legacy-adaptive-model",
+    "href": "Lectures/slides/Jan-15-2025/index.html#coding-the-legacy-adaptive-model",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Coding the legacy-adaptive model",
+    "text": "Coding the legacy-adaptive model\nIn the code below, note we use tmax for \\(T\\) because T is a built-in variable name that stands for logical TRUE."
+  },
+  {
+    "objectID": "Lectures/slides/Jan-15-2025/index.html#coding-the-lal-model",
+    "href": "Lectures/slides/Jan-15-2025/index.html#coding-the-lal-model",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Coding the LAL model",
+    "text": "Coding the LAL model"
+  },
+  {
+    "objectID": "Lectures/slides/Jan-15-2025/index.html#analyzing-the-legacy-adaptive-model",
+    "href": "Lectures/slides/Jan-15-2025/index.html#analyzing-the-legacy-adaptive-model",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Analyzing the legacy-adaptive model",
+    "text": "Analyzing the legacy-adaptive model\nLet’s compare the LA model output for two values of the adoption rate, \\(\\alpha=0.2,0.8.\\)\n\n\nCode\nN &lt;- 100\nA0 &lt;- 5\nalpha &lt;- 0.2\ntmax &lt;- 100\ntvec &lt;- 0:100\nAvec_low_alpha &lt;- la_recursion(N, A0, alpha, tmax)\n\nalpha &lt;- 0.8\nAvec_high_alpha &lt;- la_recursion(N, A0, alpha, tmax)\n\nadopt_tbl &lt;- tibble(timestep = rep(tvec, 2), \n                    alpha = c(rep(0.2, length(tvec)), rep(0.8, length(tvec))),\n                    A = c(Avec_low_alpha, Avec_high_alpha))"
+  },
+  {
+    "objectID": "Lectures/slides/Jan-15-2025/index.html#formal-analysis-of-the-lal-model",
+    "href": "Lectures/slides/Jan-15-2025/index.html#formal-analysis-of-the-lal-model",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "Formal analysis of the LAL model",
+    "text": "Formal analysis of the LAL model\n\nFirst, consider what happens at \\(t\\approx0\\) to calculate whether adaptation will spread\nSecond, calculate the equilibrium as \\(t\\to\\infty\\), denoted \\(A_\\infty\\). This is the expected number of people doing \\(A\\) once the adaptation becomes established."
+  },
+  {
+    "objectID": "Lectures/slides/Jan-15-2025/index.html#a-first-look-at-networks-via-medicis",
+    "href": "Lectures/slides/Jan-15-2025/index.html#a-first-look-at-networks-via-medicis",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "A first look at networks via Medicis",
+    "text": "A first look at networks via Medicis\n\n\nCode\ndata(\"florentine_m\")\n# Delete Pucci family (isolated)\nflorentine_m &lt;- delete_vertices(florentine_m, which(degree(florentine_m) == 0))\n\n# plot the graph\nset.seed(111)\nplot(florentine_m,\n  vertex.label.cex = .9,\n  vertex.size = 20,\n  vertex.label.color = \"black\",\n  vertex.color = \"white\",\n  vertex.frame.color = \"gray\"\n)\n\n\n\n\n\nFigure 1: Florentine marriage network where edges represent marriages between families (node labels)."
+  },
+  {
+    "objectID": "Lectures/slides/Jan-15-2025/index.html#section",
+    "href": "Lectures/slides/Jan-15-2025/index.html#section",
+    "title": "Diffusion of adaptations via social learning",
+    "section": "",
+    "text": "Code\nla_recursion &lt;- function(N, A0, alpha, tmax) {\n  A_return &lt;- numeric(N+1)  # Create output time series vector.\n  # Set current A_t to be A_0\n  At &lt;- A0\n  A_return[1] &lt;- At\n  # Iterate \n  for (t in 1:N) {\n    # Anext is code for A_{t+1}\n    Anext &lt;- At + (alpha * At * (1 - (At/N)))\n    A_return[t + 1] &lt;- Anext\n    At &lt;- Anext\n  }\n  return (A_return)\n}"
   }
 ]

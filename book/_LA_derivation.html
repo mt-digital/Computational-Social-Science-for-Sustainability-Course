@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Comp. Soc. Sci. for Sustainability (EBS 181/281)</title>
+<title>la_derivation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,124 +23,130 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../Logo.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+<script src="_LA_derivation_files/libs/clipboard/clipboard.min.js"></script>
+<script src="_LA_derivation_files/libs/quarto-html/quarto.js"></script>
+<script src="_LA_derivation_files/libs/quarto-html/popper.min.js"></script>
+<script src="_LA_derivation_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="_LA_derivation_files/libs/quarto-html/anchor.min.js"></script>
+<link href="_LA_derivation_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="_LA_derivation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="_LA_derivation_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="_LA_derivation_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="_LA_derivation_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
   }
-}</script>
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
-
-<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="fullcontent">
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Comp. Soc. Sci. for Sustainability (EBS 181/281)</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Syllabus</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../book/index.html"> 
-<span class="menu-text">Course Notes</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../lectures/index.qmd"> 
-<span class="menu-text">Lectures</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#lectures" id="toc-lectures" class="nav-link active" data-scroll-target="#lectures">Lectures</a></li>
-  </ul>
-</nav>
-    </div>
-<!-- main -->
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
 <main class="content" id="quarto-document-content">
 
 
 
 
-<section id="lectures" class="level1">
-<h1>Lectures</h1>
+<section id="si-model-with-substitutions" class="level3">
+<h3 class="anchored" data-anchor-id="si-model-with-substitutions">SI Model with Substitutions</h3>
+<p>The equations for the SI model become:</p>
+<p><span class="math display">\[
+\frac{dL}{dt} = -\alpha L A
+\]</span></p>
+<p><span class="math display">\[
+\frac{dA}{dt} = \alpha L A
+\]</span></p>
+<p>where:</p>
+<p><span class="math inline">\(xy\)</span></p>
+<p>-<span class="math inline">\(L\)</span>: the number of susceptible individuals -<span class="math inline">\(A\)</span>: the number of infected individuals, -<span class="math inline">\(\alpha\)</span>: the transmission rate, -<span class="math inline">\(N = L + A\)</span>: the total population size (assumed constant).</p>
+</section>
+<section id="step-by-step-process-to-eliminatel" class="level3">
+<h3 class="anchored" data-anchor-id="step-by-step-process-to-eliminatel">Step-by-Step Process to Eliminate<span class="math inline">\(L\)</span></h3>
 <ol type="1">
-<li><a href="../lectures/slides/1.html">Introduction</a> (1/6/2025)</li>
-<li>Computing lab lecture and problem set #1 introduction (1/8/2025)</li>
-<li>Diffusion of innovations in different varieties of social networks (1/13/2025)</li>
-<li>Computing lab lecture (1/15/2025)</li>
-<li>Invention and diffusion of innovations in group-structured social networks and introduction of PS #2 ( 1/22/2025)</li>
+<li><p><strong>Express</strong> <span class="math inline">\(L\)</span> in terms of <span class="math inline">\(N\)</span> and <span class="math inline">\(A\)</span>: Since <span class="math inline">\(N = L + A\)</span>, we can write: <span class="math display">\[
+L = N - A.
+  \]</span></p></li>
+<li><p><strong>Substitute</strong> <span class="math inline">\(L = N - A\)</span> into the equation for <span class="math inline">\(\frac{dA}{dt}\)</span>: Replace <span class="math inline">\(L\)</span> in <span class="math inline">\(\frac{dA}{dt} = \alpha L A\)</span>: <span class="math display">\[
+\frac{dA}{dt} = \alpha (N - A) A.
+  \]</span></p></li>
+<li><p><strong>Simplify the resulting equation:</strong> Expand the terms: <span class="math display">\[
+\frac{dA}{dt} = \alpha N A - \alpha A^2.
+  \]</span></p>
+<p>This is now a single nonlinear differential equation for <span class="math inline">\(A\)</span>, where <span class="math inline">\(L\)</span> has been eliminated.</p></li>
 </ol>
-
-
+</section>
+<section id="solving-the-equation" class="level3">
+<h3 class="anchored" data-anchor-id="solving-the-equation">Solving the Equation</h3>
+<p>The resulting equation: <span class="math display">\[
+\frac{dA}{dt} = \alpha N A - \alpha A^2
+\]</span> is separable. Rearrange terms to separate <span class="math inline">\(A\)</span> and <span class="math inline">\(t\)</span>: <span class="math display">\[
+\frac{1}{A (N - A)} \, dA = \alpha \, dt.
+\]</span></p>
+<p>Perform partial fraction decomposition on <span class="math inline">\(\frac{1}{A (N - A)}\)</span>: <span class="math display">\[
+\frac{1}{A (N - A)} = \frac{1}{N} \left( \frac{1}{A} + \frac{1}{N - A} \right).
+\]</span></p>
+<p>Integrate both sides: <span class="math display">\[
+\int \frac{1}{N} \left( \frac{1}{A} + \frac{1}{N - A} \right) dA = \int \alpha \, dt.
+\]</span></p>
+<p>This yields: <span class="math display">\[
+\frac{1}{N} \left( \ln|A| - \ln|N - A| \right) = \alpha t + C,
+\]</span> where<span class="math inline">\(C\)</span>is the integration constant.</p>
+<p>Simplify: <span class="math display">\[
+\ln\left(\frac{A}{N - A}\right) = \alpha N t + C',
+\]</span> where <span class="math inline">\(C' =  N C\)</span>.</p>
+<p>Exponentiate to solve for<span class="math inline">\(A\)</span>: <span class="math display">\[
+\frac{A}{N - A} = e^{\alpha N t + C'}.
+\]</span></p>
+<p>Rearranging gives: <span class="math display">\[
+A = \frac{N}{1 + e^{-C' - \alpha N t}}.
+\]</span></p>
+<p>Finally, rewrite <span class="math inline">\(e^{-C'}\)</span> as a constant <span class="math inline">\(K\)</span>: <span id="eq-logistic"><span class="math display">\[
+A = \frac{N}{1 + K e^{-\alpha N t}},
+\tag{1}\]</span></span></p>
+<p>where <span class="math inline">\(K\)</span> depends on the initial conditions.</p>
+<p>This is the solution for <span class="math inline">\(A(t)\)</span>, and <span class="math inline">\(L(t)\)</span> can be recovered using <span class="math inline">\(L(t) = N - A(t)\)</span>.</p>
+<p>To find <span class="math inline">\(K\)</span> for some initial condition, set <span class="math inline">\(t=0\)</span>, call <span class="math inline">\(A_0 = A(t=0)\)</span>, and solve for <span class="math inline">\(K\)</span>. Note that when <span class="math inline">\(t=0\)</span>, the denominator in Equation <a href="#eq-logistic" class="quarto-xref">Equation&nbsp;1</a> becomes <span class="math inline">\(1 + K\)</span> since <span class="math inline">\(e^0 = 1\)</span>. Then we have</p>
+<p><span class="math display">\[
+A(0) = \frac{N}{1 + K}
+\]</span></p>
+<p>which we can multiply by <span class="math inline">\(1 + K\)</span> on both sides and rearrange to get</p>
+<p><span class="math display">\[
+K = \frac{N}{A_0}.
+\]</span></p>
+<p>$$</p>
+<p>$$</p>
 </section>
 
-</main> <!-- /main -->
+</main>
+<!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
