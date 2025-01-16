@@ -31,8 +31,6 @@ $$
 In the code below, note we use `tmax` for $T$ because `T` is a built-in
 variable name that stands for logical `TRUE`.
 
-## 
-
 ```{r setup, include=FALSE}
 library(tibble)
 library(dplyr)
@@ -103,14 +101,14 @@ $$
 
 ## Formal analysis of the LAL model
 
--   First, consider what happens at $t\approx0$ to calculate whether
-    adaptation will spread
-
+-   First, consider what happens at $t\approx0$ to calculate $R_0$ for
+    adoption which tells us whether an adaptation will spread at all
+    (Smaldino *MSB* p. 100, section 4.5.2)
 -   Second, calculate the equilibrium as $t\to\infty$, denoted
-    $A_\infty$. This is the expected number of people doing $A$ once the
-    adaptation becomes established.
+    $A_\infty$. This can be thought of as the average number of people
+    doing an adaptive behavior (Smaldino *MSB* p. 95-99 section 4.5)
 
-## A first look at networks via Medicis
+## A first real-world network: the Medicis in 1400 Florence
 
 ```{r}
 #| label: fig-florentine-network
