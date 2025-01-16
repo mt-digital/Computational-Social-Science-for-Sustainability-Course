@@ -1,0 +1,29 @@
+/* css styles */
+
+// Navbar - Stanford cardinal, light, background; white letters (foreground)
+/*$navbar-bg: #8C1515;
+$navbar-fg: #000000;*/
+
+h1, h2, h3, h4, h5, h6 {color: #8C1515;} 
+
+
+/* Center 3rd column */
+table td:nth-child(1) {
+    text-align: center;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -moz-transform: translate(-50%, -50%); /* Firefox */
+  -ms-transform: translate(-50%, -50%);  /* IE 9 */
+  -webkit-transform: translate(-50%, -50%); /* Safari and Chrome*/
+  -o-transform: translate(-50%, -50%); /* Opera */
+  transform: translate(-50%, -50%);
+}
+
+#netlearn {
+  font-size: 20px;
+  text-align: center;
+}
