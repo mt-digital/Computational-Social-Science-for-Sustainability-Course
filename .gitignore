@@ -6,3 +6,7 @@ Website/quarto_test/
 Website/Website.Rproj
 
 /.quarto/
+_site
+*/index_files/*
+*/index_files
+index_files

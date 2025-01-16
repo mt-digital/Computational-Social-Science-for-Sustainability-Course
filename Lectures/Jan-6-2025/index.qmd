@@ -137,7 +137,7 @@ Two opportunities to complement Ostrom's socio-ecological systems program:
 ## Computational social _science_
 
 - We use the scientific method, starting from the high school version:
-    1. Hypothesize what causes some phenomenon 
+    1. Hypothesize what will happen in some context based on previous observations 
     1. Gather evidence to support your explanation
     1. Evaluate the hypothesis (true, false, in-between)
     1. Repeat
@@ -292,13 +292,22 @@ Next steps:
     - Understand and predict opinion polarization and its effect on
       sustainability
 
+<<<<<<< HEAD:Lectures/Jan-6-2025/index.qmd
 ##  Wednesday 1/8: Introduce Problem Set 1
+=======
+## Introduce Problem Set 1 at lab session Wednesday 1/8
+>>>>>>> origin/main:Website/lectures/slides/1.qmd
 
 - Learn to analyze anonymized class demographic data
 - Learn to program the Influencer model
 - Problem Set #1 will be due January 29 at 11:30 AM before the start of class
+<<<<<<< HEAD:Lectures/Jan-6-2025/index.qmd
 <br><br>
 - At future lectures and lab sections we will learn to program other models
+=======
+
+At future lectures and lab sections we will learn to program other models
+>>>>>>> origin/main:Website/lectures/slides/1.qmd
 that will be included in Problem Set #1.
 
 ## References
