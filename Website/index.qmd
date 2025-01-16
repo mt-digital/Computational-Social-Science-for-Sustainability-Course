@@ -51,8 +51,8 @@ Many sustainability challenges—such as spreading new ideas and habits, fosteri
 cooperation for shared resources, and addressing political divides—arise from
 repeated social interactions over time. Through labs and lectures, students will
 learn computational methods to model and analyze the behavioral outcomes of
-longer-term social learning, strategic economic cooperation, and social
-influence. Students will have the chance to apply these methods to real-world
+social learning, strategic economic cooperation, and social influence over time. 
+Students will have the chance to apply these methods to real-world
 sustainability behaviors of interest in a final project. By the end of the
 course, students will have gained practical technical skills in R programming
 and data science, a deeper understanding of how to apply computational tools to
