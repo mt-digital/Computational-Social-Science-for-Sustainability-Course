@@ -164,7 +164,7 @@ Let's model how long it will take for everyone who is influenced by this influen
 to adopt the behavior of commuting on bike!
 
 
-![Yours truly spreading the love of biking.](1-resources/MeBike.jpg){width="600px"}
+![Yours truly spreading the love of biking.](./1-resources/MeBike.jpg){width="600px"}
 
 ## The influencer
 

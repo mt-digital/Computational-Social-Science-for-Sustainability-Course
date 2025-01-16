@@ -3,7 +3,7 @@ title: "Diffusion of adaptations via social learning"
 subtitle: "Part I: the Legacy-Adaptive and Legacy-Adaptive-Legacy contagion models"
 author: "Dr. Matthew A. Turner, PhD"
 institution: "Department of Human Behavioral Sciences, Stanford Doerr School of Sustainability"
-date: "1/13/2025"
+date: "1/15/2025"
 format: 
   revealjs:
     html-math-method: mathjax

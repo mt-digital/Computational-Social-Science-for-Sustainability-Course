@@ -26,7 +26,7 @@ editor:
 
 ::::: columns
 ::: {.column width="30%"}
-<img src="../1-resources/OstromNobel.png" width="250" display="block"/>
+<img src="../Jan-6-2025/1-resources/OstromNobel.png" width="250" display="block"/>
 :::
 
 ::: {.column width="70%"}
@@ -53,7 +53,7 @@ outperform alternative technological innovations [@Piggott-McKellar2020;
 ::: column
 ![From The Nature Conservancy, "Woman Scientist Saves Mangroves and
 Battles Climate Change"
-\[[link](https://www.nature.org/en-us/magazine/magazine-articles/indigenous-controlled-burns-california/)\]](../1-resources/WomenScientistsPacificIslands.jpg){fig-align="center"
+\[[link](https://www.nature.org/en-us/magazine/magazine-articles/indigenous-controlled-burns-california/)\]](../Jan-6-2025/1-resources/WomenScientistsPacificIslands.jpg){fig-align="center"
 height="400px"}
 :::
 
@@ -61,7 +61,7 @@ height="400px"}
 ![From The Nature Conservancy, "Quiet Fire: Indigenous tribes in
 California and other parts of the U.S. have been rekindling the ancient
 art of controlled burning."
-\[[link](https://www.nature.org/en-us/magazine/magazine-articles/indigenous-controlled-burns-california/)\]](../1-resources/Yurok_Ceremonial_First_Light.jpg){fig-align="center"
+\[[link](https://www.nature.org/en-us/magazine/magazine-articles/indigenous-controlled-burns-california/)\]](../Jan-6-2025/1-resources/Yurok_Ceremonial_First_Light.jpg){fig-align="center"
 height="400px"}
 :::
 :::::
@@ -149,7 +149,7 @@ Let's use one of my favorite sustainable behaviors, biking, to
 illustrate this first model!
 
 ![Yours truly spreading the love of
-biking.](../1-resources/MeBike.jpg){width="600px"}
+biking.](../Jan-6-2025/1-resources/MeBike.jpg){width="600px"}
 
 ## The influencer
 
