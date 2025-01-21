@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Comp. Soc. Sci. for Sustainability (EBS 181/281) - Computational Social Science for Sustainability</title>
+<title>Computational Social Science for Sustainability – Comp. Soc. Sci. for Sustainability (EBS 181/281)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -90,10 +90,10 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-eb83b09dbd08fe6a8296ac6453ea0b21.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -122,7 +122,7 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -167,7 +167,7 @@ window.Quarto = {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -177,16 +177,16 @@ window.Quarto = {
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../notes/index.html" aria-current="page"> 
+    <a class="nav-link" href="../notes"> 
 <span class="menu-text">Course Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../lectures/index.html"> 
+    <a class="nav-link" href="../lectures"> 
 <span class="menu-text">Lectures</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -203,7 +203,11 @@ window.Quarto = {
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
   <li><a href="#a-structure-for-developing-models-of-social-behavior-for-sustainability" id="toc-a-structure-for-developing-models-of-social-behavior-for-sustainability" class="nav-link" data-scroll-target="#a-structure-for-developing-models-of-social-behavior-for-sustainability">A structure for developing models of social behavior for sustainability</a></li>
-  <li><a href="#a-primer-on-social-networks" id="toc-a-primer-on-social-networks" class="nav-link" data-scroll-target="#a-primer-on-social-networks">A primer on social networks</a></li>
+  <li><a href="#a-primer-on-social-networks" id="toc-a-primer-on-social-networks" class="nav-link" data-scroll-target="#a-primer-on-social-networks">A primer on social networks</a>
+  <ul class="collapse">
+  <li><a href="#creating-and-measuring-social-networks" id="toc-creating-and-measuring-social-networks" class="nav-link" data-scroll-target="#creating-and-measuring-social-networks">Creating and measuring social networks</a></li>
+  <li><a href="#analysis-of-the-medici-family" id="toc-analysis-of-the-medici-family" class="nav-link" data-scroll-target="#analysis-of-the-medici-family">Analysis of the Medici family</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#diffusion-of-adaptations" id="toc-diffusion-of-adaptations" class="nav-link" data-scroll-target="#diffusion-of-adaptations">Diffusion of adaptations</a>
   <ul class="collapse">
@@ -214,22 +218,20 @@ window.Quarto = {
   </ul></li>
   <li><a href="#adaptive-social-learning" id="toc-adaptive-social-learning" class="nav-link" data-scroll-target="#adaptive-social-learning">Adaptive social learning</a>
   <ul class="collapse">
-  <li><a href="#conformity-biased-learning-in-social-networks" id="toc-conformity-biased-learning-in-social-networks" class="nav-link" data-scroll-target="#conformity-biased-learning-in-social-networks">Conformity-biased learning in social networks</a></li>
-  <li><a href="#success-biased-learning-in-social-networks" id="toc-success-biased-learning-in-social-networks" class="nav-link" data-scroll-target="#success-biased-learning-in-social-networks">Success-biased learning in social networks</a></li>
-  </ul></li>
-  <li><a href="#more-notes-on-social-networks" id="toc-more-notes-on-social-networks" class="nav-link" data-scroll-target="#more-notes-on-social-networks">More notes on social networks</a>
-  <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   <li><a href="#conformity-biased-learning" id="toc-conformity-biased-learning" class="nav-link" data-scroll-target="#conformity-biased-learning">Conformity-biased learning</a></li>
   <li><a href="#success-biased-learning" id="toc-success-biased-learning" class="nav-link" data-scroll-target="#success-biased-learning">Success-biased learning</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#cooperation-and-coordination" id="toc-cooperation-and-coordination" class="nav-link" data-scroll-target="#cooperation-and-coordination">Cooperation and coordination</a></li>
+  <li><a href="#opinion-dynamics" id="toc-opinion-dynamics" class="nav-link" data-scroll-target="#opinion-dynamics">Opinion dynamics</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -250,10 +252,10 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level1">
+<section id="introduction" class="level1 page-columns page-full">
 <h1>Introduction</h1>
 <p>Sustainability will only be achieved if people and institutions behave sustainably. This course teaches techniques for predicting the spread of sustainable behaviors, in human social networks. Sustainability, and other pressing issues, needs a rigorous theory of how sustainable behavior spreads. This is apparent since there has been scant real progress towards limiting biodiversity loss, inequality, global warming, and other sustainability targets such as the <a href="https://sdgs.un.org/goals">UN Sustainable Development Goals</a>. This suggests people, institutions, or organizations continue to behave unsustainably, and begs the question: what will it take to get sustainable behaviors to become widely practiced in different societies? Behaviors are transmitted from person to person through social learning, be it through instruction or observation. Who learns from or observes whom is structured based on who we know, who we live near, who we work with, or whose messages we read on the internet.</p>
-<p>In this course we want to build on successes of Elinor Ostrom’s socio-ecological systems framework that identified the following <em>design principles</em> (as re-formulated by <span class="citation" data-cites="Cox2010">Cox, Arnold, and Tomás (<a href="#ref-Cox2010" role="doc-biblioref">2010</a>)</span> in the decades following the original formulation by Ostrom in her 1990 book summarizing her work, <em>Governing the Commons</em>):</p>
+<p>In this course we want to build on progress towards an empirically-motivated system for decisionmaking when promoting sustainable behavior, like Elinor Ostrom’s socio-ecological systems framework <span class="citation" data-cites="Ostrom1990">(<a href="#ref-Ostrom1990" role="doc-biblioref"><strong>Ostrom1990?</strong></a>)</span> that identified the following <em>design principles</em>. These principles are written below as re-formulated by <span class="citation" data-cites="Cox2010">Cox, Arnold, and Tomás (<a href="#ref-Cox2010" role="doc-biblioref">2010</a>)</span> who evaluated their effectiveness after two more decades of use:</p>
 <ol type="1">
 <li>Well-defined boundaries</li>
 <li>Congruence between appropriation and provision rules and local conditions</li>
@@ -264,10 +266,32 @@ window.Quarto = {
 <li>Minimum recognition of rights of all stakeholders to recognize local ownership of local common-pool resources</li>
 <li>Successful common-pool resource management requires nested institutions so those lower in the hierarchy can achieve power parity with those higher by having greater numbers of decision-makers in those foundational decision making groups</li>
 </ol>
-<p>To complement these design principles, and other lessons from sustainability practitioners, we want to develop simplified mechanistic models of human sustainability behavior change to identify rigorous principles of information transmission, cooperation, and political organization.</p>
+<p>These design principles were inferred and developed by reviewing numerous policy and economic interventions to promote sustainable use of common-pool resources in specific <em>socio-economic systems</em>, both before 1990 and up to 2010 with the update from <span class="citation" data-cites="Cox2010">Cox, Arnold, and Tomás (<a href="#ref-Cox2010" role="doc-biblioref">2010</a>)</span>. Among other notable achievements, the design principles helped elevate indigenous and traditional sustainable ecosystem management practices <span class="citation" data-cites="Nalau2018">(<a href="#ref-Nalau2018" role="doc-biblioref">Nalau et al. 2018</a>)</span>, and community-led adaptation more generally <span class="citation" data-cites="McNamara2020">(<a href="#ref-McNamara2020" role="doc-biblioref">McNamara et al. 2020</a>)</span>. For example, vibrant coastal mangrove forests have long been known to support fish populations and protect against storm surges <span class="citation" data-cites="Pearson2020">(<a href="#ref-Pearson2020" role="doc-biblioref">Pearson, McNamara, and Nunn 2020</a>)</span>. To complement these design principles, and other lessons from sustainability practitioners, we want to develop simplified mechanistic models of human sustainability behavior change to identify rigorous principles of information transmission, cooperation, and political organization.</p>
 <section id="a-structure-for-developing-models-of-social-behavior-for-sustainability" class="level2">
 <h2 class="anchored" data-anchor-id="a-structure-for-developing-models-of-social-behavior-for-sustainability">A structure for developing models of social behavior for sustainability</h2>
-<p>The models we’ll study here share a general structure:</p>
+<p>In this course we learn In the coming sections we develop several different models of social behavior for this purpose. The models are always a more specific version of some more general or abstract model. A <em>model</em> here is a simplified representation of the world that we can use for science and decision making. One motivation for this course, in fact, is to provide a more scientific way of thinking about social responses to sustainable policy and other interventions, whether or not that thinking is aided by computational, formal, or other modeling. We start from a very abstract model with few details specified so we can identify common elements of social science models and consolidate our theoretical knowledge (<a href="#fig-abstract-social-model" class="quarto-xref">Figure&nbsp;1</a>). This is practically useful for model development and analysis since we can theoretically compartmentalize the behavioral and social assumptions being made in the model. We know where to change assumptions to generate new intervention strategies and generate new scientific hypotheses about social behavior.</p>
+<div id="fig-abstract-social-model" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-abstract-social-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/clipboard-3019031596.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-abstract-social-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: The abstract social behavior model used in this course. All models we analyze here are instances of this framework created by specifying how each block works.
+</figcaption>
+</figure>
+</div>
+<div id="note-abstract-model-description" class="callout callout-style-default callout-note callout-titled" title="Abstract model workflow description.">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Abstract model workflow description.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li>Create a population represented as <span class="math inline">\(N\)</span> nodes in a social network.</li>
 <li>At each time step, imagine that each individual in a population “selects” or is otherwise paired with another individual, their <em>interaction partner</em>. Each individual may also take independent action. For example, the Legacy-Adaptive model of the diffusion of adaptations in the next section specifies that when one person doing a Legacy behavior observes another doing the Adaptive behavior, the one doing Legacy will switch to Adaptive with probability <span class="math inline">\(\alpha\)</span>. Over the duration of the course, we will consider interactions that consist of learning/adopting behaviors, deciding whether to cooperate with others for collective adaptation, and influencing opinions.</li>
@@ -276,33 +300,225 @@ window.Quarto = {
 <li>We observe how certain <em>outcome variables</em> of interest, such as how many people adopt some behavior over time or how long it takes for some fraction of people to adopt an adaptive behavior.</li>
 <li>In full analyses of these models, we analyze these outcome variables across different hypothetical contexts, such as changing how “viral” (i.e.&nbsp;how likely to be adopted) adaptive behaviors are.</li>
 </ol>
-<p>Developing new models of social behavior amounts to specifying new ways of how people interact with one another, what social networks look like, what environmental factors affect people’s well-being, and analyzing how these and other factors affect social outcomes over time. The first class of formal and computational social models we introduce study how adaptations diffuse through populations using different assumptions about how people learn and what their social networks look like. We will start with formal models that can give us “exact” results by making strong assumptions about population size and social network structure, then show why <em>stochastic</em> computational models are essential to capture the randomness of social interactions and understand how social outcomes may vary depending on the course of chance events.</p>
+</div>
+</div>
+</div>
+<p>To use this abstract social model, proceed box by box and decide how the different parts work. To begin, decide what assumptions to make about social network structure, whether there are payoffs, how payoffs may change over time due to environmental shifts, etc. Then one must specify how individuals are paired together to interact, which in the real world could be highly random or constrained by one’s social network. Then all paired individuals interact according to some interaction rule. In the Legacy-Adaptive model introduced below, for example, individuals adopt an adaptive behavior with a certain probability if they are exposed to it.</p>
+<p>Developing new models of social behavior, then, amounts to specifying social structure, how people get paired up and interact, and how people decide to update their behavior. The first more specific class of social models we introduce assume that there is an adaptive behavior that can be learned when it is observed, with some probability. These are <em>diffusion of adaptation</em> models. Next, <em>cooperation and coordination</em> models. We close with <em>opinion dynamics models</em>.</p>
+<p>Within diffusion of adaptation models, we will start with formal models that can give us functions for diffusion that we can easily write down and visually inspect. The cost of this exactness are unrealistic assumptions, including that population sizes approach infinity and partner choice is unconstrained. We will then show why <em>stochastic</em> (i.e., <em>randomized</em>) computational models are essential to sufficiently represent the aleatoric dance of social behavior in order to understand how social outcomes may vary due to chance events, which in general is sensitive to initial conditions. We will continue on to consider more adaptive forms of social learning that blind copying of a neighbor. Then we will analyze models of the cultural evolution of cooperation and coordination, focused on the case of sustainable management of common-pool resources such as groundwater, forests, or fisheries. Finally in this course we will study <em>opinion dynamics</em> models where interactions take the form of persuasion, though we will abstract away nearly all features of rhetoric and focus only on how the opinions of interaction partners affect changes in each partner’s opinions or beliefs.</p>
 </section>
-<section id="a-primer-on-social-networks" class="level2">
+<section id="a-primer-on-social-networks" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="a-primer-on-social-networks">A primer on social networks</h2>
 <p>Social networks are at once intuitive, perhaps partly due to their prominence in pop culture, and also technically complex and theoretically deep. Social networks have <em>nodes</em> (aka <em>vertices</em>) that represent people, usually drawn visually as circles but other shapes are fine. Relationships between people are represented by <em>edges</em>, drawn visually as lines. If the lines have arrowheads here, the arrow will usually point in the direction of information flow, for example from a teacher to her student. If there is no arrow, or two arrows pointing different directions, this indicates a symmetric relationship where, e.g., information could flow in two directions.</p>
+<p>We need to know some basic things about social networks because all models make assumptions about them. First, a social network is a theoretical tool, a “cognitive gadget” , that represents relationships between people. Social networks are instances of graphs, an abstract mathematical structure for representing any type of entities and relationships between them. Graph <em>nodes</em> (aka <em>vertices</em>) represent the entities and <em>edges</em> represent the relationships between nodes. Edges are drawn as lines with or without arrows to indicate the flow of information, with information flowing to a <em>learner</em>, or <em>observer</em> more generally, from a <em>teacher</em> or <em>demonstrator</em> (Figure <a href="#fig-teacher-learner-infoflow" class="quarto-xref">Figure&nbsp;2</a>). Lines with arrows are called <em>directed</em> edges. For a given pair of individuals, each may sometimes be teacher or learner. This case may be represented by two directed edges pointing opposite directions or a single <em>undirected</em> edge, i.e., a line with no arrowheads (Figure <a href="#fig-teacher-learner-bidirectional" class="quarto-xref">Figure&nbsp;3</a>).</p>
+<div class="cell page-columns page-full">
+
+<div class="no-row-height column-margin column-container"><div class="cell-output-display">
+<div id="fig-teacher-learner-infoflow" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-teacher-learner-infoflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-teacher-learner-infoflow-1.png" class="img-fluid figure-img" width="494">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-teacher-learner-infoflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Social networks represent relationships between people, with the arrow pointing away from the teacher and at the learner, i.e., in the direction of information flow.
+</figcaption>
+</figure>
+</div>
+</div></div></div>
+<div class="cell page-columns page-full" data-layout-align="center">
+
+<div class="no-row-height column-margin column-container"><div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="494"></p>
+</figure>
+</div>
+</div></div></div>
+<div class="cell page-columns page-full">
+
+<div class="no-row-height column-margin column-container"><div class="cell-output-display">
+<div id="fig-teacher-learner-bidirectional" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-teacher-learner-bidirectional-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-teacher-learner-bidirectional-1.png" class="img-fluid figure-img" width="494">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-teacher-learner-bidirectional-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: If there are two arrows, one pointing at each individual, or a line with no arrowheads, then each member of the dyad may be either teacher or learner.
+</figcaption>
+</figure>
+</div>
+</div></div></div>
+<section id="creating-and-measuring-social-networks" class="level3">
+<h3 class="anchored" data-anchor-id="creating-and-measuring-social-networks">Creating and measuring social networks</h3>
+<p>To start, consider the following fictional advice network at a startup, Sustainability Intervention Solutions. There are only three team members right now with different roles. Esmeralda, the CEO, advises River and Brook. Esmeralda and Brook left their previous jobs at Hooli to start the company, so Brook also advises Esmeralda. River is the newest member of the team, an expert programmer with little business or sustainability experience, so Esmeralda mentors River. Brook is knowledgable about business and sustainability, but just learning to program, so River is helping Brook develop her skills. We can use a social network to represent this social structure where arrows point from Esmeralda to River and Brook; from River to Brook; and from Brook to Esmeralda.</p>
+<div class="cell" data-fig-caption="Example social network at Esmeralda and Brook's startup with new hire River.">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>socnet <span class="ot">&lt;-</span> <span class="fu">make_graph</span>(<span class="sc">~</span> Esmeralda<span class="sc">-+</span>River<span class="sc">-+</span>Brook<span class="sc">++</span>Esmeralda)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(socnet, <span class="at">layout =</span> <span class="fu">layout_in_circle</span>(socnet), <span class="at">edge.curved=</span><span class="fl">0.4</span>, <span class="at">vertex.size =</span> <span class="dv">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-social-triangle-example" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-social-triangle-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-social-triangle-example-1.png" id="fig-social-triangle-example" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-social-triangle-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>After a year the team have succeeded hiring clients and need another programmer to build an interface to deliver their custom relational databases on corporate sustainability decisions in response to different legislation at the national, state, and local levels. They hire Arun who has some programming expertise and experience in sustainability because he took Matt Turner’s Computational Social Science for Sustainability at Stanford. Still, he has a lot to learn and needs River’s and Esmeralda’s advice.</p>
+<p>After a while it is clear they need a computational scientist. They hire Marco, who reports directly to River, whom he asks for help learning about sustainability. Arun asks for programming help from Marco as does Brook. Marco gets input from River and Esmeralda on programming and sustainability.</p>
+<div class="cell" data-fig-caption="Example social network at Esmeralda and Brook's startup with new hire River.">
+<div class="cell-output-display">
+<div id="fig-social-pentagon-example" class="quarto-float quarto-figure quarto-figure-center anchored" width="576">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-social-pentagon-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-social-pentagon-example-1.png" id="fig-social-pentagon-example" class="img-fluid figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-social-pentagon-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="regular-networks" class="level4">
+<h4 class="anchored" data-anchor-id="regular-networks">Regular networks</h4>
+<p><em>Regular</em> networks are those ones for which all nodes have the same degree. A 2-regular network looks like the following:</p>
+</section>
+<section id="random-networks" class="level4">
+<h4 class="anchored" data-anchor-id="random-networks">Random networks</h4>
+<section id="erdős-rényi-random-networks-gnm-and-gn-p" class="level5">
+<h5 class="anchored" data-anchor-id="erdős-rényi-random-networks-gnm-and-gn-p">Erdős-Rényi random networks: <span class="math inline">\(G(N,M)\)</span> and <span class="math inline">\(G(N, p)\)</span></h5>
+</section>
+<section id="randomization-of-regular-networks-to-achieve-the-small-world-property" class="level5">
+<h5 class="anchored" data-anchor-id="randomization-of-regular-networks-to-achieve-the-small-world-property">Randomization of regular networks to achieve the small-world property</h5>
+</section>
+</section>
+</section>
+<section id="analysis-of-the-medici-family" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="analysis-of-the-medici-family">Analysis of the Medici family</h3>
+<p>In social networks, the entities are people and the relationships could be friendships, business partnerships, or, in the case of our first social network example, marriages between powerful families in Florence during the 1400s that elevated the the Medici clan developing into what was essentially one of the world’s first political parties. This follows Jackson’s introductory example in his textbook starting on p.&nbsp;4 <span class="citation" data-cites="Jackson2008">(<a href="#ref-Jackson2008" role="doc-biblioref">Jackson 2008</a>)</span>. Studying the Medici’s social network gives us our first look at the structure of social influence. During that period, the Medici family rose in wealth and political power over the lifetime of the family patriarch, Cosimo. Starting from a relatively weak position overall in the Florentine oligarchy of the time, Cosimo arranged marriages with other powerful families to subtly amplify the Medici control of politics and markets in Florence (Figure <a href="#fig-florentine-network" class="quarto-xref">Figure&nbsp;6</a>; source: <a href="https://cran.r-project.org/web/packages/netrankr/vignettes/use_case.html" class="uri">https://cran.r-project.org/web/packages/netrankr/vignettes/use_case.html</a>). In the Florentine network, the edges are undirected, which makes sense since marriage takes two families and is therefore not directed. Note then we have no knowledge from which family came husband and wife. Note too that there could be multiple marriages between two families, but this information is not contained in this graph.</p>
+<p>In an undirected graph, the neighborhood of an individual <span class="math inline">\(i\)</span> (or family, organization, institution, or other social entity) can be written <span class="math inline">\(n_i\)</span> and is a set of all the individuals who share an edge with <span class="math inline">\(i\)</span>. The set of the Medici’s network neighbors then is written mathematically as</p>
+<p><span class="math display">\[
+n_{\text{Medici}} = \{\text{Salviati},~\text{Acciaiuol},~\text{Barbadori},~\text{Ridolfi},~\text{Tornabuon},~\text{Albizzi}\}
+\]</span> The degree of node <span class="math inline">\(i\)</span> is the number of neighbors it has, written <span class="math inline">\(k_i\)</span>, so <span class="math inline">\(k_\text{Medici} = 6\)</span>. In the case of directed networks it is common to define in- and out-neighborhoods, referring to arrow direction, which for us correspond to teacher- and learner-neighborhoods.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"florentine_m"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete Pucci family (isolated)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>florentine_m <span class="ot">&lt;-</span> <span class="fu">delete_vertices</span>(florentine_m, <span class="fu">which</span>(<span class="fu">degree</span>(florentine_m) <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the graph</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(florentine_m,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.cex =</span> <span class="dv">1</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.size =</span> <span class="dv">20</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.color =</span> <span class="st">"black"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.color =</span> NODE_COLOR,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.frame.color =</span> NODE_COLOR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-florentine-network" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-florentine-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-florentine-network-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-florentine-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Florentine marriage network where edges represent marriages between families (node labels).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>We can make a bar plot of the degrees for each family:</p>
+<div class="cell page-columns page-full" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>deglist <span class="ot">&lt;-</span> <span class="fu">degree</span>(florentine_m) </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tbl of degrees for each family then barplot using ggplot2.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">Family=</span><span class="fu">names</span>(deglist), <span class="at">k=</span><span class="fu">as.vector</span>(deglist)) <span class="sc">%&gt;%</span>     </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Family=</span><span class="fu">fct_reorder</span>(<span class="fu">as_factor</span>(Family), k)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>k, <span class="at">y=</span>Family)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">fill=</span>NETWORK_COLOR) <span class="sc">+</span>   </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<div class="no-row-height column-margin column-container"><div class="cell-output-display">
+<div id="fig-florence-degrees" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-florence-degrees-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-florence-degrees-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-florence-degrees-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Degree of each family in Florence intermarriage network.
+</figcaption>
+</figure>
+</div>
+</div></div></div>
+<p>The <em>degree distribution</em> is the fraction of nodes having degree <span class="math inline">\(k\)</span>, written <span class="math inline">\(P(k)\)</span>. Since the Medici family is the only one with a degree of six, and there are fifteen families, <span class="math inline">\(P(6)=\frac{1}{15}\approx 0.066\)</span>, which we can check like so:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>degdist <span class="ot">&lt;-</span> <span class="fu">degree_distribution</span>(florentine_m)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>medici_k <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Degree distribution starts at 0 and goes to maximum k; index 1, then</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># correlates to k=0 and need to add 1 to the Medici index.</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>degdist[[medici_k <span class="sc">+</span> <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.06666667</code></pre>
+</div>
+</div>
+<p>We plot the degree distribution see that the modal <span class="math inline">\(k\)</span> is 3 and that the distribution is somewhat more concentrated in <span class="math inline">\(k\leq3\)</span> compared to <span class="math inline">\(k &gt; 3\)</span>, using the built-in <code>barplot</code> function to plot a simple histogram of <span class="math inline">\(P(k)\)</span> using base R:</p>
+<div class="cell page-columns page-full">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>degdist_vec <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(degdist)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>k_vec <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">k =</span> k_vec, <span class="at">freq =</span> degdist_vec), <span class="fu">aes</span>(<span class="at">x=</span>k_vec, <span class="at">y=</span>degdist_vec)) <span class="sc">+</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">fill=</span>NETWORK_COLOR) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Degree, k"</span>) <span class="sc">+</span> </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequency, P(k)"</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>(<span class="at">base_size=</span><span class="dv">22</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<div class="no-row-height column-margin column-container"><div class="cell-output-display">
+<div id="fig-medici-degree-dist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-medici-degree-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-medici-degree-dist-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-medici-degree-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Degree distribution shows how frequently nodes (families here) have <span class="math inline">\(k\)</span> edges (marriages).
+</figcaption>
+</figure>
+</div>
+</div></div></div>
+<section id="other-resources" class="level4">
+<h4 class="anchored" data-anchor-id="other-resources">Other resources</h4>
+<p>I found one tutorial to follow up on while preparing this, so I created this place to put this tutorial and other resources that may be useful later on.</p>
+<ul>
+<li><a href="https://schochastics.github.io/netVizR/#another-full-example">Network Visualizations in R using ggpraph and graphlayouts</a> by <a href="https://mr.schochastics.net/">David Schoch</a>.</li>
+</ul>
+</section>
+</section>
 </section>
 </section>
 <section id="diffusion-of-adaptations" class="level1">
 <h1>Diffusion of adaptations</h1>
 <p>Adaptations <em>diffuse</em> through communication or observation from person to person when two things happen. First, a person not doing some adaptive behavior (driving an electric vehicle, using heat pumps in their home for heating and cooling, switching to no-till farming methods, etc.) encounters someone who knows or does an adaptive behavior. Second, the person not doing the adaptive behavior must successfully acquire the knowledge and desire necessary to start doing the behavior themselves. In this section we introduce four models of this process.</p>
-<p>The first two assume that an adaptive behavior is randomly adopted by someone performing a legacy behavior with probability <span class="math inline">\(\alpha\)</span>, the adoption rate. One of these assumes that anyone doing the adaptive behavior will continue doing it forever, the <em>Legacy-Adaptive</em> model (Figure <a href="#fig-LA-state" class="quarto-xref">Figure&nbsp;1</a>). The next adds one more assumption, that people can stop doing a behavior, i.e., they can randomly _drop_the behavior, which happens for anyone doing <span class="math inline">\(A\)</span> with probability <span class="math inline">\(\delta\)</span> (Figure <a href="#fig-LAL-state" class="quarto-xref">Figure&nbsp;2</a>).</p>
+<p>The first two assume that an adaptive behavior is randomly adopted by someone performing a legacy behavior with probability <span class="math inline">\(\alpha\)</span>, the adoption rate. One of these assumes that anyone doing the adaptive behavior will continue doing it forever, the <em>Legacy-Adaptive</em> model (Figure <a href="#fig-LA-state" class="quarto-xref">Figure&nbsp;9</a>). The next adds one more assumption, that people can stop doing a behavior, i.e., they can randomly _drop_the behavior, which happens for anyone doing <span class="math inline">\(A\)</span> with probability <span class="math inline">\(\delta\)</span> (Figure <a href="#fig-LAL-state" class="quarto-xref">Figure&nbsp;10</a>).</p>
 <p>The second two assume that learning is partly probabilistic and partly <em>adaptive</em>, where individuals can do some computation about who or what behavior may be best to learn. These are <em>social learning</em> models of transmission. The first of these is a <em>conformist-biased learning</em> model, where individuals are assumed to be more likely to learn a behavior if more people are doing it. The second is a <em>success-biased learning</em> model, where individuals are more likely to learn from individuals if an individual is doing relatively well compared to other neighbors. Success-biased learning is the only one of these where the benefit of doing a behavior matters, since there must be a way to acquire “payoffs”, which is a modeling term of art representing amount of benefit, usually in unspecified units.</p>
 <section id="la-and-lal-compartmental-contagion-models" class="level2">
 <h2 class="anchored" data-anchor-id="la-and-lal-compartmental-contagion-models">LA and LAL compartmental “contagion” models</h2>
 <p>Contagion models like the LA and LAL models assume that when individuals encounter one another there is some probability that some individual-level attribute, in this case whether the individual <span class="math inline">\(i\)</span> does <span class="math inline">\(A\)</span>. These models require relatively few parameters and variables, but ignore adaptive strategies people use for acquiring new information (<a href="#tbl-LA-LAL-parameters" class="quarto-xref">Table&nbsp;1</a>).</p>
 <p>Namely, these model contain two dynamic <em>outcome variables</em> <span class="math inline">\(L_t\)</span> and <span class="math inline">\(A_t\)</span> if time is discrete (<span class="math inline">\(L(T)\)</span> and <span class="math inline">\(A(t)\)</span> if time is continuous; see Note <span class="citation" data-cites="note-continuous-time-LA-LAL">(<a href="#ref-note-continuous-time-LA-LAL" role="doc-biblioref"><strong>note-continuous-time-LA-LAL?</strong></a>)</span>) the number of individuals performing <span class="math inline">\(L\)</span> and the number performing <span class="math inline">\(A\)</span>. These outcomes are dynamic, so <span class="math inline">\(t\)</span> represents time, which is discrete in our main treatment of these models, meaning that points in time can be indexed by integers, i.e., time steps are indexed by <span class="math inline">\(t_i\)</span> where <span class="math inline">\(i \in \{1, 2, 3,\ldots\}\)</span>, e.g., <span class="math inline">\(t \in \{0, 3, 6, 9, 12, 15, \ldots\}\)</span> could be discrete time steps for a model with <span class="math inline">\(t\)</span> in months meant to represent some process for which we have data every three months. If time is continuous (<span class="citation" data-cites="note-continuous-time-LA-LAL">(<a href="#ref-note-continuous-time-LA-LAL" role="doc-biblioref"><strong>note-continuous-time-LA-LAL?</strong></a>)</span>) then <span class="math inline">\(t\in[0,\infty)\)</span>. Although time can continue on to infinity, we usually specify that models will stop at some time step or when some condition is met. One of the most important conditions is whether the population has <em>fixated</em>, meaning all agents do the same behavior. Finally, there are two parameters that determine the probability that individuals change their behavioral state (from doing <span class="math inline">\(L\)</span> to doing <span class="math inline">\(A\)</span> or vice-versa). In both the LA and LAL models, the probability <span class="math inline">\(A\)</span> is adopted when an <span class="math inline">\(L\)</span> meets an <span class="math inline">\(A\)</span> is the adoption rate, <span class="math inline">\(\alpha\)</span>. In the LAL model, at every time step, every agent doing <span class="math inline">\(A\)</span> might drop the behavior, i.e., stop doing the behavior, reverting to do <span class="math inline">\(L\)</span> for the next time step. The probability one doing <span class="math inline">\(A\)</span> reverts to <span class="math inline">\(L\)</span> is <span class="math inline">\(\delta\)</span>, the <em>drop rate</em>. So, the LA and LAL models are in fact the same model where we can set <span class="math inline">\(\delta = 0\)</span> to recover the LA model from the LAL model.</p>
-<div id="tbl-LA-LAL-parameters" class="quarto-float anchored">
+<div id="tbl-LA-LAL-parameters" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-LA-LAL-parameters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: LA and LAL model parameter and variable symbols and definitions.
 </figcaption>
 <div aria-describedby="tbl-LA-LAL-parameters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="table">
+<table class="caption-top table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 50%">
-<col style="width: 25%">
+<col style="width: 26%">
+<col style="width: 47%">
+<col style="width: 26%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -347,57 +563,58 @@ Table&nbsp;1: LA and LAL model parameter and variable symbols and definitions.
 </div>
 </figure>
 </div>
+<p><img src="images/clipboard-2993810530.png" class="img-fluid"></p>
 <section id="legacy-adaptive-la-model" class="level3">
 <h3 class="anchored" data-anchor-id="legacy-adaptive-la-model">Legacy-Adaptive (LA) model</h3>
-<div id="fig-LA-state" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-LA-state" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-LA-state-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/LA.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="441">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-LA-state-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: The Legacy-Adaptive model only allows for a change of individual-level state from performing the legacy behavior to performing the adaptive behavior.
+Figure&nbsp;9: The Legacy-Adaptive model only allows for a change of individual-level state from performing the legacy behavior to performing the adaptive behavior.
 </figcaption>
 </figure>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>la_recursion <span class="ot">&lt;-</span> <span class="cf">function</span>(N, A0, alpha, tmax) {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  A_return <span class="ot">&lt;-</span> <span class="fu">numeric</span>(N<span class="sc">+</span><span class="dv">1</span>)  <span class="co"># Create output time series vector.</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set current A_t to be A_0</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  At <span class="ot">&lt;-</span> A0</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  A_return[<span class="dv">1</span>] <span class="ot">&lt;-</span> At</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Iterate </span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>tmax) {</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Anext is code for A_{t+1}</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    Anext <span class="ot">&lt;-</span> At <span class="sc">+</span> (alpha <span class="sc">*</span> At <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> (At<span class="sc">/</span>N)))</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    A_return[t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> Anext</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    At <span class="ot">&lt;-</span> Anext</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (A_return)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>la_recursion <span class="ot">&lt;-</span> <span class="cf">function</span>(N, A0, alpha, tmax) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  A_return <span class="ot">&lt;-</span> <span class="fu">numeric</span>(N<span class="sc">+</span><span class="dv">1</span>)  <span class="co"># Create output time series vector.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set current A_t to be A_0</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  At <span class="ot">&lt;-</span> A0</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  A_return[<span class="dv">1</span>] <span class="ot">&lt;-</span> At</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Iterate </span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>tmax) {</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Anext is code for A_{t+1}</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    Anext <span class="ot">&lt;-</span> At <span class="sc">+</span> (alpha <span class="sc">*</span> At <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> (At<span class="sc">/</span>N)))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    A_return[t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> Anext</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    At <span class="ot">&lt;-</span> Anext</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (A_return)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>A0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>alpha_low <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>tmax <span class="ot">&lt;-</span> <span class="dv">200</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>tvec <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>tmax</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>Avec_low_alpha <span class="ot">&lt;-</span> <span class="fu">la_recursion</span>(N, A0, alpha_low, tmax)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>alpha_high <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>Avec_high_alpha <span class="ot">&lt;-</span> <span class="fu">la_recursion</span>(N, A0, alpha_high, tmax)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>adopt_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">timestep =</span> <span class="fu">rep</span>(tvec, <span class="dv">2</span>), </span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">alpha =</span> </span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">as_factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(alpha_low, <span class="fu">length</span>(tvec)), </span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">rep</span>(alpha_high, <span class="fu">length</span>(tvec)))),</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">A =</span> <span class="fu">c</span>(Avec_low_alpha, Avec_high_alpha))</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(adopt_tbl, <span class="fu">aes</span>(<span class="at">x=</span>timestep, <span class="at">y=</span>A, <span class="at">color=</span>alpha)) <span class="sc">+</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>A0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>alpha_low <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>tmax <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>tvec <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>tmax</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>Avec_low_alpha <span class="ot">&lt;-</span> <span class="fu">la_recursion</span>(N, A0, alpha_low, tmax)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>alpha_high <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>Avec_high_alpha <span class="ot">&lt;-</span> <span class="fu">la_recursion</span>(N, A0, alpha_high, tmax)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>adopt_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">timestep =</span> <span class="fu">rep</span>(tvec, <span class="dv">2</span>), </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">alpha =</span> </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">as_factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(alpha_low, <span class="fu">length</span>(tvec)), </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">rep</span>(alpha_high, <span class="fu">length</span>(tvec)))),</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">A =</span> <span class="fu">c</span>(Avec_low_alpha, Avec_high_alpha))</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(adopt_tbl, <span class="fu">aes</span>(<span class="at">x=</span>timestep, <span class="at">y=</span>A, <span class="at">color=</span>alpha)) <span class="sc">+</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -405,13 +622,13 @@ Figure&nbsp;1: The Legacy-Adaptive model only allows for a change of individual-
 </section>
 <section id="legacy-adaptive-legacy-lal-model" class="level3">
 <h3 class="anchored" data-anchor-id="legacy-adaptive-legacy-lal-model">Legacy-Adaptive-Legacy (LAL) model</h3>
-<div id="fig-LAL-state" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-LAL-state" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-LAL-state-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/LAL.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="441">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-LAL-state-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: The Legacy-Adaptive-Legacy model also allows for transitions from the state <span class="math inline">\(A\)</span> to state <span class="math inline">\(L\)</span>, which occurs with probability <span class="math inline">\(\delta\)</span>.
+Figure&nbsp;10: The Legacy-Adaptive-Legacy model also allows for transitions from the state <span class="math inline">\(A\)</span> to state <span class="math inline">\(L\)</span>, which occurs with probability <span class="math inline">\(\delta\)</span>.
 </figcaption>
 </figure>
 </div>
@@ -420,8 +637,8 @@ Figure&nbsp;2: The Legacy-Adaptive-Legacy model also allows for transitions from
 \Delta A = \alpha A (1 - \frac{A}{N}) - \delta A.
 \]</span></p>
 <p>In this model, two new things are possible that were not possible before. First, the adaptation may completely fail to spread. If more people end up dropping the behavior than adopting it early on, there will be no one doing <span class="math inline">\(A\)</span> that someone doing <span class="math inline">\(L\)</span> could copy. Second, in general, everyone will <em>not</em> eventually adopt <span class="math inline">\(A\)</span>, at least not all at once, unlike in the LA model. In the LAL model there is an equilibrium value that the system reaches for a large enough <span class="math inline">\(t\)</span> defined as <span class="math inline">\(A_{t \to \infty}\)</span> where</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Solving LA system of coupled differential equations" label="note-continuous-time-LA-LAL">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled" title="Solving LA system of coupled differential equations" data-label="note-continuous-time-LA-LAL">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -430,7 +647,7 @@ Solving LA system of coupled differential equations
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>We can additionally represent the LA and LAL models as coupled ordinary differential equations (ODEs). The ODEs appear somewhat like the difference equations, but ODEs can be solved formally or numerically using the tools of calculus.</p>
 <section id="la-odes" class="level3">
@@ -520,7 +737,10 @@ K = \frac{N}{A_0}.
 <h3 class="anchored" data-anchor-id="lal-ode">LAL ODE</h3>
 <p>See Chapter 3 in Britton’s (2003) <em>Essential Mathematical Biology</em> for the solution of the LAL ODE system,</p>
 <p><span class="math display">\[
-\frac{dL}{dt} = -\alpha L A + \delta
+\frac{dL}{dt} = -\alpha L A + \delta A
+\]</span></p>
+<p><span class="math display">\[
+\frac{dA}{dt} = \alpha L A - \delta A
 \]</span></p>
 </section>
 </div>
@@ -530,125 +750,7 @@ K = \frac{N}{A_0}.
 </section>
 <section id="adaptive-social-learning" class="level2">
 <h2 class="anchored" data-anchor-id="adaptive-social-learning">Adaptive social learning</h2>
-<p>There are many ways people (or other critters with culture) use social or environmental cues to decide who to learn from, known as <em>social learning strategies</em> <span class="citation" data-cites="Kendal2018">Kendal et al. (<a href="#ref-Kendal2018" role="doc-biblioref">2018</a>)</span>. We will consider the effects of two such social learning strategies in this course, <em>conformity-biased learning</em> and <em>success-biased learning</em>. As before we focus on the discrete-time case, but we will also point towards more advanced resources for using continuous-time to formally calculate helpful heuristic values for understanding asymptotic dynamics.</p>
-<section id="conformity-biased-learning-in-social-networks" class="level3">
-<h3 class="anchored" data-anchor-id="conformity-biased-learning-in-social-networks">Conformity-biased learning in social networks</h3>
-</section>
-<section id="success-biased-learning-in-social-networks" class="level3">
-<h3 class="anchored" data-anchor-id="success-biased-learning-in-social-networks">Success-biased learning in social networks</h3>
-</section>
-</section>
-<section id="more-notes-on-social-networks" class="level2">
-<h2 class="anchored" data-anchor-id="more-notes-on-social-networks">More notes on social networks</h2>
-<p>We need to know some basic things about social networks because all models make assumptions about them. First, a social network is a theoretical tool, a “cognitive gadget” , that represents relationships between people. Social networks are instances of graphs, an abstract mathematical structure for representing any type of entities and relationships between them. Graph <em>nodes</em> (aka <em>vertices</em>) represent the entities and <em>edges</em> represent the relationships between nodes. Edges are drawn as lines with or without arrows to indicate the flow of information, with information flowing to a <em>learner</em>, or <em>observer</em> more generally, from a <em>teacher</em> or <em>demonstrator</em> (Figure <a href="#fig-teacher-learner-infoflow" class="quarto-xref">Figure&nbsp;3</a>). Lines with arrows are called <em>directed</em> edges. For a given pair of individuals, each may sometimes be teacher or learner. This case may be represented by two directed edges pointing opposite directions or a single <em>undirected</em> edge, i.e., a line with no arrowheads (Figure <a href="#fig-teacher-learner-bidirectional" class="quarto-xref">Figure&nbsp;4</a>).</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-teacher-learner-infoflow" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-teacher-learner-infoflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-teacher-learner-infoflow-1.png" class="img-fluid figure-img" width="494">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-teacher-learner-infoflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Social networks represent relationships between people, with the arrow pointing away from the teacher and at the learner, i.e., in the direction of information flow.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>In social networks, the entities are people and the relationships could be friendships, business partnerships, or, in the case of our first social network example, marriages between powerful families in Florence during the 1400s that elevated the the Medici clan developing into what was essentially one of the world’s first political parties. This follows Jackson’s introductory example in his textbook starting on p.&nbsp;4 <span class="citation" data-cites="Jackson2008">(<a href="#ref-Jackson2008" role="doc-biblioref">Jackson 2008</a>)</span>. Studying the Medici’s social network gives us our first look at the structure of social influence. During that period, the Medici family rose in wealth and political power over the lifetime of the family patriarch, Cosimo. Starting from a relatively weak position overall in the Florentine oligarchy of the time, Cosimo arranged marriages with other powerful families to subtly amplify the Medici control of politics and markets in Florence (Figure <a href="#fig-florentine-network" class="quarto-xref">Figure&nbsp;5</a>; source: <a href="https://cran.r-project.org/web/packages/netrankr/vignettes/use_case.html" class="uri">https://cran.r-project.org/web/packages/netrankr/vignettes/use_case.html</a>). Eventually we will explain Cosimo’s strategy, which is not just simply to have the greatest diversity of intermarriages in the group of oligarchs (though the Medicis did). For now, we will introduce important network concepts and measures using the Medici network for a real-world case study.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="494"></p>
-</figure>
-</div>
-</div>
-</div>
-<div style="text-align:center; font-weight:bold; font-size:20px">
-<p><span class="math inline">\(\uparrow\quad\)</span> is equivalent to <span class="math inline">\(\quad\downarrow\)</span></p>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-teacher-learner-bidirectional" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-teacher-learner-bidirectional-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-teacher-learner-bidirectional-1.png" class="img-fluid figure-img" width="494">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-teacher-learner-bidirectional-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: If there are two arrows, one pointing at each individual, or a line with no arrowheads, then each member of the dyad may be either teacher or learner.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>In the Florentine network, the edges are undirected, which makes sense since marriage takes two families and is therefore not directed. Note then we have no knowledge from which family came husband and wife. Note too that there could be multiple marriages between two families, but this information is not contained in this graph.</p>
-<p>In an undirected graph, the neighborhood of an individual <span class="math inline">\(i\)</span> (or family, organization, institution, or other social entity) can be written <span class="math inline">\(n_i\)</span> and is a set of all the individuals who share an edge with <span class="math inline">\(i\)</span>. The set of the Medici’s network neighbors then is written mathematically as</p>
-<p><span class="math display">\[
-n_{\text{Medici}} = \{\text{Salviati},~\text{Acciaiuol},~\text{Barbadori},~\text{Ridolfi},~\text{Tornabuon},~\text{Albizzi}\}
-\]</span> The degree of node <span class="math inline">\(i\)</span> is the number of neighbors it has, written <span class="math inline">\(k_i\)</span>, so <span class="math inline">\(k_\text{Medici} = 6\)</span>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"florentine_m"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete Pucci family (isolated)</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>florentine_m <span class="ot">&lt;-</span> <span class="fu">delete_vertices</span>(florentine_m, <span class="fu">which</span>(<span class="fu">degree</span>(florentine_m) <span class="sc">==</span> <span class="dv">0</span>))</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the graph</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(florentine_m,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.cex =</span> .<span class="dv">9</span>,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.size =</span> <span class="dv">20</span>,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.color =</span> <span class="st">"black"</span>,</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.color =</span> <span class="st">"white"</span>,</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.frame.color =</span> <span class="st">"gray"</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="fig-florentine-network" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-florentine-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-florentine-network-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-florentine-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Florentine marriage network where edges represent marriages between families (node labels).
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>We can make a bar plot of the degrees for each family:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The <em>degree distribution</em> is the fraction of nodes having degree <span class="math inline">\(k\)</span>, written <span class="math inline">\(P(k)\)</span>. Since the Medici family is the only one with a degree of six, and there are fifteen families, <span class="math inline">\(P(6)=\frac{1}{15}\approx 0.066\)</span>, which we can check like so:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>degdist <span class="ot">&lt;-</span> <span class="fu">degree_distribution</span>(florentine_m)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>medici_k <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Degree distribution starts at 0 and goes to maximum k; index 1, then</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># correlates to k=0 and need to add 1 to the Medici index.</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>degdist[[medici_k <span class="sc">+</span> <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.06666667</code></pre>
-</div>
-</div>
-<p>We can plot a simple histogram representation of <span class="math inline">\(P(k)\)</span> using base R like so</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">names=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">height=</span><span class="fu">as.vector</span>(degdist), <span class="at">ylab=</span><span class="st">"Frequency"</span>, <span class="at">xlab=</span><span class="st">"Degree, k"</span>, <span class="at">col=</span><span class="st">"#69b3a2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section"></h3>
-</section>
+<p>There are many ways people (or other critters with culture) use social or environmental cues to decide who to learn from, known as <em>social learning strategies</em> <span class="citation" data-cites="Kendal2018">(<a href="#ref-Kendal2018" role="doc-biblioref"><strong>Kendal2018?</strong></a>)</span>. We will consider the effects of two such social learning strategies in this course, <em>conformity-biased learning</em> and <em>success-biased learning</em>. As before we focus on the discrete-time case, but we will also point towards more advanced resources for using continuous-time to formally calculate helpful heuristic values for understanding asymptotic dynamics.</p>
 <section id="conformity-biased-learning" class="level3">
 <h3 class="anchored" data-anchor-id="conformity-biased-learning">Conformity-biased learning</h3>
 </section>
@@ -658,21 +760,33 @@ Figure&nbsp;5: Florentine marriage network where edges represent marriages betwe
 </section>
 </section>
 <section id="cooperation-and-coordination" class="level1">
+<h1>Cooperation and coordination</h1>
+</section>
+<section id="opinion-dynamics" class="level1">
+<h1>Opinion dynamics</h1>
+<section id="references" class="level2">
 
 
 
 
 </section>
+</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Cooperation and coordination</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Cox2010" class="csl-entry" role="listitem">
 Cox, Michael, Gwen Arnold, and Sergio Villamayor Tomás. 2010. <span>“<span class="nocase">A review of design principles for community-based natural resource management</span>.”</span> <em>Ecology and Society</em> 15 (4). <a href="https://doi.org/10.5751/ES-03704-150438">https://doi.org/10.5751/ES-03704-150438</a>.
 </div>
 <div id="ref-Jackson2008" class="csl-entry" role="listitem">
 Jackson, Matthew O. 2008. <em><span class="nocase">Social and Economic Networks</span></em>. Princeton: Princeton University Press. <a href="https://press.princeton.edu/books/paperback/9780691148205/social-and-economic-networks">https://press.princeton.edu/books/paperback/9780691148205/social-and-economic-networks</a>.
 </div>
-<div id="ref-Kendal2018" class="csl-entry" role="listitem">
-Kendal, Rachel L., Neeltje J. Boogert, Luke Rendell, Kevin N. Laland, Mike Webster, and Patricia L. Jones. 2018. <span>“<span class="nocase">Social Learning Strategies: Bridge-Building between Fields</span>.”</span> <em>Trends in Cognitive Sciences</em> 22 (7): 651–65. <a href="https://doi.org/10.1016/j.tics.2018.04.003">https://doi.org/10.1016/j.tics.2018.04.003</a>.
+<div id="ref-McNamara2020" class="csl-entry" role="listitem">
+McNamara, Karen E., Rachel Clissold, Ross Westoby, Annah E. Piggott-McKellar, Roselyn Kumar, Tahlia Clarke, Frances Namoumou, et al. 2020. <span>“<span class="nocase">An assessment of community-based adaptation initiatives in the Pacific Islands</span>.”</span> <em>Nature Climate Change</em> 10 (7): 628–39. <a href="https://doi.org/10.1038/s41558-020-0813-1">https://doi.org/10.1038/s41558-020-0813-1</a>.
+</div>
+<div id="ref-Nalau2018" class="csl-entry" role="listitem">
+Nalau, Johanna, Susanne Becken, Johanna Schliephack, Meg Parsons, Cilla Brown, and Brendan Mackey. 2018. <span>“<span class="nocase">The role of indigenous and traditional knowledge in ecosystem-based adaptation: A review of the literature and case studies from the Pacific Islands</span>.”</span> <em>Weather, Climate, and Society</em> 10 (4): 851–65. <a href="https://doi.org/10.1175/WCAS-D-18-0032.1">https://doi.org/10.1175/WCAS-D-18-0032.1</a>.
+</div>
+<div id="ref-Pearson2020" class="csl-entry" role="listitem">
+Pearson, Jasmine, Karen E. McNamara, and Patrick D. Nunn. 2020. <em><span class="nocase">iTaukei Ways of Knowing and Managing Mangroves for Ecosystem-Based Adaptation</span></em>. Springer International Publishing. <a href="https://doi.org/10.1007/978-3-030-40552-6_6">https://doi.org/10.1007/978-3-030-40552-6_6</a>.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -710,18 +824,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -753,7 +856,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -761,7 +884,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -858,7 +981,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
