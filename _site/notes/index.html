@@ -668,21 +668,20 @@ Solving LA system of coupled differential equations
 <h3 class="anchored" data-anchor-id="si-model-with-substitutions">SI Model with Substitutions</h3>
 <p>The equations for the SI model become:</p>
 <p><span class="math display">\[
-\frac{dL}{dt} = -\alpha L A
+\frac{dL}{dt} = -\alpha' L A
 \]</span></p>
 <p><span class="math display">\[
 \frac{dA}{dt} = \alpha L A
 \]</span></p>
 <p>where:</p>
-<p><span class="math inline">\(xy\)</span></p>
 <p>-<span class="math inline">\(L\)</span>: the number of susceptible individuals -<span class="math inline">\(A\)</span>: the number of infected individuals, -<span class="math inline">\(\alpha\)</span>: the transmission rate, -<span class="math inline">\(N = L + A\)</span>: the total population size (assumed constant).</p>
 </section>
-<section id="step-by-step-process-to-eliminatel" class="level3">
-<h3 class="anchored" data-anchor-id="step-by-step-process-to-eliminatel">Step-by-Step Process to Eliminate<span class="math inline">\(L\)</span></h3>
+<section id="step-by-step-process-to-eliminate-l" class="level3">
+<h3 class="anchored" data-anchor-id="step-by-step-process-to-eliminate-l">Step-by-Step Process to Eliminate <span class="math inline">\(L\)</span></h3>
 <ol type="1">
 <li><p><strong>Express</strong> <span class="math inline">\(L\)</span> in terms of <span class="math inline">\(N\)</span> and <span class="math inline">\(A\)</span>: Since <span class="math inline">\(N = L + A\)</span>, we can write: <span class="math display">\[
 L = N - A.
-  \]</span></p></li>
+\]</span></p></li>
 <li><p><strong>Substitute</strong> <span class="math inline">\(L = N - A\)</span> into the equation for <span class="math inline">\(\frac{dA}{dt}\)</span>: Replace <span class="math inline">\(L\)</span> in <span class="math inline">\(\frac{dA}{dt} = \alpha L A\)</span>: <span class="math display">\[
 \frac{dA}{dt} = \alpha (N - A) A.
   \]</span></p></li>
@@ -735,12 +734,12 @@ K = \frac{N}{A_0}.
 </section>
 <section id="lal-ode" class="level3">
 <h3 class="anchored" data-anchor-id="lal-ode">LAL ODE</h3>
-<p>See Chapter 3 in Britton’s (2003) <em>Essential Mathematical Biology</em> for the solution of the LAL ODE system,</p>
+<p>See Chapter 3 in Britton’s (2003) <em>Essential Mathematical Biology</em> for a guide to sovling the ODE system,</p>
 <p><span class="math display">\[
-\frac{dL}{dt} = -\alpha L A + \delta A
+\frac{dL}{dt} = -\alpha' L A + \delta A
 \]</span></p>
 <p><span class="math display">\[
-\frac{dA}{dt} = \alpha L A - \delta A
+\frac{dA}{dt} =  \alpha' L A  - \delta A
 \]</span></p>
 </section>
 </div>
