@@ -331,7 +331,7 @@ $$
 \Delta A = \alpha A (1 - \frac{A}{N}) - \delta A.
 $$
 
-In this model, two new things are possible that were not possible before. First, the adaptation may completely fail to spread. If more people end up dropping the behavior than adopting it early on, there will be no one doing $A$ that someone doing $L$ could copy. Second, in general, everyone will *not* eventually adopt $A$, at least not all at once, unlike in the LA model. In the LAL model there is an equilibrium value that the system reaches for a large enough $t$ defined as $A_{t \to \infty}$ where
+In this model, two new things are possible that were not possible before. First, the adaptation may completely fail to spread. If more people end up dropping the behavior than adopting it early on, there will be no one doing $A$ that someone doing $L$ could copy. Second, in general, everyone will *not* eventually adopt $A$, at least not all at once, unlike in the LA model. In the LAL model there is an equilibrium value that the system reaches for a large enough $t,$ written $\hat A$ and solved via
 
 ::: {.callout-note collapse="false" title="Solving LA system of coupled differential equations" label="note-continuous-time-LA-LAL"}
 We can additionally represent the LA and LAL models as coupled ordinary differential equations (ODEs). The ODEs appear somewhat like the difference equations, but ODEs can be solved formally or numerically using the tools of calculus.
@@ -346,23 +346,18 @@ $$
 \frac{dA}{dt} = \alpha L A
 $$
 
-where:
-
--   $A(t) = \frac{N}{1 + K e^{-\alpha N t}}$
--   $L(t) = N - A(t)$
-
 {{< include _LA_derivation.qmd >}}
 
 ### LAL ODE
 
-See Chapter 3 in Britton's (2003) *Essential Mathematical Biology* for the solution of the LAL ODE system,
+See Chapter 3 in Britton's (2003) *Essential Mathematical Biology* for a guide to sovling the ODE system,
 
 $$
-\frac{dL}{dt} = -\alpha L A + \delta A
+\frac{dL}{dt} = -\alpha' L A + \delta A
 $$
 
 $$
-\frac{dA}{dt} = \alpha L A - \delta A
+\frac{dA}{dt} =  \alpha' L A - \delta A
 $$
 :::
 

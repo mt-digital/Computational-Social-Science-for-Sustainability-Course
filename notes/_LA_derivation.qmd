@@ -9,7 +9,7 @@ editor:
 The equations for the SI model become:
 
 $$
-\frac{dL}{dt} = -\alpha L A
+\frac{dL}{dt} = -\alpha' L A
 $$
 
 $$
@@ -18,18 +18,17 @@ $$
 
 where:
 
-$xy$
-
 \-$L$: the number of susceptible individuals -$A$: the number of
 infected individuals, -$\alpha$: the transmission rate, -$N = L + A$:
 the total population size (assumed constant).
 
-### Step-by-Step Process to Eliminate$L$
+### Step-by-Step Process to Eliminate $L$
 
 1.  **Express** $L$ in terms of $N$ and $A$: Since $N = L + A$, we can
-    write: $$
+    write: 
+    $$
     L = N - A.
-      $$
+    $$
 
 2.  **Substitute** $L = N - A$ into the equation for $\frac{dA}{dt}$:
     Replace $L$ in $\frac{dA}{dt} = \alpha L A$: $$
