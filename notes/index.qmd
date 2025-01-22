@@ -294,6 +294,12 @@ Namely, these model contain two dynamic *outcome variables* $L_t$ and $A_t$ if t
 
 ### Legacy-Adaptive (LA) model
 
+In class we derived the recursion for the legacy-adaptive model: 
+$$
+A_{t+1} = A_{t} + \alpha A_t\left(1 - \frac{A_t}{N}\right).
+$$
+Once an individual adopts the adaptive behavior in this model, they continue doing that behavior forever (@fig-LA-state). Below we show how to write a function to implement this recursion to calculate a time series and compare the results for two different adoption rates, $\alpha$.
+
 ![The Legacy-Adaptive model only allows for a change of individual-level state from performing the legacy behavior to performing the adaptive behavior.](images/LA.png){#fig-LA-state fig-align="center" width="441"}
 
 ```{r}
@@ -540,13 +546,13 @@ ggplot(out_full, aes(x=t, y=A, color=switch_prob)) + geom_line() + theme_classic
 
 Maybe it is more variable, but it is hard to tell from comparing just two outputs.
 
-## Adaptive social learning
+# Adaptive social learning
 
 There are many ways people (or other critters with culture) use social or environmental cues to decide who to learn from, known as *social learning strategies* @Kendal2018. We will consider the effects of two such social learning strategies in this course, *conformity-biased learning* and *success-biased learning*. As before we focus on the discrete-time case, but we will also point towards more advanced resources for using continuous-time to formally calculate helpful heuristic values for understanding asymptotic dynamics.
 
-### Conformity-biased learning
+## Conformity-biased learning
 
-### Success-biased learning
+## Success-biased learning
 
 # Cooperation and coordination
 
