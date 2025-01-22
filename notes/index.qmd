@@ -4,8 +4,11 @@ format:
     html:
         toc: true
         echo: false
+        fontsize: medium
 bibliography: ../css4s.bib
 ---
+
+\newcommand\ahat{\hat A}
 
 ```{r setup, include=FALSE}
 
@@ -65,7 +68,14 @@ Within diffusion of adaptation models, we will start with formal models that can
 
 ## A primer on social networks
 
-Social networks are at once intuitive, perhaps partly due to their prominence in pop culture, and also technically complex and theoretically deep. Social networks have *nodes* (aka *vertices*) that represent people, usually drawn visually as circles but other shapes are fine. Relationships between people are represented by *edges*, drawn visually as lines. If the lines have arrowheads here, the arrow will usually point in the direction of information flow, for example from a teacher to her student. If there is no arrow, or two arrows pointing different directions, this indicates a symmetric relationship where, e.g., information could flow in two directions.
+Social networks are at once intuitive, perhaps partly due to their prominence in
+pop culture, and also technically complex and theoretically deep. Social
+networks have *nodes* (aka *vertices*) that represent people, usually drawn as
+circles but any shape is ok. Relationships between people are represented by
+*edges*, drawn as lines. If the lines have arrowheads, the arrow will point in
+the direction of information flow, for example from a teacher to her student. If
+there is no arrow, or two arrows pointing different directions, this indicates a
+symmetric relationship where information could flow in either direction.
 
 We need to know some basic things about social networks because all models make assumptions about them. First, a social network is a theoretical tool, a "cognitive gadget" , that represents relationships between people. Social networks are instances of graphs, an abstract mathematical structure for representing any type of entities and relationships between them. Graph *nodes* (aka *vertices*) represent the entities and *edges* represent the relationships between nodes. Edges are drawn as lines with or without arrows to indicate the flow of information, with information flowing to a *learner*, or *observer* more generally, from a *teacher* or *demonstrator* (Figure @fig-teacher-learner-infoflow). Lines with arrows are called *directed* edges. For a given pair of individuals, each may sometimes be teacher or learner. This case may be represented by two directed edges pointing opposite directions or a single *undirected* edge, i.e., a line with no arrowheads (Figure @fig-teacher-learner-bidirectional).
 
@@ -321,6 +331,115 @@ ggplot(adopt_tbl, aes(x=timestep, y=A, color=alpha)) +
   geom_line() + theme_classic()
 ```
 
+
+### Discrete change in recursion, continuous (infinitesimal) change in differential equations
+
+In the recursion LA model, the change in $A$, $\Delta A$ from time step
+$t$ to time step $t+1$ is $$
+\Delta A = A_{t+1} - A_t = \alpha N \Pr(L,A)
+$$ {#eq-delta-A} where $\Pr(L,A) = \frac{L}{N}\frac{A}{N}$ is the
+probability an individual doing $L$ and another doing $A$ interact under
+the *well-mixed* assumption.
+
+::: column-margin
+$\cdot\quad$ The *well-mixed* assumption says that everyone in a
+population is equally likely to interact with one another. This means
+the probability of someone doing $L$ encountering someone else doing $A$
+is the same for all people doing $L$ (or vice-versa).
+:::
+
+Plug this probability in to @eq-delta-A and cancel an $N$ on top and
+bottom to get $$
+\Delta A = \frac{\alpha}{N} L A = \alpha' L A,
+$$ {#eq-delta-A-likeODE} where $\alpha' = \alpha / N$. Because we use
+$t$ to label time steps and assumed that time steps are separated by
+$\Delta t = 1$, we can multiply the right side of @eq-delta-A-likeODE by
+1 in the form of $\Delta t$: $$
+\Delta A = \alpha' LA \Delta t
+$$ {#eq-delta-A-preODE}
+
+::: column-margin
+$\cdot\quad$The general probability that a person doing behavior $b$
+interacts with a person doing $b'$ (read "b prime") $\Pr(b,b')$, i.e.
+$\Pr(L,A)$ for legacy-adaptive, $\Pr(L, L)$ for legacy-legacy, etc.
+:::
+
+Calculus, the foundation of differential equations, is the mathematics
+of rates of change, which was achieved through the following conceptual
+leap. In terms of our LA model, calculus works by assuming that
+$\Delta t$ becomes "infinitesimally small", written $\Delta t \to 0$.
+Before $\Delta t$ gets all the way to zero, we calculate $\Delta A$ over
+this infinitesimally small $\Delta t$. This infinitesimal $\Delta t$ is
+written $dt$, and the similarly infinitesimal $\Delta A$ is written
+$dA$. When $\Delta \to 0$, then, we replace $\Delta$ with $d$ and
+@eq-delta-A-preODE becomes $$
+dA = \alpha' L A dt
+$$ which is more commonly written $$
+\frac{dA}{dt} = \alpha' L A dt
+$$ {#eq-dAdt} representing the flow in of people previously doing $L$,
+with the coupled differential equation for $L$ differing only in sign of
+the right hand side, representing the flow of people away from doing
+$L$: $$
+\frac{dL}{dt} = - \alpha' L A dt.
+$$
+
+These equations can be solved by using the same substitution we used in
+the recursion to get a formula for $A_{t+1}$ that depended only on
+$A_t$, namely that $L = N - A$, so @eq-dAdt becomes
+
+$$
+\frac{dA}{dt} = \alpha' A(N - A).
+$$ {#eq-dAdt-noL}
+
+Calculus tells us that we can rearrange the differnetials like they were
+any other variable. What we want now is to arrange all $A$ terms to one
+side of the equation, and all $t$ terms to the other because this allows
+us to *integrate* the equation. We want to integrate the equation
+because this is the calculus procedure that converts rates of change of
+a variable to the accumulation of that variable. Rearranage @eq-dAdt-noL
+to get
+
+$$
+\frac{dA}{A(N - A)} = \alpha' dt.
+$$
+
+We integrate both sides of this equation, which is written
+
+$$
+\int \frac{dA}{A(N - A)} = \int \alpha' dt = \alpha't + C
+$$ {#eq-dA-integration}
+
+where $C$ called a constant of integration that must be determined by
+initial conditions for this problem, namely the value $A(t=0)$ and we
+used the fact that $\int a dx = ax + C$ where $a$ is any constant and
+$x$ is any dynamic variable. The integral on the left hand side can be
+integrated formally, i.e., without using a computer, but it's
+significantly more complicated. After integrating the left hand side of
+@eq-dA-integration it is still necessary to solve for $A$ in terms of
+$t$. See @note-continuous-time-LA-LAL for these details.
+
+After all that math we obtain the *logistic equation*,
+
+$$
+A(t) = \frac{N}{1 + \frac{N}{A_0}e^{-\alpha N t}},
+$$ {#eq-logistic-LA}
+
+where $A_0 = A(t = 0)$ is the initial condition.
+
+Britton (2003) explains in Ch. 3, p. 87, this is the same equation as
+single-species population dynamics in an ecosystem with a carrying
+capacity, $K$. In this case, $K = N$. See Britton Ch. 3 for even more
+detail on the family of compartmental susceptible-infected-recovered
+models that we have adapted for sustainable adaptations in the context
+of the field of mathematical biology.
+
+::: {.callout-note collapse="false" title="Integration and solution of $A(t)$ from LA differential equations model" label="note-continuous-time-LA-LAL"}
+
+
+{{< include _LA_derivation.qmd >}}
+:::
+
+
 ### Legacy-Adaptive-Legacy (LAL) model
 
 ![The Legacy-Adaptive-Legacy model also allows for transitions from the state $A$ to state $L$, which occurs with probability $\delta$.](images/LAL.png){#fig-LAL-state fig-align="center" width="441"}
@@ -329,41 +448,78 @@ When considering the total change in $A,$ written $\Delta A,$ following a discre
 
 $$
 \Delta A = \alpha A (1 - \frac{A}{N}) - \delta A.
-$$
+$$ {#eq-deltaA}
 
-In this model, two new things are possible that were not possible before. First, the adaptation may completely fail to spread. If more people end up dropping the behavior than adopting it early on, there will be no one doing $A$ that someone doing $L$ could copy. Second, in general, everyone will *not* eventually adopt $A$, at least not all at once, unlike in the LA model. In the LAL model there is an equilibrium value that the system reaches for a large enough $t,$ written $\hat A$ and solved via
+In this model, two new things are possible that were not possible before. First,
+the adaptation may completely fail to spread. If more people end up dropping the
+behavior than adopting it early on, there will be no one doing $A$ that someone
+doing $L$ could copy. Second, in general, everyone will *not* eventually adopt
+$A$, at least not all at once, unlike in the LA model. In the LAL model there is
+an equilibrium $A$, $\ahat$, that the system reaches with enough time.
 
-::: {.callout-note collapse="false" title="Solving LA system of coupled differential equations" label="note-continuous-time-LA-LAL"}
-We can additionally represent the LA and LAL models as coupled ordinary differential equations (ODEs). The ODEs appear somewhat like the difference equations, but ODEs can be solved formally or numerically using the tools of calculus.
+#### Will the adaptation spread?
 
-### LA ODEs
-
-$$
-\frac{dL}{dt} = -\alpha L A
-$$
-
-$$
-\frac{dA}{dt} = \alpha L A
-$$
-
-{{< include _LA_derivation.qmd >}}
-
-### LAL ODE
-
-See Chapter 3 in Britton's (2003) *Essential Mathematical Biology* for a guide to sovling the ODE system,
+We want to know if the adaptation will diffuse throughout the population in the
+LA model given just the adoption rate 
+$\alpha$ and drop rate $\delta$. Formally, the adaptation diffuses if
+$\Delta A > 0$. We can approximate $\Delta A$ just after its
+introduction to a population that is mostly doing the legacy behavior and obtain
+a useful heuristic value to tell use if it will diffuse. When the adaptive
+behavior is only just being introduced to a relatively large population, we
+we say that $A << L,N$, and so $1 - \frac{A}{N} \approx 0$, so
+that @eq-deltaA becomes 
 
 $$
-\frac{dL}{dt} = -\alpha' L A + \delta A
+\Delta A = \alpha A - \delta A > 0.
 $$
 
+Dividing out $A$, rearranging, and dividing by $\delta$, we find that the
+adaptation diffuses if
+
 $$
-\frac{dA}{dt} =  \alpha' L A - \delta A
+R_0 = \frac{\alpha}{\delta} > 1,
 $$
-:::
+
+where $R_0$ is a rather famous measure called the *basic reproduction number* 
+in epidemiology that predicts whether a new disease will become endemic or not.
+For us it predicts whether a sustainable adaptation will diffuse and persist
+in a population.
+
+#### If an adaptation persists, what will the long-term adoption level be?
+
+To know how many people will perform the adaptive behavior after the diffusion
+of that behavior has stabilized, we need to calculate its *equilibrium value*.
+Assuming $R_0 > 1$, the equilibrium number of adopters, $\ahat$, is 
+defined as the value of $A$ for which $\Delta A = 0$, i.e., when $A$ remains constant
+over time:
+
+$$
+\Delta A = 0 = \alpha \ahat\left(1 - \frac{\ahat}{N}\right) - \delta
+\ahat.
+$$
+
+This can be re-arranged to find that 
+
+$$
+\frac{\ahat}{N} = 1 - \frac{\delta}{\alpha}.
+$$
+
+See _MSB_ pp. 96-97 for the steps and
+Figure 4.9 on p. 97 for a plot of $\Delta A$ versus $A$ that illustrates and
+explains how to find $\ahat$ graphically (_MSB_ uses the epidemiological
+framing, which means $I$ replaces $A$.
+
 
 ## Adaptive social learning
 
-There are many ways people (or other critters with culture) use social or environmental cues to decide who to learn from, known as *social learning strategies* @Kendal2018. We will consider the effects of two such social learning strategies in this course, *conformity-biased learning* and *success-biased learning*. As before we focus on the discrete-time case, but we will also point towards more advanced resources for using continuous-time to formally calculate helpful heuristic values for understanding asymptotic dynamics.
+There are many ways people (or other critters with culture) use social or
+environmental cues to decide who to learn from, known as *social learning
+strategies* @Kendal2018. We will consider the effects of two such social
+learning strategies in this course, *conformity-biased learning* and
+*success-biased learning*. As before we focus on the discrete-time case, but we
+will also point towards more advanced resources for using continuous-time to
+formally calculate helpful heuristic values for understanding asymptotic
+dynamics.
 
 ### Conformity-biased learning
 

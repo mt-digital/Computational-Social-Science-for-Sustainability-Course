@@ -4,51 +4,6 @@ editor:
     wrap: 72
 ---
 
-### SI Model with Substitutions
-
-The equations for the SI model become:
-
-$$
-\frac{dL}{dt} = -\alpha' L A
-$$
-
-$$
-\frac{dA}{dt} = \alpha L A
-$$
-
-where:
-
-\-$L$: the number of susceptible individuals -$A$: the number of
-infected individuals, -$\alpha$: the transmission rate, -$N = L + A$:
-the total population size (assumed constant).
-
-### Step-by-Step Process to Eliminate $L$
-
-1.  **Express** $L$ in terms of $N$ and $A$: Since $N = L + A$, we can
-    write: 
-    $$
-    L = N - A.
-    $$
-
-2.  **Substitute** $L = N - A$ into the equation for $\frac{dA}{dt}$:
-    Replace $L$ in $\frac{dA}{dt} = \alpha L A$: $$
-    \frac{dA}{dt} = \alpha (N - A) A.
-      $$
-
-3.  **Simplify the resulting equation:** Expand the terms: $$
-    \frac{dA}{dt} = \alpha N A - \alpha A^2.
-      $$
-
-    This is now a single nonlinear differential equation for $A$, where
-    $L$ has been eliminated.
-
-### Solving the Equation
-
-The resulting equation: $$
-\frac{dA}{dt} = \alpha N A - \alpha A^2
-$$ is separable. Rearrange terms to separate $A$ and $t$: $$
-\frac{1}{A (N - A)} \, dA = \alpha \, dt.
-$$
 
 Perform partial fraction decomposition on $\frac{1}{A (N - A)}$: $$
 \frac{1}{A (N - A)} = \frac{1}{N} \left( \frac{1}{A} + \frac{1}{N - A} \right).
@@ -95,8 +50,4 @@ which we can multiply by $1 + K$ on both sides and rearrange to get
 
 $$
 K = \frac{N}{A_0}.
-$$
-
-$$
-
 $$
