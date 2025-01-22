@@ -93,7 +93,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-eb83b09dbd08fe6a8296ac6453ea0b21.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-af0121c84ee5bc221945f7e3fe5b8ed8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -214,13 +214,15 @@ window.Quarto = {
   <li><a href="#la-and-lal-compartmental-contagion-models" id="toc-la-and-lal-compartmental-contagion-models" class="nav-link" data-scroll-target="#la-and-lal-compartmental-contagion-models">LA and LAL compartmental “contagion” models</a>
   <ul class="collapse">
   <li><a href="#legacy-adaptive-la-model" id="toc-legacy-adaptive-la-model" class="nav-link" data-scroll-target="#legacy-adaptive-la-model">Legacy-Adaptive (LA) model</a></li>
+  <li><a href="#discrete-change-in-recursion-continuous-infinitesimal-change-in-differential-equations" id="toc-discrete-change-in-recursion-continuous-infinitesimal-change-in-differential-equations" class="nav-link" data-scroll-target="#discrete-change-in-recursion-continuous-infinitesimal-change-in-differential-equations">Discrete change in recursion, continuous (infinitesimal) change in differential equations</a></li>
   <li><a href="#legacy-adaptive-legacy-lal-model" id="toc-legacy-adaptive-legacy-lal-model" class="nav-link" data-scroll-target="#legacy-adaptive-legacy-lal-model">Legacy-Adaptive-Legacy (LAL) model</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#agent-based-modeling" id="toc-agent-based-modeling" class="nav-link" data-scroll-target="#agent-based-modeling">Agent-based modeling</a></li>
   <li><a href="#adaptive-social-learning" id="toc-adaptive-social-learning" class="nav-link" data-scroll-target="#adaptive-social-learning">Adaptive social learning</a>
   <ul class="collapse">
   <li><a href="#conformity-biased-learning" id="toc-conformity-biased-learning" class="nav-link" data-scroll-target="#conformity-biased-learning">Conformity-biased learning</a></li>
   <li><a href="#success-biased-learning" id="toc-success-biased-learning" class="nav-link" data-scroll-target="#success-biased-learning">Success-biased learning</a></li>
-  </ul></li>
   </ul></li>
   <li><a href="#cooperation-and-coordination" id="toc-cooperation-and-coordination" class="nav-link" data-scroll-target="#cooperation-and-coordination">Cooperation and coordination</a></li>
   <li><a href="#opinion-dynamics" id="toc-opinion-dynamics" class="nav-link" data-scroll-target="#opinion-dynamics">Opinion dynamics</a>
@@ -309,7 +311,7 @@ Abstract model workflow description.
 </section>
 <section id="a-primer-on-social-networks" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="a-primer-on-social-networks">A primer on social networks</h2>
-<p>Social networks are at once intuitive, perhaps partly due to their prominence in pop culture, and also technically complex and theoretically deep. Social networks have <em>nodes</em> (aka <em>vertices</em>) that represent people, usually drawn visually as circles but other shapes are fine. Relationships between people are represented by <em>edges</em>, drawn visually as lines. If the lines have arrowheads here, the arrow will usually point in the direction of information flow, for example from a teacher to her student. If there is no arrow, or two arrows pointing different directions, this indicates a symmetric relationship where, e.g., information could flow in two directions.</p>
+<p>Social networks are at once intuitive, perhaps partly due to their prominence in pop culture, and also technically complex and theoretically deep. Social networks have <em>nodes</em> (aka <em>vertices</em>) that represent people, usually drawn as circles but any shape is ok. Relationships between people are represented by <em>edges</em>, drawn as lines. If the lines have arrowheads, the arrow will point in the direction of information flow, for example from a teacher to her student. If there is no arrow, or two arrows pointing different directions, this indicates a symmetric relationship where information could flow in either direction.</p>
 <p>We need to know some basic things about social networks because all models make assumptions about them. First, a social network is a theoretical tool, a “cognitive gadget” , that represents relationships between people. Social networks are instances of graphs, an abstract mathematical structure for representing any type of entities and relationships between them. Graph <em>nodes</em> (aka <em>vertices</em>) represent the entities and <em>edges</em> represent the relationships between nodes. Edges are drawn as lines with or without arrows to indicate the flow of information, with information flowing to a <em>learner</em>, or <em>observer</em> more generally, from a <em>teacher</em> or <em>demonstrator</em> (Figure <a href="#fig-teacher-learner-infoflow" class="quarto-xref">Figure&nbsp;2</a>). Lines with arrows are called <em>directed</em> edges. For a given pair of individuals, each may sometimes be teacher or learner. This case may be represented by two directed edges pointing opposite directions or a single <em>undirected</em> edge, i.e., a line with no arrowheads (Figure <a href="#fig-teacher-learner-bidirectional" class="quarto-xref">Figure&nbsp;3</a>).</p>
 <div class="cell page-columns page-full">
 
@@ -386,16 +388,38 @@ Figure&nbsp;5
 </div>
 <section id="regular-networks" class="level4">
 <h4 class="anchored" data-anchor-id="regular-networks">Regular networks</h4>
-<p><em>Regular</em> networks are those ones for which all nodes have the same degree. A 2-regular network looks like the following:</p>
-</section>
-<section id="random-networks" class="level4">
-<h4 class="anchored" data-anchor-id="random-networks">Random networks</h4>
-<section id="erdős-rényi-random-networks-gnm-and-gn-p" class="level5">
-<h5 class="anchored" data-anchor-id="erdős-rényi-random-networks-gnm-and-gn-p">Erdős-Rényi random networks: <span class="math inline">\(G(N,M)\)</span> and <span class="math inline">\(G(N, p)\)</span></h5>
-</section>
-<section id="randomization-of-regular-networks-to-achieve-the-small-world-property" class="level5">
-<h5 class="anchored" data-anchor-id="randomization-of-regular-networks-to-achieve-the-small-world-property">Randomization of regular networks to achieve the small-world property</h5>
-</section>
+<p><em>Regular</em> networks are those ones for which all nodes have the same degree. A regular lattice with degree <span class="math inline">\(k\)</span> is useful for constructing networks with the small-world property. We can use code from the <code>socmod.R</code> script in the root directory of the CSS4S-ProblemSets repo to create one with ten nodes, each connected to two neighbors:</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'assertthat'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:tibble':
+
+    has_name</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And here is one more example, but with 20 nodes connected to six neighbors each:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- #### Random networks -->
+<!-- ##### Erdős-Rényi random networks: $G(N,M)$ and $G(N, p)$ -->
+<!-- ##### Randomization of regular networks to achieve the small-world property -->
 </section>
 </section>
 <section id="analysis-of-the-medici-family" class="level3 page-columns page-full">
@@ -406,19 +430,19 @@ Figure&nbsp;5
 n_{\text{Medici}} = \{\text{Salviati},~\text{Acciaiuol},~\text{Barbadori},~\text{Ridolfi},~\text{Tornabuon},~\text{Albizzi}\}
 \]</span> The degree of node <span class="math inline">\(i\)</span> is the number of neighbors it has, written <span class="math inline">\(k_i\)</span>, so <span class="math inline">\(k_\text{Medici} = 6\)</span>. In the case of directed networks it is common to define in- and out-neighborhoods, referring to arrow direction, which for us correspond to teacher- and learner-neighborhoods.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"florentine_m"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete Pucci family (isolated)</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>florentine_m <span class="ot">&lt;-</span> <span class="fu">delete_vertices</span>(florentine_m, <span class="fu">which</span>(<span class="fu">degree</span>(florentine_m) <span class="sc">==</span> <span class="dv">0</span>))</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the graph</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(florentine_m,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.cex =</span> <span class="dv">1</span>,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.size =</span> <span class="dv">20</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.color =</span> <span class="st">"black"</span>,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.color =</span> NODE_COLOR,</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.frame.color =</span> NODE_COLOR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"florentine_m"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete Pucci family (isolated)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>florentine_m <span class="ot">&lt;-</span> <span class="fu">delete_vertices</span>(florentine_m, <span class="fu">which</span>(<span class="fu">degree</span>(florentine_m) <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the graph</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(florentine_m,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.cex =</span> <span class="dv">1</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.size =</span> <span class="dv">20</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.color =</span> <span class="st">"black"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.color =</span> NODE_COLOR,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.frame.color =</span> NODE_COLOR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-florentine-network" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -434,13 +458,13 @@ Figure&nbsp;6: Florentine marriage network where edges represent marriages betwe
 </div>
 <p>We can make a bar plot of the degrees for each family:</p>
 <div class="cell page-columns page-full" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>deglist <span class="ot">&lt;-</span> <span class="fu">degree</span>(florentine_m) </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tbl of degrees for each family then barplot using ggplot2.</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">Family=</span><span class="fu">names</span>(deglist), <span class="at">k=</span><span class="fu">as.vector</span>(deglist)) <span class="sc">%&gt;%</span>     </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Family=</span><span class="fu">fct_reorder</span>(<span class="fu">as_factor</span>(Family), k)) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>k, <span class="at">y=</span>Family)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">fill=</span>NETWORK_COLOR) <span class="sc">+</span>   </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>deglist <span class="ot">&lt;-</span> <span class="fu">degree</span>(florentine_m) </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tbl of degrees for each family then barplot using ggplot2.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">Family=</span><span class="fu">names</span>(deglist), <span class="at">k=</span><span class="fu">as.vector</span>(deglist)) <span class="sc">%&gt;%</span>     </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Family=</span><span class="fu">fct_reorder</span>(<span class="fu">as_factor</span>(Family), k)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>k, <span class="at">y=</span>Family)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">fill=</span>NETWORK_COLOR) <span class="sc">+</span>   </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="no-row-height column-margin column-container"><div class="cell-output-display">
 <div id="fig-florence-degrees" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -456,26 +480,26 @@ Figure&nbsp;7: Degree of each family in Florence intermarriage network.
 </div></div></div>
 <p>The <em>degree distribution</em> is the fraction of nodes having degree <span class="math inline">\(k\)</span>, written <span class="math inline">\(P(k)\)</span>. Since the Medici family is the only one with a degree of six, and there are fifteen families, <span class="math inline">\(P(6)=\frac{1}{15}\approx 0.066\)</span>, which we can check like so:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>degdist <span class="ot">&lt;-</span> <span class="fu">degree_distribution</span>(florentine_m)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>medici_k <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Degree distribution starts at 0 and goes to maximum k; index 1, then</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># correlates to k=0 and need to add 1 to the Medici index.</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>degdist[[medici_k <span class="sc">+</span> <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>degdist <span class="ot">&lt;-</span> <span class="fu">degree_distribution</span>(florentine_m)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>medici_k <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Degree distribution starts at 0 and goes to maximum k; index 1, then</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># correlates to k=0 and need to add 1 to the Medici index.</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>degdist[[medici_k <span class="sc">+</span> <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.06666667</code></pre>
 </div>
 </div>
 <p>We plot the degree distribution see that the modal <span class="math inline">\(k\)</span> is 3 and that the distribution is somewhat more concentrated in <span class="math inline">\(k\leq3\)</span> compared to <span class="math inline">\(k &gt; 3\)</span>, using the built-in <code>barplot</code> function to plot a simple histogram of <span class="math inline">\(P(k)\)</span> using base R:</p>
 <div class="cell page-columns page-full">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>degdist_vec <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(degdist)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>k_vec <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">k =</span> k_vec, <span class="at">freq =</span> degdist_vec), <span class="fu">aes</span>(<span class="at">x=</span>k_vec, <span class="at">y=</span>degdist_vec)) <span class="sc">+</span> </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">fill=</span>NETWORK_COLOR) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Degree, k"</span>) <span class="sc">+</span> </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequency, P(k)"</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>(<span class="at">base_size=</span><span class="dv">22</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>degdist_vec <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(degdist)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>k_vec <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">k =</span> k_vec, <span class="at">freq =</span> degdist_vec), <span class="fu">aes</span>(<span class="at">x=</span>k_vec, <span class="at">y=</span>degdist_vec)) <span class="sc">+</span> </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">fill=</span>NETWORK_COLOR) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Degree, k"</span>) <span class="sc">+</span> </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequency, P(k)"</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>(<span class="at">base_size=</span><span class="dv">22</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="no-row-height column-margin column-container"><div class="cell-output-display">
 <div id="fig-medici-degree-dist" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -499,12 +523,12 @@ Figure&nbsp;8: Degree distribution shows how frequently nodes (families here) ha
 </section>
 </section>
 </section>
-<section id="diffusion-of-adaptations" class="level1">
+<section id="diffusion-of-adaptations" class="level1 page-columns page-full">
 <h1>Diffusion of adaptations</h1>
 <p>Adaptations <em>diffuse</em> through communication or observation from person to person when two things happen. First, a person not doing some adaptive behavior (driving an electric vehicle, using heat pumps in their home for heating and cooling, switching to no-till farming methods, etc.) encounters someone who knows or does an adaptive behavior. Second, the person not doing the adaptive behavior must successfully acquire the knowledge and desire necessary to start doing the behavior themselves. In this section we introduce four models of this process.</p>
 <p>The first two assume that an adaptive behavior is randomly adopted by someone performing a legacy behavior with probability <span class="math inline">\(\alpha\)</span>, the adoption rate. One of these assumes that anyone doing the adaptive behavior will continue doing it forever, the <em>Legacy-Adaptive</em> model (Figure <a href="#fig-LA-state" class="quarto-xref">Figure&nbsp;9</a>). The next adds one more assumption, that people can stop doing a behavior, i.e., they can randomly _drop_the behavior, which happens for anyone doing <span class="math inline">\(A\)</span> with probability <span class="math inline">\(\delta\)</span> (Figure <a href="#fig-LAL-state" class="quarto-xref">Figure&nbsp;10</a>).</p>
 <p>The second two assume that learning is partly probabilistic and partly <em>adaptive</em>, where individuals can do some computation about who or what behavior may be best to learn. These are <em>social learning</em> models of transmission. The first of these is a <em>conformist-biased learning</em> model, where individuals are assumed to be more likely to learn a behavior if more people are doing it. The second is a <em>success-biased learning</em> model, where individuals are more likely to learn from individuals if an individual is doing relatively well compared to other neighbors. Success-biased learning is the only one of these where the benefit of doing a behavior matters, since there must be a way to acquire “payoffs”, which is a modeling term of art representing amount of benefit, usually in unspecified units.</p>
-<section id="la-and-lal-compartmental-contagion-models" class="level2">
+<section id="la-and-lal-compartmental-contagion-models" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="la-and-lal-compartmental-contagion-models">LA and LAL compartmental “contagion” models</h2>
 <p>Contagion models like the LA and LAL models assume that when individuals encounter one another there is some probability that some individual-level attribute, in this case whether the individual <span class="math inline">\(i\)</span> does <span class="math inline">\(A\)</span>. These models require relatively few parameters and variables, but ignore adaptive strategies people use for acquiring new information (<a href="#tbl-LA-LAL-parameters" class="quarto-xref">Table&nbsp;1</a>).</p>
 <p>Namely, these model contain two dynamic <em>outcome variables</em> <span class="math inline">\(L_t\)</span> and <span class="math inline">\(A_t\)</span> if time is discrete (<span class="math inline">\(L(T)\)</span> and <span class="math inline">\(A(t)\)</span> if time is continuous; see Note <span class="citation" data-cites="note-continuous-time-LA-LAL">(<a href="#ref-note-continuous-time-LA-LAL" role="doc-biblioref"><strong>note-continuous-time-LA-LAL?</strong></a>)</span>) the number of individuals performing <span class="math inline">\(L\)</span> and the number performing <span class="math inline">\(A\)</span>. These outcomes are dynamic, so <span class="math inline">\(t\)</span> represents time, which is discrete in our main treatment of these models, meaning that points in time can be indexed by integers, i.e., time steps are indexed by <span class="math inline">\(t_i\)</span> where <span class="math inline">\(i \in \{1, 2, 3,\ldots\}\)</span>, e.g., <span class="math inline">\(t \in \{0, 3, 6, 9, 12, 15, \ldots\}\)</span> could be discrete time steps for a model with <span class="math inline">\(t\)</span> in months meant to represent some process for which we have data every three months. If time is continuous (<span class="citation" data-cites="note-continuous-time-LA-LAL">(<a href="#ref-note-continuous-time-LA-LAL" role="doc-biblioref"><strong>note-continuous-time-LA-LAL?</strong></a>)</span>) then <span class="math inline">\(t\in[0,\infty)\)</span>. Although time can continue on to infinity, we usually specify that models will stop at some time step or when some condition is met. One of the most important conditions is whether the population has <em>fixated</em>, meaning all agents do the same behavior. Finally, there are two parameters that determine the probability that individuals change their behavioral state (from doing <span class="math inline">\(L\)</span> to doing <span class="math inline">\(A\)</span> or vice-versa). In both the LA and LAL models, the probability <span class="math inline">\(A\)</span> is adopted when an <span class="math inline">\(L\)</span> meets an <span class="math inline">\(A\)</span> is the adoption rate, <span class="math inline">\(\alpha\)</span>. In the LAL model, at every time step, every agent doing <span class="math inline">\(A\)</span> might drop the behavior, i.e., stop doing the behavior, reverting to do <span class="math inline">\(L\)</span> for the next time step. The probability one doing <span class="math inline">\(A\)</span> reverts to <span class="math inline">\(L\)</span> is <span class="math inline">\(\delta\)</span>, the <em>drop rate</em>. So, the LA and LAL models are in fact the same model where we can set <span class="math inline">\(\delta = 0\)</span> to recover the LA model from the LAL model.</p>
@@ -566,6 +590,9 @@ Table&nbsp;1: LA and LAL model parameter and variable symbols and definitions.
 <p><img src="images/clipboard-2993810530.png" class="img-fluid"></p>
 <section id="legacy-adaptive-la-model" class="level3">
 <h3 class="anchored" data-anchor-id="legacy-adaptive-la-model">Legacy-Adaptive (LA) model</h3>
+<p>In class we derived the recursion for the legacy-adaptive model: <span class="math display">\[
+A_{t+1} = A_{t} + \alpha A_t\left(1 - \frac{A_t}{N}\right).
+\]</span> Once an individual adopts the adaptive behavior in this model, they continue doing that behavior forever (<a href="#fig-LA-state" class="quarto-xref">Figure&nbsp;9</a>). Below we show how to write a function to implement this recursion to calculate a time series and compare the results for two different adoption rates, <span class="math inline">\(\alpha\)</span>.</p>
 <div id="fig-LA-state" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-LA-state-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -577,127 +604,103 @@ Figure&nbsp;9: The Legacy-Adaptive model only allows for a change of individual-
 </figure>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>la_recursion <span class="ot">&lt;-</span> <span class="cf">function</span>(N, A0, alpha, tmax) {</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  A_return <span class="ot">&lt;-</span> <span class="fu">numeric</span>(N<span class="sc">+</span><span class="dv">1</span>)  <span class="co"># Create output time series vector.</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set current A_t to be A_0</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  At <span class="ot">&lt;-</span> A0</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  A_return[<span class="dv">1</span>] <span class="ot">&lt;-</span> At</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Iterate </span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>tmax) {</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Anext is code for A_{t+1}</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    Anext <span class="ot">&lt;-</span> At <span class="sc">+</span> (alpha <span class="sc">*</span> At <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> (At<span class="sc">/</span>N)))</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    A_return[t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> Anext</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    At <span class="ot">&lt;-</span> Anext</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (A_return)</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>la_recursion <span class="ot">&lt;-</span> <span class="cf">function</span>(N, A0, alpha, tmax) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  A_return <span class="ot">&lt;-</span> <span class="fu">numeric</span>(N<span class="sc">+</span><span class="dv">1</span>)  <span class="co"># Create output time series vector.</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set current A_t to be A_0</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  At <span class="ot">&lt;-</span> A0</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  A_return[<span class="dv">1</span>] <span class="ot">&lt;-</span> At</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Iterate </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>tmax) {</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Anext is code for A_{t+1}</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    Anext <span class="ot">&lt;-</span> At <span class="sc">+</span> (alpha <span class="sc">*</span> At <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> (At<span class="sc">/</span>N)))</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    A_return[t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> Anext</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    At <span class="ot">&lt;-</span> Anext</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (A_return)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>A0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>alpha_low <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>tmax <span class="ot">&lt;-</span> <span class="dv">200</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>tvec <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>tmax</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>Avec_low_alpha <span class="ot">&lt;-</span> <span class="fu">la_recursion</span>(N, A0, alpha_low, tmax)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>alpha_high <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>Avec_high_alpha <span class="ot">&lt;-</span> <span class="fu">la_recursion</span>(N, A0, alpha_high, tmax)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>adopt_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">timestep =</span> <span class="fu">rep</span>(tvec, <span class="dv">2</span>), </span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">alpha =</span> </span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">as_factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(alpha_low, <span class="fu">length</span>(tvec)), </span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">rep</span>(alpha_high, <span class="fu">length</span>(tvec)))),</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">A =</span> <span class="fu">c</span>(Avec_low_alpha, Avec_high_alpha))</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(adopt_tbl, <span class="fu">aes</span>(<span class="at">x=</span>timestep, <span class="at">y=</span>A, <span class="at">color=</span>alpha)) <span class="sc">+</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>A0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>alpha_low <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>tmax <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>tvec <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>tmax</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>Avec_low_alpha <span class="ot">&lt;-</span> <span class="fu">la_recursion</span>(N, A0, alpha_low, tmax)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>alpha_high <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>Avec_high_alpha <span class="ot">&lt;-</span> <span class="fu">la_recursion</span>(N, A0, alpha_high, tmax)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>adopt_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">timestep =</span> <span class="fu">rep</span>(tvec, <span class="dv">2</span>), </span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">alpha =</span> </span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">as_factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(alpha_low, <span class="fu">length</span>(tvec)), </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">rep</span>(alpha_high, <span class="fu">length</span>(tvec)))),</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">A =</span> <span class="fu">c</span>(Avec_low_alpha, Avec_high_alpha))</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(adopt_tbl, <span class="fu">aes</span>(<span class="at">x=</span>timestep, <span class="at">y=</span>A, <span class="at">color=</span>alpha)) <span class="sc">+</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="legacy-adaptive-legacy-lal-model" class="level3">
-<h3 class="anchored" data-anchor-id="legacy-adaptive-legacy-lal-model">Legacy-Adaptive-Legacy (LAL) model</h3>
-<div id="fig-LAL-state" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-LAL-state-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/LAL.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="441">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-LAL-state-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10: The Legacy-Adaptive-Legacy model also allows for transitions from the state <span class="math inline">\(A\)</span> to state <span class="math inline">\(L\)</span>, which occurs with probability <span class="math inline">\(\delta\)</span>.
-</figcaption>
-</figure>
-</div>
-<p>When considering the total change in <span class="math inline">\(A,\)</span> written <span class="math inline">\(\Delta A,\)</span> following a discrete time step, <span class="math inline">\(\Delta t\)</span>, from time “now” to time “next”, i.e., from <span class="math inline">\(t\)</span> to <span class="math inline">\(t+1\)</span>, we can drop the indices since all indices are <span class="math inline">\(t\)</span>, i.e.,</p>
-<p><span class="math display">\[
-\Delta A = \alpha A (1 - \frac{A}{N}) - \delta A.
+<section id="discrete-change-in-recursion-continuous-infinitesimal-change-in-differential-equations" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="discrete-change-in-recursion-continuous-infinitesimal-change-in-differential-equations">Discrete change in recursion, continuous (infinitesimal) change in differential equations</h3>
+<p>In the recursion LA model, the change in <span class="math inline">\(A\)</span>, <span class="math inline">\(\Delta A\)</span> from time step <span class="math inline">\(t\)</span> to time step <span class="math inline">\(t+1\)</span> is <span id="eq-delta-A"><span class="math display">\[
+\Delta A = A_{t+1} - A_t = \alpha N \Pr(L,A)
+\tag{1}\]</span></span> where <span class="math inline">\(\Pr(L,A) = \frac{L}{N}\frac{A}{N}\)</span> is the probability an individual doing <span class="math inline">\(L\)</span> and another doing <span class="math inline">\(A\)</span> interact under the <em>well-mixed</em> assumption.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(\cdot\quad\)</span> The <em>well-mixed</em> assumption says that everyone in a population is equally likely to interact with one another. This means the probability of someone doing <span class="math inline">\(L\)</span> encountering someone else doing <span class="math inline">\(A\)</span> is the same for all people doing <span class="math inline">\(L\)</span> (or vice-versa).</p>
+</div></div><p>Plug this probability in to <a href="#eq-delta-A" class="quarto-xref">Equation&nbsp;1</a> and cancel an <span class="math inline">\(N\)</span> on top and bottom to get <span id="eq-delta-A-likeODE"><span class="math display">\[
+\Delta A = \frac{\alpha}{N} L A = \alpha' L A,
+\tag{2}\]</span></span> where <span class="math inline">\(\alpha' = \alpha / N\)</span>. Because we use <span class="math inline">\(t\)</span> to label time steps and assumed that time steps are separated by <span class="math inline">\(\Delta t = 1\)</span>, we can multiply the right side of <a href="#eq-delta-A-likeODE" class="quarto-xref">Equation&nbsp;2</a> by 1 in the form of <span class="math inline">\(\Delta t\)</span>: <span id="eq-delta-A-preODE"><span class="math display">\[
+\Delta A = \alpha' LA \Delta t
+\tag{3}\]</span></span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(\cdot\quad\)</span>The general probability that a person doing behavior <span class="math inline">\(b\)</span> interacts with a person doing <span class="math inline">\(b'\)</span> (read “b prime”) <span class="math inline">\(\Pr(b,b')\)</span>, i.e.&nbsp;<span class="math inline">\(\Pr(L,A)\)</span> for legacy-adaptive, <span class="math inline">\(\Pr(L, L)\)</span> for legacy-legacy, etc.</p>
+</div></div><p>Calculus, the foundation of differential equations, is the mathematics of rates of change, which was achieved through the following conceptual leap. In terms of our LA model, calculus works by assuming that <span class="math inline">\(\Delta t\)</span> becomes “infinitesimally small”, written <span class="math inline">\(\Delta t \to 0\)</span>. Before <span class="math inline">\(\Delta t\)</span> gets all the way to zero, we calculate <span class="math inline">\(\Delta A\)</span> over this infinitesimally small <span class="math inline">\(\Delta t\)</span>. This infinitesimal <span class="math inline">\(\Delta t\)</span> is written <span class="math inline">\(dt\)</span>, and the similarly infinitesimal <span class="math inline">\(\Delta A\)</span> is written <span class="math inline">\(dA\)</span>. When <span class="math inline">\(\Delta \to 0\)</span>, then, we replace <span class="math inline">\(\Delta\)</span> with <span class="math inline">\(d\)</span> and <a href="#eq-delta-A-preODE" class="quarto-xref">Equation&nbsp;3</a> becomes <span class="math display">\[
+dA = \alpha' L A dt
+\]</span> which is more commonly written <span id="eq-dAdt"><span class="math display">\[
+\frac{dA}{dt} = \alpha' L A dt
+\tag{4}\]</span></span> representing the flow in of people previously doing <span class="math inline">\(L\)</span>, with the coupled differential equation for <span class="math inline">\(L\)</span> differing only in sign of the right hand side, representing the flow of people away from doing <span class="math inline">\(L\)</span>: <span class="math display">\[
+\frac{dL}{dt} = - \alpha' L A dt.
 \]</span></p>
-<p>In this model, two new things are possible that were not possible before. First, the adaptation may completely fail to spread. If more people end up dropping the behavior than adopting it early on, there will be no one doing <span class="math inline">\(A\)</span> that someone doing <span class="math inline">\(L\)</span> could copy. Second, in general, everyone will <em>not</em> eventually adopt <span class="math inline">\(A\)</span>, at least not all at once, unlike in the LA model. In the LAL model there is an equilibrium value that the system reaches for a large enough <span class="math inline">\(t\)</span> defined as <span class="math inline">\(A_{t \to \infty}\)</span> where</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Solving LA system of coupled differential equations" data-label="note-continuous-time-LA-LAL">
+<p>These equations can be solved by using the same substitution we used in the recursion to get a formula for <span class="math inline">\(A_{t+1}\)</span> that depended only on <span class="math inline">\(A_t\)</span>, namely that <span class="math inline">\(L = N - A\)</span>, so <a href="#eq-dAdt" class="quarto-xref">Equation&nbsp;4</a> becomes</p>
+<p><span id="eq-dAdt-noL"><span class="math display">\[
+\frac{dA}{dt} = \alpha' A(N - A).
+\tag{5}\]</span></span></p>
+<p>Calculus tells us that we can rearrange the differnetials like they were any other variable. What we want now is to arrange all <span class="math inline">\(A\)</span> terms to one side of the equation, and all <span class="math inline">\(t\)</span> terms to the other because this allows us to <em>integrate</em> the equation. We want to integrate the equation because this is the calculus procedure that converts rates of change of a variable to the accumulation of that variable. Rearranage <a href="#eq-dAdt-noL" class="quarto-xref">Equation&nbsp;5</a> to get</p>
+<p><span class="math display">\[
+\frac{dA}{A(N - A)} = \alpha' dt.
+\]</span></p>
+<p>We integrate both sides of this equation, which is written</p>
+<p><span id="eq-dA-integration"><span class="math display">\[
+\int \frac{dA}{A(N - A)} = \int \alpha' dt = \alpha't + C
+\tag{6}\]</span></span></p>
+<p>where <span class="math inline">\(C\)</span> called a constant of integration that must be determined by initial conditions for this problem, namely the value <span class="math inline">\(A(t=0)\)</span> and we used the fact that <span class="math inline">\(\int a dx = ax + C\)</span> where <span class="math inline">\(a\)</span> is any constant and <span class="math inline">\(x\)</span> is any dynamic variable. The integral on the left hand side can be integrated formally, i.e., without using a computer, but it’s significantly more complicated. After integrating the left hand side of <a href="#eq-dA-integration" class="quarto-xref">Equation&nbsp;6</a> it is still necessary to solve for <span class="math inline">\(A\)</span> in terms of <span class="math inline">\(t\)</span>. See <span class="citation" data-cites="note-continuous-time-LA-LAL">(<a href="#ref-note-continuous-time-LA-LAL" role="doc-biblioref"><strong>note-continuous-time-LA-LAL?</strong></a>)</span> for these details.</p>
+<p>After all that math we obtain the <em>logistic equation</em>,</p>
+<p><span id="eq-logistic-LA"><span class="math display">\[
+A(t) = \frac{N}{1 + \frac{N}{A_0}e^{-\alpha N t}},
+\tag{7}\]</span></span></p>
+<p>where <span class="math inline">\(A_0 = A(t = 0)\)</span> is the initial condition.</p>
+<p>Britton (2003) explains in Ch. 3, p.&nbsp;87, this is the same equation as single-species population dynamics in an ecosystem with a carrying capacity, <span class="math inline">\(K\)</span>. In this case, <span class="math inline">\(K = N\)</span>. See Britton Ch. 3 for even more detail on the family of compartmental susceptible-infected-recovered models that we have adapted for sustainable adaptations in the context of the field of mathematical biology.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Integration and solution of $A(t)$ from LA differential equations model" data-label="note-continuous-time-LA-LAL">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solving LA system of coupled differential equations
+Integration and solution of <span class="math inline">\(A(t)\)</span> from LA differential equations model
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>We can additionally represent the LA and LAL models as coupled ordinary differential equations (ODEs). The ODEs appear somewhat like the difference equations, but ODEs can be solved formally or numerically using the tools of calculus.</p>
-<section id="la-odes" class="level3">
-<h3 class="anchored" data-anchor-id="la-odes">LA ODEs</h3>
-<p><span class="math display">\[
-\frac{dL}{dt} = -\alpha L A
-\]</span></p>
-<p><span class="math display">\[
-\frac{dA}{dt} = \alpha L A
-\]</span></p>
-<p>where:</p>
-<ul>
-<li><span class="math inline">\(A(t) = \frac{N}{1 + K e^{-\alpha N t}}\)</span></li>
-<li><span class="math inline">\(L(t) = N - A(t)\)</span></li>
-</ul>
-</section>
-<section id="si-model-with-substitutions" class="level3">
-<h3 class="anchored" data-anchor-id="si-model-with-substitutions">SI Model with Substitutions</h3>
-<p>The equations for the SI model become:</p>
-<p><span class="math display">\[
-\frac{dL}{dt} = -\alpha' L A
-\]</span></p>
-<p><span class="math display">\[
-\frac{dA}{dt} = \alpha L A
-\]</span></p>
-<p>where:</p>
-<p>-<span class="math inline">\(L\)</span>: the number of susceptible individuals -<span class="math inline">\(A\)</span>: the number of infected individuals, -<span class="math inline">\(\alpha\)</span>: the transmission rate, -<span class="math inline">\(N = L + A\)</span>: the total population size (assumed constant).</p>
-</section>
-<section id="step-by-step-process-to-eliminate-l" class="level3">
-<h3 class="anchored" data-anchor-id="step-by-step-process-to-eliminate-l">Step-by-Step Process to Eliminate <span class="math inline">\(L\)</span></h3>
-<ol type="1">
-<li><p><strong>Express</strong> <span class="math inline">\(L\)</span> in terms of <span class="math inline">\(N\)</span> and <span class="math inline">\(A\)</span>: Since <span class="math inline">\(N = L + A\)</span>, we can write: <span class="math display">\[
-L = N - A.
-\]</span></p></li>
-<li><p><strong>Substitute</strong> <span class="math inline">\(L = N - A\)</span> into the equation for <span class="math inline">\(\frac{dA}{dt}\)</span>: Replace <span class="math inline">\(L\)</span> in <span class="math inline">\(\frac{dA}{dt} = \alpha L A\)</span>: <span class="math display">\[
-\frac{dA}{dt} = \alpha (N - A) A.
-  \]</span></p></li>
-<li><p><strong>Simplify the resulting equation:</strong> Expand the terms: <span class="math display">\[
-\frac{dA}{dt} = \alpha N A - \alpha A^2.
-  \]</span></p>
-<p>This is now a single nonlinear differential equation for <span class="math inline">\(A\)</span>, where <span class="math inline">\(L\)</span> has been eliminated.</p></li>
-</ol>
-</section>
-<section id="solving-the-equation" class="level3">
-<h3 class="anchored" data-anchor-id="solving-the-equation">Solving the Equation</h3>
-<p>The resulting equation: <span class="math display">\[
-\frac{dA}{dt} = \alpha N A - \alpha A^2
-\]</span> is separable. Rearrange terms to separate <span class="math inline">\(A\)</span> and <span class="math inline">\(t\)</span>: <span class="math display">\[
-\frac{1}{A (N - A)} \, dA = \alpha \, dt.
-\]</span></p>
 <p>Perform partial fraction decomposition on <span class="math inline">\(\frac{1}{A (N - A)}\)</span>: <span class="math display">\[
 \frac{1}{A (N - A)} = \frac{1}{N} \left( \frac{1}{A} + \frac{1}{N - A} \right).
 \]</span></p>
@@ -718,10 +721,10 @@ A = \frac{N}{1 + e^{-C' - \alpha N t}}.
 \]</span></p>
 <p>Finally, rewrite <span class="math inline">\(e^{-C'}\)</span> as a constant <span class="math inline">\(K\)</span>: <span id="eq-logistic"><span class="math display">\[
 A = \frac{N}{1 + K e^{-\alpha N t}},
-\tag{1}\]</span></span></p>
+\tag{8}\]</span></span></p>
 <p>where <span class="math inline">\(K\)</span> depends on the initial conditions.</p>
 <p>This is the solution for <span class="math inline">\(A(t)\)</span>, and <span class="math inline">\(L(t)\)</span> can be recovered using <span class="math inline">\(L(t) = N - A(t)\)</span>.</p>
-<p>To find <span class="math inline">\(K\)</span> for some initial condition, set <span class="math inline">\(t=0\)</span>, call <span class="math inline">\(A_0 = A(t=0)\)</span>, and solve for <span class="math inline">\(K\)</span>. Note that when <span class="math inline">\(t=0\)</span>, the denominator in Equation <a href="#eq-logistic" class="quarto-xref">Equation&nbsp;1</a> becomes <span class="math inline">\(1 + K\)</span> since <span class="math inline">\(e^0 = 1\)</span>. Then we have</p>
+<p>To find <span class="math inline">\(K\)</span> for some initial condition, set <span class="math inline">\(t=0\)</span>, call <span class="math inline">\(A_0 = A(t=0)\)</span>, and solve for <span class="math inline">\(K\)</span>. Note that when <span class="math inline">\(t=0\)</span>, the denominator in Equation <a href="#eq-logistic" class="quarto-xref">Equation&nbsp;8</a> becomes <span class="math inline">\(1 + K\)</span> since <span class="math inline">\(e^0 = 1\)</span>. Then we have</p>
 <p><span class="math display">\[
 A(0) = \frac{N}{1 + K}
 \]</span></p>
@@ -729,33 +732,165 @@ A(0) = \frac{N}{1 + K}
 <p><span class="math display">\[
 K = \frac{N}{A_0}.
 \]</span></p>
-<p>$$</p>
-<p>$$</p>
+</div>
+</div>
+</div>
 </section>
-<section id="lal-ode" class="level3">
-<h3 class="anchored" data-anchor-id="lal-ode">LAL ODE</h3>
-<p>See Chapter 3 in Britton’s (2003) <em>Essential Mathematical Biology</em> for a guide to sovling the ODE system,</p>
+<section id="legacy-adaptive-legacy-lal-model" class="level3">
+<h3 class="anchored" data-anchor-id="legacy-adaptive-legacy-lal-model">Legacy-Adaptive-Legacy (LAL) model</h3>
+<div id="fig-LAL-state" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-LAL-state-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/LAL.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="441">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-LAL-state-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: The Legacy-Adaptive-Legacy model also allows for transitions from the state <span class="math inline">\(A\)</span> to state <span class="math inline">\(L\)</span>, which occurs with probability <span class="math inline">\(\delta\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>When considering the total change in <span class="math inline">\(A,\)</span> written <span class="math inline">\(\Delta A,\)</span> following a discrete time step, <span class="math inline">\(\Delta t\)</span>, from time “now” to time “next”, i.e., from <span class="math inline">\(t\)</span> to <span class="math inline">\(t+1\)</span>, we can drop the indices since all indices are <span class="math inline">\(t\)</span>, i.e.,</p>
+<p><span id="eq-deltaA"><span class="math display">\[
+\Delta A = \alpha A (1 - \frac{A}{N}) - \delta A.
+\tag{9}\]</span></span></p>
+<p>In this model, two new things are possible that were not possible before. First, the adaptation may completely fail to spread. If more people end up dropping the behavior than adopting it early on, there will be no one doing <span class="math inline">\(A\)</span> that someone doing <span class="math inline">\(L\)</span> could copy. Second, in general, everyone will <em>not</em> eventually adopt <span class="math inline">\(A\)</span>, at least not all at once, unlike in the LA model. In the LAL model there is an equilibrium <span class="math inline">\(A\)</span>, <span class="math inline">\(\hat A\)</span>, that the system reaches with enough time.</p>
+<section id="will-the-adaptation-spread" class="level4">
+<h4 class="anchored" data-anchor-id="will-the-adaptation-spread">Will the adaptation spread?</h4>
+<p>We want to know if the adaptation will diffuse throughout the population in the LA model given just the adoption rate <span class="math inline">\(\alpha\)</span> and drop rate <span class="math inline">\(\delta\)</span>. Formally, the adaptation diffuses if <span class="math inline">\(\Delta A &gt; 0\)</span>. We can approximate <span class="math inline">\(\Delta A\)</span> just after its introduction to a population that is mostly doing the legacy behavior and obtain a useful heuristic value to tell use if it will diffuse. When the adaptive behavior is only just being introduced to a relatively large population, we we say that <span class="math inline">\(A &lt;&lt; L,N\)</span>, and so <span class="math inline">\(1 - \frac{A}{N} \approx 0\)</span>, so that <a href="#eq-deltaA" class="quarto-xref">Equation&nbsp;9</a> becomes</p>
 <p><span class="math display">\[
-\frac{dL}{dt} = -\alpha' L A + \delta A
+\Delta A = \alpha A - \delta A &gt; 0.
 \]</span></p>
+<p>Dividing out <span class="math inline">\(A\)</span>, rearranging, and dividing by <span class="math inline">\(\delta\)</span>, we find that the adaptation diffuses if</p>
 <p><span class="math display">\[
-\frac{dA}{dt} =  \alpha' L A  - \delta A
+R_0 = \frac{\alpha}{\delta} &gt; 1,
 \]</span></p>
+<p>where <span class="math inline">\(R_0\)</span> is a rather famous measure called the <em>basic reproduction number</em> in epidemiology that predicts whether a new disease will become endemic or not. For us it predicts whether a sustainable adaptation will diffuse and persist in a population.</p>
 </section>
+<section id="if-an-adaptation-persists-what-will-the-long-term-adoption-level-be" class="level4">
+<h4 class="anchored" data-anchor-id="if-an-adaptation-persists-what-will-the-long-term-adoption-level-be">If an adaptation persists, what will the long-term adoption level be?</h4>
+<p>To know how many people will perform the adaptive behavior after the diffusion of that behavior has stabilized, we need to calculate its <em>equilibrium value</em>. Assuming <span class="math inline">\(R_0 &gt; 1\)</span>, the equilibrium number of adopters, <span class="math inline">\(\hat A\)</span>, is defined as the value of <span class="math inline">\(A\)</span> for which <span class="math inline">\(\Delta A = 0\)</span>, i.e., when <span class="math inline">\(A\)</span> remains constant over time:</p>
+<p><span class="math display">\[
+\Delta A = 0 = \alpha \hat A\left(1 - \frac{\hat A}{N}\right) - \delta
+\hat A.
+\]</span></p>
+<p>This can be re-arranged to find that</p>
+<p><span class="math display">\[
+\frac{\hat A}{N} = 1 - \frac{\delta}{\alpha}.
+\]</span></p>
+<p>See <em>MSB</em> pp.&nbsp;96-97 for the steps and Figure 4.9 on p.&nbsp;97 for a plot of <span class="math inline">\(\Delta A\)</span> versus <span class="math inline">\(A\)</span> that illustrates and explains how to find <span class="math inline">\(\hat A\)</span> graphically (<em>MSB</em> uses the epidemiological framing, which means <span class="math inline">\(I\)</span> replaces <span class="math inline">\(A\)</span>.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="agent-based-modeling" class="level1">
+<h1>Agent-based modeling</h1>
+<p>Together, these define an agent-based model:</p>
+<ol type="1">
+<li>Environmental and ecological factors, including the payoff from doing Legacy and Adaptive behaviors, which could change over time.</li>
+<li>The <em>agents</em>, which are simulated people in the case of human social science.</li>
+<li>Social processes:
+<ol type="1">
+<li>Partner selection</li>
+<li><em>Dyadic</em> interaction</li>
+</ol></li>
+<li>Non-social, individual-level behavior change (e.g.&nbsp;in LAL agents drop the adaptation with probability <span class="math inline">\(\delta\)</span>)</li>
+</ol>
+<p>These steps were implicitly present in the recursion and differential equation versions of the LA and LAL models, as reviewed in the Introduction in these notes. In agent-based models we explicitly define code functions that do each of these steps, if the model calls for it.</p>
+<p>To do agent-based modeling, we will use code currently located in the <code>socmod.R</code> file in the root directory of the ProblemSets project repository. This approach combines object-oriented programming, characterized by explicit representations of classes of entities that define attributes and capacities of the entities, with functional programming, characterized by providing functions as arguments to other functions for describing the processes that occur within and between agents and their environment.</p>
+<p>We define an <code>AgentBasedModel</code> class, which is a structured way to define and store information about agents and their social networks and different model parameters specified by the <code>params</code> attribute of <code>AgentBasedModel</code>.</p>
+<p>Let’s initialize and run a simple toy <code>AgentBasedModel</code> to see the different parts so they are more familiar when we use them to make the agent-based LA model in Problem Set 2. We will create agents who switch between Legacy and Adaptive behaviors randomly at each time step, initialized with half of the agents doing the adaptive behavior (and therefore half doing legacy).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Source the agent-based modeling code from socmod.R in root ProblemSets</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># directory. Since this is in the CSS4S/notes directory for the course website</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># I need to use a different path. Use `socmod_path` for the problem set.</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>socmod_path <span class="ot">&lt;-</span> <span class="st">"~/workspace/CSS4S-ProblemSets/socmod.R"</span> <span class="co"># &lt;-- comment this out for your problem set </span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># socmod_path &lt;- "../socmod.R" </span><span class="al">###</span><span class="co"> &lt;-- Use this one for your Problem Set</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(socmod_path)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our fake model where nothing happens except agents randomly match up, but then just adopt </span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># either behavior randomly.</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of ten initial behaviors, five of each in </span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># random order to be used to create </span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>behaviors <span class="ot">&lt;-</span> </span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Legacy"</span>, <span class="fu">as.integer</span>(N<span class="sc">/</span><span class="dv">2</span>)),</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rep</span>(<span class="st">"Adaptive"</span>, <span class="fu">as.integer</span>(N<span class="sc">/</span><span class="dv">2</span>)))</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the agents with the randomized behaviors from previous step.</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>agents <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(purrr<span class="sc">::</span><span class="fu">map</span>(behaviors, \(b) Agent<span class="sc">$</span><span class="fu">new</span>(b)))</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Define random partner selection from agent's neighbors.</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>partner_selection <span class="ot">&lt;-</span> <span class="cf">function</span>(agent, model) {</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (<span class="fu">sample</span>(agent<span class="sc">$</span>neighbors, <span class="dv">1</span>))</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>interaction <span class="ot">&lt;-</span> <span class="cf">function</span>(agent1, agent2, model) {</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Not really an "interaction" for this toy model, just random behavior adoption.</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>  agent1<span class="sc">$</span>prev_behavior <span class="ot">&lt;-</span> agent1<span class="sc">$</span>curr_behavior</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">&lt;</span> model<span class="sc">$</span>params<span class="sc">$</span>switch_prob) {</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>    b_new <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Legacy"</span>, <span class="st">"Adaptive"</span>), <span class="dv">1</span>)</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>    agent1<span class="sc">$</span>curr_behavior <span class="ot">&lt;-</span> b_new</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> AgentBasedModel<span class="sc">$</span><span class="fu">new</span>(<span class="at">agents =</span> agents, <span class="at">network =</span> <span class="fu">regular_lattice</span>(N, <span class="dv">4</span>), </span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>                             <span class="at">switch_prob =</span> <span class="fl">0.1</span>)</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">run</span>(model, partner_selection, interaction, model_step_default, <span class="dv">20</span>)</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(out, <span class="fu">aes</span>(<span class="at">x=</span>t, <span class="at">y=</span>A)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
 </div>
+<p>I hypothesize that if <code>switch_prob</code> is greater, the adoption curve will be more variable over time. To test this hypothesis, let’s create another time series, but with an even higher <code>switch_prob</code> and compare the two. First, we’ll add a <code>switch_prob</code> column to our output dataframe from before:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename the output from before with a switch_prob of 0.1...</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>out_p1 <span class="ot">&lt;-</span> out</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ...and add a `switch_prob` column as a factor since we'll use it to color our graphs later.</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>out_p1<span class="sc">$</span>switch_prob <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(model<span class="sc">$</span>params<span class="sc">$</span>switch_prob)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Now create a new set of agents initialized with the same randomized behaviors.</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>agents <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(purrr<span class="sc">::</span><span class="fu">map</span>(behaviors, \(b) Agent<span class="sc">$</span><span class="fu">new</span>(b)))</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Use them to create a new model with a higher switch_prob.</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>model_p9 <span class="ot">&lt;-</span> AgentBasedModel<span class="sc">$</span><span class="fu">new</span>(<span class="at">agents =</span> agents, <span class="at">network =</span> <span class="fu">regular_lattice</span>(N, <span class="dv">4</span>), </span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                             <span class="at">switch_prob =</span> <span class="fl">0.9</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># partner_selection and interaction work as before, and we still use the default model_step</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>out_p9 <span class="ot">&lt;-</span> <span class="fu">run</span>(model_p9, partner_selection, interaction, model_step_default, <span class="dv">20</span>)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a `switch_prob` column to out_p9...</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>out_p9<span class="sc">$</span>switch_prob <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fl">0.9</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ...and concatenate the two tibbles:</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>out_full <span class="ot">&lt;-</span> <span class="fu">rbind</span>(out_p1, out_p9)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(out_full, <span class="fu">aes</span>(<span class="at">x=</span>t, <span class="at">y=</span>A, <span class="at">color=</span>switch_prob)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Maybe it is more variable, but it is hard to tell from comparing just two outputs.</p>
 </section>
-</section>
-<section id="adaptive-social-learning" class="level2">
-<h2 class="anchored" data-anchor-id="adaptive-social-learning">Adaptive social learning</h2>
+<section id="adaptive-social-learning" class="level1">
+<h1>Adaptive social learning</h1>
 <p>There are many ways people (or other critters with culture) use social or environmental cues to decide who to learn from, known as <em>social learning strategies</em> <span class="citation" data-cites="Kendal2018">(<a href="#ref-Kendal2018" role="doc-biblioref"><strong>Kendal2018?</strong></a>)</span>. We will consider the effects of two such social learning strategies in this course, <em>conformity-biased learning</em> and <em>success-biased learning</em>. As before we focus on the discrete-time case, but we will also point towards more advanced resources for using continuous-time to formally calculate helpful heuristic values for understanding asymptotic dynamics.</p>
-<section id="conformity-biased-learning" class="level3">
-<h3 class="anchored" data-anchor-id="conformity-biased-learning">Conformity-biased learning</h3>
+<section id="conformity-biased-learning" class="level2">
+<h2 class="anchored" data-anchor-id="conformity-biased-learning">Conformity-biased learning</h2>
 </section>
-<section id="success-biased-learning" class="level3">
-<h3 class="anchored" data-anchor-id="success-biased-learning">Success-biased learning</h3>
-</section>
+<section id="success-biased-learning" class="level2">
+<h2 class="anchored" data-anchor-id="success-biased-learning">Success-biased learning</h2>
 </section>
 </section>
 <section id="cooperation-and-coordination" class="level1">
