@@ -416,7 +416,7 @@ $x$ is any dynamic variable. The integral on the left hand side can be
 integrated formally, i.e., without using a computer, but it's
 significantly more complicated. After integrating the left hand side of
 @eq-dA-integration it is still necessary to solve for $A$ in terms of
-$t$. See @note-continuous-time-LA-LAL for these details.
+$t$. See @nte-continuousLA for these details.
 
 After all that math we obtain the *logistic equation*,
 
@@ -433,7 +433,7 @@ detail on the family of compartmental susceptible-infected-recovered
 models that we have adapted for sustainable adaptations in the context
 of the field of mathematical biology.
 
-::: {.callout-note collapse="false" title="Integration and solution of $A(t)$ from LA differential equations model" label="note-continuous-time-LA-LAL"}
+::: {#nte-continuousLA .callout-note collapse="false" title="Integration and solution of $A(t)$ from LA differential equations model" }
 
 
 {{< include _LA_derivation.qmd >}}
