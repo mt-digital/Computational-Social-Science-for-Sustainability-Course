@@ -19,7 +19,6 @@ library(ggplot2)
 library(ggforce)
 library(igraph)
 library(forcats)
-library(netrankr)
 library(magrittr)
 
 # Network illustration and igraph settings.
@@ -193,6 +192,7 @@ $$ The degree of node $i$ is the number of neighbors it has, written $k_i$, so $
 #| fig-height: 6
 #| fig-cap: "Florentine marriage network where edges represent marriages between families (node labels)."
 
+library(netrankr)  # Has Florentine network data we load next line.
 data("florentine_m")
 
 # Delete Pucci family (isolated)
@@ -471,7 +471,7 @@ We define an `AgentBasedModel` class, which is a structured way to define and st
 Let's initialize and run a simple toy `AgentBasedModel` to see the different parts so they are more familiar when we use them to make the agent-based LA model in Problem Set 2. We will create agents who switch between Legacy and Adaptive behaviors randomly at each time step, initialized with half of the agents doing the adaptive behavior (and therefore half doing legacy).
 
 ```{r}
-#| echo: true
+
 # Source the agent-based modeling code from socmod.R in root ProblemSets
 # directory. Since this is in the CSS4S/notes directory for the course website
 # I need to use a different path. Use `socmod_path` for the problem set.
@@ -491,8 +491,21 @@ behaviors <-
       rep("Adaptive", as.integer(N/2)))
   )
 
-# Initialize the agents with the randomized behaviors from previous step.
-agents <- as.vector(purrr::map(behaviors, \(b) Agent$new(b)))
+agents <- purrr:::map(behaviors, \(b) { Agent$new(b) })
+
+model <- AgentBasedModel$new(agents = agents, network = regular_lattice(N, 4), 
+                             switch_prob = 0.1)
+
+```
+
+With the model defined, we can now run the model. We must first define how partner selection and interaction
+work in functions called `partner_selection` and `interaction`. For this model there is no `model_step`. We then pass these functions to the `run` function, plus the desired number of time steps. Note that  *as arguments---we do not call the functions ourselves*.
+[When we pass functions as arguments to other functions like this we are using the *functional programming* stye. Functions that take other functions as arguments are called *higher-order functions*. `run`, therefore, is a higher-order function.]{.aside}
+
+
+```{r}
+#| echo: true
+
 
 # Define random partner selection from agent's neighbors.
 partner_selection <- function(agent, model) {
@@ -508,10 +521,6 @@ interaction <- function(agent1, agent2, model) {
     agent1$curr_behavior <- b_new
   }
 }
-
-
-model <- AgentBasedModel$new(agents = agents, network = regular_lattice(N, 4), 
-                             switch_prob = 0.1)
 
 out <- run(model, partner_selection, interaction, model_step_default, 20)
 
@@ -544,15 +553,35 @@ out_full <- rbind(out_p1, out_p9)
 ggplot(out_full, aes(x=t, y=A, color=switch_prob)) + geom_line() + theme_classic()
 ```
 
-Maybe it is more variable, but it is hard to tell from comparing just two outputs.
+Maybe it is more variable, but it is hard to tell from comparing just two outputs. We would need to do more processing of the outputs, perhaps coming up with a measure of variability to compare across different `swtich_prob` settings. Furthermore we need more *trials* to reliably infer whether greater `switch_prob` indeed results in greater variability in resulting time series. 
 
-# Adaptive social learning
+```{r}
 
-There are many ways people (or other critters with culture) use social or environmental cues to decide who to learn from, known as *social learning strategies* @Kendal2018. We will consider the effects of two such social learning strategies in this course, *conformity-biased learning* and *success-biased learning*. As before we focus on the discrete-time case, but we will also point towards more advanced resources for using continuous-time to formally calculate helpful heuristic values for understanding asymptotic dynamics.
+```
 
-## Conformity-biased learning
+We can use the `run_trials` function to run 
 
-## Success-biased learning
+# Adaptive (social) learning strategies
+
+So far the agents in our models do not use information from their social or ecological context (i.e., their *environment*) to decide which behavior to adopt. In reality, though, humans are sophisticated problem solvers who can integrate personal experience with information learned directly or indirectly from others in order to predict the outcomes of their behaviors, even weighting the mixture of sources based on their reliability [@Witt2024]. Environmental context matters: if the benefit of different behaviors is highly unpredictable, then social information can only serve as a scaffold for individual learning over long lifetimes [@Turner2023]. Sensitive periods in development development strongly constrain individuals' _social learning strategies_ [@]
+which determine, for example, whether or not to seek social information in some context, and if social information is sought, who should we observe or from whom should we learn,  or if perhaps it is better to just do whatever it seems like most others are doing [@Kendal2018,@Constant2019]. 
+
+Still, as is often the case in computational social science, we can ignore many of these cognitive details, and operationalized two hypothetical, stylized adaptive social learning strategies: _frequency-biased learning_ and _success-biased learning_.  
+These represent broader classes of _what_-strategies and _who_-strategies, respectively,
+explained in more detail below.
+
+## Frequency-biased *what* learning
+
+## Success-biased *who* learning
+
+```{r}
+#| echo: true
+#| fig-caption: "Example success-biased learning `partner_selection` function to pass to socmod's `run` command."
+
+interaction_success <- function(learner, teacher, model) {
+  
+}
+```
 
 # Cooperation and coordination
 

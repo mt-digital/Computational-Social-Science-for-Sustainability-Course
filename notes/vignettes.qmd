@@ -1,0 +1,57 @@
+---
+title: "Coding vignettes to use in modeling social behavior."
+format:
+    html:
+        toc: true
+        echo: false
+        fontsize: medium
+bibliography: ../css4s.bib
+---
+
+These vignettes depend on some libraries:
+
+```{r setup, include=FALSE}
+
+# Load dependencies.
+library(tibble)
+library(dplyr)
+library(ggplot2)
+library(ggforce)
+library(igraph)
+library(forcats)
+library(netrankr)
+library(magrittr)
+
+# Network illustration and igraph settings.
+NETWORK_COLOR = "#69b3a2"
+NODE_COLOR = adjustcolor(NETWORK_COLOR, alpha.f = 0.5)
+igraph_options(vertex.frame.color = "white", vertex.color = NODE_COLOR, vertex.label.color = "black")
+
+# Source the agent-based modeling code from socmod.R in root ProblemSets
+# directory. Since this is in the CSS4S/notes directory for the course website
+# I need to use a different path. Use `socmod_path` for the problem set.
+socmod_path <- "~/workspace/CSS4S-ProblemSets/socmod.R" # <-- comment this out for your problem set 
+# socmod_path <- "../socmod.R" ### <-- Use this one for your Problem Set
+source(socmod_path)
+```
+
+# Plotting
+
+## Networks
+
+
+
+## Time series
+
+See below for some examples of how to plot time series in R. Base R comes with plotting tools that work well for quick plots, and can be customized to make publication-ready plots. However, it is easier to make more complex plots with the tidyverse library `ggplot2`. 
+
+For the examples to follow, use the following example output data from the example "random switching" model with some initial conditions to define ($N$ and $A_0 = A_{t=0}$, and one parameter, the probability an individual swtiches from one behavior to the other (`switch_prob`), which is identical for each behavior at each time step. 
+
+```{r}
+tsteps <- 30
+series_default <- run_random_switch_example(tsteps)
+series_high_prob <- run_random_switch_example(tsteps, )
+```
+
+
+Simple:
