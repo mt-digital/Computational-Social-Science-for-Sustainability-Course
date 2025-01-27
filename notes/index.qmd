@@ -390,7 +390,14 @@ $$
 \int \frac{dA}{A(N - A)} = \int \alpha' dt = \alpha't + C
 $$ {#eq-dA-integration}
 
-where $C$ called a constant of integration that must be determined by initial conditions for this problem, namely the value $A(t=0)$ and we used the fact that $\int a dx = ax + C$ where $a$ is any constant and $x$ is any dynamic variable. The integral on the left hand side can be integrated formally, i.e., without using a computer, but it's significantly more complicated. After integrating the left hand side of @eq-dA-integration it is still necessary to solve for $A$ in terms of $t$. See @note-continuous-time-LA-LAL for these details.
+where $C$ called a constant of integration that must be determined by
+initial conditions for this problem, namely the value $A(t=0)$ and we
+used the fact that $\int a dx = ax + C$ where $a$ is any constant and
+$x$ is any dynamic variable. The integral on the left hand side can be
+integrated formally, i.e., without using a computer, but it's
+significantly more complicated. After integrating the left hand side of
+@eq-dA-integration it is still necessary to solve for $A$ in terms of
+$t$. See @nte-continuousLA for these details.
 
 After all that math we obtain the *logistic equation*,
 
@@ -402,7 +409,9 @@ where $A_0 = A(t = 0)$ is the initial condition.
 
 Britton (2003) explains in Ch. 3, p. 87, this is the same equation as single-species population dynamics in an ecosystem with a carrying capacity, $K$. In this case, $K = N$. See Britton Ch. 3 for even more detail on the family of compartmental susceptible-infected-recovered models that we have adapted for sustainable adaptations in the context of the field of mathematical biology.
 
-::: {.callout-note collapse="false" title="Integration and solution of $A(t)$ from LA differential equations model" label="note-continuous-time-LA-LAL"}
+::: {#nte-continuousLA .callout-note collapse="false" title="Integration and solution of $A(t)$ from LA differential equations model" }
+
+
 {{< include _LA_derivation.qmd >}}
 :::
 
