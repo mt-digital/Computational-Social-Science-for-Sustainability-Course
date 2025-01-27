@@ -68,14 +68,7 @@ Within diffusion of adaptation models, we will start with formal models that can
 
 ## A primer on social networks
 
-Social networks are at once intuitive, perhaps partly due to their prominence in
-pop culture, and also technically complex and theoretically deep. Social
-networks have *nodes* (aka *vertices*) that represent people, usually drawn as
-circles but any shape is ok. Relationships between people are represented by
-*edges*, drawn as lines. If the lines have arrowheads, the arrow will point in
-the direction of information flow, for example from a teacher to her student. If
-there is no arrow, or two arrows pointing different directions, this indicates a
-symmetric relationship where information could flow in either direction.
+Social networks are at once intuitive, perhaps partly due to their prominence in pop culture, and also technically complex and theoretically deep. Social networks have *nodes* (aka *vertices*) that represent people, usually drawn as circles but any shape is ok. Relationships between people are represented by *edges*, drawn as lines. If the lines have arrowheads, the arrow will point in the direction of information flow, for example from a teacher to her student. If there is no arrow, or two arrows pointing different directions, this indicates a symmetric relationship where information could flow in either direction.
 
 We need to know some basic things about social networks because all models make assumptions about them. First, a social network is a theoretical tool, a "cognitive gadget" , that represents relationships between people. Social networks are instances of graphs, an abstract mathematical structure for representing any type of entities and relationships between them. Graph *nodes* (aka *vertices*) represent the entities and *edges* represent the relationships between nodes. Edges are drawn as lines with or without arrows to indicate the flow of information, with information flowing to a *learner*, or *observer* more generally, from a *teacher* or *demonstrator* (Figure @fig-teacher-learner-infoflow). Lines with arrows are called *directed* edges. For a given pair of individuals, each may sometimes be teacher or learner. This case may be represented by two directed edges pointing opposite directions or a single *undirected* edge, i.e., a line with no arrowheads (Figure @fig-teacher-learner-bidirectional).
 
@@ -161,13 +154,27 @@ plot(socnet, edge.curved=0.3, vertex.size = 80,
 
 #### Regular networks
 
-*Regular* networks are those ones for which all nodes have the same degree. A 2-regular network looks like the following:
+*Regular* networks are those ones for which all nodes have the same degree. A regular lattice with degree $k$ is useful for constructing networks with the small-world property. We can use code from the `socmod.R` script in the root directory of the CSS4S-ProblemSets repo to create one with ten nodes, each connected to two neighbors:
 
-#### Random networks
+```{r}
+source("~/workspace/CSS4S-ProblemSets/socmod.R")
+latnet <- regular_lattice(10, 2)
+plot(latnet, layout=layout_in_circle(latnet), vertex.size=30)
+```
+And here is one more example, but with 20 nodes connected to six neighbors each:
 
-##### Erdős-Rényi random networks: $G(N,M)$ and $G(N, p)$
+```{r}
+#| fig-height: 8
+#| fig-width: 8
+source("~/workspace/CSS4S-ProblemSets/socmod.R")
+latnet <- regular_lattice(20, 6)
+plot(latnet, layout=layout_in_circle(latnet), vertex.size=10)
+```
+<!-- #### Random networks -->
 
-##### Randomization of regular networks to achieve the small-world property
+<!-- ##### Erdős-Rényi random networks: $G(N,M)$ and $G(N, p)$ -->
+
+<!-- ##### Randomization of regular networks to achieve the small-world property -->
 
 ### Analysis of the Medici family
 
@@ -331,73 +338,41 @@ ggplot(adopt_tbl, aes(x=timestep, y=A, color=alpha)) +
   geom_line() + theme_classic()
 ```
 
-
 ### Discrete change in recursion, continuous (infinitesimal) change in differential equations
 
-In the recursion LA model, the change in $A$, $\Delta A$ from time step
-$t$ to time step $t+1$ is $$
+In the recursion LA model, the change in $A$, $\Delta A$ from time step $t$ to time step $t+1$ is $$
 \Delta A = A_{t+1} - A_t = \alpha N \Pr(L,A)
-$$ {#eq-delta-A} where $\Pr(L,A) = \frac{L}{N}\frac{A}{N}$ is the
-probability an individual doing $L$ and another doing $A$ interact under
-the *well-mixed* assumption.
+$$ {#eq-delta-A} where $\Pr(L,A) = \frac{L}{N}\frac{A}{N}$ is the probability an individual doing $L$ and another doing $A$ interact under the *well-mixed* assumption.
 
 ::: column-margin
-$\cdot\quad$ The *well-mixed* assumption says that everyone in a
-population is equally likely to interact with one another. This means
-the probability of someone doing $L$ encountering someone else doing $A$
-is the same for all people doing $L$ (or vice-versa).
+$\cdot\quad$ The *well-mixed* assumption says that everyone in a population is equally likely to interact with one another. This means the probability of someone doing $L$ encountering someone else doing $A$ is the same for all people doing $L$ (or vice-versa).
 :::
 
-Plug this probability in to @eq-delta-A and cancel an $N$ on top and
-bottom to get $$
+Plug this probability in to @eq-delta-A and cancel an $N$ on top and bottom to get $$
 \Delta A = \frac{\alpha}{N} L A = \alpha' L A,
-$$ {#eq-delta-A-likeODE} where $\alpha' = \alpha / N$. Because we use
-$t$ to label time steps and assumed that time steps are separated by
-$\Delta t = 1$, we can multiply the right side of @eq-delta-A-likeODE by
-1 in the form of $\Delta t$: $$
+$$ {#eq-delta-A-likeODE} where $\alpha' = \alpha / N$. Because we use $t$ to label time steps and assumed that time steps are separated by $\Delta t = 1$, we can multiply the right side of @eq-delta-A-likeODE by 1 in the form of $\Delta t$: $$
 \Delta A = \alpha' LA \Delta t
 $$ {#eq-delta-A-preODE}
 
 ::: column-margin
-$\cdot\quad$The general probability that a person doing behavior $b$
-interacts with a person doing $b'$ (read "b prime") $\Pr(b,b')$, i.e.
-$\Pr(L,A)$ for legacy-adaptive, $\Pr(L, L)$ for legacy-legacy, etc.
+$\cdot\quad$The general probability that a person doing behavior $b$ interacts with a person doing $b'$ (read "b prime") $\Pr(b,b')$, i.e. $\Pr(L,A)$ for legacy-adaptive, $\Pr(L, L)$ for legacy-legacy, etc.
 :::
 
-Calculus, the foundation of differential equations, is the mathematics
-of rates of change, which was achieved through the following conceptual
-leap. In terms of our LA model, calculus works by assuming that
-$\Delta t$ becomes "infinitesimally small", written $\Delta t \to 0$.
-Before $\Delta t$ gets all the way to zero, we calculate $\Delta A$ over
-this infinitesimally small $\Delta t$. This infinitesimal $\Delta t$ is
-written $dt$, and the similarly infinitesimal $\Delta A$ is written
-$dA$. When $\Delta \to 0$, then, we replace $\Delta$ with $d$ and
-@eq-delta-A-preODE becomes $$
+Calculus, the foundation of differential equations, is the mathematics of rates of change, which was achieved through the following conceptual leap. In terms of our LA model, calculus works by assuming that $\Delta t$ becomes "infinitesimally small", written $\Delta t \to 0$. Before $\Delta t$ gets all the way to zero, we calculate $\Delta A$ over this infinitesimally small $\Delta t$. This infinitesimal $\Delta t$ is written $dt$, and the similarly infinitesimal $\Delta A$ is written $dA$. When $\Delta \to 0$, then, we replace $\Delta$ with $d$ and @eq-delta-A-preODE becomes $$
 dA = \alpha' L A dt
 $$ which is more commonly written $$
 \frac{dA}{dt} = \alpha' L A dt
-$$ {#eq-dAdt} representing the flow in of people previously doing $L$,
-with the coupled differential equation for $L$ differing only in sign of
-the right hand side, representing the flow of people away from doing
-$L$: $$
+$$ {#eq-dAdt} representing the flow in of people previously doing $L$, with the coupled differential equation for $L$ differing only in sign of the right hand side, representing the flow of people away from doing $L$: $$
 \frac{dL}{dt} = - \alpha' L A dt.
 $$
 
-These equations can be solved by using the same substitution we used in
-the recursion to get a formula for $A_{t+1}$ that depended only on
-$A_t$, namely that $L = N - A$, so @eq-dAdt becomes
+These equations can be solved by using the same substitution we used in the recursion to get a formula for $A_{t+1}$ that depended only on $A_t$, namely that $L = N - A$, so @eq-dAdt becomes
 
 $$
 \frac{dA}{dt} = \alpha' A(N - A).
 $$ {#eq-dAdt-noL}
 
-Calculus tells us that we can rearrange the differnetials like they were
-any other variable. What we want now is to arrange all $A$ terms to one
-side of the equation, and all $t$ terms to the other because this allows
-us to *integrate* the equation. We want to integrate the equation
-because this is the calculus procedure that converts rates of change of
-a variable to the accumulation of that variable. Rearranage @eq-dAdt-noL
-to get
+Calculus tells us that we can rearrange the differnetials like they were any other variable. What we want now is to arrange all $A$ terms to one side of the equation, and all $t$ terms to the other because this allows us to *integrate* the equation. We want to integrate the equation because this is the calculus procedure that converts rates of change of a variable to the accumulation of that variable. Rearranage @eq-dAdt-noL to get
 
 $$
 \frac{dA}{A(N - A)} = \alpha' dt.
@@ -426,19 +401,13 @@ $$ {#eq-logistic-LA}
 
 where $A_0 = A(t = 0)$ is the initial condition.
 
-Britton (2003) explains in Ch. 3, p. 87, this is the same equation as
-single-species population dynamics in an ecosystem with a carrying
-capacity, $K$. In this case, $K = N$. See Britton Ch. 3 for even more
-detail on the family of compartmental susceptible-infected-recovered
-models that we have adapted for sustainable adaptations in the context
-of the field of mathematical biology.
+Britton (2003) explains in Ch. 3, p. 87, this is the same equation as single-species population dynamics in an ecosystem with a carrying capacity, $K$. In this case, $K = N$. See Britton Ch. 3 for even more detail on the family of compartmental susceptible-infected-recovered models that we have adapted for sustainable adaptations in the context of the field of mathematical biology.
 
 ::: {#nte-continuousLA .callout-note collapse="false" title="Integration and solution of $A(t)$ from LA differential equations model" }
 
 
 {{< include _LA_derivation.qmd >}}
 :::
-
 
 ### Legacy-Adaptive-Legacy (LAL) model
 
@@ -450,76 +419,139 @@ $$
 \Delta A = \alpha A (1 - \frac{A}{N}) - \delta A.
 $$ {#eq-deltaA}
 
-In this model, two new things are possible that were not possible before. First,
-the adaptation may completely fail to spread. If more people end up dropping the
-behavior than adopting it early on, there will be no one doing $A$ that someone
-doing $L$ could copy. Second, in general, everyone will *not* eventually adopt
-$A$, at least not all at once, unlike in the LA model. In the LAL model there is
-an equilibrium $A$, $\ahat$, that the system reaches with enough time.
+In this model, two new things are possible that were not possible before. First, the adaptation may completely fail to spread. If more people end up dropping the behavior than adopting it early on, there will be no one doing $A$ that someone doing $L$ could copy. Second, in general, everyone will *not* eventually adopt $A$, at least not all at once, unlike in the LA model. In the LAL model there is an equilibrium $A$, $\hat A$, that the system reaches with enough time.
 
 #### Will the adaptation spread?
 
-We want to know if the adaptation will diffuse throughout the population in the
-LA model given just the adoption rate 
-$\alpha$ and drop rate $\delta$. Formally, the adaptation diffuses if
-$\Delta A > 0$. We can approximate $\Delta A$ just after its
-introduction to a population that is mostly doing the legacy behavior and obtain
-a useful heuristic value to tell use if it will diffuse. When the adaptive
-behavior is only just being introduced to a relatively large population, we
-we say that $A << L,N$, and so $1 - \frac{A}{N} \approx 0$, so
-that @eq-deltaA becomes 
+We want to know if the adaptation will diffuse throughout the population in the LA model given just the adoption rate $\alpha$ and drop rate $\delta$. Formally, the adaptation diffuses if $\Delta A > 0$. We can approximate $\Delta A$ just after its introduction to a population that is mostly doing the legacy behavior and obtain a useful heuristic value to tell use if it will diffuse. When the adaptive behavior is only just being introduced to a relatively large population, we we say that $A << L,N$, and so $1 - \frac{A}{N} \approx 0$, so that @eq-deltaA becomes
 
 $$
 \Delta A = \alpha A - \delta A > 0.
 $$
 
-Dividing out $A$, rearranging, and dividing by $\delta$, we find that the
-adaptation diffuses if
+Dividing out $A$, rearranging, and dividing by $\delta$, we find that the adaptation diffuses if
 
 $$
 R_0 = \frac{\alpha}{\delta} > 1,
 $$
 
-where $R_0$ is a rather famous measure called the *basic reproduction number* 
-in epidemiology that predicts whether a new disease will become endemic or not.
-For us it predicts whether a sustainable adaptation will diffuse and persist
-in a population.
+where $R_0$ is a rather famous measure called the *basic reproduction number* in epidemiology that predicts whether a new disease will become endemic or not. For us it predicts whether a sustainable adaptation will diffuse and persist in a population.
 
 #### If an adaptation persists, what will the long-term adoption level be?
 
-To know how many people will perform the adaptive behavior after the diffusion
-of that behavior has stabilized, we need to calculate its *equilibrium value*.
-Assuming $R_0 > 1$, the equilibrium number of adopters, $\ahat$, is 
-defined as the value of $A$ for which $\Delta A = 0$, i.e., when $A$ remains constant
-over time:
+To know how many people will perform the adaptive behavior after the diffusion of that behavior has stabilized, we need to calculate its *equilibrium value*. Assuming $R_0 > 1$, the equilibrium number of adopters, $\hat A$, is defined as the value of $A$ for which $\Delta A = 0$, i.e., when $A$ remains constant over time:
 
 $$
-\Delta A = 0 = \alpha \ahat\left(1 - \frac{\ahat}{N}\right) - \delta
-\ahat.
+\Delta A = 0 = \alpha \hat A\left(1 - \frac{\hat A}{N}\right) - \delta
+\hat A.
 $$
 
-This can be re-arranged to find that 
+This can be re-arranged to find that
 
 $$
-\frac{\ahat}{N} = 1 - \frac{\delta}{\alpha}.
+\frac{\hat A}{N} = 1 - \frac{\delta}{\alpha}.
 $$
 
-See _MSB_ pp. 96-97 for the steps and
-Figure 4.9 on p. 97 for a plot of $\Delta A$ versus $A$ that illustrates and
-explains how to find $\ahat$ graphically (_MSB_ uses the epidemiological
-framing, which means $I$ replaces $A$.
+See *MSB* pp. 96-97 for the steps and Figure 4.9 on p. 97 for a plot of $\Delta A$ versus $A$ that illustrates and explains how to find $\hat A$ graphically (*MSB* uses the epidemiological framing, which means $I$ replaces $A$.
 
+# Agent-based modeling
+
+Together, these define an agent-based model:
+
+1.  Environmental and ecological factors, including the payoff from doing Legacy and Adaptive behaviors, which could change over time.
+2.  The *agents*, which are simulated people in the case of human social science.
+3.  Social processes:
+    1.  Partner selection
+    2.  *Dyadic* interaction
+4.  Non-social, individual-level behavior change (e.g. in LAL agents drop the adaptation with probability $\delta$)
+
+These steps were implicitly present in the recursion and differential equation versions of the LA and LAL models, as reviewed in the Introduction in these notes. In agent-based models we explicitly define code functions that do each of these steps, if the model calls for it.
+
+To do agent-based modeling, we will use code currently located in the `socmod.R` file in the root directory of the ProblemSets project repository. This approach combines object-oriented programming, characterized by explicit representations of classes of entities that define attributes and capacities of the entities, with functional programming, characterized by providing functions as arguments to other functions for describing the processes that occur within and between agents and their environment. 
+
+We define an `AgentBasedModel` class, which is a structured way to define and store information about agents and their social networks and different model parameters specified by the `params` attribute of `AgentBasedModel`.
+
+Let's initialize and run a simple toy `AgentBasedModel` to see the different parts so they are more familiar when we use them to make the agent-based LA model in Problem Set 2. We will create agents who switch between Legacy and Adaptive behaviors randomly at each time step, initialized with half of the agents doing the adaptive behavior (and therefore half doing legacy).
+
+```{r}
+#| echo: true
+# Source the agent-based modeling code from socmod.R in root ProblemSets
+# directory. Since this is in the CSS4S/notes directory for the course website
+# I need to use a different path. Use `socmod_path` for the problem set.
+socmod_path <- "~/workspace/CSS4S-ProblemSets/socmod.R" # <-- comment this out for your problem set 
+# socmod_path <- "../socmod.R" ### <-- Use this one for your Problem Set
+source(socmod_path)
+
+# Define our fake model where nothing happens except agents randomly match up, but then just adopt 
+# either behavior randomly.
+
+N <- 10
+# Create a list of ten initial behaviors, five of each in 
+# random order to be used to create 
+behaviors <- 
+  sample(
+    c(rep("Legacy", as.integer(N/2)),
+      rep("Adaptive", as.integer(N/2)))
+  )
+
+# Initialize the agents with the randomized behaviors from previous step.
+agents <- as.vector(purrr::map(behaviors, \(b) Agent$new(b)))
+
+# Define random partner selection from agent's neighbors.
+partner_selection <- function(agent, model) {
+  return (sample(agent$neighbors, 1))
+}
+
+interaction <- function(agent1, agent2, model) {
+  # Not really an "interaction" for this toy model, just random behavior adoption.
+  
+  agent1$prev_behavior <- agent1$curr_behavior
+  if (runif(1) < model$params$switch_prob) {
+    b_new <- sample(c("Legacy", "Adaptive"), 1)
+    agent1$curr_behavior <- b_new
+  }
+}
+
+
+model <- AgentBasedModel$new(agents = agents, network = regular_lattice(N, 4), 
+                             switch_prob = 0.1)
+
+out <- run(model, partner_selection, interaction, model_step_default, 20)
+
+ggplot(out, aes(x=t, y=A)) + geom_line() + theme_classic()
+```
+
+I hypothesize that if `switch_prob` is greater, the adoption curve will be more variable over time. To test this hypothesis, let's create another time series, but with an even higher `switch_prob` and compare the two. First, we'll add a `switch_prob` column to our output dataframe from before:
+
+```{r}
+#| echo: true
+# Rename the output from before with a switch_prob of 0.1...
+out_p1 <- out
+# ...and add a `switch_prob` column as a factor since we'll use it to color our graphs later.
+out_p1$switch_prob <- as.factor(model$params$switch_prob)
+
+# Now create a new set of agents initialized with the same randomized behaviors.
+agents <- as.vector(purrr::map(behaviors, \(b) Agent$new(b)))
+
+# Use them to create a new model with a higher switch_prob.
+model_p9 <- AgentBasedModel$new(agents = agents, network = regular_lattice(N, 4), 
+                             switch_prob = 0.9)
+
+# partner_selection and interaction work as before, and we still use the default model_step
+out_p9 <- run(model_p9, partner_selection, interaction, model_step_default, 20)
+# Add a `switch_prob` column to out_p9...
+out_p9$switch_prob <- as.factor(0.9)
+# ...and concatenate the two tibbles:
+out_full <- rbind(out_p1, out_p9)
+
+ggplot(out_full, aes(x=t, y=A, color=switch_prob)) + geom_line() + theme_classic()
+```
+
+Maybe it is more variable, but it is hard to tell from comparing just two outputs.
 
 ## Adaptive social learning
 
-There are many ways people (or other critters with culture) use social or
-environmental cues to decide who to learn from, known as *social learning
-strategies* @Kendal2018. We will consider the effects of two such social
-learning strategies in this course, *conformity-biased learning* and
-*success-biased learning*. As before we focus on the discrete-time case, but we
-will also point towards more advanced resources for using continuous-time to
-formally calculate helpful heuristic values for understanding asymptotic
-dynamics.
+There are many ways people (or other critters with culture) use social or environmental cues to decide who to learn from, known as *social learning strategies* @Kendal2018. We will consider the effects of two such social learning strategies in this course, *conformity-biased learning* and *success-biased learning*. As before we focus on the discrete-time case, but we will also point towards more advanced resources for using continuous-time to formally calculate helpful heuristic values for understanding asymptotic dynamics.
 
 ### Conformity-biased learning
 
