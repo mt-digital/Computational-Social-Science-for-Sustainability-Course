@@ -160,6 +160,7 @@ source("~/workspace/CSS4S-ProblemSets/socmod.R")
 latnet <- regular_lattice(10, 2)
 plot(latnet, layout=layout_in_circle(latnet), vertex.size=30)
 ```
+
 And here is one more example, but with 20 nodes connected to six neighbors each:
 
 ```{r}
@@ -169,6 +170,7 @@ source("~/workspace/CSS4S-ProblemSets/socmod.R")
 latnet <- regular_lattice(20, 6)
 plot(latnet, layout=layout_in_circle(latnet), vertex.size=10)
 ```
+
 <!-- #### Random networks -->
 
 <!-- ##### Erdős-Rényi random networks: $G(N,M)$ and $G(N, p)$ -->
@@ -280,7 +282,7 @@ Contagion models like the LA and LAL models assume that when individuals encount
 Namely, these model contain two dynamic *outcome variables* $L_t$ and $A_t$ if time is discrete ($L(T)$ and $A(t)$ if time is continuous; see Note @note-continuous-time-LA-LAL) the number of individuals performing $L$ and the number performing $A$. These outcomes are dynamic, so $t$ represents time, which is discrete in our main treatment of these models, meaning that points in time can be indexed by integers, i.e., time steps are indexed by $t_i$ where $i \in \{1, 2, 3,\ldots\}$, e.g., $t \in \{0, 3, 6, 9, 12, 15, \ldots\}$ could be discrete time steps for a model with $t$ in months meant to represent some process for which we have data every three months. If time is continuous (@note-continuous-time-LA-LAL) then $t\in[0,\infty)$. Although time can continue on to infinity, we usually specify that models will stop at some time step or when some condition is met. One of the most important conditions is whether the population has *fixated*, meaning all agents do the same behavior. Finally, there are two parameters that determine the probability that individuals change their behavioral state (from doing $L$ to doing $A$ or vice-versa). In both the LA and LAL models, the probability $A$ is adopted when an $L$ meets an $A$ is the adoption rate, $\alpha$. In the LAL model, at every time step, every agent doing $A$ might drop the behavior, i.e., stop doing the behavior, reverting to do $L$ for the next time step. The probability one doing $A$ reverts to $L$ is $\delta$, the *drop rate*. So, the LA and LAL models are in fact the same model where we can set $\delta = 0$ to recover the LA model from the LAL model.
 
 | Symbol | Description | Values |
-|-------------------|----------------------------------|-------------------|
+|------------------------|------------------------|------------------------|
 | $L,L_t,L(t)$ | Number of individuals doing **L**egacy behavior at time $t$; like $A$ serves as a noun for the behavior itself. | $L_t \in \{0,\ldots,N\}$; $L(t) \in [0, \infty)$ |
 | $A,A_t,A(t)$ | Number of individuals doing **A**daptive behavior at time $t$, but used interchangeably for the behavior itself, e.g., "an individual doing $A$". | $A_t \in \{0,\ldots,N\}$, $A(t) \in [0, \infty)$ |
 | $t$ | Time, which could be discrete or continuous. We write $A$ and $L$ as a function of time, i.e., $A_t$ if $t$ is discrete or $A(t)$ if continuous | $\{0,1,\ldots\}$ or $[0,\infty)$ |
@@ -294,11 +296,9 @@ Namely, these model contain two dynamic *outcome variables* $L_t$ and $A_t$ if t
 
 ### Legacy-Adaptive (LA) model
 
-In class we derived the recursion for the legacy-adaptive model: 
-$$
+In class we derived the recursion for the legacy-adaptive model: $$
 A_{t+1} = A_{t} + \alpha A_t\left(1 - \frac{A_t}{N}\right).
-$$
-Once an individual adopts the adaptive behavior in this model, they continue doing that behavior forever (@fig-LA-state). Below we show how to write a function to implement this recursion to calculate a time series and compare the results for two different adoption rates, $\alpha$.
+$$ Once an individual adopts the adaptive behavior in this model, they continue doing that behavior forever (@fig-LA-state). Below we show how to write a function to implement this recursion to calculate a time series and compare the results for two different adoption rates, $\alpha$.
 
 ![The Legacy-Adaptive model only allows for a change of individual-level state from performing the legacy behavior to performing the adaptive behavior.](images/LA.png){#fig-LA-state fig-align="center" width="441"}
 
@@ -464,7 +464,7 @@ Together, these define an agent-based model:
 
 These steps were implicitly present in the recursion and differential equation versions of the LA and LAL models, as reviewed in the Introduction in these notes. In agent-based models we explicitly define code functions that do each of these steps, if the model calls for it.
 
-To do agent-based modeling, we will use code currently located in the `socmod.R` file in the root directory of the ProblemSets project repository. This approach combines object-oriented programming, characterized by explicit representations of classes of entities that define attributes and capacities of the entities, with functional programming, characterized by providing functions as arguments to other functions for describing the processes that occur within and between agents and their environment. 
+To do agent-based modeling, we will use code currently located in the `socmod.R` file in the root directory of the ProblemSets project repository. This approach combines object-oriented programming, characterized by explicit representations of classes of entities that define attributes and capacities of the entities, with functional programming, characterized by providing functions as arguments to other functions for describing the processes that occur within and between agents and their environment.
 
 We define an `AgentBasedModel` class, which is a structured way to define and store information about agents and their social networks and different model parameters specified by the `params` attribute of `AgentBasedModel`.
 
@@ -498,14 +498,36 @@ model <- AgentBasedModel$new(agents = agents, network = regular_lattice(N, 4),
 
 ```
 
-With the model defined, we can now run the model. We must first define how partner selection and interaction
-work in functions called `partner_selection` and `interaction`. For this model there is no `model_step`. We then pass these functions to the `run` function, plus the desired number of time steps. Note that  *as arguments---we do not call the functions ourselves*.
-[When we pass functions as arguments to other functions like this we are using the *functional programming* stye. Functions that take other functions as arguments are called *higher-order functions*. `run`, therefore, is a higher-order function.]{.aside}
-
+With the model defined, we can now run the model. We must first define how partner selection and interaction work in functions called `partner_selection` and `interaction`. For this model there is no `model_step`. We then pass these functions to the `run` function, plus the desired number of time steps. Note that *as arguments---we do not call the functions ourselves*. [When we pass functions as arguments to other functions like this we are using the *functional programming* stye. Functions that take other functions as arguments are called *higher-order functions*. `run`, therefore, is a higher-order function.]{.aside}
 
 ```{r}
 #| echo: true
+source(socmod_path)
 
+
+# Source the agent-based modeling code from socmod.R in root ProblemSets
+# directory. Since this is in the CSS4S/notes directory for the course website
+# I need to use a different path. Use `socmod_path` for the problem set.
+socmod_path <- "~/workspace/CSS4S-ProblemSets/socmod.R" # <-- comment this out for your problem set 
+# socmod_path <- "../socmod.R" ### <-- Use this one for your Problem Set
+source(socmod_path)
+
+# Define our fake model where nothing happens except agents randomly match up, but then just adopt 
+# either behavior randomly.
+
+N <- 10
+# Create a list of ten initial behaviors, five of each in 
+# random order to be used to create 
+behaviors <- 
+  sample(
+    c(rep("Legacy", as.integer(N/2)),
+      rep("Adaptive", as.integer(N/2)))
+  )
+
+agents <- purrr:::map(behaviors, \(b) { Agent$new(b) })
+
+model <- AgentBasedModel$new(agents = agents, network = regular_lattice(N, 4), 
+                             switch_prob = 0.1)
 
 # Define random partner selection from agent's neighbors.
 partner_selection <- function(agent, model) {
@@ -522,9 +544,10 @@ interaction <- function(agent1, agent2, model) {
   }
 }
 
-out <- run(model, partner_selection, interaction, model_step_default, 20)
+out <- run(model, 20, partner_selection, interaction)$output
 
-ggplot(out, aes(x=t, y=A)) + geom_line() + theme_classic()
+
+ggplot(out, aes(x=t, y=A)) + geom_line() + scale_x_continuous(breaks=0:22) + theme_classic()
 ```
 
 I hypothesize that if `switch_prob` is greater, the adoption curve will be more variable over time. To test this hypothesis, let's create another time series, but with an even higher `switch_prob` and compare the two. First, we'll add a `switch_prob` column to our output dataframe from before:
@@ -544,7 +567,7 @@ model_p9 <- AgentBasedModel$new(agents = agents, network = regular_lattice(N, 4)
                              switch_prob = 0.9)
 
 # partner_selection and interaction work as before, and we still use the default model_step
-out_p9 <- run(model_p9, partner_selection, interaction, model_step_default, 20)
+out_p9 <- run(model_p9, 20, partner_selection, interaction)$output
 # Add a `switch_prob` column to out_p9...
 out_p9$switch_prob <- as.factor(0.9)
 # ...and concatenate the two tibbles:
@@ -553,22 +576,16 @@ out_full <- rbind(out_p1, out_p9)
 ggplot(out_full, aes(x=t, y=A, color=switch_prob)) + geom_line() + theme_classic()
 ```
 
-Maybe it is more variable, but it is hard to tell from comparing just two outputs. We would need to do more processing of the outputs, perhaps coming up with a measure of variability to compare across different `swtich_prob` settings. Furthermore we need more *trials* to reliably infer whether greater `switch_prob` indeed results in greater variability in resulting time series. 
+Maybe it is more variable, but it is hard to tell from comparing just two outputs. We would need to do more processing of the outputs, perhaps coming up with a measure of variability to compare across different `swtich_prob` settings. Furthermore we need more *trials* to reliably infer whether greater `switch_prob` indeed results in greater variability in resulting time series.
 
-```{r}
-
-```
-
-We can use the `run_trials` function to run 
+Soon we will use the `run_trials` function to run several trials for several parameter settings
 
 # Adaptive (social) learning strategies
 
-So far the agents in our models do not use information from their social or ecological context (i.e., their *environment*) to decide which behavior to adopt. In reality, though, humans are sophisticated problem solvers who can integrate personal experience with information learned directly or indirectly from others in order to predict the outcomes of their behaviors, even weighting the mixture of sources based on their reliability [@Witt2024]. Environmental context matters: if the benefit of different behaviors is highly unpredictable, then social information can only serve as a scaffold for individual learning over long lifetimes [@Turner2023]. Sensitive periods in development development strongly constrain individuals' _social learning strategies_ [@]
-which determine, for example, whether or not to seek social information in some context, and if social information is sought, who should we observe or from whom should we learn,  or if perhaps it is better to just do whatever it seems like most others are doing [@Kendal2018,@Constant2019]. 
+So far the agents in our models do not use information from their social or ecological context (i.e., their *environment*) to decide which behavior to adopt. In reality, though, humans are sophisticated problem solvers who can integrate personal experience with information learned directly or indirectly from others in order to predict the outcomes of their behaviors, even weighting the mixture of sources based on their reliability [@Witt2024]. Environmental context matters: if the benefit of different behaviors is highly unpredictable, then social information can only serve as a scaffold for individual learning over long lifetimes [@Turner2023]. Sensitive periods in development development strongly constrain individuals' *social learning strategies* \[\@\] which determine, for example, whether or not to seek social information in some context, and if social information is sought, who should we observe or from whom should we learn, or if perhaps it is better to just do whatever it seems like most others are doing [@Kendal2018,@Constant2019].
 
-Still, as is often the case in computational social science, we can ignore many of these cognitive details, and operationalized two hypothetical, stylized adaptive social learning strategies: _frequency-biased learning_ and _success-biased learning_.  
-These represent broader classes of _what_-strategies and _who_-strategies, respectively,
-explained in more detail below.
+Still, as is often the case in computational social science, we can ignore many of these cognitive details, and operationalized two hypothetical, stylized adaptive social learning strategies: *frequency-biased learning* and *success-biased learning*.\
+These represent broader classes of *what*-strategies and *who*-strategies, respectively, explained in more detail below.
 
 ## Frequency-biased *what* learning
 
@@ -578,7 +595,7 @@ explained in more detail below.
 #| echo: true
 #| fig-caption: "Example success-biased learning `partner_selection` function to pass to socmod's `run` command."
 
-interaction_success <- function(learner, teacher, model) {
+interaction_success_biased <- function(learner, teacher, model) {
   
 }
 ```

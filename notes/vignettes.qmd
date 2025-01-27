@@ -40,7 +40,6 @@ source(socmod_path)
 ## Networks
 
 
-
 ## Time series
 
 See below for some examples of how to plot time series in R. Base R comes with plotting tools that work well for quick plots, and can be customized to make publication-ready plots. However, it is easier to make more complex plots with the tidyverse library `ggplot2`. 
@@ -50,7 +49,7 @@ For the examples to follow, use the following example output data from the examp
 ```{r}
 tsteps <- 30
 series_default <- run_random_switch_example(tsteps)
-series_high_prob <- run_random_switch_example(tsteps, )
+series_high_prob <- run_random_switch_example(tsteps, switch_prob)
 ```
 
 
