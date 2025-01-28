@@ -47,9 +47,9 @@ See below for some examples of how to plot time series in R. Base R comes with p
 For the examples to follow, use the following example output data from the example "random switching" model with some initial conditions to define ($N$ and $A_0 = A_{t=0}$, and one parameter, the probability an individual swtiches from one behavior to the other (`switch_prob`), which is identical for each behavior at each time step. 
 
 ```{r}
-tsteps <- 30
-series_default <- run_random_switch_example(tsteps)
-series_high_prob <- run_random_switch_example(tsteps, switch_prob)
+#tsteps <- 30
+#series_default <- run_random_switch_example(tsteps)
+#series_high_prob <- run_random_switch_example(tsteps, switch_prob)
 ```
 
 
