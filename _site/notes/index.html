@@ -390,6 +390,7 @@ Figure&nbsp;5
 <h4 class="anchored" data-anchor-id="regular-networks">Regular networks</h4>
 <p><em>Regular</em> networks are those ones for which all nodes have the same degree. A regular lattice with degree <span class="math inline">\(k\)</span> is useful for constructing networks with the small-world property. We can use code from the <code>socmod.R</code> script in the root directory of the CSS4S-ProblemSets repo to create one with ten nodes, each connected to two neighbors:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"~/workspace/CSS4S-ProblemSets/socmod.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'assertthat'</code></pre>
@@ -399,6 +400,8 @@ Attaching package: 'assertthat'</code></pre>
 
     has_name</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>latnet <span class="ot">&lt;-</span> <span class="fu">regular_lattice</span>(<span class="dv">10</span>, <span class="dv">2</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(latnet, <span class="at">layout=</span><span class="fu">layout_in_circle</span>(latnet), <span class="at">vertex.size=</span><span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -409,6 +412,9 @@ Attaching package: 'assertthat'</code></pre>
 </div>
 <p>And here is one more example, but with 20 nodes connected to six neighbors each:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"~/workspace/CSS4S-ProblemSets/socmod.R"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>latnet <span class="ot">&lt;-</span> <span class="fu">regular_lattice</span>(<span class="dv">20</span>, <span class="dv">6</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(latnet, <span class="at">layout=</span><span class="fu">layout_in_circle</span>(latnet), <span class="at">vertex.size=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -430,20 +436,20 @@ Attaching package: 'assertthat'</code></pre>
 n_{\text{Medici}} = \{\text{Salviati},~\text{Acciaiuol},~\text{Barbadori},~\text{Ridolfi},~\text{Tornabuon},~\text{Albizzi}\}
 \]</span> The degree of node <span class="math inline">\(i\)</span> is the number of neighbors it has, written <span class="math inline">\(k_i\)</span>, so <span class="math inline">\(k_\text{Medici} = 6\)</span>. In the case of directed networks it is common to define in- and out-neighborhoods, referring to arrow direction, which for us correspond to teacher- and learner-neighborhoods.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(netrankr)  <span class="co"># Has Florentine network data we load next line.</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"florentine_m"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete Pucci family (isolated)</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>florentine_m <span class="ot">&lt;-</span> <span class="fu">delete_vertices</span>(florentine_m, <span class="fu">which</span>(<span class="fu">degree</span>(florentine_m) <span class="sc">==</span> <span class="dv">0</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the graph</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(florentine_m,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.cex =</span> <span class="dv">1</span>,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.size =</span> <span class="dv">20</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.color =</span> <span class="st">"black"</span>,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.color =</span> NODE_COLOR,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.frame.color =</span> NODE_COLOR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(netrankr)  <span class="co"># Has Florentine network data we load next line.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"florentine_m"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete Pucci family (isolated)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>florentine_m <span class="ot">&lt;-</span> <span class="fu">delete_vertices</span>(florentine_m, <span class="fu">which</span>(<span class="fu">degree</span>(florentine_m) <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the graph</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(florentine_m,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.cex =</span> <span class="dv">1</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.size =</span> <span class="dv">20</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.color =</span> <span class="st">"black"</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.color =</span> NODE_COLOR,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.frame.color =</span> NODE_COLOR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-florentine-network" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -459,13 +465,13 @@ Figure&nbsp;6: Florentine marriage network where edges represent marriages betwe
 </div>
 <p>We can make a bar plot of the degrees for each family:</p>
 <div class="cell page-columns page-full" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>deglist <span class="ot">&lt;-</span> <span class="fu">degree</span>(florentine_m) </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tbl of degrees for each family then barplot using ggplot2.</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">Family=</span><span class="fu">names</span>(deglist), <span class="at">k=</span><span class="fu">as.vector</span>(deglist)) <span class="sc">%&gt;%</span>     </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Family=</span><span class="fu">fct_reorder</span>(<span class="fu">as_factor</span>(Family), k)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>k, <span class="at">y=</span>Family)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">fill=</span>NETWORK_COLOR) <span class="sc">+</span>   </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>deglist <span class="ot">&lt;-</span> <span class="fu">degree</span>(florentine_m) </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tbl of degrees for each family then barplot using ggplot2.</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">Family=</span><span class="fu">names</span>(deglist), <span class="at">k=</span><span class="fu">as.vector</span>(deglist)) <span class="sc">%&gt;%</span>     </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Family=</span><span class="fu">fct_reorder</span>(<span class="fu">as_factor</span>(Family), k)) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>k, <span class="at">y=</span>Family)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">fill=</span>NETWORK_COLOR) <span class="sc">+</span>   </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="no-row-height column-margin column-container"><div class="cell-output-display">
 <div id="fig-florence-degrees" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
@@ -481,26 +487,26 @@ Figure&nbsp;7: Degree of each family in Florence intermarriage network.
 </div></div></div>
 <p>The <em>degree distribution</em> is the fraction of nodes having degree <span class="math inline">\(k\)</span>, written <span class="math inline">\(P(k)\)</span>. Since the Medici family is the only one with a degree of six, and there are fifteen families, <span class="math inline">\(P(6)=\frac{1}{15}\approx 0.066\)</span>, which we can check like so:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>degdist <span class="ot">&lt;-</span> <span class="fu">degree_distribution</span>(florentine_m)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>medici_k <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Degree distribution starts at 0 and goes to maximum k; index 1, then</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># correlates to k=0 and need to add 1 to the Medici index.</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>degdist[[medici_k <span class="sc">+</span> <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>degdist <span class="ot">&lt;-</span> <span class="fu">degree_distribution</span>(florentine_m)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>medici_k <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Degree distribution starts at 0 and goes to maximum k; index 1, then</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># correlates to k=0 and need to add 1 to the Medici index.</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>degdist[[medici_k <span class="sc">+</span> <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.06666667</code></pre>
 </div>
 </div>
 <p>We plot the degree distribution see that the modal <span class="math inline">\(k\)</span> is 3 and that the distribution is somewhat more concentrated in <span class="math inline">\(k\leq3\)</span> compared to <span class="math inline">\(k &gt; 3\)</span>, using the built-in <code>barplot</code> function to plot a simple histogram of <span class="math inline">\(P(k)\)</span> using base R:</p>
 <div class="cell page-columns page-full">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>degdist_vec <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(degdist)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>k_vec <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">k =</span> k_vec, <span class="at">freq =</span> degdist_vec), <span class="fu">aes</span>(<span class="at">x=</span>k_vec, <span class="at">y=</span>degdist_vec)) <span class="sc">+</span> </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">fill=</span>NETWORK_COLOR) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Degree, k"</span>) <span class="sc">+</span> </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequency, P(k)"</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>(<span class="at">base_size=</span><span class="dv">22</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>degdist_vec <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(degdist)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>k_vec <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">k =</span> k_vec, <span class="at">freq =</span> degdist_vec), <span class="fu">aes</span>(<span class="at">x=</span>k_vec, <span class="at">y=</span>degdist_vec)) <span class="sc">+</span> </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">fill=</span>NETWORK_COLOR) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Degree, k"</span>) <span class="sc">+</span> </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequency, P(k)"</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>(<span class="at">base_size=</span><span class="dv">22</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="no-row-height column-margin column-container"><div class="cell-output-display">
 <div id="fig-medici-degree-dist" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -532,7 +538,7 @@ Figure&nbsp;8: Degree distribution shows how frequently nodes (families here) ha
 <section id="la-and-lal-compartmental-contagion-models" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="la-and-lal-compartmental-contagion-models">LA and LAL compartmental “contagion” models</h2>
 <p>Contagion models like the LA and LAL models assume that when individuals encounter one another there is some probability that some individual-level attribute, in this case whether the individual <span class="math inline">\(i\)</span> does <span class="math inline">\(A\)</span>. These models require relatively few parameters and variables, but ignore adaptive strategies people use for acquiring new information (<a href="#tbl-LA-LAL-parameters" class="quarto-xref">Table&nbsp;1</a>).</p>
-<p>Namely, these model contain two dynamic <em>outcome variables</em> <span class="math inline">\(L_t\)</span> and <span class="math inline">\(A_t\)</span> if time is discrete (<span class="math inline">\(L(T)\)</span> and <span class="math inline">\(A(t)\)</span> if time is continuous; see Note <span class="citation" data-cites="note-continuous-time-LA-LAL">(<a href="#ref-note-continuous-time-LA-LAL" role="doc-biblioref"><strong>note-continuous-time-LA-LAL?</strong></a>)</span>) the number of individuals performing <span class="math inline">\(L\)</span> and the number performing <span class="math inline">\(A\)</span>. These outcomes are dynamic, so <span class="math inline">\(t\)</span> represents time, which is discrete in our main treatment of these models, meaning that points in time can be indexed by integers, i.e., time steps are indexed by <span class="math inline">\(t_i\)</span> where <span class="math inline">\(i \in \{1, 2, 3,\ldots\}\)</span>, e.g., <span class="math inline">\(t \in \{0, 3, 6, 9, 12, 15, \ldots\}\)</span> could be discrete time steps for a model with <span class="math inline">\(t\)</span> in months meant to represent some process for which we have data every three months. If time is continuous (<span class="citation" data-cites="note-continuous-time-LA-LAL">(<a href="#ref-note-continuous-time-LA-LAL" role="doc-biblioref"><strong>note-continuous-time-LA-LAL?</strong></a>)</span>) then <span class="math inline">\(t\in[0,\infty)\)</span>. Although time can continue on to infinity, we usually specify that models will stop at some time step or when some condition is met. One of the most important conditions is whether the population has <em>fixated</em>, meaning all agents do the same behavior. Finally, there are two parameters that determine the probability that individuals change their behavioral state (from doing <span class="math inline">\(L\)</span> to doing <span class="math inline">\(A\)</span> or vice-versa). In both the LA and LAL models, the probability <span class="math inline">\(A\)</span> is adopted when an <span class="math inline">\(L\)</span> meets an <span class="math inline">\(A\)</span> is the adoption rate, <span class="math inline">\(\alpha\)</span>. In the LAL model, at every time step, every agent doing <span class="math inline">\(A\)</span> might drop the behavior, i.e., stop doing the behavior, reverting to do <span class="math inline">\(L\)</span> for the next time step. The probability one doing <span class="math inline">\(A\)</span> reverts to <span class="math inline">\(L\)</span> is <span class="math inline">\(\delta\)</span>, the <em>drop rate</em>. So, the LA and LAL models are in fact the same model where we can set <span class="math inline">\(\delta = 0\)</span> to recover the LA model from the LAL model.</p>
+<p>Namely, these model contain two dynamic <em>outcome variables</em> <span class="math inline">\(L_t\)</span> and <span class="math inline">\(A_t\)</span> if time is discrete (<span class="math inline">\(L(T)\)</span> and <span class="math inline">\(A(t)\)</span> if time is continuous; see <strong>?@nte-continuous-LA</strong>) the number of individuals performing <span class="math inline">\(L\)</span> and the number performing <span class="math inline">\(A\)</span>. These outcomes are dynamic, so <span class="math inline">\(t\)</span> represents time, which is discrete in our main treatment of these models, meaning that points in time can be indexed by integers, i.e., time steps are indexed by <span class="math inline">\(t_i\)</span> where <span class="math inline">\(i \in \{1, 2, 3,\ldots\}\)</span>, e.g., <span class="math inline">\(t \in \{0, 3, 6, 9, 12, 15, \ldots\}\)</span> could be discrete time steps for a model with <span class="math inline">\(t\)</span> in months meant to represent some process for which we have data every three months. If time is continuous then <span class="math inline">\(t\in[0,\infty)\)</span>. Although time can continue on to infinity, we usually specify that models will stop at some time step or when some condition is met. One of the most important conditions is whether the population has <em>fixated</em>, meaning all agents do the same behavior. Finally, there are two parameters that determine the probability that individuals change their behavioral state (from doing <span class="math inline">\(L\)</span> to doing <span class="math inline">\(A\)</span> or vice-versa). In both the LA and LAL models, the probability <span class="math inline">\(A\)</span> is adopted when an <span class="math inline">\(L\)</span> meets an <span class="math inline">\(A\)</span> is the adoption rate, <span class="math inline">\(\alpha\)</span>. In the LAL model, at every time step, every agent doing <span class="math inline">\(A\)</span> might drop the behavior, i.e., stop doing the behavior, reverting to do <span class="math inline">\(L\)</span> for the next time step. The probability one doing <span class="math inline">\(A\)</span> reverts to <span class="math inline">\(L\)</span> is <span class="math inline">\(\delta\)</span>, the <em>drop rate</em>. So, the LA and LAL models are in fact the same model where we can set <span class="math inline">\(\delta = 0\)</span> to recover the LA model from the LAL model.</p>
 <div id="tbl-LA-LAL-parameters" class="quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-LA-LAL-parameters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -605,40 +611,40 @@ Figure&nbsp;9: The Legacy-Adaptive model only allows for a change of individual-
 </figure>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>la_recursion <span class="ot">&lt;-</span> <span class="cf">function</span>(N, A0, alpha, tmax) {</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  A_return <span class="ot">&lt;-</span> <span class="fu">numeric</span>(N<span class="sc">+</span><span class="dv">1</span>)  <span class="co"># Create output time series vector.</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set current A_t to be A_0</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  At <span class="ot">&lt;-</span> A0</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  A_return[<span class="dv">1</span>] <span class="ot">&lt;-</span> At</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Iterate </span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>tmax) {</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Anext is code for A_{t+1}</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    Anext <span class="ot">&lt;-</span> At <span class="sc">+</span> (alpha <span class="sc">*</span> At <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> (At<span class="sc">/</span>N)))</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    A_return[t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> Anext</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    At <span class="ot">&lt;-</span> Anext</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (A_return)</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>la_recursion <span class="ot">&lt;-</span> <span class="cf">function</span>(N, A0, alpha, tmax) {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  A_return <span class="ot">&lt;-</span> <span class="fu">numeric</span>(N<span class="sc">+</span><span class="dv">1</span>)  <span class="co"># Create output time series vector.</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set current A_t to be A_0</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  At <span class="ot">&lt;-</span> A0</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  A_return[<span class="dv">1</span>] <span class="ot">&lt;-</span> At</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Iterate </span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>tmax) {</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Anext is code for A_{t+1}</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    Anext <span class="ot">&lt;-</span> At <span class="sc">+</span> (alpha <span class="sc">*</span> At <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> (At<span class="sc">/</span>N)))</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    A_return[t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> Anext</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    At <span class="ot">&lt;-</span> Anext</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (A_return)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>A0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>alpha_low <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>tmax <span class="ot">&lt;-</span> <span class="dv">200</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>tvec <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>tmax</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>Avec_low_alpha <span class="ot">&lt;-</span> <span class="fu">la_recursion</span>(N, A0, alpha_low, tmax)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>alpha_high <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>Avec_high_alpha <span class="ot">&lt;-</span> <span class="fu">la_recursion</span>(N, A0, alpha_high, tmax)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>adopt_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">timestep =</span> <span class="fu">rep</span>(tvec, <span class="dv">2</span>), </span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">alpha =</span> </span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">as_factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(alpha_low, <span class="fu">length</span>(tvec)), </span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">rep</span>(alpha_high, <span class="fu">length</span>(tvec)))),</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">A =</span> <span class="fu">c</span>(Avec_low_alpha, Avec_high_alpha))</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(adopt_tbl, <span class="fu">aes</span>(<span class="at">x=</span>timestep, <span class="at">y=</span>A, <span class="at">color=</span>alpha)) <span class="sc">+</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>A0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>alpha_low <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>tmax <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>tvec <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>tmax</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>Avec_low_alpha <span class="ot">&lt;-</span> <span class="fu">la_recursion</span>(N, A0, alpha_low, tmax)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>alpha_high <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>Avec_high_alpha <span class="ot">&lt;-</span> <span class="fu">la_recursion</span>(N, A0, alpha_high, tmax)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>adopt_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">timestep =</span> <span class="fu">rep</span>(tvec, <span class="dv">2</span>), </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">alpha =</span> </span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">as_factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(alpha_low, <span class="fu">length</span>(tvec)), </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">rep</span>(alpha_high, <span class="fu">length</span>(tvec)))),</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">A =</span> <span class="fu">c</span>(Avec_low_alpha, Avec_high_alpha))</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(adopt_tbl, <span class="fu">aes</span>(<span class="at">x=</span>timestep, <span class="at">y=</span>A, <span class="at">color=</span>alpha)) <span class="sc">+</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -801,52 +807,52 @@ R_0 = \frac{\alpha}{\delta} &gt; 1,
 <p>Let’s initialize and run a simple toy <code>AgentBasedModel</code> to see the different parts so they are more familiar when we use them to make the agent-based LA model in Problem Set 2. We will create agents who switch between Legacy and Adaptive behaviors randomly at each time step, initialized with half of the agents doing the adaptive behavior (and therefore half doing legacy).</p>
 <div class="page-columns page-full"><p>With the model defined, we can now run the model. We must first define how partner selection and interaction work in functions called <code>partner_selection</code> and <code>interaction</code>. For this model there is no <code>model_step</code>. We then pass these functions to the <code>run</code> function, plus the desired number of time steps. Note that <em>as arguments—we do not call the functions ourselves</em>. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">When we pass functions as arguments to other functions like this we are using the <em>functional programming</em> stye. Functions that take other functions as arguments are called <em>higher-order functions</em>. <code>run</code>, therefore, is a higher-order function.</span></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(socmod_path)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Source the agent-based modeling code from socmod.R in root ProblemSets</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># directory. Since this is in the CSS4S/notes directory for the course website</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># I need to use a different path. Use `socmod_path` for the problem set.</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>socmod_path <span class="ot">&lt;-</span> <span class="st">"~/workspace/CSS4S-ProblemSets/socmod.R"</span> <span class="co"># &lt;-- comment this out for your problem set </span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># socmod_path &lt;- "../socmod.R" </span><span class="al">###</span><span class="co"> &lt;-- Use this one for your Problem Set</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(socmod_path)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our fake model where nothing happens except agents randomly match up, but then just adopt </span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># either behavior randomly.</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of ten initial behaviors, five of each in </span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co"># random order to be used to create </span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>behaviors <span class="ot">&lt;-</span> </span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Legacy"</span>, <span class="fu">as.integer</span>(N<span class="sc">/</span><span class="dv">2</span>)),</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rep</span>(<span class="st">"Adaptive"</span>, <span class="fu">as.integer</span>(N<span class="sc">/</span><span class="dv">2</span>)))</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>agents <span class="ot">&lt;-</span> purrr<span class="sc">:::</span><span class="fu">map</span>(behaviors, \(b) { Agent<span class="sc">$</span><span class="fu">new</span>(b) })</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> AgentBasedModel<span class="sc">$</span><span class="fu">new</span>(<span class="at">agents =</span> agents, <span class="at">network =</span> <span class="fu">regular_lattice</span>(N, <span class="dv">4</span>), </span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>                             <span class="at">switch_prob =</span> <span class="fl">0.1</span>)</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Define random partner selection from agent's neighbors.</span></span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>partner_selection <span class="ot">&lt;-</span> <span class="cf">function</span>(agent, model) {</span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (<span class="fu">sample</span>(agent<span class="sc">$</span>neighbors, <span class="dv">1</span>))</span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>interaction <span class="ot">&lt;-</span> <span class="cf">function</span>(agent1, agent2, model) {</span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Not really an "interaction" for this toy model, just random behavior adoption.</span></span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>  agent1<span class="sc">$</span>prev_behavior <span class="ot">&lt;-</span> agent1<span class="sc">$</span>curr_behavior</span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">&lt;</span> model<span class="sc">$</span>params<span class="sc">$</span>switch_prob) {</span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>    b_new <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Legacy"</span>, <span class="st">"Adaptive"</span>), <span class="dv">1</span>)</span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>    agent1<span class="sc">$</span>curr_behavior <span class="ot">&lt;-</span> b_new</span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">run</span>(model, <span class="dv">20</span>, partner_selection, interaction)<span class="sc">$</span>output</span>
-<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(out, <span class="fu">aes</span>(<span class="at">x=</span>t, <span class="at">y=</span>A)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">22</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(socmod_path)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Source the agent-based modeling code from socmod.R in root ProblemSets</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># directory. Since this is in the CSS4S/notes directory for the course website</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># I need to use a different path. Use `socmod_path` for the problem set.</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>socmod_path <span class="ot">&lt;-</span> <span class="st">"~/workspace/CSS4S-ProblemSets/socmod.R"</span> <span class="co"># &lt;-- comment this out for your problem set </span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># socmod_path &lt;- "../socmod.R" </span><span class="al">###</span><span class="co"> &lt;-- Use this one for your Problem Set</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(socmod_path)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our fake model where nothing happens except agents randomly match up, but then just adopt </span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># either behavior randomly.</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of ten initial behaviors, five of each in </span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># random order to be used to create </span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>behaviors <span class="ot">&lt;-</span> </span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Legacy"</span>, <span class="fu">as.integer</span>(N<span class="sc">/</span><span class="dv">2</span>)),</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rep</span>(<span class="st">"Adaptive"</span>, <span class="fu">as.integer</span>(N<span class="sc">/</span><span class="dv">2</span>)))</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>agents <span class="ot">&lt;-</span> purrr<span class="sc">:::</span><span class="fu">map</span>(behaviors, \(b) { Agent<span class="sc">$</span><span class="fu">new</span>(b) })</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> AgentBasedModel<span class="sc">$</span><span class="fu">new</span>(<span class="at">agents =</span> agents, <span class="at">network =</span> <span class="fu">regular_lattice</span>(N, <span class="dv">4</span>), </span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>                             <span class="at">switch_prob =</span> <span class="fl">0.1</span>)</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Define random partner selection from agent's neighbors.</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>partner_selection <span class="ot">&lt;-</span> <span class="cf">function</span>(agent, model) {</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (<span class="fu">sample</span>(agent<span class="sc">$</span>neighbors, <span class="dv">1</span>))</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>interaction <span class="ot">&lt;-</span> <span class="cf">function</span>(agent1, agent2, model) {</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Not really an "interaction" for this toy model, just random behavior adoption.</span></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>  agent1<span class="sc">$</span>prev_behavior <span class="ot">&lt;-</span> agent1<span class="sc">$</span>curr_behavior</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">&lt;</span> model<span class="sc">$</span>params<span class="sc">$</span>switch_prob) {</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>    b_new <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Legacy"</span>, <span class="st">"Adaptive"</span>), <span class="dv">1</span>)</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>    agent1<span class="sc">$</span>curr_behavior <span class="ot">&lt;-</span> b_new</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">run</span>(model, <span class="dv">20</span>, partner_selection, interaction)<span class="sc">$</span>output</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(out, <span class="fu">aes</span>(<span class="at">x=</span>t, <span class="at">y=</span>A)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">22</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -857,26 +863,26 @@ R_0 = \frac{\alpha}{\delta} &gt; 1,
 </div>
 <p>I hypothesize that if <code>switch_prob</code> is greater, the adoption curve will be more variable over time. To test this hypothesis, let’s create another time series, but with an even higher <code>switch_prob</code> and compare the two. First, we’ll add a <code>switch_prob</code> column to our output dataframe from before:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename the output from before with a switch_prob of 0.1...</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>out_p1 <span class="ot">&lt;-</span> out</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ...and add a `switch_prob` column as a factor since we'll use it to color our graphs later.</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>out_p1<span class="sc">$</span>switch_prob <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(model<span class="sc">$</span>params<span class="sc">$</span>switch_prob)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Now create a new set of agents initialized with the same randomized behaviors.</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>agents <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(purrr<span class="sc">::</span><span class="fu">map</span>(behaviors, \(b) Agent<span class="sc">$</span><span class="fu">new</span>(b)))</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Use them to create a new model with a higher switch_prob.</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>model_p9 <span class="ot">&lt;-</span> AgentBasedModel<span class="sc">$</span><span class="fu">new</span>(<span class="at">agents =</span> agents, <span class="at">network =</span> <span class="fu">regular_lattice</span>(N, <span class="dv">4</span>), </span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                             <span class="at">switch_prob =</span> <span class="fl">0.9</span>)</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># partner_selection and interaction work as before, and we still use the default model_step</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>out_p9 <span class="ot">&lt;-</span> <span class="fu">run</span>(model_p9, <span class="dv">20</span>, partner_selection, interaction)<span class="sc">$</span>output</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a `switch_prob` column to out_p9...</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>out_p9<span class="sc">$</span>switch_prob <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fl">0.9</span>)</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ...and concatenate the two tibbles:</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>out_full <span class="ot">&lt;-</span> <span class="fu">rbind</span>(out_p1, out_p9)</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(out_full, <span class="fu">aes</span>(<span class="at">x=</span>t, <span class="at">y=</span>A, <span class="at">color=</span>switch_prob)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename the output from before with a switch_prob of 0.1...</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>out_p1 <span class="ot">&lt;-</span> out</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ...and add a `switch_prob` column as a factor since we'll use it to color our graphs later.</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>out_p1<span class="sc">$</span>switch_prob <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(model<span class="sc">$</span>params<span class="sc">$</span>switch_prob)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Now create a new set of agents initialized with the same randomized behaviors.</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>agents <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(purrr<span class="sc">::</span><span class="fu">map</span>(behaviors, \(b) Agent<span class="sc">$</span><span class="fu">new</span>(b)))</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Use them to create a new model with a higher switch_prob.</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>model_p9 <span class="ot">&lt;-</span> AgentBasedModel<span class="sc">$</span><span class="fu">new</span>(<span class="at">agents =</span> agents, <span class="at">network =</span> <span class="fu">regular_lattice</span>(N, <span class="dv">4</span>), </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                             <span class="at">switch_prob =</span> <span class="fl">0.9</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># partner_selection and interaction work as before, and we still use the default model_step</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>out_p9 <span class="ot">&lt;-</span> <span class="fu">run</span>(model_p9, <span class="dv">20</span>, partner_selection, interaction)<span class="sc">$</span>output</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a `switch_prob` column to out_p9...</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>out_p9<span class="sc">$</span>switch_prob <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fl">0.9</span>)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ...and concatenate the two tibbles:</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>out_full <span class="ot">&lt;-</span> <span class="fu">rbind</span>(out_p1, out_p9)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(out_full, <span class="fu">aes</span>(<span class="at">x=</span>t, <span class="at">y=</span>A, <span class="at">color=</span>switch_prob)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -899,9 +905,9 @@ These represent broader classes of <em>what</em>-strategies and <em>who</em>-str
 <section id="success-biased-who-learning" class="level2">
 <h2 class="anchored" data-anchor-id="success-biased-who-learning">Success-biased <em>who</em> learning</h2>
 <div class="cell" data-fig-caption="Example success-biased learning `partner_selection` function to pass to socmod's `run` command.">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>interaction_success_biased <span class="ot">&lt;-</span> <span class="cf">function</span>(learner, teacher, model) {</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>interaction_success_biased <span class="ot">&lt;-</span> <span class="cf">function</span>(learner, teacher, model) {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
