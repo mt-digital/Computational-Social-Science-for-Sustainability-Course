@@ -156,6 +156,7 @@ plot(socnet, edge.curved=0.3, vertex.size = 80,
 *Regular* networks are those ones for which all nodes have the same degree. A regular lattice with degree $k$ is useful for constructing networks with the small-world property. We can use code from the `socmod.R` script in the root directory of the CSS4S-ProblemSets repo to create one with ten nodes, each connected to two neighbors:
 
 ```{r}
+#| echo: true
 source("~/workspace/CSS4S-ProblemSets/socmod.R")
 latnet <- regular_lattice(10, 2)
 plot(latnet, layout=layout_in_circle(latnet), vertex.size=30)
@@ -166,6 +167,7 @@ And here is one more example, but with 20 nodes connected to six neighbors each:
 ```{r}
 #| fig-height: 8
 #| fig-width: 8
+#| echo: true
 source("~/workspace/CSS4S-ProblemSets/socmod.R")
 latnet <- regular_lattice(20, 6)
 plot(latnet, layout=layout_in_circle(latnet), vertex.size=10)
@@ -279,7 +281,7 @@ The second two assume that learning is partly probabilistic and partly *adaptive
 
 Contagion models like the LA and LAL models assume that when individuals encounter one another there is some probability that some individual-level attribute, in this case whether the individual $i$ does $A$. These models require relatively few parameters and variables, but ignore adaptive strategies people use for acquiring new information (@tbl-LA-LAL-parameters).
 
-Namely, these model contain two dynamic *outcome variables* $L_t$ and $A_t$ if time is discrete ($L(T)$ and $A(t)$ if time is continuous; see Note @note-continuous-time-LA-LAL) the number of individuals performing $L$ and the number performing $A$. These outcomes are dynamic, so $t$ represents time, which is discrete in our main treatment of these models, meaning that points in time can be indexed by integers, i.e., time steps are indexed by $t_i$ where $i \in \{1, 2, 3,\ldots\}$, e.g., $t \in \{0, 3, 6, 9, 12, 15, \ldots\}$ could be discrete time steps for a model with $t$ in months meant to represent some process for which we have data every three months. If time is continuous (@note-continuous-time-LA-LAL) then $t\in[0,\infty)$. Although time can continue on to infinity, we usually specify that models will stop at some time step or when some condition is met. One of the most important conditions is whether the population has *fixated*, meaning all agents do the same behavior. Finally, there are two parameters that determine the probability that individuals change their behavioral state (from doing $L$ to doing $A$ or vice-versa). In both the LA and LAL models, the probability $A$ is adopted when an $L$ meets an $A$ is the adoption rate, $\alpha$. In the LAL model, at every time step, every agent doing $A$ might drop the behavior, i.e., stop doing the behavior, reverting to do $L$ for the next time step. The probability one doing $A$ reverts to $L$ is $\delta$, the *drop rate*. So, the LA and LAL models are in fact the same model where we can set $\delta = 0$ to recover the LA model from the LAL model.
+Namely, these model contain two dynamic *outcome variables* $L_t$ and $A_t$ if time is discrete ($L(T)$ and $A(t)$ if time is continuous; see @nte-continuous-LA) the number of individuals performing $L$ and the number performing $A$. These outcomes are dynamic, so $t$ represents time, which is discrete in our main treatment of these models, meaning that points in time can be indexed by integers, i.e., time steps are indexed by $t_i$ where $i \in \{1, 2, 3,\ldots\}$, e.g., $t \in \{0, 3, 6, 9, 12, 15, \ldots\}$ could be discrete time steps for a model with $t$ in months meant to represent some process for which we have data every three months. If time is continuous then $t\in[0,\infty)$. Although time can continue on to infinity, we usually specify that models will stop at some time step or when some condition is met. One of the most important conditions is whether the population has *fixated*, meaning all agents do the same behavior. Finally, there are two parameters that determine the probability that individuals change their behavioral state (from doing $L$ to doing $A$ or vice-versa). In both the LA and LAL models, the probability $A$ is adopted when an $L$ meets an $A$ is the adoption rate, $\alpha$. In the LAL model, at every time step, every agent doing $A$ might drop the behavior, i.e., stop doing the behavior, reverting to do $L$ for the next time step. The probability one doing $A$ reverts to $L$ is $\delta$, the *drop rate*. So, the LA and LAL models are in fact the same model where we can set $\delta = 0$ to recover the LA model from the LAL model.
 
 | Symbol | Description | Values |
 |------------------------|------------------------|------------------------|
@@ -390,6 +392,7 @@ $$
 \int \frac{dA}{A(N - A)} = \int \alpha' dt = \alpha't + C
 $$ {#eq-dA-integration}
 
+
 where $C$ called a constant of integration that must be determined by
 initial conditions for this problem, namely the value $A(t=0)$ and we
 used the fact that $\int a dx = ax + C$ where $a$ is any constant and
@@ -398,6 +401,7 @@ integrated formally, i.e., without using a computer, but it's
 significantly more complicated. After integrating the left hand side of
 @eq-dA-integration it is still necessary to solve for $A$ in terms of
 $t$. See @nte-continuousLA for these details.
+
 
 After all that math we obtain the *logistic equation*,
 
@@ -409,8 +413,8 @@ where $A_0 = A(t = 0)$ is the initial condition.
 
 Britton (2003) explains in Ch. 3, p. 87, this is the same equation as single-species population dynamics in an ecosystem with a carrying capacity, $K$. In this case, $K = N$. See Britton Ch. 3 for even more detail on the family of compartmental susceptible-infected-recovered models that we have adapted for sustainable adaptations in the context of the field of mathematical biology.
 
-::: {#nte-continuousLA .callout-note collapse="false" title="Integration and solution of $A(t)$ from LA differential equations model" }
 
+::: {#nte-continuousLA .callout-note collapse="false" title="Integration and solution of $A(t)$ from LA differential equations model" }
 
 {{< include _LA_derivation.qmd >}}
 :::
