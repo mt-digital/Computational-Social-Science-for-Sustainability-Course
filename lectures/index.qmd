@@ -3,9 +3,9 @@ title: "Log of Lectures and Lab meetings with slides"
 format: html
 ---
 
-1. Introduction (1/6/2025) [[link](Jan-6-2025)] 
+1. Introduction (1/6/2025) [[link](Jan-6-2025/index.html)] 
 1. Problem set #1 introduction (1/8/2025)
 1. The Legacy-Adaptive and Legacy-Adaptive-Legacy models (1/13/2025)
-   [[link](Jan-13-2025)]
+   [[link](Jan-13-2025/index.html)]
 1. A bit more on the LA and LAL models and social networks; use Git/GitHub to
-   "pull" changes in Problem Set (1/15/2025)
+   "pull" changes in Problem Set (1/15/2025) [[link](Jan-15-2025/index.html)]

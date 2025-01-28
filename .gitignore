@@ -10,3 +10,5 @@ _site
 */index_files/*
 */index_files
 index_files
+site_libs
+**.rmarkdown

@@ -4,56 +4,268 @@ format:
     html:
         toc: true
         echo: false
+        fontsize: medium
+bibliography: ../css4s.bib
 ---
 
+\newcommand\ahat{\hat A}
+
 ```{r setup, include=FALSE}
+
+# Load dependencies.
 library(tibble)
 library(dplyr)
 library(ggplot2)
 library(ggforce)
 library(igraph)
 library(forcats)
-library(netrankr)
 library(magrittr)
+
+# Network illustration and igraph settings.
+NETWORK_COLOR = "#69b3a2"
+NODE_COLOR = adjustcolor(NETWORK_COLOR, alpha.f = 0.5)
+igraph_options(vertex.frame.color = "white", vertex.color = NODE_COLOR, vertex.label.color = "black")
 ```
 
 # Introduction
 
 Sustainability will only be achieved if people and institutions behave sustainably. This course teaches techniques for predicting the spread of sustainable behaviors, in human social networks. Sustainability, and other pressing issues, needs a rigorous theory of how sustainable behavior spreads. This is apparent since there has been scant real progress towards limiting biodiversity loss, inequality, global warming, and other sustainability targets such as the [UN Sustainable Development Goals](https://sdgs.un.org/goals). This suggests people, institutions, or organizations continue to behave unsustainably, and begs the question: what will it take to get sustainable behaviors to become widely practiced in different societies? Behaviors are transmitted from person to person through social learning, be it through instruction or observation. Who learns from or observes whom is structured based on who we know, who we live near, who we work with, or whose messages we read on the internet.
 
-In this course we want to build on successes of Elinor Ostrom's socio-ecological systems framework that identified the following _design principles_ (as re-formulated by @Cox2010 in the decades following the original formulation by Ostrom in her 1990 book summarizing her work, _Governing the Commons_):
+In this course we want to build on progress towards an empirically-motivated system for decisionmaking when promoting sustainable behavior, like Elinor Ostrom's socio-ecological systems framework [@Ostrom1990] that identified the following *design principles*. These principles are written below as re-formulated by @Cox2010 who evaluated their effectiveness after two more decades of use:
 
-1. Well-defined boundaries
-2. Congruence between appropriation and provision rules and local conditions
-3. Fair, flexible collective-choice arrangements
-4. Monitoring and monitors must be reliable and inclusive of local communities
-5. Graduated sanctions: penalties for non-compliance with sustainable practices should start small and increase with further non-compliance
-6. Access to responsive, low-cost conflict-resolution mechanisms
-7. Minimum recognition of rights of all stakeholders to recognize local ownership of local common-pool resources
-8. Successful common-pool resource management requires nested institutions so those lower in the hierarchy can achieve power parity with those higher by having greater numbers of decision-makers in those foundational decision making groups
+1.  Well-defined boundaries
+2.  Congruence between appropriation and provision rules and local conditions
+3.  Fair, flexible collective-choice arrangements
+4.  Monitoring and monitors must be reliable and inclusive of local communities
+5.  Graduated sanctions: penalties for non-compliance with sustainable practices should start small and increase with further non-compliance
+6.  Access to responsive, low-cost conflict-resolution mechanisms
+7.  Minimum recognition of rights of all stakeholders to recognize local ownership of local common-pool resources
+8.  Successful common-pool resource management requires nested institutions so those lower in the hierarchy can achieve power parity with those higher by having greater numbers of decision-makers in those foundational decision making groups
 
-To complement these design principles, and other lessons from sustainability practitioners, we want to develop simplified mechanistic models of human sustainability behavior change to identify rigorous principles of information transmission, cooperation, and political organization. 
-
+These design principles were inferred and developed by reviewing numerous policy and economic interventions to promote sustainable use of common-pool resources in specific *socio-economic systems*, both before 1990 and up to 2010 with the update from @Cox2010. Among other notable achievements, the design principles helped elevate indigenous and traditional sustainable ecosystem management practices [@Nalau2018], and community-led adaptation more generally [@McNamara2020]. For example, vibrant coastal mangrove forests have long been known to support fish populations and protect against storm surges [@Pearson2020]. To complement these design principles, and other lessons from sustainability practitioners, we want to develop simplified mechanistic models of human sustainability behavior change to identify rigorous principles of information transmission, cooperation, and political organization.
 
 ## A structure for developing models of social behavior for sustainability
 
-The models we'll study here share a general structure:
+In this course we learn In the coming sections we develop several different models of social behavior for this purpose. The models are always a more specific version of some more general or abstract model. A *model* here is a simplified representation of the world that we can use for science and decision making. One motivation for this course, in fact, is to provide a more scientific way of thinking about social responses to sustainable policy and other interventions, whether or not that thinking is aided by computational, formal, or other modeling. We start from a very abstract model with few details specified so we can identify common elements of social science models and consolidate our theoretical knowledge (@fig-abstract-social-model). This is practically useful for model development and analysis since we can theoretically compartmentalize the behavioral and social assumptions being made in the model. We know where to change assumptions to generate new intervention strategies and generate new scientific hypotheses about social behavior.
 
+![The abstract social behavior model used in this course. All models we analyze here are instances of this framework created by specifying how each block works.](images/clipboard-3019031596.png){#fig-abstract-social-model}
+
+::: {#note-abstract-model-description .callout-note collapse="true" title="Abstract model workflow description."}
 1.  Create a population represented as $N$ nodes in a social network.
 2.  At each time step, imagine that each individual in a population "selects" or is otherwise paired with another individual, their *interaction partner*. Each individual may also take independent action. For example, the Legacy-Adaptive model of the diffusion of adaptations in the next section specifies that when one person doing a Legacy behavior observes another doing the Adaptive behavior, the one doing Legacy will switch to Adaptive with probability $\alpha$. Over the duration of the course, we will consider interactions that consist of learning/adopting behaviors, deciding whether to cooperate with others for collective adaptation, and influencing opinions.
 3.  This process is repeated over many time steps where each individual does something or interacts with another individual.
 4.  The conditions for stopping the model, the *stopping conditions*, must be specified. The simplest stopping condition is to run a simulation for a certain number of time steps. Other options include stopping when the population reaches some form of equilibrium, for example, the number of people doing an adaptive behavior stays relatively constant over several time steps.
 5.  We observe how certain *outcome variables* of interest, such as how many people adopt some behavior over time or how long it takes for some fraction of people to adopt an adaptive behavior.
 6.  In full analyses of these models, we analyze these outcome variables across different hypothetical contexts, such as changing how "viral" (i.e. how likely to be adopted) adaptive behaviors are.
+:::
 
-Developing new models of social behavior amounts to specifying new ways of how people interact with one another, what social networks look like, what environmental factors affect people's well-being, and analyzing how these and other factors affect social outcomes over time. The first class of formal and computational social models we introduce study how adaptations diffuse through populations using different assumptions about how people learn and what their social networks look like. We will start with formal models that can give us "exact" results by making strong assumptions about population size and social network structure, then show why *stochastic* computational models are essential to capture the randomness of social interactions and understand how social outcomes may vary depending on the course of chance events.
+To use this abstract social model, proceed box by box and decide how the different parts work. To begin, decide what assumptions to make about social network structure, whether there are payoffs, how payoffs may change over time due to environmental shifts, etc. Then one must specify how individuals are paired together to interact, which in the real world could be highly random or constrained by one's social network. Then all paired individuals interact according to some interaction rule. In the Legacy-Adaptive model introduced below, for example, individuals adopt an adaptive behavior with a certain probability if they are exposed to it.
 
+Developing new models of social behavior, then, amounts to specifying social structure, how people get paired up and interact, and how people decide to update their behavior. The first more specific class of social models we introduce assume that there is an adaptive behavior that can be learned when it is observed, with some probability. These are *diffusion of adaptation* models. Next, *cooperation and coordination* models. We close with *opinion dynamics models*.
+
+Within diffusion of adaptation models, we will start with formal models that can give us functions for diffusion that we can easily write down and visually inspect. The cost of this exactness are unrealistic assumptions, including that population sizes approach infinity and partner choice is unconstrained. We will then show why *stochastic* (i.e., *randomized*) computational models are essential to sufficiently represent the aleatoric dance of social behavior in order to understand how social outcomes may vary due to chance events, which in general is sensitive to initial conditions. We will continue on to consider more adaptive forms of social learning that blind copying of a neighbor. Then we will analyze models of the cultural evolution of cooperation and coordination, focused on the case of sustainable management of common-pool resources such as groundwater, forests, or fisheries. Finally in this course we will study *opinion dynamics* models where interactions take the form of persuasion, though we will abstract away nearly all features of rhetoric and focus only on how the opinions of interaction partners affect changes in each partner's opinions or beliefs.
 
 ## A primer on social networks
 
-Social networks are at once intuitive, perhaps partly due to their prominence in pop culture, and also technically complex and theoretically deep. Social networks have _nodes_ (aka _vertices_) that represent people, usually drawn visually as circles but other shapes are fine. Relationships between people are represented by _edges_, drawn visually as lines. If the lines have arrowheads here, the arrow will usually point in the direction of information flow, for example from a teacher to her student. If there is no arrow, or two arrows pointing different directions, this indicates a symmetric relationship where, e.g., information could flow in two directions.
+Social networks are at once intuitive, perhaps partly due to their prominence in pop culture, and also technically complex and theoretically deep. Social networks have *nodes* (aka *vertices*) that represent people, usually drawn as circles but any shape is ok. Relationships between people are represented by *edges*, drawn as lines. If the lines have arrowheads, the arrow will point in the direction of information flow, for example from a teacher to her student. If there is no arrow, or two arrows pointing different directions, this indicates a symmetric relationship where information could flow in either direction.
 
+We need to know some basic things about social networks because all models make assumptions about them. First, a social network is a theoretical tool, a "cognitive gadget" , that represents relationships between people. Social networks are instances of graphs, an abstract mathematical structure for representing any type of entities and relationships between them. Graph *nodes* (aka *vertices*) represent the entities and *edges* represent the relationships between nodes. Edges are drawn as lines with or without arrows to indicate the flow of information, with information flowing to a *learner*, or *observer* more generally, from a *teacher* or *demonstrator* (Figure @fig-teacher-learner-infoflow). Lines with arrows are called *directed* edges. For a given pair of individuals, each may sometimes be teacher or learner. This case may be represented by two directed edges pointing opposite directions or a single *undirected* edge, i.e., a line with no arrowheads (Figure @fig-teacher-learner-bidirectional).
 
+```{r}
+#| fig-width: 5.15
+#| fig-asp: 0.33333
+#| column: margin
+#| label: fig-teacher-learner-infoflow
+#| fig-cap: "Social networks represent relationships between people, with the arrow pointing away from the teacher and at the learner, i.e., in the direction of information flow."
+circles <- tibble(x0 = c(0, 2), y0 = c(0, 0), r = c(.5, .5))
+ggplot() + 
+    geom_circle(aes(x0 = x0, y0 = y0, r = r), data = circles, fill = NODE_COLOR, color = "white") + 
+    geom_segment(aes(x = 0.5, y = 0, xend = 1.5, yend = 0), arrow =
+                 arrow(type="closed", length=unit(0.2, "inches"))) +
+    annotate("text", x=0, y=0, label="Teacher", size=8) +
+    annotate("text", x=2, y=0, label="Learner", size=8) +
+    annotate("text", x=0.975, y=0.175, label="Information flow", size=5) +
+    theme_void()
+```
+
+```{r}
+#| fig-width: 5.15
+#| fig-asp: 0.33333
+#| fig-align: center
+#| column: margin
+
+circles <- tibble(x0 = c(0, 2), y0 = c(0, 0), r = c(.5, .5))
+ggplot() + 
+    geom_circle(aes(x0 = x0, y0 = y0, r = r), data = circles, fill = NODE_COLOR, color="white") + 
+    geom_curve(aes(x = 0.5, y = -0.1, xend = 1.5, yend = -0.1), 
+               arrow=arrow(type="closed", length=unit(0.2, "inches")),
+               curvature=0.2) +
+    geom_curve(aes(xend = 0.5, yend = 0.1, x = 1.5, y = 0.1), 
+               arrow=arrow(type="closed", length=unit(0.2, "inches")),
+               curvature=0.2) +
+    annotate("text", x=0, y=0, label="Teacher/\nLearner", size=6) +
+    annotate("text", x=2, y=0, label="Learner/\nTeacher", size=6) +
+    theme_void()
+```
+
+```{r}
+#| fig-width: 5.15
+#| fig-asp: 0.33333
+#| column: margin
+#| label: fig-teacher-learner-bidirectional
+#| fig-cap: "If there are two arrows, one pointing at each individual, or a line with no arrowheads, then each member of the dyad may be either teacher or learner."
+
+ggplot() + 
+    geom_circle(aes(x0 = x0, y0 = y0, r = r), data = circles, fill = NODE_COLOR, color="white") + 
+    geom_segment(aes(x = 0.5, y = 0, xend = 1.5, yend = 0)) +
+    annotate("text", x=0, y=0, label="Teacher/\nLearner", size=6) +
+    annotate("text", x=2, y=0, label="Learner/\nTeacher", size=6) +
+    theme_void()
+```
+
+### Creating and measuring social networks
+
+To start, consider the following fictional advice network at a startup, Sustainability Intervention Solutions. There are only three team members right now with different roles. Esmeralda, the CEO, advises River and Brook. Esmeralda and Brook left their previous jobs at Hooli to start the company, so Brook also advises Esmeralda. River is the newest member of the team, an expert programmer with little business or sustainability experience, so Esmeralda mentors River. Brook is knowledgable about business and sustainability, but just learning to program, so River is helping Brook develop her skills. We can use a social network to represent this social structure where arrows point from Esmeralda to River and Brook; from River to Brook; and from Brook to Esmeralda.
+
+```{r}
+#| label: fig-social-triangle-example
+#| fig-caption: Example social network at Esmeralda and Brook's startup with new hire River.
+#| echo: true
+library(igraph)
+socnet <- make_graph(~ Esmeralda-+River-+Brook++Esmeralda)
+plot(socnet, layout = layout_in_circle(socnet), edge.curved=0.4, vertex.size = 90)
+```
+
+After a year the team have succeeded hiring clients and need another programmer to build an interface to deliver their custom relational databases on corporate sustainability decisions in response to different legislation at the national, state, and local levels. They hire Arun who has some programming expertise and experience in sustainability because he took Matt Turner's Computational Social Science for Sustainability at Stanford. Still, he has a lot to learn and needs River's and Esmeralda's advice.
+
+After a while it is clear they need a computational scientist. They hire Marco, who reports directly to River, whom he asks for help learning about sustainability. Arun asks for programming help from Marco as does Brook. Marco gets input from River and Esmeralda on programming and sustainability.
+
+```{r}
+#| label: fig-social-pentagon-example
+#| fig-caption: Example social network at Esmeralda and Brook's startup with new hire River.
+#| fig-width: 6
+#| fig-height: 6
+
+socnet <- make_graph(~ Esmeralda-+River-+Brook++Esmeralda,Arun+-River, Arun+-Esmeralda, Marco-+Arun, Marco-+Brook, Marco+-Esmeralda, Marco+-River)
+plot(socnet, edge.curved=0.3, vertex.size = 80,
+     layout = layout_in_circle(socnet))
+```
+
+#### Regular networks
+
+*Regular* networks are those ones for which all nodes have the same degree. A regular lattice with degree $k$ is useful for constructing networks with the small-world property. We can use code from the `socmod.R` script in the root directory of the CSS4S-ProblemSets repo to create one with ten nodes, each connected to two neighbors:
+
+```{r}
+source("~/workspace/CSS4S-ProblemSets/socmod.R")
+latnet <- regular_lattice(10, 2)
+plot(latnet, layout=layout_in_circle(latnet), vertex.size=30)
+```
+
+And here is one more example, but with 20 nodes connected to six neighbors each:
+
+```{r}
+#| fig-height: 8
+#| fig-width: 8
+source("~/workspace/CSS4S-ProblemSets/socmod.R")
+latnet <- regular_lattice(20, 6)
+plot(latnet, layout=layout_in_circle(latnet), vertex.size=10)
+```
+
+<!-- #### Random networks -->
+
+<!-- ##### Erdős-Rényi random networks: $G(N,M)$ and $G(N, p)$ -->
+
+<!-- ##### Randomization of regular networks to achieve the small-world property -->
+
+### Analysis of the Medici family
+
+In social networks, the entities are people and the relationships could be friendships, business partnerships, or, in the case of our first social network example, marriages between powerful families in Florence during the 1400s that elevated the the Medici clan developing into what was essentially one of the world's first political parties. This follows Jackson's introductory example in his textbook starting on p. 4 [@Jackson2008]. Studying the Medici's social network gives us our first look at the structure of social influence. During that period, the Medici family rose in wealth and political power over the lifetime of the family patriarch, Cosimo. Starting from a relatively weak position overall in the Florentine oligarchy of the time, Cosimo arranged marriages with other powerful families to subtly amplify the Medici control of politics and markets in Florence (Figure @fig-florentine-network; source: <https://cran.r-project.org/web/packages/netrankr/vignettes/use_case.html>). In the Florentine network, the edges are undirected, which makes sense since marriage takes two families and is therefore not directed. Note then we have no knowledge from which family came husband and wife. Note too that there could be multiple marriages between two families, but this information is not contained in this graph.
+
+In an undirected graph, the neighborhood of an individual $i$ (or family, organization, institution, or other social entity) can be written $n_i$ and is a set of all the individuals who share an edge with $i$. The set of the Medici's network neighbors then is written mathematically as
+
+$$
+n_{\text{Medici}} = \{\text{Salviati},~\text{Acciaiuol},~\text{Barbadori},~\text{Ridolfi},~\text{Tornabuon},~\text{Albizzi}\}
+$$ The degree of node $i$ is the number of neighbors it has, written $k_i$, so $k_\text{Medici} = 6$. In the case of directed networks it is common to define in- and out-neighborhoods, referring to arrow direction, which for us correspond to teacher- and learner-neighborhoods.
+
+```{r}
+#| label: fig-florentine-network
+#| echo: true
+#| fig-width: 5
+#| fig-height: 6
+#| fig-cap: "Florentine marriage network where edges represent marriages between families (node labels)."
+
+library(netrankr)  # Has Florentine network data we load next line.
+data("florentine_m")
+
+# Delete Pucci family (isolated)
+florentine_m <- delete_vertices(florentine_m, which(degree(florentine_m) == 0))
+
+# plot the graph
+set.seed(111)
+plot(florentine_m,
+  vertex.label.cex = 1,
+  vertex.size = 20,
+  vertex.label.color = "black",
+  vertex.color = NODE_COLOR,
+  vertex.frame.color = NODE_COLOR)
+```
+
+We can make a bar plot of the degrees for each family:
+
+```{r}
+#| fig-width: 4
+#| fig-height: 5
+#| fig-align: center
+#| echo: true
+#| column: margin
+#| fig-cap: "Degree of each family in Florence intermarriage network."
+#| label: fig-florence-degrees
+deglist <- degree(florentine_m) 
+
+# Create a tbl of degrees for each family then barplot using ggplot2.
+tibble(Family=names(deglist), k=as.vector(deglist)) %>%     
+  mutate(Family=fct_reorder(as_factor(Family), k)) %>% 
+  ggplot(aes(x=k, y=Family)) + geom_bar(stat="identity", fill=NETWORK_COLOR) +   
+  theme_classic(base_size = 18)
+```
+
+The *degree distribution* is the fraction of nodes having degree $k$, written $P(k)$. Since the Medici family is the only one with a degree of six, and there are fifteen families, $P(6)=\frac{1}{15}\approx 0.066$, which we can check like so:
+
+```{r}
+#| echo: true
+degdist <- degree_distribution(florentine_m)
+medici_k <- 6
+
+# Degree distribution starts at 0 and goes to maximum k; index 1, then
+# correlates to k=0 and need to add 1 to the Medici index.
+degdist[[medici_k + 1]]
+```
+
+We plot the degree distribution see that the modal $k$ is 3 and that the distribution is somewhat more concentrated in $k\leq3$ compared to $k > 3$, using the built-in `barplot` function to plot a simple histogram of $P(k)$ using base R:
+
+```{r}
+#| echo: true
+#| fig-height: 4
+#| fig-width: 5
+#| fig-cap: "Degree distribution shows how frequently nodes (families here) have $k$ edges (marriages)."
+#| label: fig-medici-degree-dist
+#| column: margin
+
+degdist_vec <- as.vector(degdist)
+library(forcats)
+k_vec <- as_factor(0:6)
+
+ggplot(tibble(k = k_vec, freq = degdist_vec), aes(x=k_vec, y=degdist_vec)) + 
+  geom_bar(stat="identity", fill=NETWORK_COLOR) + xlab("Degree, k") + 
+  
+  ylab("Frequency, P(k)") + theme_classic(base_size=22) 
+```
+
+#### Other resources
+
+I found one tutorial to follow up on while preparing this, so I created this place to put this tutorial and other resources that may be useful later on.
+
+-   [Network Visualizations in R using ggpraph and graphlayouts](https://schochastics.github.io/netVizR/#another-full-example) by [David Schoch](https://mr.schochastics.net/).
 
 # Diffusion of adaptations
 
@@ -69,22 +281,26 @@ Contagion models like the LA and LAL models assume that when individuals encount
 
 Namely, these model contain two dynamic *outcome variables* $L_t$ and $A_t$ if time is discrete ($L(T)$ and $A(t)$ if time is continuous; see Note @note-continuous-time-LA-LAL) the number of individuals performing $L$ and the number performing $A$. These outcomes are dynamic, so $t$ represents time, which is discrete in our main treatment of these models, meaning that points in time can be indexed by integers, i.e., time steps are indexed by $t_i$ where $i \in \{1, 2, 3,\ldots\}$, e.g., $t \in \{0, 3, 6, 9, 12, 15, \ldots\}$ could be discrete time steps for a model with $t$ in months meant to represent some process for which we have data every three months. If time is continuous (@note-continuous-time-LA-LAL) then $t\in[0,\infty)$. Although time can continue on to infinity, we usually specify that models will stop at some time step or when some condition is met. One of the most important conditions is whether the population has *fixated*, meaning all agents do the same behavior. Finally, there are two parameters that determine the probability that individuals change their behavioral state (from doing $L$ to doing $A$ or vice-versa). In both the LA and LAL models, the probability $A$ is adopted when an $L$ meets an $A$ is the adoption rate, $\alpha$. In the LAL model, at every time step, every agent doing $A$ might drop the behavior, i.e., stop doing the behavior, reverting to do $L$ for the next time step. The probability one doing $A$ reverts to $L$ is $\delta$, the *drop rate*. So, the LA and LAL models are in fact the same model where we can set $\delta = 0$ to recover the LA model from the LAL model.
 
-| Symbol       | Description                                                                                                                                                                                                                                                                                                                | Values                                           |
-|------------------|------------------------------------|------------------|
-| $L,L_t,L(t)$ | Number of individuals doing **L**egacy behavior at time $t$; like $A$ serves as a noun for the behavior itself.                                                                                                                                                                                                            | $L_t \in \{0,\ldots,N\}$; $L(t) \in [0, \infty)$ |
-| $A,A_t,A(t)$ | Number of individuals doing **A**daptive behavior at time $t$, but used interchangeably for the behavior itself, e.g., "an individual doing $A$".                                                                                                                                                                          | $A_t \in \{0,\ldots,N\}$, $A(t) \in [0, \infty)$ |
-| $t$          | Time, which could be discrete or continuous. We write $A$ and $L$ as a function of time, i.e., $A_t$ if $t$ is discrete or $A(t)$ if continuous                                                                                                                                                                            | $\{0,1,\ldots\}$ or $[0,\infty)$                 |
-| $\alpha$     | Adoption rate, i.e., the probability that an individual doing $L$ adopts $A$ if their interaction partner is doing $A$.                                                                                                                                                                                                    | $[0, 1]$                                         |
-| $\delta$     | Drop rate, i.e., the probability that an individual doing $A$ stops doing $A$ at time $t$                                                                                                                                                                                                                                  | $[0, 1]$                                         |
-| $T$          | *Fixation* or *stopping* time. If the modeler specifies the model should stop when all individuals perform the same behavior, it is the fixation time. If the modeler specifies a certain number of steps for the model or there is some condition that causes the model to stop before fixation, it is the stopping time. | $\{0,1,\ldots\}$ or $[0,\infty)$                 |
+| Symbol | Description | Values |
+|------------------------|------------------------|------------------------|
+| $L,L_t,L(t)$ | Number of individuals doing **L**egacy behavior at time $t$; like $A$ serves as a noun for the behavior itself. | $L_t \in \{0,\ldots,N\}$; $L(t) \in [0, \infty)$ |
+| $A,A_t,A(t)$ | Number of individuals doing **A**daptive behavior at time $t$, but used interchangeably for the behavior itself, e.g., "an individual doing $A$". | $A_t \in \{0,\ldots,N\}$, $A(t) \in [0, \infty)$ |
+| $t$ | Time, which could be discrete or continuous. We write $A$ and $L$ as a function of time, i.e., $A_t$ if $t$ is discrete or $A(t)$ if continuous | $\{0,1,\ldots\}$ or $[0,\infty)$ |
+| $\alpha$ | Adoption rate, i.e., the probability that an individual doing $L$ adopts $A$ if their interaction partner is doing $A$. | $[0, 1]$ |
+| $\delta$ | Drop rate, i.e., the probability that an individual doing $A$ stops doing $A$ at time $t$ | $[0, 1]$ |
+| $T$ | *Fixation* or *stopping* time. If the modeler specifies the model should stop when all individuals perform the same behavior, it is the fixation time. If the modeler specifies a certain number of steps for the model or there is some condition that causes the model to stop before fixation, it is the stopping time. | $\{0,1,\ldots\}$ or $[0,\infty)$ |
 
 : LA and LAL model parameter and variable symbols and definitions. {#tbl-LA-LAL-parameters}
 
+![](images/clipboard-2993810530.png)
+
 ### Legacy-Adaptive (LA) model
 
+In class we derived the recursion for the legacy-adaptive model: $$
+A_{t+1} = A_{t} + \alpha A_t\left(1 - \frac{A_t}{N}\right).
+$$ Once an individual adopts the adaptive behavior in this model, they continue doing that behavior forever (@fig-LA-state). Below we show how to write a function to implement this recursion to calculate a time series and compare the results for two different adoption rates, $\alpha$.
 
 ![The Legacy-Adaptive model only allows for a change of individual-level state from performing the legacy behavior to performing the adaptive behavior.](images/LA.png){#fig-LA-state fig-align="center" width="441"}
-
 
 ```{r}
 #| echo: true
@@ -128,6 +344,77 @@ ggplot(adopt_tbl, aes(x=timestep, y=A, color=alpha)) +
   geom_line() + theme_classic()
 ```
 
+### Discrete change in recursion, continuous (infinitesimal) change in differential equations
+
+In the recursion LA model, the change in $A$, $\Delta A$ from time step $t$ to time step $t+1$ is $$
+\Delta A = A_{t+1} - A_t = \alpha N \Pr(L,A)
+$$ {#eq-delta-A} where $\Pr(L,A) = \frac{L}{N}\frac{A}{N}$ is the probability an individual doing $L$ and another doing $A$ interact under the *well-mixed* assumption.
+
+::: column-margin
+$\cdot\quad$ The *well-mixed* assumption says that everyone in a population is equally likely to interact with one another. This means the probability of someone doing $L$ encountering someone else doing $A$ is the same for all people doing $L$ (or vice-versa).
+:::
+
+Plug this probability in to @eq-delta-A and cancel an $N$ on top and bottom to get $$
+\Delta A = \frac{\alpha}{N} L A = \alpha' L A,
+$$ {#eq-delta-A-likeODE} where $\alpha' = \alpha / N$. Because we use $t$ to label time steps and assumed that time steps are separated by $\Delta t = 1$, we can multiply the right side of @eq-delta-A-likeODE by 1 in the form of $\Delta t$: $$
+\Delta A = \alpha' LA \Delta t
+$$ {#eq-delta-A-preODE}
+
+::: column-margin
+$\cdot\quad$The general probability that a person doing behavior $b$ interacts with a person doing $b'$ (read "b prime") $\Pr(b,b')$, i.e. $\Pr(L,A)$ for legacy-adaptive, $\Pr(L, L)$ for legacy-legacy, etc.
+:::
+
+Calculus, the foundation of differential equations, is the mathematics of rates of change, which was achieved through the following conceptual leap. In terms of our LA model, calculus works by assuming that $\Delta t$ becomes "infinitesimally small", written $\Delta t \to 0$. Before $\Delta t$ gets all the way to zero, we calculate $\Delta A$ over this infinitesimally small $\Delta t$. This infinitesimal $\Delta t$ is written $dt$, and the similarly infinitesimal $\Delta A$ is written $dA$. When $\Delta \to 0$, then, we replace $\Delta$ with $d$ and @eq-delta-A-preODE becomes $$
+dA = \alpha' L A dt
+$$ which is more commonly written $$
+\frac{dA}{dt} = \alpha' L A dt
+$$ {#eq-dAdt} representing the flow in of people previously doing $L$, with the coupled differential equation for $L$ differing only in sign of the right hand side, representing the flow of people away from doing $L$: $$
+\frac{dL}{dt} = - \alpha' L A dt.
+$$
+
+These equations can be solved by using the same substitution we used in the recursion to get a formula for $A_{t+1}$ that depended only on $A_t$, namely that $L = N - A$, so @eq-dAdt becomes
+
+$$
+\frac{dA}{dt} = \alpha' A(N - A).
+$$ {#eq-dAdt-noL}
+
+Calculus tells us that we can rearrange the differnetials like they were any other variable. What we want now is to arrange all $A$ terms to one side of the equation, and all $t$ terms to the other because this allows us to *integrate* the equation. We want to integrate the equation because this is the calculus procedure that converts rates of change of a variable to the accumulation of that variable. Rearranage @eq-dAdt-noL to get
+
+$$
+\frac{dA}{A(N - A)} = \alpha' dt.
+$$
+
+We integrate both sides of this equation, which is written
+
+$$
+\int \frac{dA}{A(N - A)} = \int \alpha' dt = \alpha't + C
+$$ {#eq-dA-integration}
+
+where $C$ called a constant of integration that must be determined by
+initial conditions for this problem, namely the value $A(t=0)$ and we
+used the fact that $\int a dx = ax + C$ where $a$ is any constant and
+$x$ is any dynamic variable. The integral on the left hand side can be
+integrated formally, i.e., without using a computer, but it's
+significantly more complicated. After integrating the left hand side of
+@eq-dA-integration it is still necessary to solve for $A$ in terms of
+$t$. See @nte-continuousLA for these details.
+
+After all that math we obtain the *logistic equation*,
+
+$$
+A(t) = \frac{N}{1 + \frac{N}{A_0}e^{-\alpha N t}},
+$$ {#eq-logistic-LA}
+
+where $A_0 = A(t = 0)$ is the initial condition.
+
+Britton (2003) explains in Ch. 3, p. 87, this is the same equation as single-species population dynamics in an ecosystem with a carrying capacity, $K$. In this case, $K = N$. See Britton Ch. 3 for even more detail on the family of compartmental susceptible-infected-recovered models that we have adapted for sustainable adaptations in the context of the field of mathematical biology.
+
+::: {#nte-continuousLA .callout-note collapse="false" title="Integration and solution of $A(t)$ from LA differential equations model" }
+
+
+{{< include _LA_derivation.qmd >}}
+:::
+
 ### Legacy-Adaptive-Legacy (LAL) model
 
 ![The Legacy-Adaptive-Legacy model also allows for transitions from the state $A$ to state $L$, which occurs with probability $\delta$.](images/LAL.png){#fig-LAL-state fig-align="center" width="441"}
@@ -136,168 +423,194 @@ When considering the total change in $A,$ written $\Delta A,$ following a discre
 
 $$
 \Delta A = \alpha A (1 - \frac{A}{N}) - \delta A.
-$$
+$$ {#eq-deltaA}
 
-In this model, two new things are possible that were not possible before. First, the adaptation may completely fail to spread. If more people end up dropping the behavior than adopting it early on, there will be no one doing $A$ that someone doing $L$ could copy.
-Second, in general, everyone will _not_ eventually adopt $A$, at least not all at once, unlike in the LA model. In the LAL model there is an equilibrium value that the system reaches for a large enough $t$ defined as $A_{t \to \infty}$ where 
+In this model, two new things are possible that were not possible before. First, the adaptation may completely fail to spread. If more people end up dropping the behavior than adopting it early on, there will be no one doing $A$ that someone doing $L$ could copy. Second, in general, everyone will *not* eventually adopt $A$, at least not all at once, unlike in the LA model. In the LAL model there is an equilibrium $A$, $\hat A$, that the system reaches with enough time.
 
-::: {.callout-note collapse="false" title="Solving LA system of coupled differential equations" label="note-continuous-time-LA-LAL"}
-We can additionally represent the LA and LAL models as coupled ordinary differential equations (ODEs). The ODEs appear somewhat like the difference equations, but ODEs can be solved formally or numerically using the tools of calculus.
+#### Will the adaptation spread?
 
-### LA ODEs
+We want to know if the adaptation will diffuse throughout the population in the LA model given just the adoption rate $\alpha$ and drop rate $\delta$. Formally, the adaptation diffuses if $\Delta A > 0$. We can approximate $\Delta A$ just after its introduction to a population that is mostly doing the legacy behavior and obtain a useful heuristic value to tell use if it will diffuse. When the adaptive behavior is only just being introduced to a relatively large population, we we say that $A << L,N$, and so $1 - \frac{A}{N} \approx 0$, so that @eq-deltaA becomes
 
 $$
-\frac{dL}{dt} = -\alpha L A
+\Delta A = \alpha A - \delta A > 0.
 $$
 
-$$
-\frac{dA}{dt} = \alpha L A
-$$
-
-where:
-
--   $A(t) = \frac{N}{1 + K e^{-\alpha N t}}$
--   $L(t) = N - A(t)$
-
-{{< include _LA_derivation.qmd >}}
-
-### LAL ODE
-
-See Chapter 3 in Britton's (2003) *Essential Mathematical Biology* for the solution of the LAL ODE system,
+Dividing out $A$, rearranging, and dividing by $\delta$, we find that the adaptation diffuses if
 
 $$
-\frac{dL}{dt} = -\alpha L A + \delta 
+R_0 = \frac{\alpha}{\delta} > 1,
 $$
-:::
 
-## Adaptive social learning
+where $R_0$ is a rather famous measure called the *basic reproduction number* in epidemiology that predicts whether a new disease will become endemic or not. For us it predicts whether a sustainable adaptation will diffuse and persist in a population.
 
-There are many ways people (or other critters with culture) use social or environmental cues to decide who to learn from, known as *social learning strategies* @Kendal2018. We will consider the effects of two such social learning strategies in this course, *conformity-biased learning* and *success-biased learning*. As before we focus on the discrete-time case, but we will also point towards more advanced resources for using continuous-time to formally calculate helpful heuristic values for understanding asymptotic dynamics.
+#### If an adaptation persists, what will the long-term adoption level be?
 
-### Conformity-biased learning in social networks
+To know how many people will perform the adaptive behavior after the diffusion of that behavior has stabilized, we need to calculate its *equilibrium value*. Assuming $R_0 > 1$, the equilibrium number of adopters, $\hat A$, is defined as the value of $A$ for which $\Delta A = 0$, i.e., when $A$ remains constant over time:
 
-### Success-biased learning in social networks
+$$
+\Delta A = 0 = \alpha \hat A\left(1 - \frac{\hat A}{N}\right) - \delta
+\hat A.
+$$
 
-## More notes on social networks
+This can be re-arranged to find that
 
-We need to know some basic things about social networks because all models make assumptions about them. First, a social network is a theoretical tool, a "cognitive gadget" , that represents relationships between people. Social networks are instances of graphs, an abstract mathematical structure for representing any type of entities and relationships between them. Graph *nodes* (aka *vertices*) represent the entities and *edges* represent the relationships between nodes. Edges are drawn as lines with or without arrows to indicate the flow of information, with information flowing to a *learner*, or *observer* more generally, from a *teacher* or *demonstrator* (Figure @fig-teacher-learner-infoflow). Lines with arrows are called *directed* edges. For a given pair of individuals, each may sometimes be teacher or learner. This case may be represented by two directed edges pointing opposite directions or a single *undirected* edge, i.e., a line with no arrowheads (Figure @fig-teacher-learner-bidirectional).
+$$
+\frac{\hat A}{N} = 1 - \frac{\delta}{\alpha}.
+$$
+
+See *MSB* pp. 96-97 for the steps and Figure 4.9 on p. 97 for a plot of $\Delta A$ versus $A$ that illustrates and explains how to find $\hat A$ graphically (*MSB* uses the epidemiological framing, which means $I$ replaces $A$.
+
+# Agent-based modeling
+
+Together, these define an agent-based model:
+
+1.  Environmental and ecological factors, including the payoff from doing Legacy and Adaptive behaviors, which could change over time.
+2.  The *agents*, which are simulated people in the case of human social science.
+3.  Social processes:
+    1.  Partner selection
+    2.  *Dyadic* interaction
+4.  Non-social, individual-level behavior change (e.g. in LAL agents drop the adaptation with probability $\delta$)
+
+These steps were implicitly present in the recursion and differential equation versions of the LA and LAL models, as reviewed in the Introduction in these notes. In agent-based models we explicitly define code functions that do each of these steps, if the model calls for it.
+
+To do agent-based modeling, we will use code currently located in the `socmod.R` file in the root directory of the ProblemSets project repository. This approach combines object-oriented programming, characterized by explicit representations of classes of entities that define attributes and capacities of the entities, with functional programming, characterized by providing functions as arguments to other functions for describing the processes that occur within and between agents and their environment.
+
+We define an `AgentBasedModel` class, which is a structured way to define and store information about agents and their social networks and different model parameters specified by the `params` attribute of `AgentBasedModel`.
+
+Let's initialize and run a simple toy `AgentBasedModel` to see the different parts so they are more familiar when we use them to make the agent-based LA model in Problem Set 2. We will create agents who switch between Legacy and Adaptive behaviors randomly at each time step, initialized with half of the agents doing the adaptive behavior (and therefore half doing legacy).
 
 ```{r}
-#| fig-width: 5.15
-#| fig-asp: 0.33333
-#| label: fig-teacher-learner-infoflow
-#| fig-cap: "Social networks represent relationships between people, with the arrow pointing away from the teacher and at the learner, i.e., in the direction of information flow."
-circles <- tibble(x0 = c(0, 2), y0 = c(0, 0), r = c(.5, .5))
-ggplot() + 
-    geom_circle(aes(x0 = x0, y0 = y0, r = r), data = circles, fill = "SkyBlue2") + 
-    geom_segment(aes(x = 0.5, y = 0, xend = 1.5, yend = 0), arrow =
-                 arrow(type="closed", length=unit(0.2, "inches"))) +
-    annotate("text", x=0, y=0, label="Teacher", size=8) +
-    annotate("text", x=2, y=0, label="Learner", size=8) +
-    annotate("text", x=0.95, y=0.15, label="Information flow", size=5) +
-    theme_void()
+
+# Source the agent-based modeling code from socmod.R in root ProblemSets
+# directory. Since this is in the CSS4S/notes directory for the course website
+# I need to use a different path. Use `socmod_path` for the problem set.
+socmod_path <- "~/workspace/CSS4S-ProblemSets/socmod.R" # <-- comment this out for your problem set 
+# socmod_path <- "../socmod.R" ### <-- Use this one for your Problem Set
+source(socmod_path)
+
+# Define our fake model where nothing happens except agents randomly match up, but then just adopt 
+# either behavior randomly.
+
+N <- 10
+# Create a list of ten initial behaviors, five of each in 
+# random order to be used to create 
+behaviors <- 
+  sample(
+    c(rep("Legacy", as.integer(N/2)),
+      rep("Adaptive", as.integer(N/2)))
+  )
+
+agents <- purrr:::map(behaviors, \(b) { Agent$new(b) })
+
+model <- AgentBasedModel$new(agents = agents, network = regular_lattice(N, 4), 
+                             switch_prob = 0.1)
+
 ```
 
-In social networks, the entities are people and the relationships could be friendships, business partnerships, or, in the case of our first social network example, marriages between powerful families in Florence during the 1400s that elevated the the Medici clan developing into what was essentially one of the world's first political parties. This follows Jackson's introductory example in his textbook starting on p. 4 [@Jackson2008]. Studying the Medici's social network gives us our first look at the structure of social influence. During that period, the Medici family rose in wealth and political power over the lifetime of the family patriarch, Cosimo. Starting from a relatively weak position overall in the Florentine oligarchy of the time, Cosimo arranged marriages with other powerful families to subtly amplify the Medici control of politics and markets in Florence (Figure @fig-florentine-network; source: <https://cran.r-project.org/web/packages/netrankr/vignettes/use_case.html>). Eventually we will explain Cosimo's strategy, which is not just simply to have the greatest diversity of intermarriages in the group of oligarchs (though the Medicis did). For now, we will introduce important network concepts and measures using the Medici network for a real-world case study.
-
-```{r}
-#| fig-width: 5.15
-#| fig-asp: 0.33333
-#| fig-align: center
-
-circles <- tibble(x0 = c(0, 2), y0 = c(0, 0), r = c(.5, .5))
-ggplot() + 
-    geom_circle(aes(x0 = x0, y0 = y0, r = r), data = circles, fill = "SkyBlue2") + 
-    geom_curve(aes(x = 0.5, y = -0.1, xend = 1.5, yend = -0.1), 
-               arrow=arrow(type="closed", length=unit(0.2, "inches")),
-               curvature=0.2) +
-    geom_curve(aes(xend = 0.5, yend = 0.1, x = 1.5, y = 0.1), 
-               arrow=arrow(type="closed", length=unit(0.2, "inches")),
-               curvature=0.2) +
-    annotate("text", x=0, y=0, label="Teacher/\nLearner", size=6) +
-    annotate("text", x=2, y=0, label="Learner/\nTeacher", size=6) +
-    theme_void()
-```
-
-::: {style="text-align:center; font-weight:bold; font-size:20px"}
-$\uparrow\quad$ is equivalent to $\quad\downarrow$
-:::
-
-```{r}
-#| fig-width: 5.15
-#| fig-asp: 0.33333
-#| label: fig-teacher-learner-bidirectional
-#| fig-cap: "If there are two arrows, one pointing at each individual, or a line with no arrowheads, then each member of the dyad may be either teacher or learner."
-
-ggplot() + 
-    geom_circle(aes(x0 = x0, y0 = y0, r = r), data = circles, fill = "SkyBlue2") + 
-    geom_segment(aes(x = 0.5, y = 0, xend = 1.5, yend = 0)) +
-    annotate("text", x=0, y=0, label="Teacher/\nLearner", size=6) +
-    annotate("text", x=2, y=0, label="Learner/\nTeacher", size=6) +
-    theme_void()
-```
-
-In the Florentine network, the edges are undirected, which makes sense since marriage takes two families and is therefore not directed. Note then we have no knowledge from which family came husband and wife. Note too that there could be multiple marriages between two families, but this information is not contained in this graph.
-
-In an undirected graph, the neighborhood of an individual $i$ (or family, organization, institution, or other social entity) can be written $n_i$ and is a set of all the individuals who share an edge with $i$. The set of the Medici's network neighbors then is written mathematically as
-
-$$
-n_{\text{Medici}} = \{\text{Salviati},~\text{Acciaiuol},~\text{Barbadori},~\text{Ridolfi},~\text{Tornabuon},~\text{Albizzi}\}
-$$ The degree of node $i$ is the number of neighbors it has, written $k_i$, so $k_\text{Medici} = 6$.
-
-```{r}
-#| label: fig-florentine-network
-#| echo: true
-#| fig-cap: "Florentine marriage network where edges represent marriages between families (node labels)."
-#| 
-
-data("florentine_m")
-# Delete Pucci family (isolated)
-florentine_m <- delete_vertices(florentine_m, which(degree(florentine_m) == 0))
-
-# plot the graph
-set.seed(111)
-plot(florentine_m,
-  vertex.label.cex = .9,
-  vertex.size = 20,
-  vertex.label.color = "black",
-  vertex.color = "white",
-  vertex.frame.color = "gray"
-)
-```
-
-We can make a bar plot of the degrees for each family:
-
-```{r}
-deglist <- degree(florentine_m) 
-tibble(Family=names(deglist), k=as.vector(deglist)) %>%  mutate(Family=as_factor(Family)) %>% arrange(desc(k)) %>% ggplot(aes(x=k, y=Family)) + geom_bar(stat="identity") + theme_classic()
-```
-
-The *degree distribution* is the fraction of nodes having degree $k$, written $P(k)$. Since the Medici family is the only one with a degree of six, and there are fifteen families, $P(6)=\frac{1}{15}\approx 0.066$, which we can check like so:
+With the model defined, we can now run the model. We must first define how partner selection and interaction work in functions called `partner_selection` and `interaction`. For this model there is no `model_step`. We then pass these functions to the `run` function, plus the desired number of time steps. Note that *as arguments---we do not call the functions ourselves*. [When we pass functions as arguments to other functions like this we are using the *functional programming* stye. Functions that take other functions as arguments are called *higher-order functions*. `run`, therefore, is a higher-order function.]{.aside}
 
 ```{r}
 #| echo: true
+source(socmod_path)
 
-degdist <- degree_distribution(florentine_m)
-medici_k <- 6
-# Degree distribution starts at 0 and goes to maximum k; index 1, then
-# correlates to k=0 and need to add 1 to the Medici index.
-degdist[[medici_k + 1]]
+
+# Source the agent-based modeling code from socmod.R in root ProblemSets
+# directory. Since this is in the CSS4S/notes directory for the course website
+# I need to use a different path. Use `socmod_path` for the problem set.
+socmod_path <- "~/workspace/CSS4S-ProblemSets/socmod.R" # <-- comment this out for your problem set 
+# socmod_path <- "../socmod.R" ### <-- Use this one for your Problem Set
+source(socmod_path)
+
+# Define our fake model where nothing happens except agents randomly match up, but then just adopt 
+# either behavior randomly.
+
+N <- 10
+# Create a list of ten initial behaviors, five of each in 
+# random order to be used to create 
+behaviors <- 
+  sample(
+    c(rep("Legacy", as.integer(N/2)),
+      rep("Adaptive", as.integer(N/2)))
+  )
+
+agents <- purrr:::map(behaviors, \(b) { Agent$new(b) })
+
+model <- AgentBasedModel$new(agents = agents, network = regular_lattice(N, 4), 
+                             switch_prob = 0.1)
+
+# Define random partner selection from agent's neighbors.
+partner_selection <- function(agent, model) {
+  return (sample(agent$neighbors, 1))
+}
+
+interaction <- function(agent1, agent2, model) {
+  # Not really an "interaction" for this toy model, just random behavior adoption.
+  
+  agent1$prev_behavior <- agent1$curr_behavior
+  if (runif(1) < model$params$switch_prob) {
+    b_new <- sample(c("Legacy", "Adaptive"), 1)
+    agent1$curr_behavior <- b_new
+  }
+}
+
+out <- run(model, 20, partner_selection, interaction)$output
+
+
+ggplot(out, aes(x=t, y=A)) + geom_line() + scale_x_continuous(breaks=0:22) + theme_classic()
 ```
 
-We can plot a simple histogram representation of $P(k)$ using base R like so
+I hypothesize that if `switch_prob` is greater, the adoption curve will be more variable over time. To test this hypothesis, let's create another time series, but with an even higher `switch_prob` and compare the two. First, we'll add a `switch_prob` column to our output dataframe from before:
 
 ```{r}
 #| echo: true
-barplot(names=0:6, height=as.vector(degdist), ylab="Frequency", xlab="Degree, k", col="#69b3a2")
+# Rename the output from before with a switch_prob of 0.1...
+out_p1 <- out
+# ...and add a `switch_prob` column as a factor since we'll use it to color our graphs later.
+out_p1$switch_prob <- as.factor(model$params$switch_prob)
+
+# Now create a new set of agents initialized with the same randomized behaviors.
+agents <- as.vector(purrr::map(behaviors, \(b) Agent$new(b)))
+
+# Use them to create a new model with a higher switch_prob.
+model_p9 <- AgentBasedModel$new(agents = agents, network = regular_lattice(N, 4), 
+                             switch_prob = 0.9)
+
+# partner_selection and interaction work as before, and we still use the default model_step
+out_p9 <- run(model_p9, 20, partner_selection, interaction)$output
+# Add a `switch_prob` column to out_p9...
+out_p9$switch_prob <- as.factor(0.9)
+# ...and concatenate the two tibbles:
+out_full <- rbind(out_p1, out_p9)
+
+ggplot(out_full, aes(x=t, y=A, color=switch_prob)) + geom_line() + theme_classic()
 ```
 
-### 
+Maybe it is more variable, but it is hard to tell from comparing just two outputs. We would need to do more processing of the outputs, perhaps coming up with a measure of variability to compare across different `swtich_prob` settings. Furthermore we need more *trials* to reliably infer whether greater `switch_prob` indeed results in greater variability in resulting time series.
 
+Soon we will use the `run_trials` function to run several trials for several parameter settings
 
+# Adaptive (social) learning strategies
 
-### Conformity-biased learning
+So far the agents in our models do not use information from their social or ecological context (i.e., their *environment*) to decide which behavior to adopt. In reality, though, humans are sophisticated problem solvers who can integrate personal experience with information learned directly or indirectly from others in order to predict the outcomes of their behaviors, even weighting the mixture of sources based on their reliability [@Witt2024]. Environmental context matters: if the benefit of different behaviors is highly unpredictable, then social information can only serve as a scaffold for individual learning over long lifetimes [@Turner2023]. Sensitive periods in development development strongly constrain individuals' *social learning strategies* \[\@\] which determine, for example, whether or not to seek social information in some context, and if social information is sought, who should we observe or from whom should we learn, or if perhaps it is better to just do whatever it seems like most others are doing [@Kendal2018,@Constant2019].
 
-### Success-biased learning
+Still, as is often the case in computational social science, we can ignore many of these cognitive details, and operationalized two hypothetical, stylized adaptive social learning strategies: *frequency-biased learning* and *success-biased learning*.\
+These represent broader classes of *what*-strategies and *who*-strategies, respectively, explained in more detail below.
+
+## Frequency-biased *what* learning
+
+## Success-biased *who* learning
+
+```{r}
+#| echo: true
+#| fig-caption: "Example success-biased learning `partner_selection` function to pass to socmod's `run` command."
+
+interaction_success_biased <- function(learner, teacher, model) {
+  
+}
+```
 
 # Cooperation and coordination
+
+# Opinion dynamics
+
+## References

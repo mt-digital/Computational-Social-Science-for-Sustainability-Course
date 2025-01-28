@@ -11,10 +11,10 @@ website:
       - href: index.qmd
         text: Syllabus
  
-      - href: notes/index.qmd
+      - href: notes
         text: Course Notes
 
-      - href: lectures/index.qmd
+      - href: lectures
         text: Lectures
 
 #      - href: psets/index.qmd
