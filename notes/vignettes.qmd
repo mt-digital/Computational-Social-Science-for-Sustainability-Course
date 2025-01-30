@@ -1,16 +1,16 @@
 ---
-title: "Coding vignettes to use in modeling social behavior."
+title: "Vignettes with code and figures to use in modeling social behavior."
 format:
     html:
         toc: true
-        echo: false
+        echo: true
         fontsize: medium
 bibliography: ../css4s.bib
 ---
 
 These vignettes depend on some libraries:
 
-```{r setup, include=FALSE}
+```{r setup}
 
 # Load dependencies.
 library(tibble)
@@ -18,9 +18,13 @@ library(dplyr)
 library(ggplot2)
 library(ggforce)
 library(igraph)
+library(igraphdata)
 library(forcats)
 library(netrankr)
 library(magrittr)
+
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 # Network illustration and igraph settings.
 NETWORK_COLOR = "#69b3a2"
@@ -39,6 +43,239 @@ source(socmod_path)
 
 ## Networks
 
+Here's a resource from `igraph` docs: [Add vertices, edges or another graph to a
+graph](https://igraph.org/r/html/1.3.5/plus-.igraph.html).
+
+
+
+### Real-world networks
+
+#### 1400s Florentine marriage network
+```{r}
+#| label: fig-florentine-network
+#| echo: true
+#| fig-width: 5
+#| fig-height: 6
+#| fig-cap: "Florentine marriage network where edges represent marriages between families (node labels)."
+
+library(netrankr)  # Has Florentine network data we load next line.
+data("florentine_m")
+
+# Delete Pucci family (isolated)
+florentine_m <- delete_vertices(florentine_m, which(degree(florentine_m) == 0))
+
+# plot the graph
+set.seed(111)
+plot(florentine_m)
+```
+
+Highlighting betweenness of Medicis:
+
+```{r}
+
+# Load necessary libraries
+library(igraph)
+library(netrankr)
+
+# Load the Florentine family marriage network
+data("florentine_m")
+
+# Remove the Pucci family (isolated node)
+florentine_m <- delete_vertices(florentine_m, which(degree(florentine_m) == 0))
+
+# Calculate betweenness centrality for all families
+betweenness_values <- betweenness(florentine_m, directed = FALSE)
+
+# Print betweenness centrality, sorted by importance
+sorted_betweenness <- sort(betweenness_values, decreasing = TRUE)
+print(sorted_betweenness)
+
+# Highlight the Medici family
+V(florentine_m)$color <- 
+    ifelse(V(florentine_m)$name == "Medici", "red", "lightblue")
+
+# Visualize the network with node size proportional to betweenness centrality
+plot(
+  florentine_m,
+  vertex.size = scale(betweenness_values, center = FALSE, scale = max(betweenness_values)) * 20,
+  vertex.label.color = "black",
+  vertex.color = V(florentine_m)$color,
+  main = "Florentine Marriage Network\n(Node size ~ Betweenness Centrality)"
+)
+
+# Highlight the Medici family's central role in the network
+legend(
+  "topright", legend = c("Medici", "Other Families"),
+  col = c("red", "lightblue"), pch = 19, bty = "n"
+)
+
+```
+
+#### Effect of rewiring on Florentine marriage
+
+Now let's use the `rewire` function to randomly re-wire each edge with
+probability of 0.2. 
+
+
+#### Real-world social networks
+
+### Complete and lattice networks
+
+
+#### Complete networks
+
+```{r}
+library(igraph)
+
+N <- 15
+fnet <- make_full_graph(N) 
+plot(fnet, layout = layout_in_circle(fnet))
+```
+
+#### Lattice networks
+
+```{r}
+#| echo: true
+source("~/workspace/CSS4S-ProblemSets/socmod.R")
+latnet <- regular_lattice(10, 2)
+plot(latnet, layout=layout_in_circle(latnet), vertex.size=30)
+```
+
+### Erdős-Rényi random graphs $G(N,M)$ and $G(N,p)$
+
+The socmod.R library provides some network-generating functions for lattices,
+Erdős-Rényi random networks $G(N,M)$ and $G(N,p)$ constructions:
+
+```{r}
+g_nm <- G_NM(15, 20)
+
+print(g_nm)
+plot(g_nm)
+```
+
+
+### Small-world networks
+
+```{r}
+
+```
+
+
+### Preferential attachment networks
+
+
+
+### Asymmetric homophily networks
+
+
+### Stochastic block models (SBM)
+
+
+#### Exponential family and random graph models (ERGM) 
+
+Note that to capture even more complexity and realism in social network models, 
+exponential family and random graph models are the next step: they can be
+written as mixtures of stochastic block models [@Eldan2018].
+
+### The friendship paradox
+
+#### A Simple Four-Person Network
+
+Let's create a simple network with just 4 people where:
+- Person A has 3 friends (B, C, and D)
+- Person B has 1 friend (A)
+- Person C has 1 friend (A)
+- Person D has 1 friend (A)
+
+```{r create_simple_network}
+# Create the adjacency matrix
+adj_matrix <- matrix(
+  c(0, 1, 1, 1,  # A's connections
+    1, 0, 0, 0,  # B's connections
+    1, 0, 0, 0,  # C's connections
+    1, 0, 0, 0), # D's connections
+  nrow = 4,
+  byrow = TRUE
+)
+
+# Create the graph
+g <- graph_from_adjacency_matrix(adj_matrix, mode = "undirected")
+
+# Name the vertices
+V(g)$name <- LETTERS[1:4]
+
+# Calculate degrees
+degrees <- degree(g)
+```
+
+#### Calculate Averages
+
+```{r calculations}
+# Calculate overall average number of friends
+avg_friends <- mean(degrees)
+
+# Calculate friends' average friends for each person
+friends_avg_friends <- sapply(V(g), function(x) {
+  neighbors <- neighbors(g, x)
+  if(length(neighbors) > 0) {
+    mean(degree(g)[neighbors])
+  } else {
+    0
+  }
+})
+
+# Create summary dataframe
+summary_df <- data.frame(
+  Person = LETTERS[1:4],
+  Own_Friends = degrees,
+  Friends_Avg_Friends = round(friends_avg_friends, 2)
+)
+
+# Display results
+kable(summary_df,
+      col.names = c("Person", "Number of Friends", 
+                   "Average Friends of Friends"),
+      caption = "Comparison of Friend Counts")
+
+cat("\nOverall Statistics:\n")
+cat("Average number of friends per person:", round(avg_friends, 2), "\n")
+cat("Average of friends' friends:", 
+    round(mean(friends_avg_friends[degrees > 0]), 2))
+```
+
+#### Visualize the Network
+
+```{r plot_network}
+#| fig.width: 6
+#| fig.height: 6
+
+# Create a layout for the graph
+layout <- layout_with_fr(g)
+
+# Plot the network
+plot(g,
+     layout = layout,
+     vertex.size = 30,
+     vertex.label = paste0(V(g)$name, "\n(", degrees, ")"),
+     vertex.color = "lightblue",
+     main = "Simple Four-Person Network\n(number in parentheses = friend count)")
+```
+
+##### Explanation
+
+This simple example clearly shows the friendship paradox:
+
+1. The average number of friends per person is 1.5 (calculated as (3 + 1 + 1 + 1) ÷ 4)
+
+2. But looking at friends' friends:
+   - A's friends (B, C, D) each have 1 friend
+   - B's friends (A) have 3 friends
+   - C's friends (A) have 3 friends
+   - D's friends (A) have 3 friends
+
+3. The average of friends' friends is 2, which is higher than the overall average of 1.5
+
+This demonstrates how even in a very simple network, people's friends tend to have more friends than average.
 
 ## Time series
 

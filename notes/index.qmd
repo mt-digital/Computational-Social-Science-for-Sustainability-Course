@@ -123,6 +123,7 @@ ggplot() +
     theme_void()
 ```
 
+
 ### Creating and measuring social networks
 
 To start, consider the following fictional advice network at a startup, Sustainability Intervention Solutions. There are only three team members right now with different roles. Esmeralda, the CEO, advises River and Brook. Esmeralda and Brook left their previous jobs at Hooli to start the company, so Brook also advises Esmeralda. River is the newest member of the team, an expert programmer with little business or sustainability experience, so Esmeralda mentors River. Brook is knowledgable about business and sustainability, but just learning to program, so River is helping Brook develop her skills. We can use a social network to represent this social structure where arrows point from Esmeralda to River and Brook; from River to Brook; and from Brook to Esmeralda.
@@ -173,9 +174,13 @@ latnet <- regular_lattice(20, 6)
 plot(latnet, layout=layout_in_circle(latnet), vertex.size=10)
 ```
 
-<!-- #### Random networks -->
+#### Random networks
 
-<!-- ##### Erdős-Rényi random networks: $G(N,M)$ and $G(N, p)$ -->
+##### Erdős-Rényi random networks: $G(N,M)$ and $G(N, p)$
+
+```{r}
+
+```
 
 <!-- ##### Randomization of regular networks to achieve the small-world property -->
 
