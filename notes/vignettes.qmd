@@ -136,32 +136,44 @@ plot(fnet, layout = layout_in_circle(fnet))
 
 ```{r}
 #| echo: true
-source("~/workspace/CSS4S-ProblemSets/socmod.R")
-latnet <- regular_lattice(10, 2)
+source("~/cl-workspace/socmod/R/socmod.R")
+latnet <- regular_lattice(10, 4)
 plot(latnet, layout=layout_in_circle(latnet), vertex.size=30)
 ```
+
+To make small-world networks one starts from a regular lattice and "rewires" 
+a fraction, $p$, of the edges. Igraph provides the `rewire` function for this purpose, where a method for rewiring must be provided; we will use the `each_edge` function to specify that each edge should be rewired with probability $p$. 
+
+```{r}
+#| echo: true
+
+rewired_latnet <- rewire(latnet, each_edge(p=0.2, loops = FALSE))
+plot(rewired_latnet)
+```
+
 
 ### Erdős-Rényi random graphs $G(N,M)$ and $G(N,p)$
 
 The socmod.R library provides some network-generating functions for lattices,
-Erdős-Rényi random networks $G(N,M)$ and $G(N,p)$ constructions:
+Erdős-Rényi random networks $G(N,M)$ (and soon $G(N,p)$) constructions:
 
 ```{r}
-g_nm <- G_NM(15, 20)
+g_nm <- G_NM(15, 30)
 
-print(g_nm)
 plot(g_nm)
 ```
 
 
-### Small-world networks
-
-```{r}
-
-```
 
 
-### Preferential attachment networks
+<!-- ### Small-world networks -->
+
+<!-- ```{r} -->
+
+<!-- ``` -->
+
+
+<!-- ### Preferential attachment networks -->
 
 
 
