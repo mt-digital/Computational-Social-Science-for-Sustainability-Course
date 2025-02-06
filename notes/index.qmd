@@ -166,22 +166,42 @@ plot(latnet, layout=layout_in_circle(latnet), vertex.size=30)
 And here is one more example, but with 20 nodes connected to six neighbors each:
 
 ```{r}
-#| fig-height: 8
-#| fig-width: 8
+#| fig-height: 5
+#| fig-width: 5
 #| echo: true
 source("~/workspace/CSS4S-ProblemSets/socmod.R")
 latnet <- regular_lattice(20, 6)
-plot(latnet, layout=layout_in_circle(latnet), vertex.size=10)
+plot(latnet, layout=layout_in_circle(latnet), vertex.size=18)
 ```
 
 #### Random networks
 
-##### Erdős-Rényi random networks: $G(N,M)$ and $G(N, p)$
+##### Rewiring regular lattices using the `rewire` function in igraph
+
+To make small-world networks one starts from a regular lattice and "rewires" 
+a fraction, $p$, of the edges. Igraph provides the `rewire` function for this purpose, where a method for rewiring must be provided; we will use the `each_edge` function to specify that each edge should be rewired with probability $p$. 
 
 ```{r}
-
+#| echo: true
+#| fig-height: 5
+#| fig-width: 5
+rewired_latnet <- rewire(latnet, each_edge(p=0.1, loops = FALSE))
+plot(rewired_latnet, layout=layout_in_circle(latnet), vertex.size=18)
 ```
 
+##### Erdős-Rényi random networks: $G(N,M)$ construction
+
+The socmod.R library provides some network-generating functions for lattices,
+Erdős-Rényi random networks $G(N,M)$ (and soon $G(N,p)$) constructions:
+
+```{r}
+#| fig-width: 5
+#| fig-height: 5
+source("~/cl-workspace/socmod/R/socmod.R")
+
+g_nm <- G_NM(15, 30)
+plot(g_nm)
+```
 <!-- ##### Randomization of regular networks to achieve the small-world property -->
 
 ### Analysis of the Medici family
@@ -494,7 +514,7 @@ Let's initialize and run a simple toy `AgentBasedModel` to see the different par
 # directory. Since this is in the CSS4S/notes directory for the course website
 # I need to use a different path. Use `socmod_path` for the problem set.
 socmod_path <- "~/workspace/CSS4S-ProblemSets/socmod.R" # <-- comment this out for your problem set 
-# socmod_path <- "../socmod.R" ### <-- Use this one for your Problem Set
+# socmod_path <- "socmod.R" ### <-- Use this one for your Problem Set
 source(socmod_path)
 
 # Define our fake model where nothing happens except agents randomly match up, but then just adopt 
@@ -520,28 +540,29 @@ With the model defined, we can now run the model. We must first define how partn
 
 ```{r}
 #| echo: true
+#| fig-width: 3.5
+#| fig-height: 2
 source(socmod_path)
 
 
 # Source the agent-based modeling code from socmod.R in root ProblemSets
 # directory. Since this is in the CSS4S/notes directory for the course website
 # I need to use a different path. Use `socmod_path` for the problem set.
-socmod_path <- "~/workspace/CSS4S-ProblemSets/socmod.R" # <-- comment this out for your problem set 
-# socmod_path <- "../socmod.R" ### <-- Use this one for your Problem Set
+socmod_path <- "~/cl-workspace/socmod/R/socmod.R" # <-- comment this out for your problem set 
+# socmod_path <- "socmod.R" ### <-- Use this one for your Problem Set
 source(socmod_path)
 
-# Define our fake model where nothing happens except agents randomly match up, but then just adopt 
-# either behavior randomly.
+# Define our fake model where nothing happens except agents 
+# randomly match up, but then just adopt either behavior randomly.
 
 N <- 10
-# Create a list of ten initial behaviors, five of each in 
-# random order to be used to create 
+# Create a list of ten initial behaviors, five of each in random order.
 behaviors <- 
   sample(
     c(rep("Legacy", as.integer(N/2)),
       rep("Adaptive", as.integer(N/2)))
   )
-
+# Create a new agent 
 agents <- purrr:::map(behaviors, \(b) { Agent$new(b) })
 
 model <- AgentBasedModel$new(agents = agents, network = regular_lattice(N, 4), 
@@ -552,9 +573,9 @@ partner_selection <- function(agent, model) {
   return (sample(agent$neighbors, 1))
 }
 
-interaction <- function(agent1, agent2, model) {
   # Not really an "interaction" for this toy model, just random behavior adoption.
-  
+interaction <- function(agent1, agent2, model) {
+
   agent1$prev_behavior <- agent1$curr_behavior
   if (runif(1) < model$params$switch_prob) {
     b_new <- sample(c("Legacy", "Adaptive"), 1)
@@ -562,16 +583,22 @@ interaction <- function(agent1, agent2, model) {
   }
 }
 
+# Run the model for 20 timesteps using partner selection and 
+# interaction defined above.
 out <- run(model, 20, partner_selection, interaction)$output
 
-
-ggplot(out, aes(x=t, y=A)) + geom_line() + scale_x_continuous(breaks=0:22) + theme_classic()
+# Plot the result of one time step.
+ggplot(out, aes(x=t, y=A)) + geom_line() + xlim(c(0, 20)) +
+  scale_x_continuous(breaks=seq(0, 20, by=2), limits=c(0, 20)) + theme_classic()
 ```
 
 I hypothesize that if `switch_prob` is greater, the adoption curve will be more variable over time. To test this hypothesis, let's create another time series, but with an even higher `switch_prob` and compare the two. First, we'll add a `switch_prob` column to our output dataframe from before:
 
 ```{r}
 #| echo: true
+#| fig-width: 4
+#| fig-height: 2
+
 # Rename the output from before with a switch_prob of 0.1...
 out_p1 <- out
 # ...and add a `switch_prob` column as a factor since we'll use it to color our graphs later.
@@ -581,22 +608,28 @@ out_p1$switch_prob <- as.factor(model$params$switch_prob)
 agents <- as.vector(purrr::map(behaviors, \(b) Agent$new(b)))
 
 # Use them to create a new model with a higher switch_prob.
-model_p9 <- AgentBasedModel$new(agents = agents, network = regular_lattice(N, 4), 
-                             switch_prob = 0.9)
+model_p9 <- AgentBasedModel$new(agents = agents, 
+                                network = regular_lattice(N, 4), 
+                                switch_prob = 0.9)
 
 # partner_selection and interaction work as before, and we still use the default model_step
 out_p9 <- run(model_p9, 20, partner_selection, interaction)$output
-# Add a `switch_prob` column to out_p9...
+# Add a `switch_prob` column to out_p9.
 out_p9$switch_prob <- as.factor(0.9)
-# ...and concatenate the two tibbles:
+# And do the same after renaming the output for switch_prob = 0.1 from before:
+out_p1 <- out
+out_p1$switch_prob <- as.factor(model$params$switch_prob)
+
+# Concatenate the two tibbles:
 out_full <- rbind(out_p1, out_p9)
 
-ggplot(out_full, aes(x=t, y=A, color=switch_prob)) + geom_line() + theme_classic()
+ggplot(out_full, aes(x=t, y=A, color=switch_prob)) + geom_line() +
+  scale_x_continuous(breaks=seq(0, 20, by=2), limits=c(0, 20)) + theme_classic()
 ```
 
 Maybe it is more variable, but it is hard to tell from comparing just two outputs. We would need to do more processing of the outputs, perhaps coming up with a measure of variability to compare across different `swtich_prob` settings. Furthermore we need more *trials* to reliably infer whether greater `switch_prob` indeed results in greater variability in resulting time series.
 
-Soon we will use the `run_trials` function to run several trials for several parameter settings
+Soon we will use the `run_trials` function to run several trials for several parameter settings.
 
 # Adaptive (social) learning strategies
 
